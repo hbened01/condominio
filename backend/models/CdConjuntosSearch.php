@@ -1,14 +1,14 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\CdConjuntos;
+use backend\models\CdConjuntos;
 
 /**
- * CdConjuntosSearch represents the model behind the search form about `app\models\CdConjuntos`.
+ * CdConjuntosSearch represents the model behind the search form about `backend\models\CdConjuntos`.
  */
 class CdConjuntosSearch extends CdConjuntos
 {

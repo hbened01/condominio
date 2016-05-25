@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace backend\controllers;
 
 use Yii;
-use app\models\CdConjuntos;
-use app\models\CdConjuntosSearch;
+use backend\models\CdConjuntos;
+use backend\models\CdConjuntosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

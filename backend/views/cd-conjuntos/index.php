@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CdConjuntosSearch */
+/* @var $searchModel backend\models\CdConjuntosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Cd Conjuntos';
