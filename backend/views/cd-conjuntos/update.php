@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\CdConjuntos */
+/* @var $model backend\models\CdConjuntos */
 
 $this->title = 'Update Cd Conjuntos: ' . $model->cd_conjuntos_pk;
 $this->params['breadcrumbs'][] = ['label' => 'Cd Conjuntos', 'url' => ['index']];

@@ -11,7 +11,18 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+            // Configuration Yii2-User Backend //
+            'user' => [
+                'class' => 'dektrium\user\Module',
+                'enableFlashMessages' => false,
+                'enableRegistration' => false,
+                'enableUnconfirmedLogin' => false,
+                'confirmWithin' => 21600,
+                'cost' => 12,
+                'admins' => ['admin']
+            ],
+    ],
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
