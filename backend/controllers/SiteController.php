@@ -12,6 +12,19 @@ use common\models\LoginForm;
  */
 class SiteController extends Controller
 {
+
+    public $layout;
+
+    public function beforeAction($action)
+    {
+        if (is_null(Yii::$app->user->identity) ){
+            $this->layout = 'mainLogin';
+        }else{
+            $this->layout = 'main';
+        }
+        return parent::beforeAction($action);
+    }
+
     /**
      * @inheritdoc
      */
@@ -92,6 +105,7 @@ class SiteController extends Controller
 
     public function actionLogout()
     {
+        echo "hola";
         Yii::$app->user->logout();
 
         return $this->goHome();
