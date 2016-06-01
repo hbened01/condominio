@@ -5,6 +5,7 @@
 
 use backend\assets\DashboardAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
@@ -270,7 +271,11 @@ DashboardAsset::register($this);
                                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <?=  
+                                          Html::beginForm(['/site/logout'], 'post').
+                                          Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',['class' => 'btn btn-default btn-flat']).
+                                          Html::endForm();
+                                     ?>
                                 </div>
                               </li>
                             </ul>
