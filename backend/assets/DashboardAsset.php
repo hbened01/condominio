@@ -26,11 +26,11 @@ class DashboardAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'js/jQuery-2.2.0.min.js',
+        //'js/jQuery-2.2.0.min.js',
         'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
         'js/bootstrap.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
-        'js/morris.min.js',
+        //'js/morris.min.js',
         'js/jquery.sparkline.min.js',
         'js/jquery-jvectormap-1.2.2.min.js',
         'js/jquery-jvectormap-world-mill-en.js',
@@ -42,7 +42,7 @@ class DashboardAsset extends AssetBundle
         'js/jquery.slimscroll.min.js',
         'js/fastclick.js',
         'js/app.min.js',
-        'js/dashboard.js'
+        //'js/dashboard.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
