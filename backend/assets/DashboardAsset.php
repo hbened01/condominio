@@ -16,7 +16,7 @@ class DashboardAsset extends AssetBundle
         //'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css',
         'css/bootstrap.min.css',
         'css/font-awesome.css',
-        'css/ionicons.min.css'
+        'css/ionicons.min.css',
         'css/AdminLTE.min.css',
         'css/skins/_all-skins.min.css',
         'css/flat/blue.css',
@@ -32,15 +32,15 @@ class DashboardAsset extends AssetBundle
         //'https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
         //'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js',
         'js/jQuery-2.2.0.min.js',
-        'js/jquery-ui.min.js'
+        'js/jquery-ui.min.js',
         'js/bootstrap.min.js',
-        'js/raphael-min.js'
+        'js/raphael-min.js',
         'js/morris.min.js',
         'js/jquery.sparkline.min.js',
         'js/jquery-jvectormap-1.2.2.min.js',
         'js/jquery-jvectormap-world-mill-en.js',
         'js/jquery.knob.js',
-        'js/moment.min.js'
+        'js/moment.min.js',
         'js/daterangepicker.js',
         'js/bootstrap-datepicker.js',
         'js/bootstrap3-wysihtml5.all.min.js',
