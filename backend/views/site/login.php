@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                            <?= $form->field($model, 'rememberMe')->checkbox()->div(false) ?>
                         </label>
                     </div>
                 </div>
@@ -49,4 +49,3 @@ $this->params['breadcrumbs'][] = $this->title;
         <a href="#" class="text-center">Registrar nuevo usuario</a>
     </div>
 </div>
-
