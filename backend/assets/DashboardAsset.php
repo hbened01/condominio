@@ -47,7 +47,8 @@ class DashboardAsset extends AssetBundle
         'js/jquery.slimscroll.min.js',
         'js/fastclick.js',
         'js/app.min.js',
-        'js/dashboard.js'
+        'js/dashboard.js',
+        'js/icheck.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

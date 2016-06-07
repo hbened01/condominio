@@ -13,7 +13,7 @@ class CorlateAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        //'css/site.css',
+        'css/site.css',
         'css/bootstrap.min.css',
         'css/font-awesome.min.css',
         'css/animate.min.css',

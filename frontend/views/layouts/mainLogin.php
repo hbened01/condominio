@@ -3,7 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use backend\assets\LoginAsset;
+use frontend\assets\LoginAsset;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
@@ -22,8 +22,6 @@ LoginAsset::register($this);
 </head>
 <body class="hold-transition login-page">
   <?php $this->beginBody() ?>
-  
-  <?= $content ?>
 
 <?php $this->endBody() ?>
 </body>
