@@ -5,6 +5,8 @@
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
+use common\widgets\Alert;
  
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
@@ -65,7 +67,7 @@ $baseUrl = $asset->baseUrl;
                 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><?= Html::a('Home', ['site/index'],['data' => [ 'method' => 'post',]]) ?></li>
                         <li><a href="about-us.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
@@ -78,10 +80,9 @@ $baseUrl = $asset->baseUrl;
                                 <li><a href="shortcodes.html">Shortcodes</a></li>
                             </ul>
                         </li>
-                        <li><?= Html::a('Contact', ['site/contact']) ?><!-- <a href="contact-us.html">Contact</a> --></li> 
-                        <li><?= Html::a('Exit ' . Yii::$app->user->identity->username . '', ['/site/logout'], 
-                                            ['data' => ['confirm' => "Esta seguro de cerrar la sesión?", 'method' => 'post',]],
-                                            ['class' => 'nav navbar-nav']) ?><i class="fa fa-power-off" ></i>
+                        <li><?= Html::a('Contact', ['site/contact'],['data' => [ 'method' => 'post',]]) ?></li> 
+                        <li><?= Html::a('Exit    <i class="fa fa-power-off"></i> ( ' . Yii::$app->user->identity->username . ' )', ['/site/logout'], 
+                                            ['data' => ['confirm' => "Esta seguro de cerrar la sesión?", 'method' => 'post',]]) ?>
                         </li>                        
                     </ul>
                 </div>
@@ -90,8 +91,12 @@ $baseUrl = $asset->baseUrl;
         
     </header><!--/header-->
 
-    <div class="index-render">
-        
+    <div class="content">
+
+    <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+    <?= Alert::widget() ?>
     <?= $content ?>
     <!--<?= $this->render('@frontend/views/site/index') ?>-->
 
