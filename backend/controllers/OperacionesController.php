@@ -3,21 +3,22 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\CdConjuntos;
-use backend\models\CdConjuntosSearch;
-//use yii\web\Controller;
+use backend\models\Operaciones;
+use backend\models\OperacionesSearch;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CdConjuntosController implements the CRUD actions for CdConjuntos model.
+ * OperacionesController implements the CRUD actions for Operaciones model.
  */
-class CdConjuntosController extends BaseController
+class OperacionesController extends Controller
 {
     /**
      * @inheritdoc
      */
-    public function behaviors(){
+    public function behaviors()
+    {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -29,11 +30,12 @@ class CdConjuntosController extends BaseController
     }
 
     /**
-     * Lists all CdConjuntos models.
+     * Lists all Operaciones models.
      * @return mixed
      */
-    public function actionIndex(){
-        $searchModel = new CdConjuntosSearch();
+    public function actionIndex()
+    {
+        $searchModel = new OperacionesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,26 +45,28 @@ class CdConjuntosController extends BaseController
     }
 
     /**
-     * Displays a single CdConjuntos model.
+     * Displays a single Operaciones model.
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id){
+    public function actionView($id)
+    {
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new CdConjuntos model.
+     * Creates a new Operaciones model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate(){
-        $model = new CdConjuntos();
+    public function actionCreate()
+    {
+        $model = new Operaciones();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_conjuntos_pk]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -71,16 +75,17 @@ class CdConjuntosController extends BaseController
     }
 
     /**
-     * Updates an existing CdConjuntos model.
+     * Updates an existing Operaciones model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id){
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_conjuntos_pk]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -89,26 +94,28 @@ class CdConjuntosController extends BaseController
     }
 
     /**
-     * Deletes an existing CdConjuntos model.
+     * Deletes an existing Operaciones model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id){
+    public function actionDelete($id)
+    {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the CdConjuntos model based on its primary key value.
+     * Finds the Operaciones model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CdConjuntos the loaded model
+     * @return Operaciones the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id){
-        if (($model = CdConjuntos::findOne($id)) !== null) {
+    protected function findModel($id)
+    {
+        if (($model = Operaciones::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
