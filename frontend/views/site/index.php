@@ -2,7 +2,8 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'condominio_index';
+$this->title = 'Index';
+$this->params['breadcrumbs'][] = $this->title;
 
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
