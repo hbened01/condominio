@@ -10,8 +10,8 @@ $this->params['breadcrumbs'][] = $this->title;
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
-//use yii\bootstrap\ActiveForm;
-//use yii\captcha\Captcha;
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
 
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
@@ -85,40 +85,36 @@ $baseUrl = $asset->baseUrl;
             </div> 
             <div class="row contact-wrap"> 
                 <div class="status alert alert-success" style="display: none"></div>
-                <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
-                    <div class="col-sm-5 col-sm-offset-1">
-                        <div class="form-group">
-                            <label>Name *</label>
-                            <input type="text" name="name" class="form-control" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label>Email *</label>
-                            <input type="email" name="email" class="form-control" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="number" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Company Name</label>
-                            <input type="text" class="form-control">
-                        </div>                        
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="form-group">
-                            <label>Subject *</label>
-                            <input type="text" name="subject" class="form-control" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label>Message *</label>
-                            <textarea name="message" id="message" required="required" class="form-control" rows="8"></textarea>
-                        </div>                        
-                        <div class="form-group">
-                            <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button>
-                        </div>
-                    </div>
-                </form> 
+                
+                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+
+                <div class="col-sm-5 col-sm-offset-1">
+
+                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+
+                    <?= $form->field($model, 'email') ?>
+
+                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                    'template' => '<div class="row"><div class="col-lg-6">{image}</div><div class="col-lg-6">{input}</div></div>',
+                    ]) ?>
+            
+                </div>
+
+                <div class="col-sm-5">
+
+                    <?= $form->field($model, 'subject') ?>
+
+                    <?= $form->field($model, 'body')->textArea(['rows' => 8]) ?>
+
+                    <?= Html::submitButton('Submit Message', ['class' => 'btn btn-primary btn-lg', 'name' => 'contact-button']) ?>
+
+                </div>
+
+                <?php ActiveForm::end(); ?>
             </div><!--/.row-->
+            <br>
+            <br>
+            <br>
         </div><!--/.container-->
     </section><!--/#contact-page-->
 
