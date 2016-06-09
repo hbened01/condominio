@@ -10,21 +10,8 @@ use common\models\LoginForm;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
-
-    public $layout;
-
-    public function beforeAction($action) {
-        
-        if (is_null(Yii::$app->user->identity) ){
-            $this->layout = 'mainLogin';
-        }else{
-            $this->layout = 'main';
-        }
-
-        return parent::beforeAction($action);
-    }
     
     /**
      * @inheritdoc
