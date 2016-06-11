@@ -15,7 +15,7 @@ class CorlateAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/bootstrap.min.css',
-        'css/font-awesome.min.css',
+        'css/font-awesome.css',
         'css/animate.min.css',
         'css/prettyPhoto.css',
         'css/main.css',

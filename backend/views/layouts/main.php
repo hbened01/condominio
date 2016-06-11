@@ -324,7 +324,7 @@ DashboardAsset::register($this);
                     <li><a href="#"><i class="fa fa-user"></i> Usuarios</a> </li>
                     <li><a href="#"><i class="fa fa-calculator"></i> Operaciones</a></li>
                     <li><a href="#"><i class="fa fa-users"></i> Roles</a></li>
-                  <!--   <li><a href="#"><i class="fa fa-key"></i> Permisos</a></li>
+                    <!--<li><a href="#"><i class="fa fa-key"></i> Permisos</a></li>
                     <li><a href="#"><i class="fa fa-list"></i> Reglas</a></li>
                     <li><a href="#"><i class="fa fa-sitemap"></i> Rutas</a></li> -->
                   </ul>

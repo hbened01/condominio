@@ -22,6 +22,7 @@ class LoginAsset extends AssetBundle
         'css/flat/blue.css'
     ];
     public $js = [
+        'js/jquery.js',
         'js/jQuery-2.2.0.min.js',
         'js/bootstrap.min.js',
         'js/icheck.min.js'

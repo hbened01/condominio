@@ -18,4 +18,4 @@ $this->title = $name;
     </section><!--/#error-->
 
 </div>
-<br>
+<br><br>

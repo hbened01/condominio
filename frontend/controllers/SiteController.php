@@ -21,20 +21,6 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-  //  public $layout;
-
-/*    public function beforeAction($action)
-    {
-
-        if (is_null(Yii::$app->user->identity) ){
-            echo "string";
-            $this->layout = 'mainLogin';
-        }else{
-            $this->layout = 'main';
-        }
-        return parent::beforeAction($action);
-    }*/
-
     public function behaviors()
     {
         return [

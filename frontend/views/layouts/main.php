@@ -2,6 +2,8 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+
+use frontend\assets\LoginAsset;
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -67,9 +69,9 @@ $baseUrl = $asset->baseUrl;
                 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li ><?= Html::a('Home', ['site/index'],['data' => [ 'method' => 'post',]]) ?></li>
-                        <li><?= Html::a('About Us', ['site/about'],['data' => [ 'method' => 'post',]]) ?></li>
-                        <li><?= Html::a('Contact', ['site/contact'],['data' => [ 'method' => 'post',]]) ?></li> 
+                        <li><?= Html::a('Home', ['site/index'],['data' => ['method' => 'post']]) ?></li>
+                        <li><?= Html::a('About Us', ['site/about'],['data' => ['method' => 'post']]) ?></li>
+                        <li><?= Html::a('Contact', ['site/contact'],['data' => ['method' => 'post']]) ?></li> 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -79,9 +81,13 @@ $baseUrl = $asset->baseUrl;
                                 <li><a href="shortcodes.html">Shortcodes</a></li>
                             </ul>
                         </li>
-                        <li><?= Html::a('Exit    <i class="fa fa-power-off"></i> ( ' . Yii::$app->user->identity->username . ' )', ['/site/logout'], 
-                                            ['data' => ['confirm' => "Esta seguro de cerrar la sesión?", 'method' => 'post',]]) ?>
-                        </li>                        
+                        <?php if (Yii::$app->user->isGuest) {
+                                //echo '<li>'.Html::a('Signup', ['/site/signup'],['data' => ['method' => 'post']]).'</li>';
+                                echo '<li>'.Html::a('Login', ['/site/login'],['data' => ['method' => 'post']]).'</li>';
+                            } else {
+                                echo '<li>'.Html::a('Logout  ( ' . Yii::$app->user->identity->username . ' )  <i class="fa fa-power-off"></i>', ['/site/logout'], 
+                                ['data' => ['confirm' => "Esta seguro de cerrar la sesión?", 'method' => 'post',]]).'</li>';}                  
+                        ?> 
                     </ul>
                 </div>
             </div><!--/.container-->
@@ -89,7 +95,7 @@ $baseUrl = $asset->baseUrl;
         
     </header><!--/header-->
 
-    <div class="container">
+    <div class="main-container"> <!-- class="container" se coloca esta clase se queremos el margen del contenedor original. -->
 
     <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
