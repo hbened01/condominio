@@ -37,7 +37,7 @@ LoginAsset::register($this);
             </div>
             
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'password', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span></div>'])->passwordInput(['class' => 'form-control', 'placeholder' => 'Password'])->label(false)
+                <?= $form->field($model, 'password', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span></div>'])->passwordInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Password'])->label(false)
                 ?>
             </div>
 
