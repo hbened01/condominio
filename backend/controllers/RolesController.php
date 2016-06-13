@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Roles;
 use backend\models\RolesSearch;
-use yii\web\Controller;
+//use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\Operaciones;
@@ -14,7 +14,7 @@ use common\models\AccessHelpers;
 /**
  * RolesController implements the CRUD actions for Roles model.
  */
-class RolesController extends Controller
+class RolesController extends BaseController
 {
     /**
      * @inheritdoc

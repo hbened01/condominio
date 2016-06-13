@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Operaciones;
 use backend\models\OperacionesSearch;
-use yii\web\Controller;
+//use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * OperacionesController implements the CRUD actions for Operaciones model.
  */
-class OperacionesController extends Controller
+class OperacionesController extends BaseController
 {
     /**
      * @inheritdoc
