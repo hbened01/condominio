@@ -18,8 +18,9 @@ class BaseController extends Controller {
 
         if (is_null(Yii::$app->user->identity)){
             $this->layout = 'mainLogin';
-            //return $this->redirect(Yii::$app->getUser()->loginUrl);
-            //return Yii::$app->response->redirect(Url::to(['site/login']));
+            if(Yii::$app->controller->route != 'site/login'){
+                return $this->redirect(Yii::$app->getUser()->loginUrl);
+            }
         }else{
             $this->layout = 'main';
         }

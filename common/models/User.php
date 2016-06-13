@@ -6,6 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use backend\models\Roles;
 
 /**
  * User model
@@ -48,12 +49,54 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
+    // public function rules()
+    // {
+    //     return [
+    //         ['status', 'default', 'value' => self::STATUS_ACTIVE],
+    //         ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+    //     ];
+    // }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+            [['status', 'created_at', 'updated_at', 'rol_id'], 'integer'],
+            [['username', 'auth_key'], 'string', 'max' => 32],
+            //[['password_hash', 'password_reset_token', 'email'], 'string', 'max' => 256],
+            [['rol_id'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['rol_id' => 'id']],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Username',
+    //        'auth_key' => 'Auth Key',
+    //        'password_hash' => 'Password Hash',
+    //        'password_reset_token' => 'Password Reset Token',
+            'email' => 'Email',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'rol_id' => 'Rol ID',
+        ];
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRol()
+    {
+        return $this->hasOne(Roles::className(), ['id' => 'rol_id']);
     }
 
     /**
