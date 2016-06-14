@@ -33,6 +33,8 @@ LoginAsset::register($this);
             
             <div class="row">
                 <div class="col-xs-8">
+                    <br>
+                    <?= Html::a('<i class="fa fa-arrow-circle-left"></i>  Volver...', ['site/login']) ?>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
