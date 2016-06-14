@@ -79,7 +79,8 @@ $baseUrl = $asset->baseUrl;
 
     <section id="contact-page">
         <div class="container">
-            <div class="center">        
+            <div class="center">
+                <br><br><br>  
                 <h2>Drop Your Message</h2>
                 <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div> 
