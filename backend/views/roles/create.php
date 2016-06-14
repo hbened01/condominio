@@ -10,13 +10,17 @@ $this->title = Yii::t('app', 'Create Roles');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Roles'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<p>
+    <?= Html::a(Yii::t('app', 'Lista de Roles'), ['index'], ['class' => 'btn btn-info']); ?>
+</p>
 <div class="roles-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
-        'tipoOperaciones' => $tipoOperaciones
+        'tipoOperaciones' => $tipoOperaciones,
+        'titulo' => $this->title
     ]) ?>
 
 </div>

@@ -21,6 +21,7 @@ class DashboardAsset extends AssetBundle
         'css/morris.css',
         'css/jquery-jvectormap-1.2.2.css',
         'css/datepicker3.css',
+        'css/dataTables.bootstrap.css',
         'css/daterangepicker-bs3.css',
         'css/bootstrap3-wysihtml5.min.css',
         'css/site.css',
@@ -36,13 +37,15 @@ class DashboardAsset extends AssetBundle
         'js/jquery-jvectormap-world-mill-en.js',
         'js/jquery.knob.js',
         'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js',
+        'js/jquery.dataTables.min.js',
+        'js/dataTables.bootstrap.min.js',
         'js/daterangepicker.js',
         'js/bootstrap-datepicker.js',
         'js/bootstrap3-wysihtml5.all.min.js',
         'js/jquery.slimscroll.min.js',
         'js/fastclick.js',
         'js/app.min.js',
-        //'js/dashboard.js'
+        //'js/dashboard.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
