@@ -63,18 +63,6 @@ class RolesController extends BaseController
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    // public function actionCreate()
-    // {
-    //     $model = new Roles();
-
-    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
-    //         return $this->redirect(['view', 'id' => $model->id]);
-    //     } else {
-    //         return $this->render('create', [
-    //             'model' => $model,
-    //         ]);
-    //     }
-    // }
 
         public function actionCreate(){
             $model = new Roles();
@@ -96,18 +84,6 @@ class RolesController extends BaseController
      * @param integer $id
      * @return mixed
      */
-    // public function actionUpdate($id)
-    // {
-    //     $model = $this->findModel($id);
-
-    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
-    //         return $this->redirect(['view', 'id' => $model->id]);
-    //     } else {
-    //         return $this->render('update', [
-    //             'model' => $model,
-    //         ]);
-    //     }
-    // }
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);

@@ -8,7 +8,7 @@ use yii\web\AssetBundle;
  * Main backend application asset bundle.
  */
 class AppAsset extends AssetBundle
-{
+{  
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'css/morris.css',
         'css/jquery-jvectormap-1.2.2.css',
         'css/datepicker3.css',
+        'css/dataTables.bootstrap.css',
         'css/daterangepicker-bs3.css',
         'css/bootstrap3-wysihtml5.min.css',
         'css/site.css',
@@ -40,14 +41,17 @@ class AppAsset extends AssetBundle
         'js/jquery-jvectormap-1.2.2.min.js',
         'js/jquery-jvectormap-world-mill-en.js',
         'js/jquery.knob.js',
-        'js/moment.min.js'
+        'js/moment.min.js',
+        'js/jquery.dataTables.min.js',
+        'js/dataTables.bootstrap.min.js',
         'js/daterangepicker.js',
         'js/bootstrap-datepicker.js',
         'js/bootstrap3-wysihtml5.all.min.js',
         'js/jquery.slimscroll.min.js',
         'js/fastclick.js',
         'js/app.min.js',
-        'js/dashboard.js'
+        'js/dashboard.js',
+        'js/icheck.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
