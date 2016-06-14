@@ -32,7 +32,7 @@ class AppAsset extends AssetBundle
         //'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
         //'https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
         //'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js',
-        'js/jQuery-2.2.0.min.js',
+        //'js/jQuery-2.2.0.min.js',
         'js/jquery-ui.min.js',
         'js/bootstrap.min.js',
         'js/raphael-min.js',
