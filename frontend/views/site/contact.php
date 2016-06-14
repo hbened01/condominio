@@ -86,7 +86,20 @@ $baseUrl = $asset->baseUrl;
             <div class="row contact-wrap"> 
                 <div class="status alert alert-success" style="display: none"></div>
                 
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+                <?php $form = ActiveForm::begin(
+                    ['id' => 'contact-form',  
+                        'fieldConfig' => [
+                            'template' => "<div id='main-contact-form' class='contact-form'><div class='form-group'>{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}</div></div>",
+                            'horizontalCssClasses' => [
+                                'label' => 'col-sm-5',
+                                'offset' => 'col-sm-offset-1',
+                                'wrapper' => 'col-sm-8',
+                                'error' => '',
+                                'hint' => '',
+                            ],
+                        ],
+                    ]); 
+                ?>
 
                 <div class="col-sm-5 col-sm-offset-1">
 
