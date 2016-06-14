@@ -33,10 +33,11 @@ class DashboardAsset extends AssetBundle
         //'https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
         //'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js',
         //'js/jQuery-2.2.0.min.js',
+        //'js/morris.min.js',
+        //'js/dashboard.js',
         'js/jquery-ui.min.js',
         'js/bootstrap.min.js',
         'js/raphael-min.js',
-        'js/morris.min.js',
         'js/jquery.sparkline.min.js',
         'js/jquery-jvectormap-1.2.2.min.js',
         'js/jquery-jvectormap-world-mill-en.js',
@@ -50,7 +51,6 @@ class DashboardAsset extends AssetBundle
         'js/jquery.slimscroll.min.js',
         'js/fastclick.js',
         'js/app.min.js',
-        'js/dashboard.js',
         'js/icheck.min.js',
     ];
     public $depends = [
