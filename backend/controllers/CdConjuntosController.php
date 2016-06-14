@@ -5,20 +5,19 @@ namespace backend\controllers;
 use Yii;
 use backend\models\CdConjuntos;
 use backend\models\CdConjuntosSearch;
-use yii\web\Controller;
+//use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CdConjuntosController implements the CRUD actions for CdConjuntos model.
  */
-class CdConjuntosController extends Controller
+class CdConjuntosController extends BaseController
 {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors(){
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -33,8 +32,7 @@ class CdConjuntosController extends Controller
      * Lists all CdConjuntos models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex(){
         $searchModel = new CdConjuntosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -49,8 +47,7 @@ class CdConjuntosController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -61,8 +58,7 @@ class CdConjuntosController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate(){
         $model = new CdConjuntos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -80,8 +76,7 @@ class CdConjuntosController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -99,8 +94,7 @@ class CdConjuntosController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -113,8 +107,7 @@ class CdConjuntosController extends Controller
      * @return CdConjuntos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id){
         if (($model = CdConjuntos::findOne($id)) !== null) {
             return $model;
         } else {

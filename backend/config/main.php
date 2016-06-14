@@ -13,15 +13,15 @@ return [
     'bootstrap' => ['log'],
     'modules' => [
             // Configuration Yii2-User Backend //
-            'user' => [
-                'class' => 'dektrium\user\Module',
-                'enableFlashMessages' => false,
-                'enableRegistration' => false,
-                'enableUnconfirmedLogin' => false,
-                'confirmWithin' => 21600,
-                'cost' => 12,
-                'admins' => ['admin']
-            ],
+            // 'user' => [
+            //     'class' => 'dektrium\user\Module',
+            //     'enableFlashMessages' => false,
+            //     'enableRegistration' => false,
+            //     'enableUnconfirmedLogin' => false,
+            //     'confirmWithin' => 21600,
+            //     'cost' => 12,
+            //     'admins' => ['admin']
+            // ],
     ],
     'components' => [
         'user' => [

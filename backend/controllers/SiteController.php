@@ -2,7 +2,7 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
+//use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -10,43 +10,15 @@ use common\models\LoginForm;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
-
-    public $layout;
-
-    public function beforeAction($action)
-    {
-        if (is_null(Yii::$app->user->identity) ){
-            $this->layout = 'mainLogin';
-        }else{
-            $this->layout = 'main';
-        }
-        return parent::beforeAction($action);
-    }
-
+    
     /**
      * @inheritdoc
      */
     public function behaviors()
     {
         return [
-/*            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['login', 'logout', 'signup'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['login', 'signup'],
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],*/
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
@@ -105,9 +77,13 @@ class SiteController extends Controller
 
     public function actionLogout()
     {
-        echo "hola";
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionDeneid()
+    {
+        return $this->deneid();
     }
 }

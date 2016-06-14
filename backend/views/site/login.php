@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <p class="login-box-msg">Introduce tus datos para entrar al sistema</p>
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true,'class' => 'form-control','placeholder' => 'Email'])->label(false) ?>
+                <?= $form->field($model, 'username')->textInput(['autofocus' => true,'class' => 'form-control','placeholder' => 'Usuario'])->label(false) ?>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             
@@ -49,4 +49,3 @@ $this->params['breadcrumbs'][] = $this->title;
         <a href="#" class="text-center">Registrar nuevo usuario</a>
     </div>
 </div>
-

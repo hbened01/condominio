@@ -22,6 +22,7 @@ LoginAsset::register($this);
 </head>
 <body class="hold-transition login-page">
   <?php $this->beginBody() ?>
+  
   <?= $content ?>
 
 <?php $this->endBody() ?>
@@ -29,11 +30,11 @@ LoginAsset::register($this);
 </html>
 <?php $this->endPage() ?>
 <script type="text/javascript">
-  $( document ).ready(function() {
-    /*$('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });*/
-  });
+  // $( document ).ready(function() {
+  //   $('input').iCheck({
+  //     checkboxClass: 'icheckbox_square-blue',
+  //     radioClass: 'iradio_square-blue',
+  //     increaseArea: '20%' // optional
+  //   });
+  // });
 </script>
