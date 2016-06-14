@@ -12,22 +12,49 @@ class LoginForm extends Model
     public $username;
     public $password;
     public $rememberMe = true;
+    public $verifyCode;
 
     private $_user;
-
 
     /**
      * @inheritdoc
      */
     public function rules()
     {
+        $defaultUrl = Yii::$app->request->baseUrl;
+        $string   = 'frontend';
+        $search = stripos($defaultUrl, $string);
+        if ($search === true) {
+            return [
+                // username and password are both required
+                [['username', 'password'], 'required'],
+                // rememberMe must be a boolean value
+                ['rememberMe', 'boolean'],
+                // password is validated by validatePassword()
+                ['password', 'validatePassword'],
+                // verifyCode needs to be entered correctly
+                ['verifyCode', 'captcha'],
+            ];
+        } 
+        else{
+            return [
+                // username and password are both required
+                [['username', 'password'], 'required'],
+                // rememberMe must be a boolean value
+                ['rememberMe', 'boolean'],
+                // password is validated by validatePassword()
+                ['password', 'validatePassword'],
+            ];
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
         return [
-            // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
-            ['password', 'validatePassword'],
+            'verifyCode' => 'Verification Code',
         ];
     }
 

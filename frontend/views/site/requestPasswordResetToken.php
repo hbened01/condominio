@@ -4,28 +4,47 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\PasswordResetRequestForm */
 
+$this->title = 'Request reset';
+$this->params['breadcrumbs'][] = $this->title;
+
+use frontend\assets\LoginAsset;
+use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Request password reset';
-$this->params['breadcrumbs'][] = $this->title;
+LoginAsset::register($this);
+
 ?>
 <div class="site-request-password-reset">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out your email. A link to reset password will be sent there.</p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
-
-                <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
+<div class="login-box">
+    <div class="login-logo">
+        <b><?= Html::encode($this->title) ?></b>
     </div>
+
+    <div class="login-box-body">
+        <p class="login-box-msg"><i class="glyphicon glyphicon-pencil"></i>  Please fill out your email. A link to reset password will be sent there.</p>
+
+        <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
+
+            <div class="form-group has-feedback">
+                <?= $form->field($model, 'email', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Email'])->label(false)
+                ?>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-8">
+                    <br>
+                    <?= Html::a('<i class="fa fa-arrow-circle-left"></i>  Volver...', ['site/login']) ?>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <?= Html::submitButton('Send', ['class' => 'btn btn-primary btn-block btn-flat']) ?>
+                </div>
+                <!-- /.col -->
+            </div>
+
+        <?php ActiveForm::end(); ?>        
+
+    </div>
+</div>
 </div>
