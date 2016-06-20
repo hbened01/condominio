@@ -99,6 +99,12 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasOne(Roles::className(), ['id' => 'rol_id']);
     }
 
+    public function rol($id)
+    {
+        $model = Roles::find()->where(['id' => $id])->one();
+        return $model?$model->nombre:'';
+    }
+
     /**
      * @inheritdoc
      */
