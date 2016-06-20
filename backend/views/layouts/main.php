@@ -321,16 +321,16 @@ DashboardAsset::register($this);
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-user"></i> Usuarios</a> </li>
-                    <li><a href="#"><i class="fa fa-calculator"></i> Operaciones</a></li>
-                    <li><a href="#"><i class="fa fa-users"></i> Roles</a></li>
+                    <li><a href="<?= Url::base(); ?>/user"><i class="fa fa-user"></i> Usuarios</a> </li>
+                    <li><a href="<?= Url::base(); ?>/operaciones"><i class="fa fa-calculator"></i> Operaciones</a></li>
+                    <li><a href="<?= Url::base(); ?>/roles"><i class="fa fa-users"></i> Roles</a></li>
                     <!--<li><a href="#"><i class="fa fa-key"></i> Permisos</a></li>
                     <li><a href="#"><i class="fa fa-list"></i> Reglas</a></li>
                     <li><a href="#"><i class="fa fa-sitemap"></i> Rutas</a></li> -->
                   </ul>
                 </li>
                 <!-- <li class="active treeview"> -->
-                <li class="treeview">
+                <!-- <li class="treeview">
                   <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
                   </a>
@@ -463,7 +463,7 @@ DashboardAsset::register($this);
                 <li class="header">LABELS</li>
                 <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
               </ul>
             </section>
             <!-- /.sidebar -->

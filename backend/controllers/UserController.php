@@ -3,11 +3,12 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\User;
+//use common\models\User;
 use backend\models\UserSearch;
 //use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\UserForm;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -63,9 +64,9 @@ class UserController extends BaseController
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new UserForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->saveNewUser()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -115,10 +116,10 @@ class UserController extends BaseController
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = UserForm::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('El usuario requerido no existe.');
         }
     }
 }

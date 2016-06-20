@@ -72,11 +72,6 @@ class Roles extends \yii\db\ActiveRecord
             return $this->hasMany(User::className(), ['rol_id' => 'id']);
     }
 
-    public function getRol()
-    {
-            return $this->hasOne(Roles::className(), ['id' => 'rol_id']);
-    }
-
     public function afterSave($insert, $changedAttributes){
         Yii::$app->db->createCommand()->delete('roles_operaciones', 'rol_id = '.(int) $this->id)->execute();
  
