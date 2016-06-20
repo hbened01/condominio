@@ -2,9 +2,6 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'About';
-$this->params['breadcrumbs'][] = $this->title;
-
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -12,7 +9,7 @@ use yii\helpers\Url;
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
 ?>
-<div class="site-about">
+
     <section id="about-us">
         <div class="container">
             <div class="center wow fadeInDown">
@@ -240,4 +237,3 @@ $baseUrl = $asset->baseUrl;
             </div><!--section-->
         </div><!--/.container-->
     </section><!--/about-us-->
-</div>

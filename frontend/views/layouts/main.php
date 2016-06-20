@@ -94,17 +94,13 @@ $baseUrl = $asset->baseUrl;
             </div><!--/.container-->
         </nav><!--/nav-->
         
-    </header><!--/header-->
-
-    <div class="main-container"> <!-- class="container" se coloca esta clase se queremos el margen del contenedor original. -->
+    </header><!--/header--> 
 
     <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
     <?= Alert::widget() ?>
     <?= $content ?>
-
-    </div>
 
     <section id="bottom">
         <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">

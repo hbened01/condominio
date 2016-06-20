@@ -4,9 +4,6 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\ResetPasswordForm */
 
-$this->title = 'Reset password';
-$this->params['breadcrumbs'][] = $this->title;
-
 use frontend\assets\LoginAsset;
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;

@@ -4,9 +4,6 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
-
 use frontend\assets\LoginAsset;
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;

@@ -2,9 +2,6 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Index';
-$this->params['breadcrumbs'][] = $this->title;
-
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -13,7 +10,6 @@ $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
 
 ?>
-<div class="site-index">
 
     <section id="main-slider" class="no-margin">
         <div class="carousel slide">
@@ -612,5 +608,3 @@ $baseUrl = $asset->baseUrl;
             </div>
         </div><!--/.container-->    
     </section><!--/#conatcat-info-->
-
-</div>

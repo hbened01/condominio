@@ -4,9 +4,6 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\ContactForm */
 
-$this->title = 'Contact';
-$this->params['breadcrumbs'][] = $this->title;
-
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -16,8 +13,6 @@ use yii\captcha\Captcha;
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
 ?>
-<div class="site-contact">
-    
     <section id="contact-info">
         <div class="center">                
             <h2>How to Reach Us?</h2>
@@ -131,5 +126,3 @@ $baseUrl = $asset->baseUrl;
             <br>
         </div><!--/.container-->
     </section><!--/#contact-page-->
-
-</div>
