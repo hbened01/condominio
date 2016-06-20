@@ -78,15 +78,16 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'Nombre de Usuario',
     //        'auth_key' => 'Auth Key',
     //        'password_hash' => 'Password Hash',
     //        'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'rol_id' => 'Rol ID',
+            //'status' => 'Status',
+            // 'created_at' => 'Created At',
+            // 'updated_at' => 'Updated At',
+            // 'rol_id' => 'Rol ID',
+            'rol' => 'Rol'
         ];
     }
 
@@ -94,7 +95,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRol()
+    public function getRoles()
     {
         return $this->hasOne(Roles::className(), ['id' => 'rol_id']);
     }

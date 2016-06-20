@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
         ],
     ]) ?>
 </p>
-<div class="user-update">
+<div class="user-update col-md-5">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'updated_at',
             //'rol_id',
             [
-                'attribute' => 'rol_id',
+                'attribute' => 'rol',
                 'label' => 'Rol',
                 'value' => function($data){
                     return $data->rol($data->rol_id); 
