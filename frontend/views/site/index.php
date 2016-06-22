@@ -5,7 +5,8 @@
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
- 
+
+$this->title = 'Index'; 
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
 

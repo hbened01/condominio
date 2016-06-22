@@ -5,9 +5,11 @@
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
- 
+
+$this->title = 'About'; 
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
+
 ?>
 
     <section id="about-us">

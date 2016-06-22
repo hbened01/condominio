@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
 DashboardAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -314,6 +315,11 @@ DashboardAsset::register($this);
               <!-- sidebar menu: : style can be found in sidebar.less -->
               <ul class="sidebar-menu">
                 <li class="header">MENU PRINCIPAL</li>
+                <li class="treeview">
+                  <a href="<?= Url::base(); ?>/site/index">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
+                  </a>
+                </li>
                 <li class="treeview">
                   <a href="#">
                     <i class="fa fa-cogs"></i>

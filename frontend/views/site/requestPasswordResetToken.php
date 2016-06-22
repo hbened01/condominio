@@ -9,6 +9,7 @@ use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
+$this->title = 'Reset-Token';
 LoginAsset::register($this);
 
 ?>
