@@ -53,4 +53,21 @@ class UserForm extends User
         
         return $this->save();
     }
+
+    /**
+     * Update new user.
+     *
+     * @return User|null the saved model or null if saving fails
+     */
+    public function updateNewUser()
+    {
+        if (!$this->validate()) {
+            return null;
+        }
+        
+        $this->setPassword($this->password);
+        $this->removePasswordResetToken();
+        
+        return $this->save();
+    }
 }
