@@ -19,7 +19,7 @@ class UserForm extends User
     {
         return [
             ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
+            ['username', 'required', 'message' => 'El nombre de usuario es requerido.'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nombre de usuario ya existe.', 'on' => 'create'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 

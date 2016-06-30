@@ -122,4 +122,20 @@ class UserController extends BaseController
             throw new NotFoundHttpException('El usuario requerido no existe.');
         }
     }
+
+
+    public function actionSetPassword()
+    {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+            print_r($data['UserForm']);
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return [
+                'search' => $data['UserForm']['password'],
+                'code' => 100,
+            ];
+        }
+
+        // return $this->redirect(['index']);
+    }
 }

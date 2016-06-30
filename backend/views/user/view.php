@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -47,3 +48,31 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+<button type="button" class="btn btn-warning pull-right" id="btn-passwd"><i class="fa fa-key" aria-hidden="true"></i></button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-passwd" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Asignar Password Nuevo</h4>
+            </div>
+            <div class="modal-body">
+                <?php $form = ActiveForm::begin(['action' => false,'id' => 'form-pass']); ?>
+                    <?= $form->field($model, 'id')->hiddenInput(['value' => $model->id])->label(false) ?>
+                    <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Escriba nuevo password'])->label(false) ?>
+                <?php ActiveForm::end(); ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn-asignar-pass">Asignar</button>
+            </div>
+        </div>
+    <!-- /.modal-content -->
+    </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+

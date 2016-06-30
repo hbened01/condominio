@@ -52,6 +52,7 @@ class DashboardAsset extends AssetBundle
         'js/fastclick.js',
         'js/app.min.js',
         'js/icheck.min.js',
+        'js/funciones.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
