@@ -3,6 +3,7 @@ namespace frontend\models;
 
 use yii\base\Model;
 use common\models\User;
+use backend\models\Roles;
 
 /**
  * Signup form
@@ -60,12 +61,13 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
+        $rol = new Roles();
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
+        $user->rol_id = $rol->getIdRol('Usuario Estandar');
         
         return $user->save() ? $user : null;
     }
