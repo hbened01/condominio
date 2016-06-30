@@ -14,6 +14,7 @@ $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
 
 //CorlateAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -95,11 +96,8 @@ $baseUrl = $asset->baseUrl;
         </nav><!--/nav-->
         
     </header><!--/header--> 
-
-    <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-    <?= Alert::widget() ?>
+    
+    <!-- Main content -->
     <?= $content ?>
 
     <section id="bottom">

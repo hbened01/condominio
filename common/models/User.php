@@ -25,8 +25,8 @@ use backend\models\Roles;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 1;
-
+    const STATUS_ACTIVE    = 1;
+    const STATUS_INACTIVE = 2;
 
     /**
      * @inheritdoc
@@ -49,26 +49,25 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    // public function rules()
-    // {
-    //     return [
-    //         ['status', 'default', 'value' => self::STATUS_ACTIVE],
-    //         ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-    //     ];
-    // }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
-        return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
-            [['status', 'created_at', 'updated_at', 'rol_id'], 'integer'],
-            [['username', 'auth_key'], 'string', 'max' => 32],
-            //[['password_hash', 'password_reset_token', 'email'], 'string', 'max' => 256],
-            [['rol_id'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['rol_id' => 'id']],
-        ];
+        $defaultUrl = Yii::$app->request->baseUrl;
+        $string   = 'frontend';
+        $search = stripos($defaultUrl, $string);
+        if ($search !== false) {
+             return [
+                ['status', 'default', 'value' => self::STATUS_ACTIVE],
+                ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED, self::STATUS_INACTIVE]],
+            ];
+        } 
+        else{
+            return [
+                // [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+                // [['status', 'created_at', 'updated_at', 'rol_id'], 'integer'],
+                // [['username', 'auth_key'], 'string', 'max' => 32],
+                // [['rol_id'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['rol_id' => 'id']],
+            ];
+        }
     }
 
     /**
@@ -79,9 +78,9 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             'id' => 'ID',
             'username' => 'Nombre de Usuario',
-    //        'auth_key' => 'Auth Key',
-    //        'password_hash' => 'Password Hash',
-    //        'password_reset_token' => 'Password Reset Token',
+            //'auth_key' => 'Auth Key',
+            //'password_hash' => 'Password Hash',
+            //'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             //'status' => 'Status',
             // 'created_at' => 'Created At',

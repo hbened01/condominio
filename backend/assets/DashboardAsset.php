@@ -27,6 +27,7 @@ class DashboardAsset extends AssetBundle
         'css/daterangepicker-bs3.css',
         'css/bootstrap3-wysihtml5.min.css',
         'css/site.css',
+        'css/glyphicons-pro.css',
     ];
     public $js = [
         //'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
@@ -34,7 +35,7 @@ class DashboardAsset extends AssetBundle
         //'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js',
         //'js/jQuery-2.2.0.min.js',
         //'js/morris.min.js',
-        //'js/dashboard.js',
+        'js/dashboard.js',
         'js/jquery-ui.min.js',
         'js/bootstrap.min.js',
         'js/raphael-min.js',

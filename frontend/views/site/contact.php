@@ -10,8 +10,10 @@ use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
+$this->title = 'Contact';
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
+
 ?>
     <section id="contact-info">
         <div class="center">                

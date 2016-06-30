@@ -95,4 +95,15 @@ class Roles extends \yii\db\ActiveRecord
     public function getOperacionesPermitidasList(){
         return $this->getOperacionesPermitidas()->asArray();
     }
+
+    public function getIdRol($nombrerol){
+
+        $result = (new \yii\db\Query())
+                        ->select(['id'])
+                        ->from('roles')
+                        ->where(['nombre' =>$nombrerol])
+                        ->one();
+
+        return $result['id'];
+    }
 }

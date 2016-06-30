@@ -24,7 +24,7 @@ class LoginForm extends Model
         $defaultUrl = Yii::$app->request->baseUrl;
         $string   = 'frontend';
         $search = stripos($defaultUrl, $string);
-        if ($search === true) {
+        if ($search !== false) {   
             return [
                 // username and password are both required
                 [['username', 'password'], 'required'],
