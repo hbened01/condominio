@@ -29,8 +29,8 @@ class UserForm extends User
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo electrónico ya existe.', 'on' => 'create'],
 
-            ['password', 'required', 'message' => 'El password es requerido.', 'on' => 'create'],
-            ['password', 'string', 'min' => 6],
+            // ['password', 'required', 'message' => 'El password es requerido.', 'on' => 'create'],
+            // ['password', 'string', 'min' => 6],
 
             ['rol_id', 'required', 'message' => 'Debe seleccionar el rol que tendrá el usuario.'],
 

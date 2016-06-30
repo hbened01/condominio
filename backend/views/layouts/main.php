@@ -484,6 +484,7 @@ DashboardAsset::register($this);
 
                 <!-- Main content -->
                 <section class="content">
+                     <?= Alert::widget() ?>
                     <?= $content ?>
                 </section>
             </div>

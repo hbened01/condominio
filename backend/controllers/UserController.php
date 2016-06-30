@@ -128,11 +128,19 @@ class UserController extends BaseController
     {
         if (Yii::$app->request->isAjax) {
             $data = Yii::$app->request->post();
-            print_r($data['UserForm']);
+            $model = $this->findModel($data['UserForm']['id']);
+            $model->password = $data['UserForm']['password'];
+
+            if ($save = $model->updateNewUser()) {
+                    Yii::$app->session->setFlash('success', 'El password fue cambiado exitosamente.');
+             } else {
+                    Yii::$app->session->setFlash('error', 'El password no pudo ser cambiado. Por favor intente de nuevo');
+            }
+
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return [
-                'search' => $data['UserForm']['password'],
-                'code' => 100,
+                'search' => $save,
+                'id' => $data['UserForm']['id'],
             ];
         }
 

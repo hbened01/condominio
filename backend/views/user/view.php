@@ -6,7 +6,8 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
-
+$asset = backend\assets\DashboardAsset::register($this);
+$baseUrl = $asset->baseUrl;
 $this->title = $model->username;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -66,8 +67,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php ActiveForm::end(); ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn-asignar-pass">Asignar</button>
+                    <div id="btn-model">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="btn-asignar-pass">Asignar</button>
+                    </div>
+                    <div id="img-loading" class="text-center hide">
+                            <?= Html::img($baseUrl.'/dist/img/loading.gif', ['width' => 35]);?>
+                    </div>
             </div>
         </div>
     <!-- /.modal-content -->
