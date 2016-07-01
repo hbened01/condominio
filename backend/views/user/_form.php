@@ -16,7 +16,6 @@ use backend\models\Roles;
 
     <?= $form->field($model, 'username')->textInput()->label('Nombre de Usuario') ?>
     <?= $form->field($model, 'email')->textInput()->label('Correo Electrónico') ?>
-    <?= $form->field($model, 'password')->passwordInput()->label('Password') ?>
     <?=
 		$form->field($model, 'rol_id')
 		     ->dropDownList(

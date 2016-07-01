@@ -19,7 +19,7 @@ class UserForm extends User
     {
         return [
             ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
+            ['username', 'required', 'message' => 'El nombre de usuario es requerido.'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nombre de usuario ya existe.', 'on' => 'create'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
@@ -29,8 +29,8 @@ class UserForm extends User
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo electrónico ya existe.', 'on' => 'create'],
 
-            ['password', 'required', 'message' => 'El password es requerido.', 'on' => 'create'],
-            ['password', 'string', 'min' => 6],
+            // ['password', 'required', 'message' => 'El password es requerido.', 'on' => 'create'],
+            // ['password', 'string', 'min' => 6],
 
             ['rol_id', 'required', 'message' => 'Debe seleccionar el rol que tendrá el usuario.'],
 
@@ -50,6 +50,23 @@ class UserForm extends User
         
         $this->setPassword($this->password);
         $this->generateAuthKey();
+        
+        return $this->save();
+    }
+
+    /**
+     * Update new user.
+     *
+     * @return User|null the saved model or null if saving fails
+     */
+    public function updateNewUser()
+    {
+        if (!$this->validate()) {
+            return null;
+        }
+        
+        $this->setPassword($this->password);
+        $this->removePasswordResetToken();
         
         return $this->save();
     }

@@ -24,7 +24,7 @@ class LoginForm extends Model
         $defaultUrl = Yii::$app->request->baseUrl;
         $string   = 'frontend';
         $search = stripos($defaultUrl, $string);
-        if ($search === true) {
+        if ($search !== false) {   
             return [
                 // username and password are both required
                 [['username', 'password'], 'required'],
@@ -70,7 +70,7 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Nombre de usuario o password incorrecto.');
             }
         }
     }

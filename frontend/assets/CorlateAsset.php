@@ -20,6 +20,7 @@ class CorlateAsset extends AssetBundle
         'css/prettyPhoto.css',
         'css/main.css',
         'css/responsive.css',
+        'css/glyphicons-pro.css',
     ];
     public $js = [
         'js/jquery.js',

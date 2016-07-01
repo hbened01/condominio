@@ -3,17 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-//use common\models\User;
-use backend\models\UserSearch;
-//use yii\web\Controller;
+use backend\models\CdPropietarios;
+use backend\models\CdPropietariosSearch;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\models\UserForm;
 
 /**
- * UserController implements the CRUD actions for User model.
+ * CdPropietariosController implements the CRUD actions for CdPropietarios model.
  */
-class UserController extends BaseController
+class CdPropietariosController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class UserController extends BaseController
     }
 
     /**
-     * Lists all User models.
+     * Lists all CdPropietarios models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UserSearch();
+        $searchModel = new CdPropietariosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class UserController extends BaseController
     }
 
     /**
-     * Displays a single User model.
+     * Displays a single CdPropietarios model.
      * @param integer $id
      * @return mixed
      */
@@ -58,16 +57,16 @@ class UserController extends BaseController
     }
 
     /**
-     * Creates a new User model.
+     * Creates a new CdPropietarios model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new UserForm();
+        $model = new CdPropietarios();
 
-        if ($model->load(Yii::$app->request->post()) && $model->saveNewUser()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->cd_propietarios_pk]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -76,7 +75,7 @@ class UserController extends BaseController
     }
 
     /**
-     * Updates an existing User model.
+     * Updates an existing CdPropietarios model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,8 +84,8 @@ class UserController extends BaseController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->updateNewUser()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->cd_propietarios_pk]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -95,7 +94,7 @@ class UserController extends BaseController
     }
 
     /**
-     * Deletes an existing User model.
+     * Deletes an existing CdPropietarios model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -108,42 +107,18 @@ class UserController extends BaseController
     }
 
     /**
-     * Finds the User model based on its primary key value.
+     * Finds the CdPropietarios model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return User the loaded model
+     * @return CdPropietarios the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = UserForm::findOne($id)) !== null) {
+        if (($model = CdPropietarios::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('El usuario requerido no existe.');
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
-
-
-    public function actionSetPassword()
-    {
-        if (Yii::$app->request->isAjax) {
-            $data = Yii::$app->request->post();
-            $model = $this->findModel($data['UserForm']['id']);
-            $model->password = $data['UserForm']['password'];
-
-            if ($save = $model->updateNewUser()) {
-                    Yii::$app->session->setFlash('success', 'El password fue cambiado exitosamente.');
-             } else {
-                    Yii::$app->session->setFlash('error', 'El password no pudo ser cambiado. Por favor intente de nuevo');
-            }
-
-            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return [
-                'search' => $save,
-                'id' => $data['UserForm']['id'],
-            ];
-        }
-
-        // return $this->redirect(['index']);
     }
 }
