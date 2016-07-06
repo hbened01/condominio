@@ -123,27 +123,32 @@ class UserController extends BaseController
         }
     }
 
-
+    /**
+    * Assign new password to the users. This function is accessed it for ajax request
+    * @return json responsive 
+    */
     public function actionSetPassword()
     {
         if (Yii::$app->request->isAjax) {
             $data = Yii::$app->request->post();
             $model = $this->findModel($data['UserForm']['id']);
             $model->password = $data['UserForm']['password'];
+            $model->scenario = 'set-password';
 
-            if ($save = $model->updateNewUser()) {
+            if ($save = $model->validate()) {
+                if ($save = $model->updateNewUser()) {
                     Yii::$app->session->setFlash('success', 'El password fue cambiado exitosamente.');
-             } else {
+                } else {
                     Yii::$app->session->setFlash('error', 'El password no pudo ser cambiado. Por favor intente de nuevo');
+                }
             }
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return [
-                'search' => $save,
+                'save' => $save,
                 'id' => $data['UserForm']['id'],
+                'msn_error' => $model->getErrors()
             ];
         }
-
-        // return $this->redirect(['index']);
     }
 }

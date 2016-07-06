@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
-<button type="button" class="btn btn-warning pull-right" id="btn-passwd"><i class="fa fa-key" aria-hidden="true"></i></button>
+<button type="button" class="btn btn-warning pull-right" id="btn-passwd"><i class="glyphicons glyphicons-keys" aria-hidden="true"></i></button>
 
 <!-- Modal -->
 <div class="modal fade" id="modal-passwd" role="dialog">
@@ -57,7 +57,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title">Asignar Password Nuevo</h4>
             </div>
             <div class="modal-body">
@@ -65,15 +66,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'id')->hiddenInput(['value' => $model->id])->label(false) ?>
                     <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Escriba nuevo password'])->label(false) ?>
                 <?php ActiveForm::end(); ?>
+                <!-- <div class="alert alert-danger">
+
+                </div> -->
             </div>
             <div class="modal-footer">
-                    <div id="btn-model">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="btn-asignar-pass">Asignar</button>
-                    </div>
-                    <div id="img-loading" class="text-center hide">
-                            <?= Html::img($baseUrl.'/dist/img/loading.gif', ['width' => 35]);?>
-                    </div>
+                <div id="btn-model">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btn-asignar-pass">Asignar</button>
+                </div>
+                <div id="img-loading" class="text-center hide">
+                    <?= Html::img($baseUrl.'/dist/img/loading.gif', ['width' => 35]);?>
+                </div>
             </div>
         </div>
     <!-- /.modal-content -->

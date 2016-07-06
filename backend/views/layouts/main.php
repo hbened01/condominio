@@ -12,6 +12,8 @@ use common\widgets\Alert;
 $asset = backend\assets\DashboardAsset::register($this);
 $baseUrl = $asset->baseUrl;
 //DashboardAsset::register($this);
+$session = Yii::$app->session;
+$operaciones = $session->get('operaciones');
 
 ?>
 <?php $this->beginPage() ?>
@@ -99,9 +101,15 @@ $baseUrl = $asset->baseUrl;
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?= Url::base(); ?>/user"><i class="fa fa-user"></i> Usuarios</a> </li>
-                    <li><a href="<?= Url::base(); ?>/operaciones"><i class="fa fa-calculator"></i> Operaciones</a></li>
-                    <li><a href="<?= Url::base(); ?>/roles"><i class="fa fa-users"></i> Roles</a></li>
+                    <?php if(in_array('user-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/user"><i class="fa fa-user"></i> Usuarios</a> </li>
+                    <?php endif;?>
+                    <?php if(in_array('operaciones-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/operaciones"><i class="fa fa-calculator"></i> Operaciones</a></li>
+                    <?php endif;?>
+                    <?php if(in_array('roles-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/roles"><i class="fa fa-users"></i> Roles</a></li>
+                    <?php endif;?>
                   </ul>
                 </li>
                 <li class="treeview">
@@ -111,9 +119,15 @@ $baseUrl = $asset->baseUrl;
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?= Url::base(); ?>/cd-aptos"><i class="glyphicons glyphicons-user"></i> Apartamentos</a></li>
-                    <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="fa fa-list-ol"></i> Conceptos</a> </li>
-                    <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="fa fa-building-o"></i> Conjuntos</a></li>
+                    <?php if(in_array('cd-aptos-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/cd-aptos"><i class="glyphicons glyphicons-user"></i> Apartamentos</a></li>
+                    <?php endif;?>
+                    <?php if(in_array('cd-conceptos-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="fa fa-list-ol"></i> Conceptos</a> </li>
+                    <?php endif;?>
+                    <?php if(in_array('cd-conjuntos-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="fa fa-building-o"></i> Conjuntos</a></li>
+                    <?php endif;?>
                   </ul>
                 </li>
               </ul>

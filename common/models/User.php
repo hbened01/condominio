@@ -25,7 +25,7 @@ use backend\models\Roles;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE    = 1;
+    const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
 
     /**
@@ -51,23 +51,10 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function rules()
     {
-        $defaultUrl = Yii::$app->request->baseUrl;
-        $string   = 'frontend';
-        $search = stripos($defaultUrl, $string);
-        if ($search !== false) {
-             return [
-                ['status', 'default', 'value' => self::STATUS_ACTIVE],
-                ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED, self::STATUS_INACTIVE]],
-            ];
-        } 
-        else{
-            return [
-                // [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
-                // [['status', 'created_at', 'updated_at', 'rol_id'], 'integer'],
-                // [['username', 'auth_key'], 'string', 'max' => 32],
-                // [['rol_id'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['rol_id' => 'id']],
-            ];
-        }
+        return [
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED, self::STATUS_INACTIVE]],
+        ];
     }
 
     /**

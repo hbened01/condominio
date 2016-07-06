@@ -9,6 +9,9 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Usuarios');
 $this->params['breadcrumbs'][] = $this->title;
+$session = Yii::$app->session;
+$operacion = str_replace("/", "-", Yii::$app->controller->route);
+$operaciones = $session->get('operaciones');
 ?>
 <div class="user-index">
 
@@ -16,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Crear Usuario'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= (in_array($operacion,$operaciones)) ? Html::a(Yii::t('app', 'Crear Usuario'), ['create'], ['class' => 'btn btn-success']) : '' ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

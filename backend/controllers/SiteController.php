@@ -67,6 +67,8 @@ class SiteController extends BaseController
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $session = Yii::$app->session;
+            $session->set('operaciones', $model->permittedOperations());
             return $this->goBack();
         } else {
             return $this->render('login', [
@@ -78,7 +80,8 @@ class SiteController extends BaseController
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
+        $session = Yii::$app->session;
+        $session->remove('operaciones');
         return $this->goHome();
     }
 
