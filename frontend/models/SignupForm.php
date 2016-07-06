@@ -32,10 +32,10 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            // ['username', 'filter', 'filter' => 'trim'],
-            // ['username', 'required'],
-            // ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            // ['username', 'string', 'min' => 2, 'max' => 255],
+            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'required'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
@@ -46,27 +46,15 @@ class SignupForm extends Model
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
 
-            // verifyCode needs to be entered correctly
-            //['verifyCode', 'captcha'],
+            ['verifyCode', 'captcha'],
 
             // DATOS DE PROPIETARIO 
-            // nombre de propietario
-            //['nombre', 'match', 'pattern' => '/^[a-zA-Záéíóú]"+$/', 'message' => 'Introducir solo letras...'],
-            ['nombre', 'filter', 'filter' => 'trim'],
-            ['nombre', 'required'],
-            ['nombre', 'string', 'min' => 2, 'max' => 30],
-            // apellido de propietario
-            //['apellido', 'match', 'pattern' => '/^[a-zA-Záéíóú]"+$/', 'message' => 'Introducir solo letras...'],
-            ['apellido', 'filter', 'filter' => 'trim'],
-            ['apellido', 'required'],
-            ['apellido', 'string', 'min' => 2, 'max' => 30],
-            // cédula de propietario
             ['nro_cedula', 'required'],
             [['nro_cedula'], 'number', 'min' => 8],
-            // n° de apto de propietario
+
             ['nro_apto', 'required'],
             [['nro_apto'], 'string', 'min' => 2],
-            // e-mail de propietario
+
             ['email_edificio', 'filter', 'filter' => 'trim'],
             ['email_edificio', 'required'],
             ['email_edificio', 'email'],
@@ -95,38 +83,41 @@ class SignupForm extends Model
             return null;
         }
 
-        $val_1 = (new \yii\db\Query())
-                        ->select(['a.cd_aptos_pk', 'a.cod_propietario', 'a.cod_edificio', /*'cd_propietarios.nombre', 'cd_propietarios.apellido', 'cd_propietarios.nro_cedula',*/ 'b.email_edificio'])
+        $query_1 = (new \yii\db\Query())
+                        ->select(['a.*', 'b.email_edificio'])
                         ->from('cd_aptos a')
-                        //->innerJoin('cd_propietarios','cd_propietarios.cd_propietarios_pk = cd_aptos.cod_propietario')
                         ->innerJoin('cd_edificios b','b.cd_edificios_pk = a.cod_edificio')
                         ->where (['a.cd_aptos_pk' => $this->nro_apto, 'b.email_edificio' => $this->email_edificio])
-                        ->all();
-        $val_2 = (new \yii\db\Query())
-                        ->select(['cd_propietarios.nombre', 'cd_propietarios.apellido', 'cd_propietarios.nro_cedula'])
-                        ->from('cd_propietarios')
-                        //->innerJoin(['val_1' => $val_1], 'val_1.cod_propietario = cd_propietarios.cd_propietarios_pk')
-                        ->where (['cd_propietarios.nombre' => $this->nombre, 'cd_propietarios.apellido' => $this->apellido])
-                        ->all();
+                        ->one();
+        $query_2 = (new \yii\db\Query())
+                         ->select(['c.*'])
+                         ->from('cd_propietarios c')
+                         ->where (['c.cd_propietarios_pk' => $query_1['cod_propietario']])
+                         ->one();
 
-
-        print_r($val_1);
-        print_r($val_2);
-
-        if (!empty($val_1)) {
-
+        if (empty($query_1)) {
+            return "N° de apartamento o Email de edificio erroneo, intente nuevamente...";
         }
 
-        exit();
+        if (is_null($query_2['cod_user'])) {
+            $rol = new Roles();
+            $user = new User();
+            $user->username = $this->username;
+            $user->email = $this->email;
+            $user->setPassword($this->password);
+            $user->generateAuthKey();
+            $user->rol_id = $rol->getIdRol('Usuario Estandar');
+            $save = $user->save();
 
-        $rol = new Roles();
-        $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        $user->rol_id = $rol->getIdRol('Usuario Estandar');
-        
-        return $user->save() ? $user : null;
+            $propietario = CdPropietarios::findOne($query_1['cod_propietario']);
+            $propietario->nro_cedula = $this->nro_cedula;
+            $propietario->cod_user = $user->id;
+            $propietario->save();
+
+            return $save ? $user : null;
+        }
+        else{
+            return "El Propietario del apartamento ya tiene un Usuario WEB asignado...";
+        }
     }
 }

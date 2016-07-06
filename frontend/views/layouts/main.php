@@ -98,6 +98,7 @@ $baseUrl = $asset->baseUrl;
     </header><!--/header--> 
     
     <!-- Main content -->
+    <?= Alert::widget() ?>
     <?= $content ?>
 
     <section id="bottom">

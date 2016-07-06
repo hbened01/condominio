@@ -150,15 +150,20 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
+            $result = $model->signup();
+            if (is_object($result)) {
+                if (Yii::$app->getUser()->login($result)) {
+                    Yii::$app->session->setFlash('success', 'Usuario registrado correctamente');
                     return $this->goHome();
                 }
+            }
+            else{
+                Yii::$app->session->setFlash('error', $result);
             }
         }
 
         return $this->render('signup', [
-            'model' => $model,
+            'model' => $model
         ]);
     }
 

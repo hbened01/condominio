@@ -10,7 +10,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Signup';
+$this->title = 'Registro de Nuevo Usuario';
 LoginAsset::register($this);
 
 ?>
@@ -18,7 +18,7 @@ LoginAsset::register($this);
         <div class="container">
             <div class="center">
                 <br><br><br>  
-                <h2><?= Html::a(Html::encode($this->title), ['site/signup'],['data' => ['method' => 'post']]) ?></h2>
+                <h2><?= Html::a(Html::encode($this->title).':', ['site/signup'],['data' => ['method' => 'post']]) ?></h2>
                 <p class="login-box-msg"><i class="glyphicon glyphicon-pencil"></i>  Para registrarse en el sistema llene el siguiente formulario</p>
             </div> 
             <div class="row contact-wrap"> 
@@ -41,12 +41,7 @@ LoginAsset::register($this);
                 <div class="col-sm-5 col-sm-offset-1">
 
                     <div class="form-group has-feedback">
-                        <?= $form->field($model, 'nombre', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Introducir Nombre'])->label(false)
-                        ?>
-                    </div>
-
-                    <div class="form-group has-feedback">
-                        <?= $form->field($model, 'apellido', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Introducir Apellido'])->label(false)
+                        <?= $form->field($model, 'username', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Usuario'])->label(false)
                         ?>
                     </div>
 
@@ -59,9 +54,6 @@ LoginAsset::register($this);
                         <?= $form->field($model, 'email_edificio', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="fa fa-envelope"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => '2.- Email-Edificio'])->label(false)
                         ?>
                     </div>
-                    
-                    <br>
-                    <?= Html::a('<i class="fa fa-arrow-circle-left fa-2x"></i>  Volver...', ['site/login']) ?>
             
                 </div>
 
@@ -78,12 +70,24 @@ LoginAsset::register($this);
                     </div>
 
                     <div class="form-group has-feedback">
-                        <?= $form->field($model, 'password', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span></div>'])->passwordInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Password'])->label(false)
+                        <?= $form->field($model, 'password', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicons glyphicons-keys"></i></span></div>'])->passwordInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Password'])->label(false)
                         ?>
                     </div>
 
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'signup-button']) ?>
+                </div>
 
+                <div class="col-sm-4 col-sm-offset-4">
+                    <div class="form-group has-feedback">
+                        <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                            'template' => '<div class="row"><div class="col-lg-5">{image}</div><div class="col-lg-7"><div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span></div></div></div>',
+                            'options' => ['placeholder' => 'Captcha Code', 'class' => 'form-control'],])->label(false)
+                        ?>
+                    </div>
+                    
+                    <?= Html::submitButton('Guardar', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'signup-button']) ?>
+                <div class="col-sm-4 col-sm-offset-4">
+                    <p><br><?= Html::a('<i class="fa fa-arrow-circle-left fa-2x"></i>  Volver...', ['site/login']) ?></p>
+                </div>
                 </div>
 
                 <?php ActiveForm::end(); ?>

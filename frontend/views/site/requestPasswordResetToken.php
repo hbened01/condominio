@@ -25,7 +25,7 @@ LoginAsset::register($this);
         <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
 
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'email', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Email'])->label(false)
+                <?= $form->field($model, 'email', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Email-Personal'])->label(false)
                 ?>
             </div>
             
