@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\CdPropietarios */
 
 $this->title = $model->cd_propietarios_pk;
-$this->params['breadcrumbs'][] = ['label' => 'Cd Propietarios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Cd Propietarios'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cd-propietarios-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->cd_propietarios_pk], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->cd_propietarios_pk], [
+        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->cd_propietarios_pk], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->cd_propietarios_pk], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,11 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'cd_propietarios_pk',
-            'cod_conjunto',
-            'cod_edificio',
+            'cod_user',
             'nro_piso',
             'nombre',
             'apellido',
+            'nro_cedula',
             'telf_local',
             'telf_celular',
             'fax',

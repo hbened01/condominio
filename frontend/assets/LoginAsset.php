@@ -19,7 +19,8 @@ class LoginAsset extends AssetBundle
         'css/ionicons.min.css',
         'css/AdminLTE.min.css',
         'css/skins/_all-skins.min.css',
-        'css/flat/blue.css'
+        'css/flat/blue.css',
+        'css/glyphicons.css',
     ];
     public $js = [
         'js/jquery.js',

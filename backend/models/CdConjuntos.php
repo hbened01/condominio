@@ -18,7 +18,6 @@ use Yii;
  * @property CdFondos[] $cdFondos
  * @property CdHistoricos[] $cdHistoricos
  * @property CdMovMes[] $cdMovMes
- * @property CdPropietarios[] $cdPropietarios
  */
 class CdConjuntos extends \yii\db\ActiveRecord
 {
@@ -37,7 +36,7 @@ class CdConjuntos extends \yii\db\ActiveRecord
     {
         return [
             [['nombre', 'direccion'], 'required'],
-            [['nombre'], 'string', 'max' => 30],
+            [['nombre'], 'string', 'max' => 50],
             [['direccion'], 'string', 'max' => 150],
         ];
     }
@@ -48,9 +47,9 @@ class CdConjuntos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_conjuntos_pk' => 'Cd Conjuntos Pk',
-            'nombre' => 'Nombre',
-            'direccion' => 'Direccion',
+            'cd_conjuntos_pk' => Yii::t('app', 'Cd Conjuntos Pk'),
+            'nombre' => Yii::t('app', 'Nombre'),
+            'direccion' => Yii::t('app', 'Direccion'),
         ];
     }
 
@@ -108,13 +107,5 @@ class CdConjuntos extends \yii\db\ActiveRecord
     public function getCdMovMes()
     {
         return $this->hasMany(CdMovMes::className(), ['cod_conjunto' => 'cd_conjuntos_pk']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCdPropietarios()
-    {
-        return $this->hasMany(CdPropietarios::className(), ['cod_conjunto' => 'cd_conjuntos_pk']);
     }
 }

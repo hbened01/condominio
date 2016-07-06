@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\CdPropietariosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cd Propietarios';
+$this->title = Yii::t('app', 'Cd Propietarios');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cd-propietarios-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Cd Propietarios', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Cd Propietarios'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,11 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'cd_propietarios_pk',
-            'cod_conjunto',
-            'cod_edificio',
+            'cod_user',
             'nro_piso',
             'nombre',
-            // 'apellido',
+            'apellido',
+            // 'nro_cedula',
             // 'telf_local',
             // 'telf_celular',
             // 'fax',

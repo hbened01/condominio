@@ -46,13 +46,14 @@ class CdAptosController extends Controller
 
     /**
      * Displays a single CdAptos model.
-     * @param string $id
+     * @param string $cd_aptos_pk
+     * @param integer $cod_edificio
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($cd_aptos_pk, $cod_edificio)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($cd_aptos_pk, $cod_edificio),
         ]);
     }
 
@@ -66,7 +67,7 @@ class CdAptosController extends Controller
         $model = new CdAptos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_aptos_pk]);
+            return $this->redirect(['view', 'cd_aptos_pk' => $model->cd_aptos_pk, 'cod_edificio' => $model->cod_edificio]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -77,15 +78,16 @@ class CdAptosController extends Controller
     /**
      * Updates an existing CdAptos model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
+     * @param string $cd_aptos_pk
+     * @param integer $cod_edificio
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($cd_aptos_pk, $cod_edificio)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($cd_aptos_pk, $cod_edificio);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_aptos_pk]);
+            return $this->redirect(['view', 'cd_aptos_pk' => $model->cd_aptos_pk, 'cod_edificio' => $model->cod_edificio]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -96,12 +98,13 @@ class CdAptosController extends Controller
     /**
      * Deletes an existing CdAptos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param string $cd_aptos_pk
+     * @param integer $cod_edificio
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($cd_aptos_pk, $cod_edificio)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($cd_aptos_pk, $cod_edificio)->delete();
 
         return $this->redirect(['index']);
     }
@@ -109,13 +112,14 @@ class CdAptosController extends Controller
     /**
      * Finds the CdAptos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
+     * @param string $cd_aptos_pk
+     * @param integer $cod_edificio
      * @return CdAptos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($cd_aptos_pk, $cod_edificio)
     {
-        if (($model = CdAptos::findOne($id)) !== null) {
+        if (($model = CdAptos::findOne(['cd_aptos_pk' => $cd_aptos_pk, 'cod_edificio' => $cod_edificio])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

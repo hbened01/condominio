@@ -99,9 +99,9 @@ $baseUrl = $asset->baseUrl;
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?= Url::base(); ?>/user"><i class="fa fa-user"></i> Usuarios</a> </li>
-                    <li><a href="<?= Url::base(); ?>/operaciones"><i class="fa fa-calculator"></i> Operaciones</a></li>
-                    <li><a href="<?= Url::base(); ?>/roles"><i class="fa fa-users"></i> Roles</a></li>
+                    <li><a href="<?= Url::base(); ?>/user"><i class="glyphicons glyphicons-user"></i>&nbsp&nbspUsuarios</a> </li>
+                    <li><a href="<?= Url::base(); ?>/operaciones"><i class="glyphicons glyphicons-calculator"></i>&nbsp&nbspOperaciones</a></li>
+                    <li><a href="<?= Url::base(); ?>/roles"><i class="glyphicons glyphicons-user-structure"></i>&nbsp&nbspRoles</a></li>
                   </ul>
                 </li>
                 <li class="treeview">
@@ -111,9 +111,11 @@ $baseUrl = $asset->baseUrl;
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?= Url::base(); ?>/cd-aptos"><i class="glyphicons glyphicons-user"></i> Apartamentos</a></li>
-                    <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="fa fa-list-ol"></i> Conceptos</a> </li>
-                    <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="fa fa-building-o"></i> Conjuntos</a></li>
+                    <li><a href="<?= Url::base(); ?>/cd-aptos"><i class="glyphicons glyphicons-door"></i>&nbsp&nbspApartamentos</a></li>
+                    <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="glyphicons glyphicons-list-numbered"></i>&nbsp&nbspConceptos</a> </li>
+                    <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="glyphicons glyphicons-mixed-buildings"></i>&nbsp&nbspConjuntos</a></li>
+                    <li><a href="<?= Url::base(); ?>/cd-edificios"><i class="glyphicons glyphicons-building"></i>&nbsp&nbspEdificios</a></li>
+                    <li><a href="<?= Url::base(); ?>/cd-propietarios"><i class="glyphicons glyphicons-user-key"></i>&nbsp&nbspPropietarios</a></li>
                   </ul>
                 </li>
               </ul>

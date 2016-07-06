@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
         'css/daterangepicker-bs3.css',
         'css/bootstrap3-wysihtml5.min.css',
         'css/site.css',
+        'css/glyphicons.css',
     ];
     public $js = [
         //'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
@@ -50,8 +51,7 @@ class AppAsset extends AssetBundle
         'js/bootstrap3-wysihtml5.all.min.js',
         'js/jquery.slimscroll.min.js',
         'js/fastclick.js',
-        'js/app.min.js',
-        
+        'js/app.min.js',      
         'js/icheck.min.js',
     ];
     public $depends = [

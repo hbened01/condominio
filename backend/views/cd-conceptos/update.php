@@ -5,10 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CdConceptos */
 
-$this->title = 'Update Cd Conceptos: ' . $model->cd_conceptos_pk;
-$this->params['breadcrumbs'][] = ['label' => 'Cd Conceptos', 'url' => ['index']];
+$this->title = Yii::t('app', 'Update {modelClass}: ', [
+    'modelClass' => 'Cd Conceptos',
+]) . $model->cd_conceptos_pk;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Cd Conceptos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->cd_conceptos_pk, 'url' => ['view', 'id' => $model->cd_conceptos_pk]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="cd-conceptos-update">
 

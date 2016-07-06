@@ -17,15 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cd_propietarios_pk') ?>
 
-    <?= $form->field($model, 'cod_conjunto') ?>
-
-    <?= $form->field($model, 'cod_edificio') ?>
+    <?= $form->field($model, 'cod_user') ?>
 
     <?= $form->field($model, 'nro_piso') ?>
 
     <?= $form->field($model, 'nombre') ?>
 
-    <?php // echo $form->field($model, 'apellido') ?>
+    <?= $form->field($model, 'apellido') ?>
+
+    <?php // echo $form->field($model, 'nro_cedula') ?>
 
     <?php // echo $form->field($model, 'telf_local') ?>
 
@@ -42,8 +42,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'direccion_cobro') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

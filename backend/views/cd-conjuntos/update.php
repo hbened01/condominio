@@ -5,10 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CdConjuntos */
 
-$this->title = 'Update Cd Conjuntos: ' . $model->cd_conjuntos_pk;
-$this->params['breadcrumbs'][] = ['label' => 'Cd Conjuntos', 'url' => ['index']];
+$this->title = Yii::t('app', 'Update {modelClass}: ', [
+    'modelClass' => 'Cd Conjuntos',
+]) . $model->cd_conjuntos_pk;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Cd Conjuntos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->cd_conjuntos_pk, 'url' => ['view', 'id' => $model->cd_conjuntos_pk]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="cd-conjuntos-update">
 

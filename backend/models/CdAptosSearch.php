@@ -19,7 +19,7 @@ class CdAptosSearch extends CdAptos
     {
         return [
             [['cd_aptos_pk'], 'safe'],
-            [['cod_propietario'], 'integer'],
+            [['cod_propietario', 'cod_edificio'], 'integer'],
         ];
     }
 
@@ -60,6 +60,7 @@ class CdAptosSearch extends CdAptos
         // grid filtering conditions
         $query->andFilterWhere([
             'cod_propietario' => $this->cod_propietario,
+            'cod_edificio' => $this->cod_edificio,
         ]);
 
         $query->andFilterWhere(['like', 'cd_aptos_pk', $this->cd_aptos_pk]);

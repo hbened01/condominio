@@ -67,6 +67,7 @@ class UserController extends BaseController
         $model = new UserForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->saveNewUser()) {
+            Yii::$app->session->setFlash('success', 'El usuario fue creado exitosamente.');
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -86,6 +87,7 @@ class UserController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->updateNewUser()) {
+            Yii::$app->session->setFlash('success', 'El usuario fue actualizado exitosamente.');
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -102,10 +104,16 @@ class UserController extends BaseController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        if ($this->findModel($id)->delete()) {
+            Yii::$app->session->setFlash('success', 'El usuario fue eliminado exitosamente.');
+            return $this->redirect(['index']);
+        }
+        else {
+            Yii::$app->session->setFlash('error', 'El usuario no pudo ser eliminado. Por favor intente de nuevo');
+            return $this->redirect(['index']);
+        }
     }
+
 
     /**
      * Finds the User model based on its primary key value.
@@ -143,7 +151,6 @@ class UserController extends BaseController
                 'id' => $data['UserForm']['id'],
             ];
         }
-
         // return $this->redirect(['index']);
     }
 }

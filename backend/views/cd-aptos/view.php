@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\CdAptos */
 
 $this->title = $model->cd_aptos_pk;
-$this->params['breadcrumbs'][] = ['label' => 'Cd Aptos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Cd Aptos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cd-aptos-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->cd_aptos_pk], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->cd_aptos_pk], [
+        <?= Html::a(Yii::t('app', 'Update'), ['update', 'cd_aptos_pk' => $model->cd_aptos_pk, 'cod_edificio' => $model->cod_edificio], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'cd_aptos_pk' => $model->cd_aptos_pk, 'cod_edificio' => $model->cod_edificio], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'cd_aptos_pk',
             'cod_propietario',
+            'cod_edificio',
         ],
     ]) ?>
 
