@@ -17,11 +17,14 @@ LoginAsset::register($this);
     <section id="contact-page">
         <div class="container">
             <div class="center">
-                <br><br><br>  
+                <br><br><br>
+                <div class="login-logo">  
                 <h2><?= Html::a(Html::encode($this->title).':', ['site/signup'],['data' => ['method' => 'post']]) ?></h2>
-                <p class="login-box-msg"><i class="glyphicon glyphicon-pencil"></i>  Para registrarse en el sistema llene el siguiente formulario</p>
+                </div>
+                <p><i class="glyphicon glyphicon-pencil"></i>  Para registrarse en el sistema llene el siguiente formulario</p>
             </div> 
-            <div class="row contact-wrap"> 
+            <div class="row contact-wrap">
+            <div class="status alert alert-success" style="display: none"></div> 
                 
                 <?php $form = ActiveForm::begin(
                     ['id' => 'form-signup',  

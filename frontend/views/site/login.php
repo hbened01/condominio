@@ -21,7 +21,7 @@ LoginAsset::register($this);
     </div>
 
     <div class="login-box-body">
-        <p class="login-box-msg">Introduce tus datos para entrar al sistema</p>
+        <p class="login-box-msg"><i class="glyphicon glyphicon-pencil"></i>  Introduce tus datos para entrar al sistema</p>
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <div class="form-group has-feedback">
