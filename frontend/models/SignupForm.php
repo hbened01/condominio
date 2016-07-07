@@ -17,14 +17,9 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $verifyCode;
-    public $nombre;
-    public $apellido;
     public $nro_apto;
     public $email_edificio;
     public $nro_cedula;
-    // public $telf_celular;
-    // public $telf_local;
-
 
     /**
      * @inheritdoc
@@ -96,7 +91,7 @@ class SignupForm extends Model
                          ->one();
 
         if (empty($query_1)) {
-            return "N° de apartamento o Email de edificio erroneo, intente nuevamente...";
+            return "N° de apartamento o email de edificio erroneo, intente nuevamente...";
         }
 
         if (is_null($query_2['cod_user'])) {
@@ -117,7 +112,7 @@ class SignupForm extends Model
             return $save ? $user : null;
         }
         else{
-            return "El Propietario del apartamento ya tiene un Usuario WEB asignado...";
+            return "El propietario del apartamento ya tiene un Usuario web asignado...";
         }
     }
 }
