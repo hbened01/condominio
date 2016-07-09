@@ -53,6 +53,10 @@ class RolesController extends BaseController
      */
     public function actionView($id)
     {
+        if(Yii::$app->user->identity->rol_id != 1 && $id == 1){
+            return $this->render('/site/deneid');
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,7 +68,8 @@ class RolesController extends BaseController
      * @return mixed
      */
 
-        public function actionCreate(){
+        public function actionCreate()
+        {
             $model = new Roles();
             $tipoOperaciones = Operaciones::find()->all();
          
@@ -86,6 +91,10 @@ class RolesController extends BaseController
      */
     public function actionUpdate($id)
     {
+        if(Yii::$app->user->identity->rol_id != 1 && ($id == 1 || Yii::$app->user->identity->rol_id == $id)){
+            return $this->render('/site/deneid');
+        }
+
         $model = $this->findModel($id);
         $tipoOperaciones = Operaciones::find()->all();
      
@@ -117,6 +126,10 @@ class RolesController extends BaseController
      */
     public function actionDelete($id)
     {
+        if(Yii::$app->user->identity->rol_id != 1 && ($id == 1 || Yii::$app->user->identity->rol_id == $id)){
+            return $this->render('/site/deneid');
+        }
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

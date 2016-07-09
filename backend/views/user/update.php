@@ -11,16 +11,21 @@ $this->title = Yii::t('app', 'Actualizar {modelClass}: ', [
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+
+$session = Yii::$app->session;
+$operacion = str_replace("/", "-", Yii::$app->controller->route);
+$operaciones = $session->get('operaciones');
+
 ?>
 <p>
     <?= Html::a(Yii::t('app', 'Lista de Usuarios'), ['index'], ['class' => 'btn btn-info']); ?>
-    <?= Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->id], [
+    <?= (in_array($operacion,$operaciones) && Yii::$app->user->identity->rol_id != $model->id) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
         'data' => [
             'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
             'method' => 'post',
         ],
-    ]) ?>
+    ]) : '' ?>
 </p>
 <div class="user-update col-md-5">
 

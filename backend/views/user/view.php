@@ -11,19 +11,24 @@ $baseUrl = $asset->baseUrl;
 $this->title = $model->username;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$session = Yii::$app->session;
+$operacion = str_replace("/", "-", Yii::$app->controller->route);
+$operaciones = $session->get('operaciones');
+
 ?>
 <div class="user-view">
 
     <p>
         <?= Html::a(Yii::t('app', 'Lista de Usuarios'), ['index'], ['class' => 'btn btn-info']) ?>
-        <?= Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->id], [
+        <?= (in_array($operacion,$operaciones)) ? Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
+        <?= (in_array($operacion,$operaciones) && Yii::$app->user->identity->rol_id != $model->id) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
-        ]) ?>
+        ]) : '' ?>
     </p>
 
     <h1><?= Html::encode($this->title) ?></h1>

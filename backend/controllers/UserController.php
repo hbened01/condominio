@@ -9,6 +9,7 @@ use backend\models\UserSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\UserForm;
+use backend\models\Roles;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -52,6 +53,10 @@ class UserController extends BaseController
      */
     public function actionView($id)
     {
+        if(Yii::$app->user->identity->rol_id != 1 && $id == 1){
+            return $this->render('/site/deneid');
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,6 +88,10 @@ class UserController extends BaseController
      */
     public function actionUpdate($id)
     {
+        if(Yii::$app->user->identity->rol_id != 1 && $id == 1){
+            return $this->render('/site/deneid');
+        }
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->updateNewUser()) {
@@ -102,6 +111,11 @@ class UserController extends BaseController
      */
     public function actionDelete($id)
     {
+
+        if(Yii::$app->user->identity->rol_id != 1 && $id == 1){
+            return $this->render('/site/deneid');
+        }
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
