@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telf_celular')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fax')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'alicuota')->textInput() ?>
 
@@ -35,6 +35,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'direccion_cobro')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'update_usr')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

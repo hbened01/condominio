@@ -79,12 +79,15 @@ $baseUrl = $asset->baseUrl;
                                 } 
                                 else {
                                     echo '<li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="blog-item.html">Blog Single</a></li>
-                                                <li><a href="pricing.html">Pricing</a></li>
-                                                <li><a href="404.html">404</a></li>
-                                                <li><a href="shortcodes.html">Shortcodes</a></li>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actividades <i class="fa fa-angle-down"></i></a>
+                                            <ul class="dropdown-menu">';
+                                    if (Yii::$app->session->get('user.update_usr')) {   
+                                        echo   '<li>'.Html::a(Yii::t('app', 'Actualizar datos'), ['cd-propietarios/update', 'id_user' => Yii::$app->user->id]).'</li>';
+
+                                    } else {
+                                        Yii::$app->session->remove('user.update_usr');
+                                    }     
+                                    echo       '<li><a href="404.html">404</a></li>
                                             </ul>
                                          </li>';
                                     echo '<li>'.Html::a('Logout  ( ' . Yii::$app->user->identity->username . ' )  <i class="fa fa-power-off"></i>', ['/site/logout'], ['data' => ['confirm' => "Esta seguro de cerrar la sesión?", 'method' => 'post',]]).'</li>';

@@ -36,11 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'nro_cedula',
             'telf_local',
             'telf_celular',
-            'fax',
+            'email:email',
             'alicuota',
             'quien_vive',
             'direccion',
             'direccion_cobro',
+            'update_usr:boolean',
         ],
     ]) ?>
 

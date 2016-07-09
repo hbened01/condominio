@@ -105,6 +105,7 @@ class SignupForm extends Model
             $save = $user->save();
 
             $propietario = CdPropietarios::findOne($query_1['cod_propietario']);
+            $propietario->email = $this->email;
             $propietario->nro_cedula = $this->nro_cedula;
             $propietario->cod_user = $user->id;
             $propietario->save();

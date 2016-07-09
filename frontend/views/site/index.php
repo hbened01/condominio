@@ -11,7 +11,6 @@ $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
 
 ?>
-
     <section id="main-slider" class="no-margin">
         <div class="carousel slide">
             <ol class="carousel-indicators">

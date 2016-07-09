@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'telf_celular') ?>
 
-    <?php // echo $form->field($model, 'fax') ?>
+    <?php // echo $form->field($model, 'email') ?>
 
     <?php // echo $form->field($model, 'alicuota') ?>
 
@@ -40,6 +40,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'direccion') ?>
 
     <?php // echo $form->field($model, 'direccion_cobro') ?>
+
+    <?php // echo $form->field($model, 'update_usr')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

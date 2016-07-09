@@ -2,7 +2,9 @@
 
 namespace backend\models;
 
+
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "cd_propietarios".
@@ -15,11 +17,14 @@ use Yii;
  * @property string $nro_cedula
  * @property string $telf_local
  * @property string $telf_celular
- * @property string $fax
+ * @property string $email
  * @property string $alicuota
  * @property string $quien_vive
  * @property string $direccion
  * @property string $direccion_cobro
+ * @property boolean $update_usr
+ *
+ * @property User $codUser
  */
 class CdPropietarios extends \yii\db\ActiveRecord
 {
@@ -39,12 +44,14 @@ class CdPropietarios extends \yii\db\ActiveRecord
         return [
             [['cod_user'], 'integer'],
             [['nro_cedula', 'alicuota'], 'number'],
+            [['update_usr'], 'boolean'],
             [['nro_piso'], 'string', 'max' => 5],
             [['nombre', 'apellido'], 'string', 'max' => 30],
             [['telf_local', 'telf_celular'], 'string', 'max' => 50],
-            [['fax'], 'string', 'max' => 15],
+            [['email'], 'string', 'max' => 256],
             [['quien_vive'], 'string', 'max' => 25],
             [['direccion', 'direccion_cobro'], 'string', 'max' => 150],
+            [['cod_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['cod_user' => 'id']],
         ];
     }
 
@@ -62,11 +69,20 @@ class CdPropietarios extends \yii\db\ActiveRecord
             'nro_cedula' => Yii::t('app', 'Nro Cedula'),
             'telf_local' => Yii::t('app', 'Telf Local'),
             'telf_celular' => Yii::t('app', 'Telf Celular'),
-            'fax' => Yii::t('app', 'Fax'),
+            'email' => Yii::t('app', 'Email'),
             'alicuota' => Yii::t('app', 'Alicuota'),
             'quien_vive' => Yii::t('app', 'Quien Vive'),
             'direccion' => Yii::t('app', 'Direccion'),
             'direccion_cobro' => Yii::t('app', 'Direccion Cobro'),
+            'update_usr' => Yii::t('app', 'Update Usr'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCodUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'cod_user']);
     }
 }

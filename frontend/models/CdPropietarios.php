@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "cd_propietarios".
@@ -20,6 +21,9 @@ use Yii;
  * @property string $quien_vive
  * @property string $direccion
  * @property string $direccion_cobro
+ * @property boolean $update_usr
+ *
+ * @property User $codUser
  */
 class CdPropietarios extends \yii\db\ActiveRecord
 {
@@ -38,13 +42,30 @@ class CdPropietarios extends \yii\db\ActiveRecord
     {
         return [
             [['cod_user'], 'integer'],
+
             [['nro_cedula', 'alicuota'], 'number'],
+
+            [['update_usr'], 'boolean'],
+
             [['nro_piso'], 'string', 'max' => 5],
+
             [['nombre', 'apellido'], 'string', 'max' => 30],
-            [['telf_local', 'telf_celular'], 'string', 'max' => 50],
+            [['nombre', 'apellido'], 'filter', 'filter' => 'strtoupper'],
+            [['nombre', 'apellido'], 'match' ,'pattern'=>'/^[a-zA-ZÑñ" "]+$/u', 'message'=> 'Solo introducir letras'],
+
+            [['telf_local', 'telf_celular'], 'match' ,'pattern'=>'/^[0-9-]+$/u', 'message'=> 'Solo introducir números'],
+
             [['email'], 'string', 'max' => 256],
+            ['email', 'filter', 'filter' => 'trim'],
+            ['email', 'email'],
+
             [['quien_vive'], 'string', 'max' => 25],
+            ['quien_vive', 'filter', 'filter' => 'strtoupper'],
+
             [['direccion', 'direccion_cobro'], 'string', 'max' => 150],
+            [['direccion', 'direccion_cobro'], 'filter', 'filter' => 'strtoupper'],
+
+            [['cod_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['cod_user' => 'id']],
         ];
     }
 
@@ -56,17 +77,59 @@ class CdPropietarios extends \yii\db\ActiveRecord
         return [
             'cd_propietarios_pk' => Yii::t('app', 'Cd Propietarios Pk'),
             'cod_user' => Yii::t('app', 'Cod User'),
-            'nro_piso' => Yii::t('app', 'Nro Piso'),
+            'nro_piso' => Yii::t('app', 'Nro. Piso'),
             'nombre' => Yii::t('app', 'Nombre'),
             'apellido' => Yii::t('app', 'Apellido'),
-            'nro_cedula' => Yii::t('app', 'Nro Cedula'),
-            'telf_local' => Yii::t('app', 'Telf Local'),
-            'telf_celular' => Yii::t('app', 'Telf Celular'),
-            'email' => Yii::t('app', 'Email'),
+            'nro_cedula' => Yii::t('app', 'Nro. Cedula'),
+            'telf_local' => Yii::t('app', 'Telf. Local'),
+            'telf_celular' => Yii::t('app', 'Telf. Celular'),
+            'email' => Yii::t('app', 'Email Personal'),
             'alicuota' => Yii::t('app', 'Alicuota'),
-            'quien_vive' => Yii::t('app', 'Quien Vive'),
-            'direccion' => Yii::t('app', 'Direccion'),
-            'direccion_cobro' => Yii::t('app', 'Direccion Cobro'),
+            'quien_vive' => Yii::t('app', 'Quien Vive?'),
+            'direccion' => Yii::t('app', 'Dirección de Residencia'),
+            'direccion_cobro' => Yii::t('app', 'Dirección de Cobro'),
+            'update_usr' => Yii::t('app', 'Update Usr'),
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCodUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'cod_user']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdPropietario($cod_user)
+    {
+        $result = (new \yii\db\Query())
+                        ->select(['cd_propietarios_pk'])
+                        ->from('cd_propietarios')
+                        ->where(['cod_user' =>$cod_user])
+                        ->one();
+
+        return $result['cd_propietarios_pk'];
+    }
+
+    public function getStatus($usr)
+    {
+        $result = (new \yii\db\Query())
+                        ->select(['a.update_usr'])
+                        ->from('cd_propietarios a')
+                        ->innerJoin('user b','b.id = a.cod_user')
+                        ->where (['b.username' => $usr])
+                        ->one();
+                        
+
+        if (!empty($result['update_usr'])){
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
 }
