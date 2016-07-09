@@ -1,6 +1,7 @@
 <?php
 namespace frontend\models;
 
+use Yii;
 use yii\base\Model;
 use yii\base\InvalidParamException;
 use common\models\User;
@@ -10,6 +11,7 @@ use common\models\User;
  */
 class ResetPasswordForm extends Model
 {
+    public $username;
     public $password;
 
     /**
@@ -41,11 +43,25 @@ class ResetPasswordForm extends Model
      * @inheritdoc
      */
     public function rules()
-    {
-        return [
+    {      
+        if ($this->_user->username == Yii::$app->session->get('username') || empty(Yii::$app->session->get('username'))) {
+            Yii::$app->session->remove('username');
+           return [
+            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'default', 'value' => $this->_user->username],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
         ];
+        } else {
+            Yii::$app->session->remove('username');
+            return [
+            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['password', 'required'],
+            ['password', 'string', 'min' => 6],
+        ];
+        } 
     }
 
     /**
@@ -56,6 +72,7 @@ class ResetPasswordForm extends Model
     public function resetPassword()
     {
         $user = $this->_user;
+        $user->username = $this->username;
         $user->setPassword($this->password);
         $user->removePasswordResetToken();
 

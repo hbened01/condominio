@@ -21,7 +21,7 @@ LoginAsset::register($this);
             <div class="login-logo">  
             <h2><?= Html::a(Html::encode($this->title).':', ['site/signup'],['data' => ['method' => 'post']]) ?></h2>
             </div>
-            <p><i class="glyphicon glyphicon-pencil"></i><?= Html::encode('Para registrarse en el sistema llene el siguiente formulario') ?></p>
+            <p><i class="glyphicons glyphicons-pencil"></i><?= Html::encode(' Para registrarse en el sistema llene el siguiente formulario') ?></p>
         </div> 
         <div class="row contact-wrap">
             

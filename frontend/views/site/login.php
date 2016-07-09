@@ -21,7 +21,7 @@ LoginAsset::register($this);
     </div>
 
     <div class="login-box-body">
-        <p class="login-box-msg"><i class="glyphicon glyphicon-pencil"></i>  Introduce tus datos para entrar al sistema</p>
+        <p class="login-box-msg"><i class="glyphicons glyphicons-pencil"></i>  Introduce tus datos para entrar al sistema</p>
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <div class="form-group has-feedback">
@@ -35,10 +35,11 @@ LoginAsset::register($this);
             </div>
 
             <div class="form-group has-feedback">
-            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                     'template' => '<div class="row"><div class="col-lg-5">{image}</div><div class="col-lg-7"><div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span></div></div></div>',
                     'options' => ['placeholder' => 'Captcha Code', 'class' => 'form-control'],
-                    ])->label(false) ?>
+                    ])->label(false) 
+                ?>
             </div>
             
             <div class="row">
@@ -57,16 +58,16 @@ LoginAsset::register($this);
             </div>
 
         <?php ActiveForm::end(); ?>        
-            <div class="row">
-                <div class="col-xs-0">
-                </div>
-                <div class="col-xs-12">
-                <br><br>
-                    <?= Html::a('<i class="fa fa-question-circle-o"></i> &nbspOlvid&eacute; mi contraseña !', ['site/request-password-reset']) ?><br>
-                    <?= Html::a('<i class="fa fa-user-plus"></i>  Registrar nuevo usuario.', ['site/signup']) ?>
-                <br>
-                </div>
+        <div class="row">
+            <div class="col-xs-0">
             </div>
+            <div class="col-xs-12 col-xs-offset-0">
+                <br>
+                <?= Html::a('<i class="fa fa-user-plus"></i> Registrar nuevo usuario.', ['site/signup']) ?>
+                <br>
+                <?= Html::a('<i class="fa fa-question-circle-o"></i> &nbspOlvid&eacute; mi usuario y/o contraseña!', ['site/request-password-reset']) ?>
+            </div>
+        </div>
     </div>
 </div>
 </div>
