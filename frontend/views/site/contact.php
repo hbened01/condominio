@@ -17,8 +17,10 @@ $baseUrl = $asset->baseUrl;
 ?>
 <section id="contact-info">
     <div class="center">                
-        <h2>How to Reach Us?</h2>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+        <h2><?= Yii::t('frontend', 'Where are you located?'); ?></h2>
+        <h2><?= Yii::t('frontend', 'How to contact us?'); ?></h2>
+        <p class="lead"><i class="fa fa-globe"></i>&nbsp
+<?= Yii::t('frontend', 'It is very easy to give you all the information below, and plus we give you a contact form to interact with us.'); ?></p>
     </div>
     <div class="gmap-area">
         <div class="container">
@@ -78,8 +80,8 @@ $baseUrl = $asset->baseUrl;
     <div class="container">
         <div class="center">
             <br><br><br>  
-            <h2>Drop Your Message</h2>
-            <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h2><?= Yii::t('frontend', 'Write us your message'); ?></h2>
+            <p class="lead"><i class="glyphicons glyphicons-pencil"></i>&nbsp<?= Yii::t('frontend', 'Using the form below ask your questions, doubts and we will respond as soon as possible.'); ?></p>
         </div> 
         <div class="row contact-wrap"> 
             <div class="status alert alert-success" style="display: none"></div>
@@ -117,7 +119,7 @@ $baseUrl = $asset->baseUrl;
 
                 <?= $form->field($model, 'body')->textArea(['rows' => 8]) ?>
 
-                <?= Html::submitButton('Submit Message', ['class' => 'btn btn-primary btn-lg', 'name' => 'contact-button']) ?>
+                <?= Html::submitButton(Yii::t('frontend', 'Submit Message'), ['class' => 'btn btn-primary btn-lg', 'name' => 'contact-button']) ?>
 
             </div>
 

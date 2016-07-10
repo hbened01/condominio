@@ -75,20 +75,20 @@ class CdPropietarios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_propietarios_pk' => Yii::t('app', 'Cd Propietarios Pk'),
-            'cod_user' => Yii::t('app', 'Cod User'),
-            'nro_piso' => Yii::t('app', 'Nro. Piso'),
-            'nombre' => Yii::t('app', 'Nombre'),
-            'apellido' => Yii::t('app', 'Apellido'),
-            'nro_cedula' => Yii::t('app', 'Nro. Cedula'),
-            'telf_local' => Yii::t('app', 'Telf. Local'),
-            'telf_celular' => Yii::t('app', 'Telf. Celular'),
-            'email' => Yii::t('app', 'Email Personal'),
-            'alicuota' => Yii::t('app', 'Alicuota'),
-            'quien_vive' => Yii::t('app', 'Quien Vive?'),
-            'direccion' => Yii::t('app', 'Dirección de Residencia'),
-            'direccion_cobro' => Yii::t('app', 'Dirección de Cobro'),
-            'update_usr' => Yii::t('app', 'Update Usr'),
+            'cd_propietarios_pk' => Yii::t('frontend', 'Cd Propietarios Pk'),
+            'cod_user' => Yii::t('frontend', 'Cod User'),
+            'nro_piso' => Yii::t('frontend', 'Nro. Piso'),
+            'nombre' => Yii::t('frontend', 'Nombre'),
+            'apellido' => Yii::t('frontend', 'Apellido'),
+            'nro_cedula' => Yii::t('frontend', 'Nro. Cedula'),
+            'telf_local' => Yii::t('frontend', 'Telf. Local'),
+            'telf_celular' => Yii::t('frontend', 'Telf. Celular'),
+            'email' => Yii::t('frontend', 'Email Personal'),
+            'alicuota' => Yii::t('frontend', 'Alicuota'),
+            'quien_vive' => Yii::t('frontend', 'Quien Vive?'),
+            'direccion' => Yii::t('frontend', 'Dirección de Residencia'),
+            'direccion_cobro' => Yii::t('frontend', 'Dirección de Cobro'),
+            'update_usr' => Yii::t('frontend', 'Update Usr'),
         ];
     }
 

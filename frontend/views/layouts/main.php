@@ -70,19 +70,19 @@ $baseUrl = $asset->baseUrl;
                 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><?= Html::a('Home', ['site/index'],['data' => ['method' => 'post']]) ?></li>
-                        <li><?= Html::a('About Us', ['site/about'],['data' => ['method' => 'post']]) ?></li>
-                        <li><?= Html::a('Contact', ['site/contact'],['data' => ['method' => 'post']]) ?></li> 
+                        <li><?= Html::a(Yii::t('frontend', 'Home'), ['site/index'],['data' => ['method' => 'post']]) ?></li>
+                        <li><?= Html::a(Yii::t('frontend', 'About Us'), ['site/about'],['data' => ['method' => 'post']]) ?></li>
+                        <li><?= Html::a(Yii::t('frontend', 'Contact'), ['site/contact'],['data' => ['method' => 'post']]) ?></li> 
                         <?php   if (Yii::$app->user->isGuest) {
                                     //echo '<li>'.Html::a('Signup', ['/site/signup'],['data' => ['method' => 'post']]).'</li>';
                                     echo '<li>'.Html::a('Login', ['/site/login'],['data' => ['method' => 'post']]).'</li>';
                                 } 
                                 else {
                                     echo '<li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actividades <i class="fa fa-angle-down"></i></a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">'.Yii::t('frontend', 'Activities').'&nbsp'.'<i class="fa fa-angle-double-down"></i></a>
                                             <ul class="dropdown-menu">';
                                     if (Yii::$app->session->get('user.update_usr')) {   
-                                        echo   '<li>'.Html::a(Yii::t('app', 'Actualizar datos'), ['cd-propietarios/update', 'id_user' => Yii::$app->user->id]).'</li>';
+                                        echo   '<li>'.Html::a(Yii::t('frontend', 'Update data'), ['cd-propietarios/update', 'id_user' => Yii::$app->user->id]).'</li>';
 
                                     } else {
                                         Yii::$app->session->remove('user.update_usr');
@@ -90,7 +90,7 @@ $baseUrl = $asset->baseUrl;
                                     echo       '<li><a href="404.html">404</a></li>
                                             </ul>
                                          </li>';
-                                    echo '<li>'.Html::a('Logout  ( ' . Yii::$app->user->identity->username . ' )  <i class="fa fa-power-off"></i>', ['/site/logout'], ['data' => ['confirm' => "Esta seguro de cerrar la sesión?", 'method' => 'post',]]).'</li>';
+                                    echo '<li>'.Html::a(Yii::t('frontend', 'Logout').'( ' . Yii::$app->user->identity->username . ' )  <i class="fa fa-power-off"></i>', ['/site/logout'], ['data' => ['confirm' => Yii::t('frontend', 'Sure to log off?'), 'method' => 'post',]]).'</li>';
                                 }                  
                         ?> 
                     </ul>

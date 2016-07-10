@@ -47,9 +47,9 @@ class CdConjuntos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_conjuntos_pk' => Yii::t('app', 'Cd Conjuntos Pk'),
-            'nombre' => Yii::t('app', 'Nombre'),
-            'direccion' => Yii::t('app', 'Direccion'),
+            'cd_conjuntos_pk' => Yii::t('frontend', 'Cd Conjuntos Pk'),
+            'nombre' => Yii::t('frontend', 'Nombre'),
+            'direccion' => Yii::t('frontend', 'Direccion'),
         ];
     }
 

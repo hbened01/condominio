@@ -67,7 +67,7 @@ $baseUrl = $asset->baseUrl;
             <div class="col-sm-4 col-sm-offset-5">
                 <br><br>
                 <?= Html::submitButton('Actualizar Datos', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'data' => [
-            'confirm' => Yii::t('app', 'Está seguro de que los datos introducidos son correctos? Verificar antes de continuar ...')]]) ?>
+            'confirm' => Yii::t('frontend', 'Está seguro de que los datos introducidos son correctos? Verificar antes de continuar ...')]]) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
