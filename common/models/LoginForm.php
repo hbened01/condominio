@@ -54,7 +54,9 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'verifyCode' => Yii::t('frontend', 'Verification Code'),
+            'rememberMe' => Yii::t('frontend', 'Remember Me'),
+            'password' => Yii::t('frontend', 'Password'),
         ];
     }
 
