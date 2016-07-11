@@ -77,6 +77,14 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCdPropietarios()
+    {
+        return $this->hasMany(CdPropietarios::className(), ['cod_user' => 'id']);
+    }
+
 
     /**
      * @return \yii\db\ActiveQuery

@@ -12,21 +12,21 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'cod_conjunto')->textInput() ?>
+    <?= $form->field($model, 'cod_user')->textInput() ?>
 
-    <?= $form->field($model, 'cod_edificio')->textInput() ?>
-
-    <?= $form->field($model, 'nro_piso')->textInput() ?>
+    <?= $form->field($model, 'nro_piso')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'apellido')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telf_local')->textInput() ?>
+    <?= $form->field($model, 'nro_cedula')->textInput() ?>
 
-    <?= $form->field($model, 'telf_celular')->textInput() ?>
+    <?= $form->field($model, 'telf_local')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fax')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'telf_celular')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'alicuota')->textInput() ?>
 
@@ -36,8 +36,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'direccion_cobro')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'update_usr')->checkbox() ?>
+
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

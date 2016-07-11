@@ -119,8 +119,8 @@ $operaciones = $session->get('operaciones');
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <?php if(in_array('cd-aptos-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/cd-aptos"><i class="glyphicons glyphicons-user"></i> Apartamentos</a></li>
+                    <?php if(in_array('cd-propietarios-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/cd-propietarios"><i class="glyphicons glyphicons-user"></i> Propietarios</a></li>
                     <?php endif;?>
                     <?php if(in_array('cd-conceptos-index',$operaciones)): ?>
                       <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="fa fa-list-ol"></i> Conceptos</a> </li>

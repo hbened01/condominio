@@ -8,6 +8,12 @@ use backend\models\Roles;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 /* @var $form yii\widgets\ActiveForm */
+
+if (Yii::$app->user->identity->rol_id == 1) {
+	$where = '1 = 1';
+}else{
+	$where = 'id != 1';
+}
 ?>
 
 <div class="user-form">
@@ -19,7 +25,7 @@ use backend\models\Roles;
     <?=
 		$form->field($model, 'rol_id')
 		     ->dropDownList(
-		            ArrayHelper::map(Roles::find()->all(), 'id', 'nombre'),
+		            ArrayHelper::map(Roles::find()->where($where)->all(), 'id', 'nombre'),
 		            ['prompt'=>'...']
 	            )
 		     ->label('Rol')

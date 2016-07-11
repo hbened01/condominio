@@ -12,7 +12,6 @@ $this->title = Yii::t('app', 'Usuarios');
 $this->params['breadcrumbs'][] = $this->title;
 
 $session = Yii::$app->session;
-$operacion = str_replace("/", "-", Yii::$app->controller->route);
 $operaciones = $session->get('operaciones');
 
 ?>
@@ -22,7 +21,7 @@ $operaciones = $session->get('operaciones');
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= (in_array($operacion,$operaciones)) ? Html::a(Yii::t('app', 'Crear Usuario'), ['create'], ['class' => 'btn btn-success']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('app', 'Crear Usuario'), ['create'], ['class' => 'btn btn-success']) : '' ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -78,7 +77,8 @@ $operaciones = $session->get('operaciones');
                         if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones')) && Yii::$app->user->identity->rol_id != $model->id) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                                         'title' => Yii::t('app', 'Eliminar'),
-                                        'data-confirm' => '¿Seguro que desea eliminar el rol "'.$model->username.'"?'
+                                        'data-confirm' => '¿Seguro que desea eliminar el rol "'.$model->username.'"?',
+                                        'data-method' => 'POST'
                             ]);
                         }else{
                             return false;

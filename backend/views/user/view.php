@@ -13,7 +13,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['
 $this->params['breadcrumbs'][] = $this->title;
 
 $session = Yii::$app->session;
-$operacion = str_replace("/", "-", Yii::$app->controller->route);
 $operaciones = $session->get('operaciones');
 
 ?>
@@ -21,8 +20,8 @@ $operaciones = $session->get('operaciones');
 
     <p>
         <?= Html::a(Yii::t('app', 'Lista de Usuarios'), ['index'], ['class' => 'btn btn-info']) ?>
-        <?= (in_array($operacion,$operaciones)) ? Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
-        <?= (in_array($operacion,$operaciones) && Yii::$app->user->identity->rol_id != $model->id) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->id], [
+        <?= (in_array(Yii::$app->controller->id.'-update',$operaciones)) ? Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones) && Yii::$app->user->identity->rol_id != $model->id) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
