@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\CdPropietarios;
 
 /**
  * Site controller
@@ -87,7 +88,11 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
+        $user = new CdPropietarios();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $value = Yii::$app->request->post();  //$_POST['LoginForm']['username']); otra forma de obtener el post!!
+            $update_usr = $user->getStatus($value['LoginForm']['username']); 
+            Yii::$app->session->set('user.update_usr',$update_usr);
             return $this->goBack();
         } else {
             return $this->render('login', [
@@ -149,16 +154,25 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+        $user = new CdPropietarios();
         if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
+            $result = $model->signup();
+            if (is_object($result)) {
+                if (Yii::$app->getUser()->login($result)) {
+                    $value = Yii::$app->request->post(); 
+                    $update_usr = $user->getStatus($value['SignupForm']['username']); 
+                    Yii::$app->session->set('user.update_usr',$update_usr);
+                    Yii::$app->session->setFlash('success', 'Usuario registrado correctamente');
                     return $this->goHome();
                 }
+            }
+            else{
+                Yii::$app->session->setFlash('error', $result);
             }
         }
 
         return $this->render('signup', [
-            'model' => $model,
+            'model' => $model
         ]);
     }
 
@@ -200,9 +214,14 @@ class SiteController extends Controller
             throw new BadRequestHttpException($e->getMessage());
         }
 
+        if (!empty(Yii::$app->request->post())) {
+            $value = Yii::$app->request->post();
+            $username = $value['ResetPasswordForm']['username'];
+            Yii::$app->session->set('username', $username);
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->session->setFlash('success', 'New password was saved.');
-
             return $this->goHome();
         }
 

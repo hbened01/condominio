@@ -19,12 +19,13 @@ class LoginAsset extends AssetBundle
         'css/ionicons.min.css',
         'css/AdminLTE.min.css',
         'css/skins/_all-skins.min.css',
-        'css/flat/blue.css'
+        'css/flat/blue.css',
+        'css/glyphicons.css',
     ];
     public $js = [
         'js/jQuery-2.2.0.min.js',
         'js/bootstrap.min.js',
-        'js/icheck.min.js'
+        'js/icheck.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

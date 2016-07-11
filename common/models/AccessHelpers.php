@@ -18,7 +18,7 @@ class AccessHelpers extends Model {
                         ->where(['operaciones.nombre' =>$operacion,'user.id' => Yii::$app->user->id])
                         ->one();
 
-        if (!is_null($result['nombre'])){
+        if (!empty($result['nombre'])){
             return true;
         } else {
             return false;

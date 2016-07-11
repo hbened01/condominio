@@ -33,7 +33,7 @@ class CdConceptos extends \yii\db\ActiveRecord
         return [
             [['descrip_concepto', 'tipo', 'frecuencia'], 'required'],
             [['frecuencia'], 'integer'],
-            [['descrip_concepto'], 'string', 'max' => 50],
+            [['descrip_concepto'], 'string', 'max' => 100],
             [['tipo'], 'string', 'max' => 1],
         ];
     }
@@ -44,10 +44,10 @@ class CdConceptos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_conceptos_pk' => 'Cd Conceptos Pk',
-            'descrip_concepto' => 'Descrip Concepto',
-            'tipo' => 'Tipo',
-            'frecuencia' => 'Frecuencia',
+            'cd_conceptos_pk' => Yii::t('app', 'Cd Conceptos Pk'),
+            'descrip_concepto' => Yii::t('app', 'Descrip Concepto'),
+            'tipo' => Yii::t('app', 'Tipo'),
+            'frecuencia' => Yii::t('app', 'Frecuencia'),
         ];
     }
 

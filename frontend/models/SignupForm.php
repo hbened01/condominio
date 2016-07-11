@@ -4,6 +4,9 @@ namespace frontend\models;
 use yii\base\Model;
 use common\models\User;
 use backend\models\Roles;
+use frontend\models\CdPropietarios;
+use frontend\models\CdAptos;
+use frontend\models\CdEdificios;
 
 /**
  * Signup form
@@ -14,7 +17,9 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $verifyCode;
-
+    public $nro_apto;
+    public $email_edificio;
+    public $nro_cedula;
 
     /**
      * @inheritdoc
@@ -36,8 +41,19 @@ class SignupForm extends Model
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
 
-            // verifyCode needs to be entered correctly
             ['verifyCode', 'captcha'],
+
+            // DATOS DE PROPIETARIO 
+            ['nro_cedula', 'required'],
+            [['nro_cedula'], 'number', 'min' => 8],
+
+            ['nro_apto', 'required'],
+            [['nro_apto'], 'string', 'min' => 2],
+
+            ['email_edificio', 'filter', 'filter' => 'trim'],
+            ['email_edificio', 'required'],
+            ['email_edificio', 'email'],
+            ['email_edificio', 'string', 'max' => 255],
         ];
     }
 
@@ -61,14 +77,43 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        $rol = new Roles();
-        $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        $user->rol_id = $rol->getIdRol('Usuario Estandar');
-        
-        return $user->save() ? $user : null;
+
+        $query_1 = (new \yii\db\Query())
+                        ->select(['a.*', 'b.email_edificio'])
+                        ->from('cd_aptos a')
+                        ->innerJoin('cd_edificios b','b.cd_edificios_pk = a.cod_edificio')
+                        ->where (['a.cd_aptos_pk' => $this->nro_apto, 'b.email_edificio' => $this->email_edificio])
+                        ->one();
+        $query_2 = (new \yii\db\Query())
+                         ->select(['c.*'])
+                         ->from('cd_propietarios c')
+                         ->where (['c.cd_propietarios_pk' => $query_1['cod_propietario']])
+                         ->one();
+
+        if (empty($query_1)) {
+            return "N° de apartamento o email de edificio erroneo, intente nuevamente...";
+        }
+
+        if (is_null($query_2['cod_user'])) {
+            $rol = new Roles();
+            $user = new User();
+            $user->username = $this->username;
+            $user->email = $this->email;
+            $user->setPassword($this->password);
+            $user->generateAuthKey();
+            $user->rol_id = $rol->getIdRol('Usuario Estandar');
+            $save = $user->save();
+
+            $propietario = CdPropietarios::findOne($query_1['cod_propietario']);
+            $propietario->email = $this->email;
+            $propietario->nro_cedula = $this->nro_cedula;
+            $propietario->cod_user = $user->id;
+            $propietario->save();
+
+            return $save ? $user : null;
+        }
+        else{
+            return "El propietario del apartamento ya tiene un Usuario web asignado...";
+        }
     }
 }

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\CdAptosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cd Aptos';
+$this->title = Yii::t('app', 'Cd Aptos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cd-aptos-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Cd Aptos', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Cd Aptos'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'cd_aptos_pk',
             'cod_propietario',
+            'cod_edificio',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

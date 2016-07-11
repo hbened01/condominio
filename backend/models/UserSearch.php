@@ -46,7 +46,11 @@ class UserSearch extends User
     {
         $query = User::find();
 
-        $query->joinWith(['roles']);
+        if(Yii::$app->user->identity->rol_id != 1 && $id = 1){
+            $query->joinWith(['roles'])->where('roles.id != 1');
+        }else{
+            $query->joinWith(['roles']);
+        }
 
         // add conditions that should always apply here
 

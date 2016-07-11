@@ -18,9 +18,10 @@ class CdPropietariosSearch extends CdPropietarios
     public function rules()
     {
         return [
-            [['cd_propietarios_pk', 'cod_conjunto', 'cod_edificio', 'nro_piso'], 'integer'],
-            [['nombre', 'apellido', 'fax', 'quien_vive', 'direccion', 'direccion_cobro'], 'safe'],
-            [['telf_local', 'telf_celular', 'alicuota'], 'number'],
+            [['cd_propietarios_pk', 'cod_user'], 'integer'],
+            [['nro_piso', 'nombre', 'apellido', 'telf_local', 'telf_celular', 'email', 'quien_vive', 'direccion', 'direccion_cobro'], 'safe'],
+            [['nro_cedula', 'alicuota'], 'number'],
+            [['update_usr'], 'boolean'],
         ];
     }
 
@@ -61,17 +62,18 @@ class CdPropietariosSearch extends CdPropietarios
         // grid filtering conditions
         $query->andFilterWhere([
             'cd_propietarios_pk' => $this->cd_propietarios_pk,
-            'cod_conjunto' => $this->cod_conjunto,
-            'cod_edificio' => $this->cod_edificio,
-            'nro_piso' => $this->nro_piso,
-            'telf_local' => $this->telf_local,
-            'telf_celular' => $this->telf_celular,
+            'cod_user' => $this->cod_user,
+            'nro_cedula' => $this->nro_cedula,
             'alicuota' => $this->alicuota,
+            'update_usr' => $this->update_usr,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
+        $query->andFilterWhere(['like', 'nro_piso', $this->nro_piso])
+            ->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'apellido', $this->apellido])
-            ->andFilterWhere(['like', 'fax', $this->fax])
+            ->andFilterWhere(['like', 'telf_local', $this->telf_local])
+            ->andFilterWhere(['like', 'telf_celular', $this->telf_celular])
+            ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'quien_vive', $this->quien_vive])
             ->andFilterWhere(['like', 'direccion', $this->direccion])
             ->andFilterWhere(['like', 'direccion_cobro', $this->direccion_cobro]);

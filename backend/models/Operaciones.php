@@ -29,8 +29,8 @@ class Operaciones extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre'], 'required'],
-            [['nombre'], 'string', 'max' => 64],
+            [['nombre','descripcion'], 'required'],
+            [['nombre','descripcion'], 'string', 'max' => 64],
         ];
     }
 

@@ -20,12 +20,12 @@ LoginAsset::register($this);
     </div>
 
     <div class="login-box-body">
-        <p class="login-box-msg"><i class="glyphicon glyphicon-pencil"></i>  Please fill out your email. A link to reset password will be sent there.</p>
+        <p class="login-box-msg"><i class="glyphicons glyphicons-pencil"></i> Please fill out your email. A link to reset password will be sent there.</p>
 
         <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
 
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'email', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Email'])->label(false)
+                <?= $form->field($model, 'email', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Email-Personal'])->label(false)
                 ?>
             </div>
             

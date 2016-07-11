@@ -2,28 +2,29 @@
 
 namespace backend\models;
 
+
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "cd_propietarios".
  *
  * @property integer $cd_propietarios_pk
- * @property integer $cod_conjunto
- * @property integer $cod_edificio
- * @property integer $nro_piso
+ * @property integer $cod_user
+ * @property string $nro_piso
  * @property string $nombre
  * @property string $apellido
+ * @property string $nro_cedula
  * @property string $telf_local
  * @property string $telf_celular
- * @property string $fax
+ * @property string $email
  * @property string $alicuota
  * @property string $quien_vive
  * @property string $direccion
  * @property string $direccion_cobro
+ * @property boolean $update_usr
  *
- * @property CdAptos[] $cdAptos
- * @property CdConjuntos $codConjunto
- * @property CdEdificios $codEdificio
+ * @property User $codUser
  */
 class CdPropietarios extends \yii\db\ActiveRecord
 {
@@ -41,15 +42,16 @@ class CdPropietarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cod_conjunto', 'cod_edificio', 'nro_piso', 'nombre', 'apellido', 'fax', 'alicuota', 'direccion', 'direccion_cobro'], 'required'],
-            [['cod_conjunto', 'cod_edificio', 'nro_piso'], 'integer'],
-            [['telf_local', 'telf_celular', 'alicuota'], 'number'],
+            [['cod_user'], 'integer'],
+            [['nro_cedula', 'alicuota'], 'number'],
+            [['update_usr'], 'boolean'],
+            [['nro_piso'], 'string', 'max' => 5],
             [['nombre', 'apellido'], 'string', 'max' => 30],
-            [['fax'], 'string', 'max' => 15],
-            [['quien_vive'], 'string', 'max' => 1],
+            [['telf_local', 'telf_celular'], 'string', 'max' => 50],
+            [['email'], 'string', 'max' => 256],
+            [['quien_vive'], 'string', 'max' => 25],
             [['direccion', 'direccion_cobro'], 'string', 'max' => 150],
-            [['cod_conjunto'], 'exist', 'skipOnError' => true, 'targetClass' => CdConjuntos::className(), 'targetAttribute' => ['cod_conjunto' => 'cd_conjuntos_pk']],
-            [['cod_edificio'], 'exist', 'skipOnError' => true, 'targetClass' => CdEdificios::className(), 'targetAttribute' => ['cod_edificio' => 'cd_edificios_pk']],
+            [['cod_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['cod_user' => 'id']],
         ];
     }
 
@@ -59,43 +61,28 @@ class CdPropietarios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_propietarios_pk' => 'Cd Propietarios Pk',
-            'cod_conjunto' => 'Cod Conjunto',
-            'cod_edificio' => 'Cod Edificio',
-            'nro_piso' => 'Nro Piso',
-            'nombre' => 'Nombre',
-            'apellido' => 'Apellido',
-            'telf_local' => 'Telf Local',
-            'telf_celular' => 'Telf Celular',
-            'fax' => 'Fax',
-            'alicuota' => 'Alicuota',
-            'quien_vive' => 'Quien Vive',
-            'direccion' => 'Direccion',
-            'direccion_cobro' => 'Direccion Cobro',
+            'cd_propietarios_pk' => Yii::t('app', 'Cd Propietarios Pk'),
+            'cod_user' => Yii::t('app', 'Cod User'),
+            'nro_piso' => Yii::t('app', 'Nro Piso'),
+            'nombre' => Yii::t('app', 'Nombre'),
+            'apellido' => Yii::t('app', 'Apellido'),
+            'nro_cedula' => Yii::t('app', 'Nro Cedula'),
+            'telf_local' => Yii::t('app', 'Telf Local'),
+            'telf_celular' => Yii::t('app', 'Telf Celular'),
+            'email' => Yii::t('app', 'Email'),
+            'alicuota' => Yii::t('app', 'Alicuota'),
+            'quien_vive' => Yii::t('app', 'Quien Vive'),
+            'direccion' => Yii::t('app', 'Direccion'),
+            'direccion_cobro' => Yii::t('app', 'Direccion Cobro'),
+            'update_usr' => Yii::t('app', 'Update Usr'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCdAptos()
+    public function getCodUser()
     {
-        return $this->hasMany(CdAptos::className(), ['cod_propietario' => 'cd_propietarios_pk']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCodConjunto()
-    {
-        return $this->hasOne(CdConjuntos::className(), ['cd_conjuntos_pk' => 'cod_conjunto']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCodEdificio()
-    {
-        return $this->hasOne(CdEdificios::className(), ['cd_edificios_pk' => 'cod_edificio']);
+        return $this->hasOne(User::className(), ['id' => 'cod_user']);
     }
 }

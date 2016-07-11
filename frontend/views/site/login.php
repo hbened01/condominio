@@ -10,7 +10,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Login';
+$this->title = Yii::t('frontend', 'Login');
 LoginAsset::register($this);
 
 ?>
@@ -21,24 +21,25 @@ LoginAsset::register($this);
     </div>
 
     <div class="login-box-body">
-        <p class="login-box-msg">Introduce tus datos para entrar al sistema</p>
+        <p class="login-box-msg"><i class="glyphicons glyphicons-pencil"></i>&nbsp<?=Yii::t('frontend', 'Enter your details to login')?></p>
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'username', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Username'])->label(false)
+                <?= $form->field($model, 'username', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Username')])->label(false)
                 ?>
             </div>
             
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'password', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span></div>'])->passwordInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Password'])->label(false)
+                <?= $form->field($model, 'password', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicons glyphicons-keys"></i></span></div>'])->passwordInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Password')])->label(false)
                 ?>
             </div>
 
             <div class="form-group has-feedback">
-            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                     'template' => '<div class="row"><div class="col-lg-5">{image}</div><div class="col-lg-7"><div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span></div></div></div>',
-                    'options' => ['placeholder' => 'Captcha Code', 'class' => 'form-control'],
-                    ])->label(false) ?>
+                    'options' => ['placeholder' => Yii::t('frontend', 'Captcha Code'), 'class' => 'form-control'],
+                    ])->label(false) 
+                ?>
             </div>
             
             <div class="row">
@@ -51,22 +52,22 @@ LoginAsset::register($this);
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block btn-flat','name' => 'login-button']) ?>
+                    <?= Html::submitButton(Yii::t('frontend', 'Start'), ['class' => 'btn btn-primary btn-block btn-flat','name' => 'login-button']) ?>
                 </div>
                 <!-- /.col -->
             </div>
 
         <?php ActiveForm::end(); ?>        
-            <div class="row">
-                <div class="col-xs-0">
-                </div>
-                <div class="col-xs-12">
-                <br><br>
-                    <?= Html::a('<i class="fa fa-question-circle-o"></i> &nbspOlvid&eacute; mi contraseña !', ['site/request-password-reset']) ?><br>
-                    <?= Html::a('<i class="fa fa-user-plus"></i>  Registrar nuevo usuario.', ['site/signup']) ?>
-                <br>
-                </div>
+        <div class="row">
+            <div class="col-xs-0">
             </div>
+            <div class="col-xs-12 col-xs-offset-0">
+                <br>
+                <?= Html::a('<i class="fa fa-user-plus"></i>&nbsp'.Yii::t('frontend', 'Register new user.').'', ['site/signup']) ?>
+                <br>
+                <?= Html::a('<i class="fa fa-question-circle-o"></i>&nbsp'.Yii::t('frontend', 'I forgot my username and / or password!').'', ['site/request-password-reset']) ?>
+            </div>
+        </div>
     </div>
 </div>
 </div>

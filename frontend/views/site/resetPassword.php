@@ -21,13 +21,21 @@ LoginAsset::register($this);
     </div>
 
     <div class="login-box-body">
-        <p class="login-box-msg"><i class="glyphicon glyphicon-pencil"></i>  Introduzca nueva contraseña</p>
+        <p class="login-box-msg"><i class="glyphicons glyphicons-pencil"></i> Introduzca nueva contraseña</p>
+        
         <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>
-            
+
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'password', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span></div>'])->passwordInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Password'])->label(false)
+                <?= $form->field($model, 'username', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span></div>'])->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Usuario', 'prompt'=>'Select'])->label(false)->hint(false)
                 ?>
             </div>
+            
+            <div class="form-group has-feedback">
+                <?= $form->field($model, 'password', ['inputTemplate' => '<div class="input-group">{input}<span class="input-group-addon"><i class="glyphicons glyphicons-keys"></i></span></div>'])->passwordInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Password'])->label(false)->hint(false)
+                ?>
+            </div>
+
+            <p class="lead"><i class="glyphicons glyphicons-notes-2"></i><?= '&nbsp'.Html::encode('  Nota: "No llenar campo usuario si no desea cambiarlo"') ?></p>
             
             <div class="row">
                 <div class="col-xs-8">

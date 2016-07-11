@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
         'css/main.css',
         'css/responsive.css',
         'css/site.css',
+        'css/glyphicons.css',
     ];
     public $js = [
         'js/jquery.js',

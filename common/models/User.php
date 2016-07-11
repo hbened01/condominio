@@ -24,8 +24,8 @@ use backend\models\Roles;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE    = 1;
+    const STATUS_DELETED  = 0;
+    const STATUS_ACTIVE   = 1;
     const STATUS_INACTIVE = 2;
 
     /**
@@ -51,23 +51,10 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function rules()
     {
-        $defaultUrl = Yii::$app->request->baseUrl;
-        $string   = 'frontend';
-        $search = stripos($defaultUrl, $string);
-        if ($search !== false) {
-             return [
-                ['status', 'default', 'value' => self::STATUS_ACTIVE],
-                ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED, self::STATUS_INACTIVE]],
-            ];
-        } 
-        else{
-            return [
-                // [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
-                // [['status', 'created_at', 'updated_at', 'rol_id'], 'integer'],
-                // [['username', 'auth_key'], 'string', 'max' => 32],
-                // [['rol_id'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['rol_id' => 'id']],
-            ];
-        }
+        return [
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED, self::STATUS_INACTIVE]],
+        ];
     }
 
     /**
@@ -76,18 +63,26 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'username' => 'Nombre de Usuario',
-            //'auth_key' => 'Auth Key',
-            //'password_hash' => 'Password Hash',
-            //'password_reset_token' => 'Password Reset Token',
-            'email' => 'Email',
-            //'status' => 'Status',
-            // 'created_at' => 'Created At',
-            // 'updated_at' => 'Updated At',
-            // 'rol_id' => 'Rol ID',
-            'rol' => 'Rol'
+            'id' => Yii::t('frontend', 'Id'),
+            'username' => Yii::t('frontend', 'Username'),
+            'auth_key' => Yii::t('frontend', 'Auth Key'),
+            'password_hash' => Yii::t('frontend', 'Password Hash'),
+            'password_reset_token' => Yii::t('frontend', 'Password Reset Token'),
+            'email' => Yii::t('frontend', 'Email'),
+            'status' => Yii::t('frontend', 'Status'),
+            'created_at' => Yii::t('frontend', 'Created At'),
+            'updated_at' => Yii::t('frontend', 'Updated At'),
+            'rol_id' => Yii::t('frontend', 'Rol Id'),
+            'rol' =>Yii::t('frontend', 'Rol')
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCdPropietarios()
+    {
+        return $this->hasMany(CdPropietarios::className(), ['cod_user' => 'id']);
     }
 
 
