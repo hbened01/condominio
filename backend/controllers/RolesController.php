@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\Operaciones;
 use common\models\AccessHelpers; 
+use common\models\LoginForm;
 
 /**
  * RolesController implements the CRUD actions for Roles model.
@@ -53,6 +54,10 @@ class RolesController extends BaseController
      */
     public function actionView($id)
     {
+        if(Yii::$app->user->identity->rol_id != 1 && $id == 1){
+            return $this->render('/site/deneid');
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,19 +69,26 @@ class RolesController extends BaseController
      * @return mixed
      */
 
-        public function actionCreate(){
-            $model = new Roles();
-            $tipoOperaciones = Operaciones::find()->all();
-         
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            } else {
-                return $this->render('create', [
-                    'model' => $model,
-                    'tipoOperaciones' => $tipoOperaciones
-                ]);
-            }
+    public function actionCreate()
+    {
+        if (Yii::$app->user->identity->rol_id != 1) {
+            $permitirSuperUsuario = "nombre not in ('operaciones-index', 'operaciones-create', 'operaciones-view', 'operaciones-update', 'operaciones-delete')";
+        }else{
+            $permitirSuperUsuario = "1 = 1";
         }
+
+        $model = new Roles();
+        $tipoOperaciones = Operaciones::find()->select(['id', 'descripcion as nombre'])->where($permitirSuperUsuario)->all();
+     
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+                'tipoOperaciones' => $tipoOperaciones
+            ]);
+        }
+    }
 
     /**
      * Updates an existing Roles model.
@@ -86,8 +98,16 @@ class RolesController extends BaseController
      */
     public function actionUpdate($id)
     {
+        if(Yii::$app->user->identity->rol_id != 1 && ($id == 1 || Yii::$app->user->identity->rol_id == $id)){
+            return $this->render('/site/deneid');
+        }elseif (Yii::$app->user->identity->rol_id != 1) {
+            $permitirSuperUsuario = "nombre not in ('operaciones-index', 'operaciones-create', 'operaciones-view', 'operaciones-update', 'operaciones-delete')";
+        }else{
+            $permitirSuperUsuario = "1 = 1";
+        }
+
         $model = $this->findModel($id);
-        $tipoOperaciones = Operaciones::find()->all();
+        $tipoOperaciones = Operaciones::find()->select(['id', 'descripcion as nombre'])->where($permitirSuperUsuario)->all();
      
         $model->operaciones = \yii\helpers\ArrayHelper::getColumn(
             $model->getRolesOperaciones()->asArray()->all(),
@@ -99,6 +119,8 @@ class RolesController extends BaseController
                 $model->operaciones = [];
             }
             if ($model->save()) {
+                $session = Yii::$app->session;
+                $session->set('operaciones', LoginForm::permittedOperations());
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -117,6 +139,10 @@ class RolesController extends BaseController
      */
     public function actionDelete($id)
     {
+        if(Yii::$app->user->identity->rol_id != 1 && ($id == 1 || Yii::$app->user->identity->rol_id == $id)){
+            return $this->render('/site/deneid');
+        }
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

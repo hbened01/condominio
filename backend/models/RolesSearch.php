@@ -41,7 +41,11 @@ class RolesSearch extends Roles
      */
     public function search($params)
     {
-        $query = Roles::find();
+        if(Yii::$app->user->identity->rol_id != 1 && $id = 1){
+            $query = Roles::find()->where('id != 1');
+        }else{
+            $query = Roles::find();
+        }
 
         // add conditions that should always apply here
 
