@@ -11,11 +11,13 @@ tempApto=""
 tempResi=""
 tempGastos=""
 tempFondos=""
+arrfondo=()
+arrmontos=()
 
 while read line
 do
 
-	resi=$(echo  "$line" | cut -f28 -d';')
+	resi=$(echo  "$line" | cut -f4 -d';')
 	if [ "$tempResi" != "$resi" ]
 		then
 		tempResi=$resi
@@ -29,8 +31,17 @@ do
 		propietario=$(echo  "$line" | cut -f30 -d';')
 		mes=$(echo  "$line" | cut -f32 -d';')
 		anio=$(echo  "$line" | cut -f33 -d';')
+		nr=$(echo  "$line" | cut -f11 -d';')
+		tmpalicuota=$(echo  "$line" | cut -f31 -d';')
+		alicuota=$(echo $tmpalicuota | cut -c 1),$(echo $tmpalicuota | cut -c 2-8)
+		total_gmes=$(echo $(echo  "$line" | cut -f47 -d';') | sed 's/\.//g' )
+		subtotal_gcom=$(echo $(echo  "$line" | cut -f49 -d';') | sed 's/\.//g' )
+		total_pagar=$(echo $(echo  "$line" | cut -f53 -d';') | sed 's/\.//g' )
+		rd=$(echo  "$line" | cut -f55 -d';')
+		recibos=$(echo  "$rd" | cut -f1 -d',')
+		deuda_actual=$(echo $(echo  "$rd" | cut -f2 -d',') | sed 's/\.//g' )
 		echo "***********************************************************************"
-		echo $resi - $apto - $propietario - $mes $anio
+		echo $resi - $apto - $propietario - $mes $anio - $nr - $alicuota - $total_gmes - $subtotal_gcom - $total_pagar - $recibos - $deuda_actual
 		echo "-----------------------------------------------------------------------"
 
 		if [ "$tempApto" = "405" ]
@@ -47,13 +58,17 @@ do
 
 			i=66
 			j=0
+			k=67
 			while [ "$(echo  "$line" | cut -f$i -d';')" != "" ]
 			do
-				#arr[$j]=$(echo  "$line" | cut -f$i -d';')
-				echo $(echo  "$line" | cut -f$i -d';')
+				arrfondo[$j]=$(echo  "$line" | cut -f$i -d';')
+				arrmontos[$j]=$(echo $(echo  "$line" | cut -f$k -d';') | sed 's/\.//g' )
 				i=`expr $i + 2`
 				j=`expr $j + 1`
+				k=`expr $k + 2`
 			done
+			echo ${arrfondo[*]}
+			echo ${arrmontos[*]}
 		fi
 	fi
 
@@ -68,7 +83,7 @@ do
 	fi
 
 	cpto=$(echo  "$line" | cut -f40 -d';')
-	totalcpto=$(echo  "$line" | cut -f41 -d';')
+	totalcpto=$(echo $(echo  "$line" | cut -f41 -d';') | sed 's/\.//g' )
 	echo $cpto - $totalcpto
 
 done < $path"copiacondc3.txt"
