@@ -23,6 +23,8 @@ flag2=0
 flag3=0
 flag4=0
 
+#------------------------------------------------------------
+
 while read line
 do
 
@@ -57,6 +59,7 @@ do
 		then
 		flag2=0
 		flag3=0
+		ids=""
 		tempApto=$apto
 		propietario=$(echo  "$line" | cut -f30 -d';')
 		#nombre=$(echo  "$propietario" | cut -f2 -d',')
@@ -136,6 +139,17 @@ do
 					            cargo, saldo_actual)
 					    VALUES ($fid,'$arrfondo',$arrmontos);"
 				q=$(echo $query | psql -h $hots -U $user -d $db_name)
+				msg=$(echo  "$q" | cut -f1 -d' ')
+
+				if [ "$msg" != "INSERT" ]
+					then
+					#-------- ERROR QUERY ---------------------------------------
+					echo "ERROR: $query -----"
+					rollback="DELETE FROM facturas WHERE cd_factura_pk = $fid;"
+					R=$(echo $rollback | psql -h $hots -U $user -d $db_name)
+					exit $?
+					#------------------------------------------------------------
+				fi
 				#---------------------------------------------------------------------------
 
 				i=`expr $i + 2`
@@ -161,6 +175,25 @@ do
 		id_gnc=$(echo $query | psql -h $hots -U $user -d $db_name)
 		arrgnc[$g]=$(echo $id_gnc | cut -f3 -d' ')
 		g=`expr $g + 1`
+		
+		ids=$(echo ${arrgnc[*]} | sed 's/ /,/g')
+		echo $ids
+
+		if [ $arrgnc[$g] = "" ]
+			then
+			#-------- ERROR QUERY ---------------------------------------
+			echo "ERROR: $query -----"
+			rollback="DELETE FROM facturas WHERE cd_factura_pk = $fid;"
+			R=$(echo $rollback | psql -h $hots -U $user -d $db_name)
+
+			if [ "$ids" != "" ]
+				then
+				rollback="DELETE FROM gastos_comunes WHERE cd_gasto_comun_pk IN ($ids);"
+				R=$(echo $rollback | psql -h $hots -U $user -d $db_name)
+			fi
+			exit $?
+			#------------------------------------------------------------
+		fi
 		#-----------------------------------------------------------------------------
 	elif [ "$gastos" = "Gastos no Comunes" ] 
 		then
@@ -173,6 +206,17 @@ do
 		query="INSERT INTO gastos_nocomunes(cod_factura_fk, descripcion, monto)
 			    VALUES ($fid, '$cpto', $totalcpto);"
 		q=$(echo $query | psql -h $hots -U $user -d $db_name)
+		msg=$(echo  "$q" | cut -f1 -d' ')
+
+		if [ "$msg" != "INSERT" ]
+			then
+			#-------- ERROR QUERY ---------------------------------------
+			echo "ERROR: $query -----"
+			rollback="DELETE FROM facturas WHERE cd_factura_pk = $fid;"
+			R=$(echo $rollback | psql -h $hots -U $user -d $db_name)
+			exit $?
+			#------------------------------------------------------------
+		fi
 		#-----------------------------------------------------------------------------
 	else
 		flag3=1
@@ -188,6 +232,23 @@ do
 			query="INSERT INTO facturas_gastos_comunes(cod_gasto_comun_fk, cod_factura_fk)
 				    VALUES ($vid, $fid);"
 			q=$(echo $query | psql -h $hots -U $user -d $db_name)
+			msg=$(echo  "$q" | cut -f1 -d' ')
+
+			if [ "$msg" != "INSERT" ]
+				then
+				#-------- ERROR QUERY ---------------------------------------
+				echo "ERROR: $query -----"
+				rollback="DELETE FROM facturas WHERE cd_factura_pk = $fid;"
+				R=$(echo $rollback | psql -h $hots -U $user -d $db_name)
+
+				if [ "$ids" != "" ]
+					then
+					rollback="DELETE FROM gastos_comunes WHERE cd_gasto_comun_pk IN ($ids);"
+					R=$(echo $rollback | psql -h $hots -U $user -d $db_name)
+				fi
+				exit $?
+				#------------------------------------------------------------
+			fi
 			#-----------------------------------------------------------------------------
 		done
 	fi
