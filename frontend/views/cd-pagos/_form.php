@@ -56,7 +56,7 @@ $baseUrl = $asset->baseUrl;
                     'language' => 'es', 
                     'clientOptions' => [
                         'defaultDate' => 'now', 
-                        'dateFormat' => 'dd-mm-yy']
+                        'dateFormat' => 'yy-mm-dd']
                     ])
                  ?>
 

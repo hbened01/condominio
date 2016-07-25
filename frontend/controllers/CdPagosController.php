@@ -8,6 +8,7 @@ use frontend\models\CdPagosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * CdPagosController implements the CRUD actions for CdPagos model.
@@ -35,8 +36,17 @@ class CdPagosController extends Controller
      */
     public function actionIndex()
     {
+        $model = new CdPagos();
         $searchModel = new CdPagosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        var_dump(Yii::$app->request->queryParams);
+        $value = Yii::$app->request->queryParams;
+        var_dump(Yii::$app->user->identity);
+        //echo empty(strlen($value['CdPagosSearch']['cod_edificio'])) ;
+        // if (empty($value) || (empty(strlen($value['CdPagosSearch']['cod_edificio']))) && empty(strlen($value['CdPagosSearch']['cod_edificio']))) {
+        //     echo "string";
+        // }
+        // exit();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
