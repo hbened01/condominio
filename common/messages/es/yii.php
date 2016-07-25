@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'The combination {values} of {attributes} has already been taken.' => '',
     '{percent}% Complete' => '',
     '(not set)' => '(no definido)',
     'An internal server error occurred.' => 'Hubo un error interno del servidor.',

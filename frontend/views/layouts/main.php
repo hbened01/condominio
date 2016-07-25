@@ -9,6 +9,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
+use yii\grid\GridView;
  
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
@@ -79,14 +80,15 @@ $baseUrl = $asset->baseUrl;
                                 } 
                                 else {
                                     echo '<li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">'.Yii::t('frontend', 'Activities').'&nbsp'.'<i class="fa fa-angle-double-down"></i></a>
+                                            <a href="" class="dropdown-toggle" data-toggle="dropdown">'.Yii::t('frontend', 'Activities').'&nbsp'.'<i class="fa fa-angle-double-down"></i></a>
                                             <ul class="dropdown-menu">';
                                     if (Yii::$app->session->get('user.update_usr')) {   
-                                        echo   '<li>'.Html::a(Yii::t('frontend', 'Update data'), ['cd-propietarios/update', 'id_user' => Yii::$app->user->id]).'</li>';
+                                        echo   '<li>'.Html::a(Yii::t('frontend', 'Update data').'<i class="glyphicons glyphicons-floppy-save pull-right"></i>', ['cd-propietarios/update', 'id_user' => Yii::$app->user->id]).'</li>';
 
                                     } else {
                                         Yii::$app->session->remove('user.update_usr');
-                                    }     
+                                    }
+                                    echo       '<li>'.Html::a(Yii::t('frontend', 'Payment record').'<i class="glyphicons glyphicons-fees-payments pull-right"></i>', ['cd-pagos/']).'</li>';     
                                     echo       '<li><a href="404.html">404</a></li>
                                             </ul>
                                          </li>';

@@ -20,6 +20,7 @@ return [
     'Are you sure you want to delete this item?' => '',
     'Only files with these MIME types are allowed: {mimeTypes}.' => '',
     'Powered by {yii}' => '',
+    'The combination {values} of {attributes} has already been taken.' => '',
     'The requested view "{name}" was not found.' => '',
     'Unknown alias: -{name}' => '',
     'View' => '',

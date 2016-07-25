@@ -53,7 +53,7 @@ class CdPropietarios extends \yii\db\ActiveRecord
             [['nombre', 'apellido'], 'filter', 'filter' => 'strtoupper'],
             [['nombre', 'apellido'], 'match' ,'pattern'=>'/^[a-zA-ZÑñ" "]+$/u', 'message'=> 'Solo introducir letras'],
 
-            [['telf_local', 'telf_celular'], 'match' ,'pattern'=>'/^[0-9-]+$/u', 'message'=> 'Solo introducir números'],
+            [['telf_local', 'telf_celular'], 'match' ,'pattern'=>'/^[0-9-()]+$/u', 'message'=> 'Solo introducir números'],
 
             [['email'], 'string', 'max' => 256],
             ['email', 'filter', 'filter' => 'trim'],
@@ -77,9 +77,9 @@ class CdPropietarios extends \yii\db\ActiveRecord
         return [
             'cd_propietarios_pk' => Yii::t('frontend', 'Cd Propietarios Pk'),
             'cod_user' => Yii::t('frontend', 'Cod User'),
-            'nro_piso' => Yii::t('frontend', 'Nro. Piso'),
-            'nombre' => Yii::t('frontend', 'Nombre'),
-            'apellido' => Yii::t('frontend', 'Apellido'),
+            'nro_piso' => Yii::t('frontend', 'Floor number'),
+            'nombre' => Yii::t('frontend', 'Name'),
+            'apellido' => Yii::t('frontend', 'Last Name'),
             'nro_cedula' => Yii::t('frontend', 'Nro. Cedula'),
             'telf_local' => Yii::t('frontend', 'Telf. Local'),
             'telf_celular' => Yii::t('frontend', 'Telf. Celular'),

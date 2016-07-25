@@ -4,6 +4,7 @@ use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
+use yii\widgets\MaskedInput;
 
 $this->title = 'Actualización usuario';
 $asset = frontend\assets\CorlateAsset::register($this);
@@ -44,9 +45,9 @@ $baseUrl = $asset->baseUrl;
 
                 <?= $form->field($model, 'nro_cedula')->textInput(['maxlength' => true]) ?>
 
-                <?= $form->field($model, 'telf_local')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'telf_local')->widget(MaskedInput::className(), ['mask' => '(9999)-999-99-99']) ?>
 
-                <?= $form->field($model, 'telf_celular')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'telf_celular')->widget(MaskedInput::className(), ['mask' => '(9999)-999-99-99']) ?>
         
             </div>
 
