@@ -75,6 +75,6 @@ class CdPagosSearch extends CdPagos
             ->andFilterWhere(['like', 'apellido', $this->apellido])
             ->andFilterWhere(['like', 'email', $this->email]);
 
-        //return $dataProvider;
+        return $dataProvider;
     }
 }
