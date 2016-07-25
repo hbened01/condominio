@@ -61,7 +61,7 @@ do
 		flag3=0
 		ids=""
 		tempApto=$apto
-		propietario=$(echo  "$line" | cut -f30 -d';')
+		propietario=$(echo $(echo  "$line" | cut -f30 -d';') | sed 's/Ñ/N/g')
 		#nombre=$(echo  "$propietario" | cut -f2 -d',')
 		#apellido=$(echo  "$propietario" | cut -f1 -d',')
 		nr=$(echo  "$line" | cut -f11 -d';')
