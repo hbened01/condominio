@@ -1,19 +1,22 @@
 <?php 
 
-namespace backend\controllers; 
+namespace backend\controllers;
 
 use Yii; 
-use yii\web\Controller; 
+use backend\models\Operaciones;
+use backend\models\OperacionesSearch;
 use common\models\AccessHelpers; 
 use yii\helpers\Url;
  
-class BaseController extends BaseController { 
+class FilesController extends BaseController { 
  
-    public function loadFileAction($action) { 
-        
+    public function actionFileLoad()
+    {
+
+        return $this->render('file-load');
     }
  
-    public function processFileAction($action) { 
+    // public function actionFileProcess() { 
         
-    }
+    // }
 }

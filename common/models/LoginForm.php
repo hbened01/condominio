@@ -110,7 +110,7 @@ class LoginForm extends Model
      * @param integer $id
      * @return User's permissions
      */
-    public function permittedOperations()
+    static function permittedOperations()
     {
         $result = (new \yii\db\Query())
                         ->select(['operaciones.nombre'])

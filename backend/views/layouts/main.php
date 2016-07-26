@@ -128,6 +128,9 @@ $operaciones = $session->get('operaciones');
                     <?php if(in_array('cd-conjuntos-index',$operaciones)): ?>
                       <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="fa fa-building-o"></i> Conjuntos</a></li>
                     <?php endif;?>
+                    <?php if(in_array('files-file-load',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/files/file-load"><i class="fa fa-building-o"></i> Carga de Archivo</a></li>
+                    <?php endif;?>
                   </ul>
                 </li>
               </ul>
