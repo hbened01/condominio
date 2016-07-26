@@ -83,12 +83,12 @@ $baseUrl = $asset->baseUrl;
                                             <a href="" class="dropdown-toggle" data-toggle="dropdown">'.Yii::t('frontend', 'Activities').'&nbsp'.'<i class="fa fa-angle-double-down"></i></a>
                                             <ul class="dropdown-menu">';
                                     if (Yii::$app->session->get('user.update_usr')) {   
-                                        echo   '<li>'.Html::a(Yii::t('frontend', 'Update data').'<i class="glyphicons glyphicons-floppy-save pull-right"></i>', ['cd-propietarios/update', 'id_user' => Yii::$app->user->id]).'</li>';
+                                        echo   '<li>'.Html::a(Yii::t('frontend', 'Update data'), ['cd-propietarios/update', 'id_user' => Yii::$app->user->id]).'</li>';
 
                                     } else {
                                         Yii::$app->session->remove('user.update_usr');
                                     }
-                                    echo       '<li>'.Html::a(Yii::t('frontend', 'Payment record').'<i class="glyphicons glyphicons-fees-payments pull-right"></i>', ['cd-pagos/']).'</li>';     
+                                    echo       '<li>'.Html::a(Yii::t('frontend', 'Payment record'), ['cd-pagos/']).'</li>';     
                                     echo       '<li><a href="404.html">404</a></li>
                                             </ul>
                                          </li>';

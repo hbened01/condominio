@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model frontend\models\CdPagos */
 
 $this->title = $model->cd_pago_pk;
-$this->params['breadcrumbs'][] = ['label' => 'Cd Pagos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'Cd Pagos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cd-pagos-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->cd_pago_pk], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->cd_pago_pk], [
+        <?= Html::a(Yii::t('frontend', 'Update'), ['update', 'id' => $model->cd_pago_pk], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('frontend', 'Delete'), ['delete', 'id' => $model->cd_pago_pk], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('frontend', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'cd_pago_pk',
             'cod_edificio',
             'cod_apto',
+            'cod_factura',
             'cod_tipo_pago',
             'nro_transferencia_referencia',
             'fecha_pago',
@@ -40,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nro_cedula',
             'cod_tipo_doc',
             'email:email',
+            'estatus_pago:boolean',
         ],
     ]) ?>
 

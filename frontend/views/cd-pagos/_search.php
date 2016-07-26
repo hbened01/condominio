@@ -21,9 +21,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cod_apto') ?>
 
+    <?= $form->field($model, 'cod_factura') ?>
+
     <?= $form->field($model, 'cod_tipo_pago') ?>
 
-    <?= $form->field($model, 'nro_transferencia_referencia') ?>
+    <?php // echo $form->field($model, 'nro_transferencia_referencia') ?>
 
     <?php // echo $form->field($model, 'fecha_pago') ?>
 
@@ -39,9 +41,11 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'email') ?>
 
+    <?php // echo $form->field($model, 'estatus_pago')->checkbox() ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('frontend', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('frontend', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

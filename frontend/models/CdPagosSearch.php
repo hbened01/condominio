@@ -18,9 +18,10 @@ class CdPagosSearch extends CdPagos
     public function rules()
     {
         return [
-            [['cd_pago_pk', 'cod_edificio', 'cod_apto', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
+            [['cd_pago_pk', 'cod_edificio', 'cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
+            [['cod_apto', 'fecha_pago', 'nota_descrip_pago', 'nombre', 'apellido', 'email'], 'safe'],
             [['nro_transferencia_referencia', 'nro_cedula'], 'number'],
-            [['fecha_pago', 'nota_descrip_pago', 'nombre', 'apellido', 'email'], 'safe'],
+            [['estatus_pago'], 'boolean'],
         ];
     }
 
@@ -62,15 +63,17 @@ class CdPagosSearch extends CdPagos
         $query->andFilterWhere([
             'cd_pago_pk' => $this->cd_pago_pk,
             'cod_edificio' => $this->cod_edificio,
-            'cod_apto' => $this->cod_apto,
+            'cod_factura' => $this->cod_factura,
             'cod_tipo_pago' => $this->cod_tipo_pago,
             'nro_transferencia_referencia' => $this->nro_transferencia_referencia,
             'fecha_pago' => $this->fecha_pago,
             'nro_cedula' => $this->nro_cedula,
             'cod_tipo_doc' => $this->cod_tipo_doc,
+            'estatus_pago' => $this->estatus_pago,
         ]);
 
-        $query->andFilterWhere(['like', 'nota_descrip_pago', $this->nota_descrip_pago])
+        $query->andFilterWhere(['like', 'cod_apto', $this->cod_apto])
+            ->andFilterWhere(['like', 'nota_descrip_pago', $this->nota_descrip_pago])
             ->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'apellido', $this->apellido])
             ->andFilterWhere(['like', 'email', $this->email]);
