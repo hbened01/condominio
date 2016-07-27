@@ -39,9 +39,9 @@ class CdPagosController extends Controller
         $model = new CdPagos();
         $searchModel = new CdPagosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        var_dump(Yii::$app->request->queryParams);
-        $value = Yii::$app->request->queryParams;
-        var_dump(Yii::$app->user->identity);
+        // var_dump(Yii::$app->request->queryParams);
+        // $value = Yii::$app->request->queryParams;
+        // var_dump(Yii::$app->user->identity);
         //echo empty(strlen($value['CdPagosSearch']['cod_edificio'])) ;
         // if (empty($value) || (empty(strlen($value['CdPagosSearch']['cod_edificio']))) && empty(strlen($value['CdPagosSearch']['cod_edificio']))) {
         //     echo "string";
@@ -77,8 +77,10 @@ class CdPagosController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
         } else {
+            $sexes = ['M'=>'Male', 'F'=>'Female']; 
             return $this->render('create', [
                 'model' => $model,
+                'sexes'=>$sexes,
             ]);
         }
     }

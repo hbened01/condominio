@@ -17,19 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cd_pago_pk') ?>
 
-    <?= $form->field($model, 'cod_edificio') ?>
-
-    <?= $form->field($model, 'cod_apto') ?>
-
     <?= $form->field($model, 'cod_factura') ?>
 
     <?= $form->field($model, 'cod_tipo_pago') ?>
 
-    <?php // echo $form->field($model, 'nro_transferencia_referencia') ?>
+    <?= $form->field($model, 'nro_referencia') ?>
 
-    <?php // echo $form->field($model, 'fecha_pago') ?>
+    <?= $form->field($model, 'fecha_pago') ?>
 
-    <?php // echo $form->field($model, 'nota_descrip_pago') ?>
+    <?php // echo $form->field($model, 'descrip_pago') ?>
 
     <?php // echo $form->field($model, 'nombre') ?>
 

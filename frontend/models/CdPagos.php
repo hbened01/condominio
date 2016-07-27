@@ -1,31 +1,29 @@
 <?php
 
-namespace frontend\models;
+namespace frontend\models; 
 
-use Yii;
+use Yii; 
 
-/**
- * This is the model class for table "cd_pagos".
- *
+/** 
+ * This is the model class for table "cd_pagos". 
+ * 
  * @property integer $cd_pago_pk
- * @property integer $cod_edificio
- * @property string $cod_apto
  * @property integer $cod_factura
  * @property integer $cod_tipo_pago
- * @property string $nro_transferencia_referencia
+ * @property string $nro_referencia
  * @property string $fecha_pago
- * @property string $nota_descrip_pago
+ * @property string $descrip_pago
  * @property string $nombre
  * @property string $apellido
  * @property string $nro_cedula
  * @property integer $cod_tipo_doc
  * @property string $email
  * @property boolean $estatus_pago
- *
+ * 
  * @property CdTiposDocs $codTipoDoc
  * @property CdTiposPagos $codTipoPago
  * @property Facturas $codFactura
- */
+ */ 
 class CdPagos extends \yii\db\ActiveRecord
 {
     /**
@@ -42,26 +40,22 @@ class CdPagos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cod_edificio', 'cod_apto', 'cod_factura', 'cod_tipo_pago', 'nro_transferencia_referencia', 'fecha_pago', 'nombre', 'apellido', 'nro_cedula', 'cod_tipo_doc', 'email'], 'required'],
-            
-            [['cod_edificio', 'cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
-
-            [['cod_apto'], 'string', 'max' => 3],
-            [['cod_apto'], 'filter', 'filter' => 'strtoupper'],
+            [['cod_factura', 'cod_tipo_pago', 'nro_referencia', 'fecha_pago', 'nombre', 'apellido', 'nro_cedula', 'cod_tipo_doc', 'email'], 'required'],
 
             [['fecha_pago'], 'safe'],
 
             [['estatus_pago'], 'boolean'],
             ['estatus_pago', 'default', 'value' => false],
 
-
-            [['nro_cedula', 'nro_transferencia_referencia'], 'number'],
+            [['cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
+            [['nro_cedula', 'nro_referencia'], 'number'],
 
             ['email', 'email'],
             ['email', 'filter', 'filter' => 'trim'],
-
-            [['nota_descrip_pago', 'email'], 'string', 'max' => 255],
-            [['nota_descrip_pago'], 'filter', 'filter' => 'strtoupper'],
+            [['email'], 'string', 'max' => 255],
+            
+            [['descrip_pago'], 'string', 'max' => 500],
+            [['descrip_pago'], 'filter', 'filter' => 'strtoupper'],
 
             [['nombre', 'apellido'], 'string', 'max' => 30],
             [['nombre', 'apellido'], 'filter', 'filter' => 'strtoupper'],
@@ -82,13 +76,11 @@ class CdPagos extends \yii\db\ActiveRecord
     {
         return [
             'cd_pago_pk' => Yii::t('frontend', 'Cd Pago Pk'),
-            'cod_edificio' => Yii::t('frontend', 'Building'),
-            'cod_apto' => Yii::t('frontend', 'Apartment'),
             'cod_tipo_pago' => Yii::t('frontend', 'Payment Type'),
             'cod_factura' => Yii::t('frontend', 'Billing Code'),
-            'nro_transferencia_referencia' => Yii::t('frontend', 'Transfer or Reference Number'),
+            'nro_referencia' => Yii::t('frontend', 'Transfer or Reference Number'),
             'fecha_pago' => Yii::t('frontend', 'Payment Date'),
-            'nota_descrip_pago' => Yii::t('frontend', 'Note Description Payment'),
+            'descrip_pago' => Yii::t('frontend', 'Note Description Payment'),
             'nombre' => Yii::t('frontend', 'Name'),
             'apellido' => Yii::t('frontend', 'Last Name'),
             'nro_cedula' => Yii::t('frontend', 'Identity Card'),
@@ -98,27 +90,27 @@ class CdPagos extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCodTipoDoc()
-    {
+    /** 
+     * @return \yii\db\ActiveQuery 
+     */ 
+    public function getCodTipoDoc() 
+    { 
         return $this->hasOne(CdTiposDocs::className(), ['cd_tipo_doc_pk' => 'cod_tipo_doc']);
-    }
+    } 
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCodTipoPago()
-    {
+    /** 
+     * @return \yii\db\ActiveQuery 
+     */ 
+    public function getCodTipoPago() 
+    { 
         return $this->hasOne(CdTiposPagos::className(), ['cd_tipo_pago_pk' => 'cod_tipo_pago']);
-    }
+    } 
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCodFactura()
-    {
+    /** 
+     * @return \yii\db\ActiveQuery 
+     */ 
+    public function getCodFactura() 
+    { 
         return $this->hasOne(Facturas::className(), ['cd_factura_pk' => 'cod_factura']);
-    }
+    } 
 }
