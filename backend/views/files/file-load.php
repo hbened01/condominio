@@ -27,12 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <?php $form = ActiveForm::begin(); ?>
+                <?php $form = ActiveForm::begin(['id' => 'FileLoadForm','options' => ['enctype' => 'multipart/form-data']]); ?>
                         <br>
                         <?php
                             echo FileInput::widget([
-                                'name' => 'attachment_3',
+                                'name' => 'file',
                             ]);
+                                echo $form->field($model, 'file')->widget(FileInput::classname(), [
+                                    'options'=>['accept'=>'image/*'],
+                                    'pluginOptions'=>['allowedFileExtensions'=>['cvs']
+                                ]);
                         ?>
                         <br>
                 <?php ActiveForm::end(); ?>

@@ -120,7 +120,7 @@ $operaciones = $session->get('operaciones');
                   </a>
                   <ul class="treeview-menu">
                     <?php if(in_array('cd-propietarios-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/cd-propietarios"><i class="glyphicons glyphicons-user"></i> Propietarios</a></li>
+                      <li><a href="<?= Url::base(); ?>/cd-propietarios"><i class="glyphicons glyphicons-user"></i>&nbsp&nbsp Propietarios</a></li>
                     <?php endif;?>
                     <?php if(in_array('cd-conceptos-index',$operaciones)): ?>
                       <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="fa fa-list-ol"></i> Conceptos</a> </li>
@@ -129,7 +129,7 @@ $operaciones = $session->get('operaciones');
                       <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="fa fa-building-o"></i> Conjuntos</a></li>
                     <?php endif;?>
                     <?php if(in_array('files-file-load',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/files/file-load"><i class="fa fa-building-o"></i> Carga de Archivo</a></li>
+                      <li><a href="<?= Url::base(); ?>/files/file-load"><i class="glyphicons glyphicons-cloud-upload"></i>&nbsp&nbsp Carga de Archivo</a></li>
                     <?php endif;?>
                   </ul>
                 </li>
@@ -157,6 +157,14 @@ $operaciones = $session->get('operaciones');
                     <?= $content ?>
                 </section>
             </div>
+
+            <footer class="main-footer">
+              <div class="pull-right hidden-xs">
+                Desarrollado por <a href="http://hjtecnosystems.com.ve"  target="_blank">HJ TECNOSYSTEMS</a>
+              </div>
+              <strong>Copyright &copy; <?php echo date('Y') ?></strong> All rights
+              reserved.
+            </footer>
         </div>
 
 <?php $this->endBody() ?>
