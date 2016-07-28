@@ -28,6 +28,7 @@ class DashboardAsset extends AssetBundle
         'css/bootstrap3-wysihtml5.min.css',
         'css/site.css',
         'css/glyphicons.css',
+        'css/fileinput.min.css',
     ];
     public $js = [
         //'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
@@ -54,6 +55,7 @@ class DashboardAsset extends AssetBundle
         'js/app.min.js',
         'js/icheck.min.js',
         'js/funciones.js',
+        'js/fileinput.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

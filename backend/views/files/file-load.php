@@ -29,15 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="box-body">
                 <?php $form = ActiveForm::begin(['id' => 'FileLoadForm','options' => ['enctype' => 'multipart/form-data']]); ?>
                         <br>
-                        <?php
-                            echo FileInput::widget([
-                                'name' => 'file',
-                            ]);
-                                echo $form->field($model, 'file')->widget(FileInput::classname(), [
-                                    'options'=>['accept'=>'image/*'],
-                                    'pluginOptions'=>['allowedFileExtensions'=>['cvs']
-                                ]);
-                        ?>
+                        <label class="control-label">Selecione archivo</label>
+                      <?= $form->field($model, 'file')->fileInput(['multiple' => true,'class' =>'file'])->label(false) ?>
                         <br>
                 <?php ActiveForm::end(); ?>
             </div>
