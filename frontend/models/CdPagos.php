@@ -127,6 +127,7 @@ class CdPagos extends \yii\db\ActiveRecord
                         ->all();
                         var_dump($result);
         exit();
+        
         return $result['cd_propietarios_pk'];
     }
 }
