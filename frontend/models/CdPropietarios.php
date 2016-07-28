@@ -123,7 +123,6 @@ class CdPropietarios extends \yii\db\ActiveRecord
                         ->where (['b.username' => $usr])
                         ->one();
                         
-
         if (!empty($result['update_usr'])){
             return true;
 

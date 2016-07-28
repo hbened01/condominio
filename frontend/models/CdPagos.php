@@ -113,4 +113,20 @@ class CdPagos extends \yii\db\ActiveRecord
     { 
         return $this->hasOne(Facturas::className(), ['cd_factura_pk' => 'cod_factura']);
     } 
+
+    public function getIdFacturaConcat($id)
+    {
+        print_r($id);
+        $result = (new \yii\db\Query())
+                        ->select(['*'])
+                        ->from('cd_propietarios a')
+                        ->innerJoin('user b','b.id = a.cod_user')
+                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
+                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
+                        ->where (['b.id' => $id])
+                        ->all();
+                        var_dump($result);
+        exit();
+        return $result['cd_propietarios_pk'];
+    }
 }

@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\helpers\ArrayHelper;
+
 
 /**
  * CdPagosController implements the CRUD actions for CdPagos model.
@@ -77,10 +79,12 @@ class CdPagosController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
         } else {
-            $sexes = ['M'=>'Male', 'F'=>'Female']; 
+            //var_dump(Yii::$app->user->identity->id);
+            //exit();
+            $id_user = Yii::$app->user->identity->id;
+            $concat_id_factura = $model->getIdFacturaConcat($id_user);
             return $this->render('create', [
                 'model' => $model,
-                'sexes'=>$sexes,
             ]);
         }
     }
