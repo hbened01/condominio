@@ -80,12 +80,11 @@ class CdPagosController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
         } else {
-            //var_dump(Yii::$app->user->identity->id);
-            //exit();
             $id_user = Yii::$app->user->identity->id;
             $concat_id_factura = $model->getIdFacturaConcat($id_user);
             return $this->render('create', [
                 'model' => $model,
+                'data' => $concat_id_factura, 
             ]);
         }
     }

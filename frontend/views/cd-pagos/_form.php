@@ -1,7 +1,7 @@
 <?php
 
 //use yii\widgets\ActiveForm;
-//use yii\helpers\ArrayHelper;
+use yii\helpers\ArrayHelper;
 use frontend\assets\CorlateAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -44,7 +44,7 @@ $baseUrl = $asset->baseUrl;
 
             <div class="col-sm-5 col-sm-offset-2">
 
-                <?= $form->field($model, 'cod_factura')->textInput(['placeholder' => Yii::t('frontend', 'Seleccione...')])->label() ?>
+                <?= $form->field($model, 'cod_factura')->dropdownList(ArrayHelper::map($data, 'id', 'descripcion'), ['prompt'=> Yii::t('frontend', 'Seleccione...')]); ?>
 
                 <?= $form->field($model, 'cod_tipo_pago')->dropdownList(CdTiposPagos::find()->select(['descrip_pago', 'cd_tipo_pago_pk'])->indexBy('cd_tipo_pago_pk')->column(), ['prompt'=> Yii::t('frontend', 'Seleccione...')]); ?>
             
@@ -78,10 +78,10 @@ $baseUrl = $asset->baseUrl;
 
                 <div class="col-sm-1"> 
 
-                    <?= $form->field($model, 'cod_tipo_doc')->dropdownList(CdTiposDocs::find()->select(['tipo_doc' , 'cd_tipo_doc_pk'])->indexBy('cd_tipo_doc_pk')->column())->label('Doc.'); ?>
+                    <?= $form->field($model, 'cod_tipo_doc')->dropdownList(CdTiposDocs::find()->select(['tipo_doc' , 'cd_tipo_doc_pk'])->indexBy('cd_tipo_doc_pk')->column())->label(Yii::t('frontend', 'Doc.')); ?>
 
                 </div>
-
+                
                 <div class="col-sm-4"> 
             
                     <?= $form->field($model, 'nro_cedula')->input('number', ['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Identity Card')])->label() ?>

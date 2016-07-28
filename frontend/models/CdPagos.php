@@ -24,6 +24,7 @@ use Yii;
  * @property CdTiposPagos $codTipoPago
  * @property Facturas $codFactura
  */ 
+
 class CdPagos extends \yii\db\ActiveRecord
 {
     /**
@@ -116,19 +117,14 @@ class CdPagos extends \yii\db\ActiveRecord
 
     public function getIdFacturaConcat($id)
     {
-        print_r($id);
         $result = (new \yii\db\Query())
-                        ->select(['*'])
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
                         ->from('cd_propietarios a')
                         ->innerJoin('user b','b.id = a.cod_user')
                         ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
                         ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
-                        ->where (['b.id' => $id])
+                        ->where (['b.id' => $id, 'd.estatus_factura' => false]) 
                         ->all();
-                        var_dump($result);
-        exit();
-
-        return $result['cd_propietarios_pk'];
-        
+        return $result;
     }
 }
