@@ -36,7 +36,7 @@ return [
     'Cod Gasto Comun Fk' => '',
     'Cod Propietario' => '',
     'Cod User' => '',
-    'Create' => '',
+    'Create' => 'Crear',
     'Created At' => '',
     'Descrip Doc' => '',
     'Descrip Pago' => '',

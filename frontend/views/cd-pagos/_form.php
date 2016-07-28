@@ -14,7 +14,6 @@ use frontend\models\CdTiposDocs;
 $this->title = 'Registro de pago';
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
-
 /* @var $this yii\web\View */
 /* @var $model frontend\models\CdPropietarios */
 /* @var $form yii\widgets\ActiveForm */

@@ -38,7 +38,6 @@ $baseUrl = $asset->baseUrl;
                 ],
             ]) ?>
 
-
         <div class="row-sm-5">
                 <?= Html::a(Yii::t('frontend', 'Update'), ['update', 'id' => $model->cd_pago_pk], ['class' => 'btn btn-warning']) ?>
                 <?= Html::a(Yii::t('frontend', 'Delete'), ['delete', 'id' => $model->cd_pago_pk], [

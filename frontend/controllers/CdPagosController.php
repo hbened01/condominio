@@ -49,6 +49,7 @@ class CdPagosController extends Controller
         //     echo "string";
         // }
         // exit();
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
