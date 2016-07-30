@@ -43,7 +43,7 @@ class CdTiposDocs extends \yii\db\ActiveRecord
         return [
             'cd_tipo_doc_pk' => Yii::t('frontend', 'Cd Tipo Doc Pk'),
             'tipo_doc' => Yii::t('frontend', 'Tipo Doc'),
-            'descrip_doc' => Yii::t('frontend', 'Descrip Doc'),
+            'descrip_doc' => Yii::t('frontend', 'Document Type'),
         ];
     }
 

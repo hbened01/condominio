@@ -1,17 +1,16 @@
 <?php
 
-//use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
+use frontend\models\CdTiposPagos;
+use frontend\models\CdTiposDocs;
 use frontend\assets\CorlateAsset;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\jui\DatePicker;
 use yii\widgets\MaskedInput;
-use frontend\models\CdTiposPagos;
-use frontend\models\CdTiposDocs;
 
-$this->title = 'Registro de pago';
+$this->title = Yii::t('frontend', 'Payment Record');
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
 /* @var $this yii\web\View */
@@ -23,8 +22,8 @@ $baseUrl = $asset->baseUrl;
     <div class="container">
         <div class="center">
             <br><br><br> 
-            <h2><?= Html::encode('Registre su pago de acuerdo a los datos solicitados') ?></h2>
-            <p class="lead"><i class="glyphicons glyphicons-notes-2"></i><?= '&nbsp'.Html::encode('  Nota: "Por defecto se traerá la información del propietario que ha iniciado seción para el registro de pago, en caso que el pago lo haya realizado otra persona registrar los datos de esta como nombre, apellido entre otros"') ?></p>
+            <h2><?= Html::encode(Yii::t('frontend', 'Register your payment according to data requested')) ?></h2>
+            <p class="lead"><i class="glyphicons glyphicons-notes-2"></i><?= '&nbsp'.Html::encode(Yii::t('frontend', 'Note: "Default owner information that has started secion for registration payment be brought if the payment it has made another record this data as name, surname among others"')) ?></p>
         </div> 
         <div class="row contact-wrap"> 
             
@@ -44,14 +43,14 @@ $baseUrl = $asset->baseUrl;
 
             <div class="col-sm-5 col-sm-offset-2">
 
-                <?= $form->field($model, 'cod_factura')->dropdownList(ArrayHelper::map($data, 'id', 'descripcion'), ['prompt'=> Yii::t('frontend', 'Seleccione...')]); ?>
+                <?= $form->field($model, 'cod_factura')->dropdownList(ArrayHelper::map($data, 'id', 'descripcion'), ['prompt'=> Yii::t('frontend', 'Select...')]); ?>
 
-                <?= $form->field($model, 'cod_tipo_pago')->dropdownList(CdTiposPagos::find()->select(['descrip_pago', 'cd_tipo_pago_pk'])->indexBy('cd_tipo_pago_pk')->column(), ['prompt'=> Yii::t('frontend', 'Seleccione...')]); ?>
+                <?= $form->field($model, 'cod_tipo_pago')->dropdownList(CdTiposPagos::find()->select(['descrip_pago', 'cd_tipo_pago_pk'])->indexBy('cd_tipo_pago_pk')->column(), ['prompt'=> Yii::t('frontend', 'Select...')]); ?>
             
-                <?= $form->field($model, 'nro_referencia')->input('number', ['autofocus' => true, 'class' => 'form-control', 'placeholder' => 'Introduzca número de transferencia ó depósito'])->label() ?>
+                <?= $form->field($model, 'nro_referencia')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter Number of Transfer or Deposit')])->label() ?>
 
                 <?= $form->field($model,'fecha_pago')->widget(DatePicker::className(),[
-                    'options' => ['placeholder' => 'Pulse para acceder al calendario...',
+                    'options' => ['placeholder' => Yii::t('frontend', 'Press to Access the Calendar ...'),
                     'class' => 'form-control'],
                     'language' => 'es', 
                     'clientOptions' => [
@@ -60,7 +59,7 @@ $baseUrl = $asset->baseUrl;
                     ])->label()
                  ?>
 
-                 <?= $form->field($model, 'descrip_pago')->textArea(['rows' => 5, 'placeholder' => Yii::t('frontend', 'Note Description Payment')])->label() ?>
+                 <?= $form->field($model, 'nota_pago')->textArea(['rows' => 5, 'placeholder' => Yii::t('frontend', 'Note Description Payment')])->label() ?>
         
             </div>
 
@@ -84,7 +83,7 @@ $baseUrl = $asset->baseUrl;
                 
                 <div class="col-sm-4"> 
             
-                    <?= $form->field($model, 'nro_cedula')->input('number', ['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Identity Card')])->label() ?>
+                    <?= $form->field($model, 'nro_cedula')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Identity Card')])->label() ?>
 
                 </div>
 
@@ -92,8 +91,9 @@ $baseUrl = $asset->baseUrl;
 
             <div class="col-sm-4 col-sm-offset-6">
                 <br><br>
-                <?= Html::submitButton($model->isNewRecord ? Yii::t('frontend', 'Registrar Pago') : Yii::t('frontend', 'Actualizar Pago'), ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary', 'data' => [
-            'confirm' => Yii::t('frontend', 'Está seguro de que los datos introducidos son correctos? Verificar antes de continuar ...')]]) ?>
+                <?= Html::submitButton($model->isNewRecord ? Yii::t('frontend', 'Payment Register') : Yii::t('frontend', 'Payment Update'), ['class' => $model->isNewRecord ? 'btn btn-danger' : 'btn btn-danger', 'data' => [
+            'confirm' => Yii::t('frontend', 'It is sure that the data entered is correct? Check before continuing ...')]]) ?>
+                <?= Html::a(Yii::t('frontend', 'Return'), ['cd-pagos/'], ['class' => 'btn btn-success']); ?>
             </div>
 
             <?php ActiveForm::end(); ?>

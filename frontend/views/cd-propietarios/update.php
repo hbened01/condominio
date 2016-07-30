@@ -6,7 +6,7 @@ use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\widgets\MaskedInput;
 
-$this->title = 'Actualización usuario';
+$this->title = 'actualización usuario';
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
 
@@ -18,8 +18,8 @@ $baseUrl = $asset->baseUrl;
     <div class="container">
         <div class="center">
             <br><br><br> 
-            <h2><?= Html::encode('Registre sus Datos Personales') ?></h2>
-            <p class="lead"><i class="glyphicons glyphicons-notes-2"></i><?= '&nbsp'.Html::encode('  Nota: "Asegurese que la data introducida es correcta, ya que luego de guardar no podrá realizar de nuevo esta acción"') ?></p>
+            <h2><?= Html::encode(Yii::t('frontend', 'Register your Personal Data')) ?></h2>
+            <p class="lead"><i class="glyphicons glyphicons-notes-2"></i><?= '&nbsp'.Html::encode(Yii::t('frontend', 'Note: "Make sure the data entered is correct, since after saving can not perform this action again"')) ?></p>
         </div> 
         <div class="row contact-wrap"> 
             
@@ -67,8 +67,8 @@ $baseUrl = $asset->baseUrl;
 
             <div class="col-sm-4 col-sm-offset-5">
                 <br><br>
-                <?= Html::submitButton('Actualizar Datos', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'data' => [
-            'confirm' => Yii::t('frontend', 'Está seguro de que los datos introducidos son correctos? Verificar antes de continuar ...')]]) ?>
+                <?= Html::submitButton(Yii::t('frontend', 'Update Data'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'data' => [
+            'confirm' => Yii::t('frontend', 'It is sure that the data entered is correct? Check before continuing ...')]]) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

@@ -62,9 +62,12 @@ class CdPagosController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {
+    {   
+        $model = new CdPagos();
+        $factura =  $model->getEstatusPago($id);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'factura' => $factura,
         ]);
     }
 
@@ -76,12 +79,14 @@ class CdPagosController extends Controller
     public function actionCreate()
     {
         $model = new CdPagos();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
         } else {
             $id_user = Yii::$app->user->identity->id;
             $concat_id_factura = $model->getIdFacturaConcat($id_user);
+            if (empty($concat_id_factura)) {
+               Yii::$app->session->setFlash('error', 'Aún no se han generado facturas para asociar a un pago.');
+            }
             return $this->render('create', [
                 'model' => $model,
                 'data' => $concat_id_factura, 
@@ -98,12 +103,20 @@ class CdPagosController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $factura =  $model->getEstatusPago($id);
+
+        if (!empty(ArrayHelper::getValue($factura, 'status'))) {
+            Yii::$app->session->setFlash('error', 'Pago validado, no se puede realizar actualización de datos.');
+            return $this->goHome();
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
         } else {
+            $concat_id_factura = $model->getUpdatePago($id);
             return $this->render('update', [
                 'model' => $model,
+                'data' => $concat_id_factura,
             ]);
         }
     }
@@ -114,12 +127,20 @@ class CdPagosController extends Controller
      * @param integer $id
      * @return mixed
      */
-    // public function actionDelete($id)
-    // {
-    //     $this->findModel($id)->delete();
+    public function actionDelete($id)
+    {
+        $model = new CdPagos();
+        $factura =  $model->getEstatusPago($id);
 
-    //     return $this->redirect(['index']);
-    // }
+        if (!empty(ArrayHelper::getValue($factura, 'status'))) {
+            Yii::$app->session->setFlash('error', 'Pago validado, no se puede realizar esta acción.');
+            return $this->goHome();
+        }
+
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
 
     /**
      * Finds the CdPagos model based on its primary key value.

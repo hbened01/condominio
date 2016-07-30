@@ -88,7 +88,7 @@ $baseUrl = $asset->baseUrl;
                                     } else {
                                         Yii::$app->session->remove('user.update_usr');
                                     }
-                                    echo       '<li>'.Html::a(Yii::t('frontend', 'Payment record'), ['cd-pagos/']).'</li>';     
+                                    echo       '<li>'.Html::a(Yii::t('frontend', 'Payment Record'), ['cd-pagos/']).'</li>';     
                                     echo       '<li><a href="404.html">404</a></li>
                                             </ul>
                                          </li>';

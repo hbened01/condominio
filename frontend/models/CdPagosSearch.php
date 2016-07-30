@@ -20,7 +20,7 @@ class CdPagosSearch extends CdPagos
         return [
             [['cd_pago_pk', 'cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
             [['nro_referencia', 'nro_cedula'], 'number'],
-            [['fecha_pago', 'descrip_pago', 'nombre', 'apellido', 'email'], 'safe'],
+            [['fecha_pago', 'nota_pago', 'nombre', 'apellido', 'email'], 'safe'],
             [['estatus_pago'], 'boolean'],
         ];
     }
@@ -71,9 +71,9 @@ class CdPagosSearch extends CdPagos
             'estatus_pago' => $this->estatus_pago,
         ]);
 
-        $query->andFilterWhere(['like', 'descrip_pago', $this->descrip_pago])
-            ->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'apellido', $this->apellido])
+        $query->andFilterWhere(['like', 'nota_pago', $this->nota_pago])
+            ->andFilterWhere(['like', 'LOWER(nombre)', strtolower($this->nombre)])
+            ->andFilterWhere(['like', 'LOWER(apellido)', strtolower($this->apellido)])
             ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;

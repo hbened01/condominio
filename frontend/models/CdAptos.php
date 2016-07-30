@@ -39,9 +39,9 @@ class CdAptos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_aptos_pk' => Yii::t('frontend', 'Cd Aptos Pk'),
-            'cod_propietario' => Yii::t('frontend', 'Cod Propietario'),
-            'cod_edificio' => Yii::t('frontend', 'Cod Edificio'),
+            'cd_aptos_pk' => Yii::t('frontend', 'Apartment'),
+            'cod_propietario' => Yii::t('frontend', 'Cod. Owner'),
+            'cod_edificio' => Yii::t('frontend', 'Cod. Building'),
         ];
     }
 }

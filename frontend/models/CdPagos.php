@@ -12,7 +12,7 @@ use Yii;
  * @property integer $cod_tipo_pago
  * @property string $nro_referencia
  * @property string $fecha_pago
- * @property string $descrip_pago
+ * @property string $nota_pago
  * @property string $nombre
  * @property string $apellido
  * @property string $nro_cedula
@@ -49,14 +49,15 @@ class CdPagos extends \yii\db\ActiveRecord
             ['estatus_pago', 'default', 'value' => false],
 
             [['cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
+
             [['nro_cedula', 'nro_referencia'], 'number'],
 
             ['email', 'email'],
             ['email', 'filter', 'filter' => 'trim'],
             [['email'], 'string', 'max' => 255],
             
-            [['descrip_pago'], 'string', 'max' => 500],
-            [['descrip_pago'], 'filter', 'filter' => 'strtoupper'],
+            [['nota_pago'], 'string', 'max' => 500],
+            [['nota_pago'], 'filter', 'filter' => 'strtoupper'],
 
             [['nombre', 'apellido'], 'string', 'max' => 30],
             [['nombre', 'apellido'], 'filter', 'filter' => 'strtoupper'],
@@ -81,7 +82,7 @@ class CdPagos extends \yii\db\ActiveRecord
             'cod_factura' => Yii::t('frontend', 'Billing Code'),
             'nro_referencia' => Yii::t('frontend', 'Transfer or Reference Number'),
             'fecha_pago' => Yii::t('frontend', 'Payment Date'),
-            'descrip_pago' => Yii::t('frontend', 'Note Description Payment'),
+            'nota_pago' => Yii::t('frontend', 'Note Description Payment'),
             'nombre' => Yii::t('frontend', 'Name'),
             'apellido' => Yii::t('frontend', 'Last Name'),
             'nro_cedula' => Yii::t('frontend', 'Identity Card'),
@@ -116,6 +117,43 @@ class CdPagos extends \yii\db\ActiveRecord
     } 
 
     public function getIdFacturaConcat($id)
+    {   
+        $filter = (new \yii\db\Query())
+                        ->select(['d.cd_factura_pk AS id'])
+                        ->from('cd_propietarios a')
+                        ->innerJoin('user b','b.id = a.cod_user')
+                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
+                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
+                        ->innerJoin('cd_pagos e','e.cod_factura = d.cd_factura_pk');
+
+        $result = (new \yii\db\Query())
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
+                        ->from('cd_propietarios a')
+                        ->innerJoin('user b','b.id = a.cod_user')
+                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
+                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
+                        ->where (['and','b.id='.$id.'', 'd.estatus_factura = false', ['not in', 'd.cd_factura_pk', $filter]])
+                        ->all();
+                        
+        return $result;
+    }
+
+    public function getEstatusPago($id)
+    {
+        $result = (new \yii\db\Query())
+                        ->select(['e.estatus_pago AS status', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
+                        ->from('cd_propietarios a')
+                        ->innerJoin('user b','b.id = a.cod_user')
+                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
+                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
+                        ->innerJoin('cd_pagos e','e.cod_factura = d.cd_factura_pk')
+                        ->where (['e.cd_pago_pk' => $id]) 
+                        ->one();
+                        
+        return $result;
+    }
+
+    public function getUpdatePago($id)
     {
         $result = (new \yii\db\Query())
                         ->select(['d.cd_factura_pk AS id', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
@@ -123,8 +161,12 @@ class CdPagos extends \yii\db\ActiveRecord
                         ->innerJoin('user b','b.id = a.cod_user')
                         ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
                         ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
-                        ->where (['b.id' => $id, 'd.estatus_factura' => false]) 
+                        ->innerJoin('cd_pagos e','e.cod_factura = d.cd_factura_pk')
+                        ->where (['e.cd_pago_pk' => $id]) 
                         ->all();
+                        
         return $result;
     }
+
+
 }

@@ -40,7 +40,7 @@ class CdTiposPagos extends \yii\db\ActiveRecord
     {
         return [
             'cd_tipo_pago_pk' => Yii::t('frontend', 'Cd Tipo Pago Pk'),
-            'descrip_pago' => Yii::t('frontend', 'Descrip Pago'),
+            'descrip_pago' => Yii::t('frontend', 'Payment Type'),
         ];
     }
 
