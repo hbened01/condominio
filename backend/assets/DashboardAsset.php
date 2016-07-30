@@ -56,6 +56,8 @@ class DashboardAsset extends AssetBundle
         'js/icheck.min.js',
         'js/funciones.js',
         'js/fileinput.min.js',
+        'js/es.js',
+        'https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

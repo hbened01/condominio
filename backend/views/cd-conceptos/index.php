@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel backend\models\CdConceptosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Concepts');
+$this->title = Yii::t('app', 'Conceptos');
 $this->params['breadcrumbs'][] = $this->title;
 
 $session = Yii::$app->session;

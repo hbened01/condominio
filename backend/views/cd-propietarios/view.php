@@ -34,7 +34,11 @@ $operaciones = $session->get('operaciones');
         'model' => $model,
         'attributes' => [
             'cd_propietarios_pk',
-            'cod_user',
+            [
+                'label' => 'Usuario',
+                'value'=> $model->usuario($model->cod_user),
+
+            ],
             'nro_piso',
             'nombre',
             'apellido',

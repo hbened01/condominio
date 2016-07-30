@@ -5,49 +5,33 @@ use yii\grid\GridView;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\CdPropietariosSearch */
+/* @var $searchModel backend\models\MensajesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Propietarios');
+$this->title = Yii::t('app', 'Mensajes');
 $this->params['breadcrumbs'][] = $this->title;
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
 
 ?>
-<div class="cd-propietarios-index">
+<div class="mensajes-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('app', 'Crear Propietario'), ['create'], ['class' => 'btn btn-success']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('app', 'Crear Mensaje'), ['create'], ['class' => 'btn btn-success']) : '' ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'cd_propietarios_pk',
-            'nro_cedula',
-            // 'nro_piso',
-            'nombre',
-            'apellido',
-            // 'telf_local',
-            // 'telf_celular',
-            [
-                'attribute' => 'usuario',
-                'label' => 'Usuario',
-                'value' => function($data){
-                    return $data->usuario($data->cod_user); 
-                },
-            ],
-            // 'email:email',
-            // 'alicuota',
-            // 'quien_vive',
-            // 'direccion',
-            // 'direccion_cobro',
-            // 'update_usr:boolean',
+
+            'cd_mensajes_pk',
+            'texto:ntext',
+            //'msn_default:boolean',
 
             [
                 'class' => 'yii\grid\ActionColumn',
@@ -78,7 +62,7 @@ $operaciones = $session->get('operaciones');
                         if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                                         'title' => Yii::t('app', 'Eliminar'),
-                                        'data-confirm' => '¿Seguro que desea eliminar "'.$model->nombre.' '.$model->apellido.'"?',
+                                        'data-confirm' => '¿Seguro que desea eliminar el mensaje "'.$model->cd_mensajes_pk.'"?',
                                         'data-method' => 'POST'
                             ]);
                         }else{
@@ -88,15 +72,15 @@ $operaciones = $session->get('operaciones');
                 ],
                 'urlCreator' => function ($action, $model, $key, $index) {
                     if ($action === 'ver') {
-                        $url = Url::base().'/'.Yii::$app->controller->id.'/view?id='.$model->cd_propietarios_pk;
+                        $url = Url::base().'/'.Yii::$app->controller->id.'/view?id='.$model->cd_mensajes_pk;
                         return $url;
                     }
                     if ($action === 'actualizar') {
-                        $url = Url::base().'/'.Yii::$app->controller->id.'/update?id='.$model->cd_propietarios_pk;
+                        $url = Url::base().'/'.Yii::$app->controller->id.'/update?id='.$model->cd_mensajes_pk;
                         return $url;
                     }
                     if ($action === 'eliminar') {
-                        $url = Url::base().'/'.Yii::$app->controller->id.'/delete?id='.$model->cd_propietarios_pk;
+                        $url = Url::base().'/'.Yii::$app->controller->id.'/delete?id='.$model->cd_mensajes_pk;
                         return $url;
                     }
                 }

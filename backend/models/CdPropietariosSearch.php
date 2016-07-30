@@ -12,6 +12,7 @@ use backend\models\CdPropietarios;
  */
 class CdPropietariosSearch extends CdPropietarios
 {
+    public $usuario;
     /**
      * @inheritdoc
      */
@@ -19,7 +20,7 @@ class CdPropietariosSearch extends CdPropietarios
     {
         return [
             [['cd_propietarios_pk', 'cod_user'], 'integer'],
-            [['nro_piso', 'nombre', 'apellido', 'telf_local', 'telf_celular', 'email', 'quien_vive', 'direccion', 'direccion_cobro'], 'safe'],
+            [['nro_piso', 'nombre','usuario', 'apellido', 'telf_local', 'telf_celular', 'email', 'quien_vive', 'direccion', 'direccion_cobro'], 'safe'],
             [['nro_cedula', 'alicuota'], 'number'],
             [['update_usr'], 'boolean'],
         ];
@@ -45,11 +46,19 @@ class CdPropietariosSearch extends CdPropietarios
     {
         $query = CdPropietarios::find();
 
+        $query->joinWith(['user']);
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['usuario'] = [
+            'asc' => ['user.username' => SORT_ASC],
+            'desc' => ['user.username' => SORT_DESC],
+        ];
+
 
         $this->load($params);
 
@@ -61,22 +70,21 @@ class CdPropietariosSearch extends CdPropietarios
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'cd_propietarios_pk' => $this->cd_propietarios_pk,
-            'cod_user' => $this->cod_user,
-            'nro_cedula' => $this->nro_cedula,
-            'alicuota' => $this->alicuota,
-            'update_usr' => $this->update_usr,
+            'cd_propietarios.cd_propietarios_pk' => $this->cd_propietarios_pk,
+            'cd_propietarios.nro_cedula' => $this->nro_cedula,
+            'cd_propietarios.alicuota' => $this->alicuota,
         ]);
 
-        $query->andFilterWhere(['like', 'nro_piso', $this->nro_piso])
-            ->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'apellido', $this->apellido])
-            ->andFilterWhere(['like', 'telf_local', $this->telf_local])
-            ->andFilterWhere(['like', 'telf_celular', $this->telf_celular])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'quien_vive', $this->quien_vive])
-            ->andFilterWhere(['like', 'direccion', $this->direccion])
-            ->andFilterWhere(['like', 'direccion_cobro', $this->direccion_cobro]);
+        $query->andFilterWhere(['like', 'cd_propietarios.nro_piso', $this->nro_piso])
+            ->andFilterWhere(['like', 'cd_propietarios.nombre', $this->nombre])
+            ->andFilterWhere(['like', 'cd_propietarios.apellido', $this->apellido])
+            // ->andFilterWhere(['like', 'telf_local', $this->telf_local])
+            // ->andFilterWhere(['like', 'telf_celular', $this->telf_celular])
+            ->andFilterWhere(['like', 'cd_propietarios.email', $this->email])
+            // ->andFilterWhere(['like', 'quien_vive', $this->quien_vive])
+            // ->andFilterWhere(['like', 'direccion', $this->direccion])
+            // ->andFilterWhere(['like', 'direccion_cobro', $this->direccion_cobro])
+            ->andFilterWhere(['like', 'user.username', $this->usuario]);
 
         return $dataProvider;
     }

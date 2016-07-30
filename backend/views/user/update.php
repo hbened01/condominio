@@ -26,7 +26,7 @@ $operaciones = $session->get('operaciones');
         ],
     ]) : '' ?>
 </p>
-<div class="user-update col-md-5">
+<div class="user-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

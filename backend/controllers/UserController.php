@@ -71,9 +71,13 @@ class UserController extends BaseController
     {
         $model = new UserForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->saveNewUser()) {
-            Yii::$app->session->setFlash('success', 'El usuario fue creado exitosamente.');
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->saveNewUser()) {
+                Yii::$app->session->setFlash('success', 'El usuario fue creado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                Yii::$app->session->setFlash('error', 'El usuario no pudo ser creado.');
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -95,9 +99,13 @@ class UserController extends BaseController
 
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->updateNewUser()) {
-            Yii::$app->session->setFlash('success', 'El usuario fue actualizado exitosamente.');
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->updateNewUser()) {
+                Yii::$app->session->setFlash('success', 'El usuario fue actualizado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                Yii::$app->session->setFlash('error', 'El usuario no pudo ser actualizado.');
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -115,12 +123,11 @@ class UserController extends BaseController
     {
         if ($this->findModel($id)->delete()) {
             Yii::$app->session->setFlash('success', 'El usuario fue eliminado exitosamente.');
-            return $this->redirect(['index']);
         }
         else {
             Yii::$app->session->setFlash('error', 'El usuario no pudo ser eliminado. Por favor intente de nuevo');
-            return $this->redirect(['index']);
         }
+        return $this->redirect(['index']);
     }
 
 

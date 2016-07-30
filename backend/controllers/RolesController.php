@@ -80,8 +80,17 @@ class RolesController extends BaseController
         $model = new Roles();
         $tipoOperaciones = Operaciones::find()->select(['id', 'descripcion as nombre'])->where($permitirSuperUsuario)->all();
      
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'El rol fue creado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                Yii::$app->session->setFlash('error', 'El rol no pudo ser creado.');
+                return $this->render('create', [
+                    'model' => $model,
+                    'tipoOperaciones' => $tipoOperaciones
+                ]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -121,7 +130,14 @@ class RolesController extends BaseController
             if ($model->save()) {
                 $session = Yii::$app->session;
                 $session->set('operaciones', LoginForm::permittedOperations());
+                Yii::$app->session->setFlash('success', 'El rol fue actualizado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                Yii::$app->session->setFlash('error', 'El rol no pudo ser actualizado.');
+                return $this->render('update', [
+                    'model' => $model,
+                    'tipoOperaciones' => $tipoOperaciones
+                ]);
             }
         } else {
             return $this->render('update', [
@@ -144,7 +160,12 @@ class RolesController extends BaseController
         }
 
         $this->findModel($id)->delete();
-
+        if ($this->findModel($id)->delete()) {
+            Yii::$app->session->setFlash('success', 'El rol fue eliminado exitosamente.');
+        }
+        else {
+            Yii::$app->session->setFlash('error', 'El rol no pudo ser eliminado.');
+        }
         return $this->redirect(['index']);
     }
 

@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CdConceptos */
 
-$this->title = Yii::t('app', 'Create Conceptos');
+$this->title = Yii::t('app', 'Crear Conceptos');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Conceptos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

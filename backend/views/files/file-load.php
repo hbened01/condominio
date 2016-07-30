@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 /* @var $searchModel backend\models\OperacionesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Load and Process File');
+$this->title = Yii::t('app', 'Carga y Procesamiento de Facturas');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="operaciones-index">
@@ -23,15 +23,31 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="box-header with-border">
               <i class="glyphicons glyphicons-cloud-upload"></i>
 
-              <h3 class="box-title">Upload Document</h3>
+              <h3 class="box-title">Carga del Archivo de Facturas</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <?php $form = ActiveForm::begin(['id' => 'FileLoadForm','options' => ['enctype' => 'multipart/form-data']]); ?>
-                        <br>
                         <label class="control-label">Selecione archivo</label>
-                      <?= $form->field($model, 'file')->fileInput(['multiple' => true,'class' =>'file'])->label(false) ?>
-                        <br>
+                        <?php   
+                                echo $form->field($model, 'file')->widget(FileInput::classname(), [ 
+                                    //'options' => ['accept' => 'image/*','multiple' => true],
+                                      'pluginOptions' => [
+                                                  'browseIcon' => '<i class="glyphicons glyphicons-file-import"></i> ',
+                                                  'showPreview' => true,
+                                                  'showCaption' => true,
+                                                  'showRemove' => true,
+                                                  'showUpload' => true,
+                                                  'filename'=>'copiacondc',
+                                                  'browseLabel' =>  'Buscar Archivo',
+                                                  'uploadUrl' => Url::to(['files/file-process']),
+                                                  'allowedFileExtensions'=>['csv'],
+                                                  'language' => 'es'
+                                                  //'maxFileCount' => 10
+                                                  ]
+                                      ]
+                                )->label(false);
+                        ?>
                 <?php ActiveForm::end(); ?>
             </div>
             <!-- /.box-body -->

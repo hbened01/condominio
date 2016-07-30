@@ -42,6 +42,7 @@ class CdPropietarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['cod_user','nro_cedula','nombre', 'apellido','nro_piso','email','telf_local'], 'required'],
             [['cod_user'], 'integer'],
             [['nro_cedula', 'alicuota'], 'number'],
             [['update_usr'], 'boolean'],
@@ -61,7 +62,7 @@ class CdPropietarios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_propietarios_pk' => Yii::t('app', 'Cd Propietarios Pk'),
+            'cd_propietarios_pk' => Yii::t('app', 'Código Propietario'),
             'cod_user' => Yii::t('app', 'Cod User'),
             'nro_piso' => Yii::t('app', 'Nro Piso'),
             'nombre' => Yii::t('app', 'Nombre'),
@@ -74,15 +75,21 @@ class CdPropietarios extends \yii\db\ActiveRecord
             'quien_vive' => Yii::t('app', 'Quien Vive'),
             'direccion' => Yii::t('app', 'Direccion'),
             'direccion_cobro' => Yii::t('app', 'Direccion Cobro'),
-            'update_usr' => Yii::t('app', 'Update Usr'),
+            'update_usr' => Yii::t('app', 'Propietario Actualizado'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCodUser()
+    public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'cod_user']);
+    }
+
+    public function usuario($id)
+    {
+        $model = User::find()->where(['id' => $id])->one();
+        return $model?$model->username:null;
     }
 }

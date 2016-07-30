@@ -59,9 +59,10 @@ $operaciones = $session->get('operaciones');
                                 </div>
                                 <div class="pull-right">
                                     <?=  
-                                          Html::beginForm(['/site/logout'], 'post').
-                                          Html::submitButton('Logout. ( ' . Yii::$app->user->identity->username . ' ) <i class="fa fa-power-off"></i> ',['class' => 'btn btn-default btn-flat']).
-                                          Html::endForm();
+                                          // Html::beginForm(['/site/logout'], 'post').
+                                          // Html::submitButton('Logout. ( ' . Yii::$app->user->identity->username . ' ) <i class="fa fa-power-off"></i> ',['class' => 'btn btn-default btn-flat']).
+                                          // Html::endForm();
+                                    Html::a(Yii::t('frontend', 'Logout').'( ' . Yii::$app->user->identity->username . ' )  <i class="fa fa-power-off"></i>', ['/site/logout'], ['data' => ['confirm' => Yii::t('frontend', 'Sure to log off?'), 'method' => 'post'],'class' => 'btn btn-default btn-flat']);
                                      ?>
                                 </div>
                               </li>
@@ -133,6 +134,18 @@ $operaciones = $session->get('operaciones');
                     <?php endif;?>
                   </ul>
                 </li>
+                <li class="treeview">
+                  <a href="#">
+                    <i class="glyphicons glyphicons-invoice"></i>&nbsp&nbsp 
+                    <span>Facturas</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <?php if(in_array('mensajes-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/mensajes"><i class="glyphicons glyphicons-folder-open"></i>&nbsp&nbsp Mensajes</a></li>
+                    <?php endif;?>
+                  </ul>
+                </li>
               </ul>
             </section>
             <!-- /.sidebar -->
@@ -153,7 +166,14 @@ $operaciones = $session->get('operaciones');
 
                 <!-- Main content -->
                 <section class="content">
-                     <?= Alert::widget() ?>
+                    <?php 
+                        foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+                          echo '<div class="alert alert-' . $key . '">
+                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'
+                                  . $message . 
+                               '</div>';
+                        }
+                    ?>
                     <?= $content ?>
                 </section>
             </div>

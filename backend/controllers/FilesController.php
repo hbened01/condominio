@@ -13,23 +13,27 @@ class FilesController extends BaseController {
     public function actionFileLoad()
     {
         $model = new FileLoad();
-
-        if (Yii::$app->request->isPost) {
-            $model->file = UploadedFile::getInstance($model, 'file');
-                print_r($model->file);
-            if ($model->upload()) {
-                
-            }
-        } else {
-            //print_r('holaaaaaaaaaa');
-        }
-
         return $this->render('file-load', [
                 'model' => $model,
         ]);
     }
  
-    // public function actionFileProcess() { 
-        
-    // }
+    public function actionFileProcess() { 
+        $model = new FileLoad();
+
+        if (Yii::$app->request->isAjax) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+                // print_r($model->file);
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            if ($model->upload()) {
+                return [
+                    'success' => 'Archivo cargado'
+                ];
+            }else{
+                return [
+                    'error' => 'El archivo no se pudo cargar'
+                ];
+            }
+        }
+    }
 }

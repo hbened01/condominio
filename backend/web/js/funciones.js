@@ -32,4 +32,9 @@ $(document).ready(function(){
 		  	}
 		});
     });
+
+
+    CKEDITOR.replace('editor');
+    //bootstrap WYSIHTML5 - text editor
+    $(".textarea").wysihtml5();
 });

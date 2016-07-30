@@ -65,8 +65,16 @@ class CdEdificiosController extends Controller
     {
         $model = new CdEdificios();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_edificios_pk]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'El edificio fue creado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->cd_edificios_pk]);
+            } else {
+                Yii::$app->session->setFlash('error', 'El edificio no pudo ser creado.');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -84,8 +92,16 @@ class CdEdificiosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_edificios_pk]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'El edificio fue actualizado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->cd_edificios_pk]);
+            } else {
+                Yii::$app->session->setFlash('error', 'El edificio no pudo ser actualizado.');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,8 +117,11 @@ class CdEdificiosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        if ($this->findModel($id)->delete()) {
+            Yii::$app->session->setFlash('success', 'El edificio fue eliminado exitosamente.');
+        } else {
+            Yii::$app->session->setFlash('error', 'El edificio no pudo ser eliminado.');
+        }
         return $this->redirect(['index']);
     }
 

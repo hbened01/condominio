@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\CdConceptos;
-use backend\models\CdConceptosSearch;
+use backend\models\Mensajes;
+use backend\models\MensajesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CdConceptosController implements the CRUD actions for CdConceptos model.
+ * MensajesController implements the CRUD actions for Mensajes model.
  */
-class CdConceptosController extends Controller
+class MensajesController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class CdConceptosController extends Controller
     }
 
     /**
-     * Lists all CdConceptos models.
+     * Lists all Mensajes models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CdConceptosSearch();
+        $searchModel = new MensajesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class CdConceptosController extends Controller
     }
 
     /**
-     * Displays a single CdConceptos model.
+     * Displays a single Mensajes model.
      * @param integer $id
      * @return mixed
      */
@@ -57,20 +57,20 @@ class CdConceptosController extends Controller
     }
 
     /**
-     * Creates a new CdConceptos model.
+     * Creates a new Mensajes model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CdConceptos();
+        $model = new Mensajes();
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'El concepto fue creado exitosamente.');
-                return $this->redirect(['view', 'id' => $model->cd_conceptos_pk]);
+                Yii::$app->session->setFlash('success', 'El mensaje fue creado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->cd_mensajes_pk]);
             } else {
-                Yii::$app->session->setFlash('error', 'El concepto no pudo ser creado.');
+                Yii::$app->session->setFlash('error', 'El mensaje no pudo ser creado.');
                 return $this->render('create', [
                     'model' => $model,
                 ]);
@@ -83,7 +83,7 @@ class CdConceptosController extends Controller
     }
 
     /**
-     * Updates an existing CdConceptos model.
+     * Updates an existing Mensajes model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,10 +94,10 @@ class CdConceptosController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'El concepto fue actualizado exitosamente.');
-                return $this->redirect(['view', 'id' => $model->cd_conceptos_pk]);
+                Yii::$app->session->setFlash('success', 'El mensaje fue actualizado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->cd_mensajes_pk]);
             } else {
-                Yii::$app->session->setFlash('error', 'El concepto no pudo ser actualizado.');
+                Yii::$app->session->setFlash('error', 'El mensaje no pudo ser actualizado.');
                 return $this->render('create', [
                     'model' => $model,
                 ]);
@@ -110,7 +110,7 @@ class CdConceptosController extends Controller
     }
 
     /**
-     * Deletes an existing CdConceptos model.
+     * Deletes an existing Mensajes model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -118,23 +118,24 @@ class CdConceptosController extends Controller
     public function actionDelete($id)
     {
         if ($this->findModel($id)->delete()) {
-            Yii::$app->session->setFlash('success', 'El concepto fue eliminado exitosamente.');
+            Yii::$app->session->setFlash('success', 'El mensaje fue eliminado exitosamente.');
         } else {
-            Yii::$app->session->setFlash('error', 'El concepto no pudo ser eliminado.');
+            Yii::$app->session->setFlash('error', 'El mensaje no pudo ser eliminado.');
         }
+
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the CdConceptos model based on its primary key value.
+     * Finds the Mensajes model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CdConceptos the loaded model
+     * @return Mensajes the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CdConceptos::findOne($id)) !== null) {
+        if (($model = Mensajes::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -65,8 +65,16 @@ class CdConjuntosController extends Controller
     {
         $model = new CdConjuntos();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_conjuntos_pk]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'El conjunto fue creado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->cd_conjuntos_pk]);
+            } else {
+                Yii::$app->session->setFlash('error', 'El conjunto no pudo ser creado.');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -84,8 +92,16 @@ class CdConjuntosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_conjuntos_pk]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'El conjunto fue actualizado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->cd_conjuntos_pk]);
+            } else {
+                Yii::$app->session->setFlash('error', 'El conjunto no pudo ser actualizado.');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,8 +117,12 @@ class CdConjuntosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $this->findModel($id)->delete()
+        if ($this->findModel($id)->delete()) {
+            Yii::$app->session->setFlash('success', 'El conjunto fue eliminado exitosamente.');
+        } else {
+            Yii::$app->session->setFlash('error', 'El conjunto no pudo ser eliminado.');
+        }
         return $this->redirect(['index']);
     }
 
