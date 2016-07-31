@@ -25,11 +25,6 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         ),
         'k' => 
         array (
-<<<<<<< HEAD
-            'kartik\\plugins\\fileinput\\' => 25,
-            'kartik\\file\\' => 12,
-            'kartik\\base\\' => 12,
-=======
             'kartik\\widgets\\' => 15,
             'kartik\\typeahead\\' => 17,
             'kartik\\touchspin\\' => 17,
@@ -52,7 +47,6 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
             'kartik\\base\\' => 12,
             'kartik\\alert\\' => 13,
             'kartik\\affix\\' => 13,
->>>>>>> cond_humberto_7
         ),
         'c' => 
         array (
@@ -98,8 +92,6 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
-<<<<<<< HEAD
-=======
         'kartik\\widgets\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widgets',
@@ -140,13 +132,10 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-rangeinput',
         ),
->>>>>>> cond_humberto_7
         'kartik\\plugins\\fileinput\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/bootstrap-fileinput',
         ),
-<<<<<<< HEAD
-=======
         'kartik\\plugins\\depdrop\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/dependent-dropdown',
@@ -159,13 +148,10 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-activeform',
         ),
->>>>>>> cond_humberto_7
         'kartik\\file\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-fileinput',
         ),
-<<<<<<< HEAD
-=======
         'kartik\\depdrop\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-depdrop',
@@ -182,13 +168,10 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-colorinput',
         ),
->>>>>>> cond_humberto_7
         'kartik\\base\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base',
         ),
-<<<<<<< HEAD
-=======
         'kartik\\alert\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-alert',
@@ -197,7 +180,6 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-affix',
         ),
->>>>>>> cond_humberto_7
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',

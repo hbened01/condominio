@@ -933,27 +933,6 @@
         "installation-source": "dist"
     },
     {
-<<<<<<< HEAD
-        "name": "kartik-v/bootstrap-fileinput",
-        "version": "v4.3.3",
-        "version_normalized": "4.3.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-            "reference": "8c14423e41cfe6c6e0c1935a6c31a1136240d5d9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/8c14423e41cfe6c6e0c1935a6c31a1136240d5d9",
-            "reference": "8c14423e41cfe6c6e0c1935a6c31a1136240d5d9",
-            "shasum": ""
-        },
-        "time": "2016-07-09 12:56:05",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.3.x-dev"
-=======
         "name": "kartik-v/yii2-krajee-base",
         "version": "1.8.5",
         "version_normalized": "1.8.5.0",
@@ -976,17 +955,12 @@
         "extra": {
             "branch-alias": {
                 "dev-master": "1.8.x-dev"
->>>>>>> cond_humberto_7
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-<<<<<<< HEAD
-                "kartik\\plugins\\fileinput\\": ""
-=======
                 "kartik\\base\\": ""
->>>>>>> cond_humberto_7
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1000,53 +974,6 @@
                 "homepage": "http://www.krajee.com/"
             }
         ],
-<<<<<<< HEAD
-        "description": "An enhanced HTML 5 file input for Bootstrap 3.x with features for file preview for many file types, multiple selection, ajax uploads, and more.",
-        "homepage": "https://github.com/kartik-v/bootstrap-fileinput",
-        "keywords": [
-            "ajax",
-            "bootstrap",
-            "delete",
-            "file",
-            "image",
-            "input",
-            "jquery",
-            "multiple",
-            "preview",
-            "progress",
-            "upload"
-        ]
-    },
-    {
-        "name": "kartik-v/yii2-krajee-base",
-        "version": "1.8.5",
-        "version_normalized": "1.8.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kartik-v/yii2-krajee-base.git",
-            "reference": "7f7a45ffe193fe673f72b9effc01b08499f2a454"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/7f7a45ffe193fe673f72b9effc01b08499f2a454",
-            "reference": "7f7a45ffe193fe673f72b9effc01b08499f2a454",
-            "shasum": ""
-        },
-        "require": {
-            "yiisoft/yii2-bootstrap": "@dev"
-        },
-        "time": "2016-05-07 19:45:52",
-        "type": "yii2-extension",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.8.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "kartik\\base\\": ""
-=======
         "description": "Base library and foundation components for all Yii2 Krajee extensions.",
         "homepage": "https://github.com/kartik-v/yii2-krajee-base",
         "keywords": [
@@ -1235,16 +1162,11 @@
         "autoload": {
             "psr-4": {
                 "kartik\\switchinput\\": ""
->>>>>>> cond_humberto_7
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-<<<<<<< HEAD
-            "BSD-3-Clause"
-=======
             "BSD 3-Clause"
->>>>>>> cond_humberto_7
         ],
         "authors": [
             {
@@ -1253,15 +1175,6 @@
                 "homepage": "http://www.krajee.com/"
             }
         ],
-<<<<<<< HEAD
-        "description": "Base library and foundation components for all Yii2 Krajee extensions.",
-        "homepage": "https://github.com/kartik-v/yii2-krajee-base",
-        "keywords": [
-            "base",
-            "extension",
-            "foundation",
-            "krajee",
-=======
         "description": "A Yii2 wrapper widget for the Bootstrap Switch plugin to use checkboxes & radios as toggle switchinputes (sub repo split from yii2-widgets)",
         "homepage": "https://github.com/kartik-v/yii2-widget-switchinput",
         "keywords": [
@@ -1273,43 +1186,11 @@
             "plugin",
             "switchinput",
             "toggle",
->>>>>>> cond_humberto_7
             "widget",
             "yii2"
         ]
     },
     {
-<<<<<<< HEAD
-        "name": "kartik-v/yii2-widget-fileinput",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
-            "reference": "6fc8922716bf0b3638c67ff0895a9ff688b6c027"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/6fc8922716bf0b3638c67ff0895a9ff688b6c027",
-            "reference": "6fc8922716bf0b3638c67ff0895a9ff688b6c027",
-            "shasum": ""
-        },
-        "require": {
-            "kartik-v/bootstrap-fileinput": "~4.2",
-            "kartik-v/yii2-krajee-base": "~1.7"
-        },
-        "time": "2016-07-23 15:30:48",
-        "type": "yii2-extension",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "kartik\\file\\": ""
-=======
         "name": "kartik-v/yii2-widget-spinner",
         "version": "v1.0.0",
         "version_normalized": "1.0.0.0",
@@ -1439,7 +1320,6 @@
         "autoload": {
             "psr-4": {
                 "kartik\\select2\\": ""
->>>>>>> cond_humberto_7
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1453,21 +1333,6 @@
                 "homepage": "http://www.krajee.com/"
             }
         ],
-<<<<<<< HEAD
-        "description": "An enhanced FileInput widget for Bootstrap 3.x with file preview, multiple selection, and more features (sub repo split from yii2-widgets)",
-        "homepage": "https://github.com/kartik-v/yii2-widget-fileinput",
-        "keywords": [
-            "extension",
-            "file",
-            "form",
-            "input",
-            "jquery",
-            "plugin",
-            "upload",
-            "widget",
-            "yii2"
-        ]
-=======
         "description": "Enhanced Yii2 wrapper for the Select2 jQuery plugin (sub repo split from yii2-widgets).",
         "homepage": "https://github.com/kartik-v/yii2-widget-select2",
         "keywords": [
@@ -2335,6 +2200,5 @@
             "npm",
             "package"
         ]
->>>>>>> cond_humberto_7
     }
 ]
