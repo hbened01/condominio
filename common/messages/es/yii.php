@@ -18,6 +18,7 @@
  */
 return [
     '{percent}% Complete' => '',
+    'The combination {values} of {attributes} has already been taken.' => '@@@@',
     '(not set)' => '(no definido)',
     'An internal server error occurred.' => 'Hubo un error interno del servidor.',
     'Are you sure you want to delete this item?' => '¿Está seguro de eliminar este elemento?',

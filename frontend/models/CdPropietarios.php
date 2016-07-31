@@ -53,7 +53,7 @@ class CdPropietarios extends \yii\db\ActiveRecord
             [['nombre', 'apellido'], 'filter', 'filter' => 'strtoupper'],
             [['nombre', 'apellido'], 'match' ,'pattern'=>'/^[a-zA-ZÑñ" "]+$/u', 'message'=> 'Solo introducir letras'],
 
-            [['telf_local', 'telf_celular'], 'match' ,'pattern'=>'/^[0-9-]+$/u', 'message'=> 'Solo introducir números'],
+            [['telf_local', 'telf_celular'], 'match' ,'pattern'=>'/^[0-9-()]+$/u', 'message'=> 'Solo introducir números'],
 
             [['email'], 'string', 'max' => 256],
             ['email', 'filter', 'filter' => 'trim'],
@@ -77,17 +77,17 @@ class CdPropietarios extends \yii\db\ActiveRecord
         return [
             'cd_propietarios_pk' => Yii::t('frontend', 'Cd Propietarios Pk'),
             'cod_user' => Yii::t('frontend', 'Cod User'),
-            'nro_piso' => Yii::t('frontend', 'Nro. Piso'),
-            'nombre' => Yii::t('frontend', 'Nombre'),
-            'apellido' => Yii::t('frontend', 'Apellido'),
+            'nro_piso' => Yii::t('frontend', 'Floor number'),
+            'nombre' => Yii::t('frontend', 'Name'),
+            'apellido' => Yii::t('frontend', 'Last Name'),
             'nro_cedula' => Yii::t('frontend', 'Nro. Cedula'),
-            'telf_local' => Yii::t('frontend', 'Telf. Local'),
-            'telf_celular' => Yii::t('frontend', 'Telf. Celular'),
-            'email' => Yii::t('frontend', 'Email Personal'),
-            'alicuota' => Yii::t('frontend', 'Alicuota'),
-            'quien_vive' => Yii::t('frontend', 'Quien Vive?'),
-            'direccion' => Yii::t('frontend', 'Dirección de Residencia'),
-            'direccion_cobro' => Yii::t('frontend', 'Dirección de Cobro'),
+            'telf_local' => Yii::t('frontend', 'Local Phone'),
+            'telf_celular' => Yii::t('frontend', 'Cell phone'),
+            'email' => Yii::t('frontend', 'Personal Mail'),
+            'alicuota' => Yii::t('frontend', 'Aliquot'),
+            'quien_vive' => Yii::t('frontend', 'Who Lives?'),
+            'direccion' => Yii::t('frontend', 'Residence Address'),
+            'direccion_cobro' => Yii::t('frontend', 'Billing Address'),
             'update_usr' => Yii::t('frontend', 'Update Usr'),
         ];
     }
@@ -123,7 +123,6 @@ class CdPropietarios extends \yii\db\ActiveRecord
                         ->where (['b.username' => $usr])
                         ->one();
                         
-
         if (!empty($result['update_usr'])){
             return true;
 

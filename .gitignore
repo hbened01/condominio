@@ -16,7 +16,11 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
+<<<<<<< HEAD
 /vendor/b*
+=======
+#/vendor
+>>>>>>> cond_humberto_7
 
 # composer itself is not needed
 composer.phar

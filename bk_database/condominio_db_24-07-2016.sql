@@ -5,11 +5,11 @@
 -- Dumped from database version 9.5.3
 -- Dumped by pg_dump version 9.5.3
 
--- Started on 2016-07-24 20:12:50 VET
+-- Started on 2016-07-24 21:19:05 VET
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET client_encoding = 'LATIN9';
+SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
@@ -17,16 +17,16 @@ SET row_security = off;
 
 --
 -- TOC entry 1 (class 3079 OID 12433)
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2505 (class 0 OID 0)
+-- TOC entry 2538 (class 0 OID 0)
 -- Dependencies: 1
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -39,8 +39,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 181 (class 1259 OID 18642)
--- Name: cd_aguas; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 181 (class 1259 OID 88214)
+-- Name: cd_aguas; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_aguas (
@@ -53,11 +53,9 @@ CREATE TABLE cd_aguas (
 );
 
 
-ALTER TABLE cd_aguas OWNER TO hjtecnos;
-
 --
--- TOC entry 182 (class 1259 OID 18648)
--- Name: cd_aguas_cd_aguas_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 182 (class 1259 OID 88220)
+-- Name: cd_aguas_cd_aguas_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_aguas_cd_aguas_pk_seq
@@ -68,20 +66,18 @@ CREATE SEQUENCE cd_aguas_cd_aguas_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_aguas_cd_aguas_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2506 (class 0 OID 0)
+-- TOC entry 2539 (class 0 OID 0)
 -- Dependencies: 182
--- Name: cd_aguas_cd_aguas_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_aguas_cd_aguas_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_aguas_cd_aguas_pk_seq OWNED BY cd_aguas.cd_aguas_pk;
 
 
 --
--- TOC entry 183 (class 1259 OID 18650)
--- Name: cd_aptos; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 183 (class 1259 OID 88222)
+-- Name: cd_aptos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_aptos (
@@ -91,11 +87,9 @@ CREATE TABLE cd_aptos (
 );
 
 
-ALTER TABLE cd_aptos OWNER TO hjtecnos;
-
 --
--- TOC entry 184 (class 1259 OID 18653)
--- Name: cd_chequeras; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 184 (class 1259 OID 88225)
+-- Name: cd_chequeras; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_chequeras (
@@ -108,11 +102,9 @@ CREATE TABLE cd_chequeras (
 );
 
 
-ALTER TABLE cd_chequeras OWNER TO hjtecnos;
-
 --
--- TOC entry 185 (class 1259 OID 18656)
--- Name: cd_chequeras_cd_chequeras_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 185 (class 1259 OID 88228)
+-- Name: cd_chequeras_cd_chequeras_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_chequeras_cd_chequeras_pk_seq
@@ -123,20 +115,18 @@ CREATE SEQUENCE cd_chequeras_cd_chequeras_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_chequeras_cd_chequeras_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2507 (class 0 OID 0)
+-- TOC entry 2540 (class 0 OID 0)
 -- Dependencies: 185
--- Name: cd_chequeras_cd_chequeras_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_chequeras_cd_chequeras_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_chequeras_cd_chequeras_pk_seq OWNED BY cd_chequeras.cd_chequeras_pk;
 
 
 --
--- TOC entry 186 (class 1259 OID 18658)
--- Name: cd_conceptos; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 186 (class 1259 OID 88230)
+-- Name: cd_conceptos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_conceptos (
@@ -147,11 +137,9 @@ CREATE TABLE cd_conceptos (
 );
 
 
-ALTER TABLE cd_conceptos OWNER TO hjtecnos;
-
 --
--- TOC entry 187 (class 1259 OID 18661)
--- Name: cd_conceptos_cd_conceptos_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 187 (class 1259 OID 88233)
+-- Name: cd_conceptos_cd_conceptos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_conceptos_cd_conceptos_pk_seq
@@ -162,20 +150,18 @@ CREATE SEQUENCE cd_conceptos_cd_conceptos_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_conceptos_cd_conceptos_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2508 (class 0 OID 0)
+-- TOC entry 2541 (class 0 OID 0)
 -- Dependencies: 187
--- Name: cd_conceptos_cd_conceptos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_conceptos_cd_conceptos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_conceptos_cd_conceptos_pk_seq OWNED BY cd_conceptos.cd_conceptos_pk;
 
 
 --
--- TOC entry 188 (class 1259 OID 18663)
--- Name: cd_conjuntos; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 188 (class 1259 OID 88235)
+-- Name: cd_conjuntos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_conjuntos (
@@ -185,11 +171,9 @@ CREATE TABLE cd_conjuntos (
 );
 
 
-ALTER TABLE cd_conjuntos OWNER TO hjtecnos;
-
 --
--- TOC entry 189 (class 1259 OID 18666)
--- Name: cd_conjuntos_cd_conjuntos_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 189 (class 1259 OID 88238)
+-- Name: cd_conjuntos_cd_conjuntos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_conjuntos_cd_conjuntos_pk_seq
@@ -200,20 +184,18 @@ CREATE SEQUENCE cd_conjuntos_cd_conjuntos_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_conjuntos_cd_conjuntos_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2509 (class 0 OID 0)
+-- TOC entry 2542 (class 0 OID 0)
 -- Dependencies: 189
--- Name: cd_conjuntos_cd_conjuntos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_conjuntos_cd_conjuntos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_conjuntos_cd_conjuntos_pk_seq OWNED BY cd_conjuntos.cd_conjuntos_pk;
 
 
 --
--- TOC entry 190 (class 1259 OID 18668)
--- Name: cd_deudas; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 190 (class 1259 OID 88240)
+-- Name: cd_deudas; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_deudas (
@@ -230,11 +212,9 @@ CREATE TABLE cd_deudas (
 );
 
 
-ALTER TABLE cd_deudas OWNER TO hjtecnos;
-
 --
--- TOC entry 191 (class 1259 OID 18671)
--- Name: cd_deudas_cd_deudas_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 191 (class 1259 OID 88243)
+-- Name: cd_deudas_cd_deudas_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_deudas_cd_deudas_pk_seq
@@ -245,20 +225,18 @@ CREATE SEQUENCE cd_deudas_cd_deudas_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_deudas_cd_deudas_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2510 (class 0 OID 0)
+-- TOC entry 2543 (class 0 OID 0)
 -- Dependencies: 191
--- Name: cd_deudas_cd_deudas_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_deudas_cd_deudas_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_deudas_cd_deudas_pk_seq OWNED BY cd_deudas.cd_deudas_pk;
 
 
 --
--- TOC entry 192 (class 1259 OID 18673)
--- Name: cd_edificios; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 192 (class 1259 OID 88245)
+-- Name: cd_edificios; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_edificios (
@@ -282,11 +260,9 @@ CREATE TABLE cd_edificios (
 );
 
 
-ALTER TABLE cd_edificios OWNER TO hjtecnos;
-
 --
--- TOC entry 193 (class 1259 OID 18694)
--- Name: cd_edificios_cd_edificios_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 193 (class 1259 OID 88266)
+-- Name: cd_edificios_cd_edificios_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_edificios_cd_edificios_pk_seq
@@ -297,20 +273,18 @@ CREATE SEQUENCE cd_edificios_cd_edificios_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_edificios_cd_edificios_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2511 (class 0 OID 0)
+-- TOC entry 2544 (class 0 OID 0)
 -- Dependencies: 193
--- Name: cd_edificios_cd_edificios_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_edificios_cd_edificios_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_edificios_cd_edificios_pk_seq OWNED BY cd_edificios.cd_edificios_pk;
 
 
 --
--- TOC entry 194 (class 1259 OID 18696)
--- Name: cd_fondos; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 194 (class 1259 OID 88268)
+-- Name: cd_fondos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_fondos (
@@ -327,11 +301,9 @@ CREATE TABLE cd_fondos (
 );
 
 
-ALTER TABLE cd_fondos OWNER TO hjtecnos;
-
 --
--- TOC entry 195 (class 1259 OID 18699)
--- Name: cd_fondos_cd_fondos_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 195 (class 1259 OID 88271)
+-- Name: cd_fondos_cd_fondos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_fondos_cd_fondos_pk_seq
@@ -342,20 +314,18 @@ CREATE SEQUENCE cd_fondos_cd_fondos_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_fondos_cd_fondos_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2512 (class 0 OID 0)
+-- TOC entry 2545 (class 0 OID 0)
 -- Dependencies: 195
--- Name: cd_fondos_cd_fondos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_fondos_cd_fondos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_fondos_cd_fondos_pk_seq OWNED BY cd_fondos.cd_fondos_pk;
 
 
 --
--- TOC entry 196 (class 1259 OID 18701)
--- Name: cd_historicos; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 196 (class 1259 OID 88273)
+-- Name: cd_historicos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_historicos (
@@ -372,11 +342,9 @@ CREATE TABLE cd_historicos (
 );
 
 
-ALTER TABLE cd_historicos OWNER TO hjtecnos;
-
 --
--- TOC entry 197 (class 1259 OID 18704)
--- Name: cd_historicos_cd_historicos_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 197 (class 1259 OID 88276)
+-- Name: cd_historicos_cd_historicos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_historicos_cd_historicos_pk_seq
@@ -387,20 +355,18 @@ CREATE SEQUENCE cd_historicos_cd_historicos_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_historicos_cd_historicos_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2513 (class 0 OID 0)
+-- TOC entry 2546 (class 0 OID 0)
 -- Dependencies: 197
--- Name: cd_historicos_cd_historicos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_historicos_cd_historicos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_historicos_cd_historicos_pk_seq OWNED BY cd_historicos.cd_historicos_pk;
 
 
 --
--- TOC entry 198 (class 1259 OID 18706)
--- Name: cd_mantenimientos; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 198 (class 1259 OID 88278)
+-- Name: cd_mantenimientos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_mantenimientos (
@@ -409,11 +375,9 @@ CREATE TABLE cd_mantenimientos (
 );
 
 
-ALTER TABLE cd_mantenimientos OWNER TO hjtecnos;
-
 --
--- TOC entry 199 (class 1259 OID 18709)
--- Name: cd_mantenimientos_cd_mantenimientos_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 199 (class 1259 OID 88281)
+-- Name: cd_mantenimientos_cd_mantenimientos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_mantenimientos_cd_mantenimientos_pk_seq
@@ -424,20 +388,18 @@ CREATE SEQUENCE cd_mantenimientos_cd_mantenimientos_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_mantenimientos_cd_mantenimientos_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2514 (class 0 OID 0)
+-- TOC entry 2547 (class 0 OID 0)
 -- Dependencies: 199
--- Name: cd_mantenimientos_cd_mantenimientos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_mantenimientos_cd_mantenimientos_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_mantenimientos_cd_mantenimientos_pk_seq OWNED BY cd_mantenimientos.cd_mantenimientos_pk;
 
 
 --
--- TOC entry 200 (class 1259 OID 18711)
--- Name: cd_mov_chequeras; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 200 (class 1259 OID 88283)
+-- Name: cd_mov_chequeras; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_mov_chequeras (
@@ -452,11 +414,9 @@ CREATE TABLE cd_mov_chequeras (
 );
 
 
-ALTER TABLE cd_mov_chequeras OWNER TO hjtecnos;
-
 --
--- TOC entry 201 (class 1259 OID 18717)
--- Name: cd_mov_mes; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 201 (class 1259 OID 88289)
+-- Name: cd_mov_mes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_mov_mes (
@@ -470,11 +430,9 @@ CREATE TABLE cd_mov_mes (
 );
 
 
-ALTER TABLE cd_mov_mes OWNER TO hjtecnos;
-
 --
--- TOC entry 202 (class 1259 OID 18720)
--- Name: cd_observaciones; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 202 (class 1259 OID 88292)
+-- Name: cd_observaciones; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_observaciones (
@@ -483,11 +441,9 @@ CREATE TABLE cd_observaciones (
 );
 
 
-ALTER TABLE cd_observaciones OWNER TO hjtecnos;
-
 --
--- TOC entry 203 (class 1259 OID 18723)
--- Name: cd_observaciones_cd_observaciones_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 203 (class 1259 OID 88295)
+-- Name: cd_observaciones_cd_observaciones_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_observaciones_cd_observaciones_pk_seq
@@ -498,20 +454,61 @@ CREATE SEQUENCE cd_observaciones_cd_observaciones_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_observaciones_cd_observaciones_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2515 (class 0 OID 0)
+-- TOC entry 2548 (class 0 OID 0)
 -- Dependencies: 203
--- Name: cd_observaciones_cd_observaciones_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_observaciones_cd_observaciones_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_observaciones_cd_observaciones_pk_seq OWNED BY cd_observaciones.cd_observaciones_pk;
 
 
 --
--- TOC entry 204 (class 1259 OID 18725)
--- Name: cd_propietarios; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 227 (class 1259 OID 88575)
+-- Name: cd_pagos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cd_pagos (
+    cd_pago_pk integer NOT NULL,
+    cod_edificio smallint NOT NULL,
+    cod_apto smallint NOT NULL,
+    cod_tipo_pago smallint NOT NULL,
+    nro_transferencia_referencia numeric(50,0) NOT NULL,
+    fecha_pago date NOT NULL,
+    nota_descrip_pago character varying(255),
+    nombre character varying(30) NOT NULL,
+    apellido character varying(30) NOT NULL,
+    nro_cedula numeric(10,0) NOT NULL,
+    cod_tipo_doc smallint NOT NULL,
+    email character varying(255) NOT NULL
+);
+
+
+--
+-- TOC entry 230 (class 1259 OID 88596)
+-- Name: cd_pagos_cd_pago_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cd_pagos_cd_pago_pk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2549 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: cd_pagos_cd_pago_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cd_pagos_cd_pago_pk_seq OWNED BY cd_pagos.cd_pago_pk;
+
+
+--
+-- TOC entry 204 (class 1259 OID 88297)
+-- Name: cd_propietarios; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_propietarios (
@@ -532,11 +529,9 @@ CREATE TABLE cd_propietarios (
 );
 
 
-ALTER TABLE cd_propietarios OWNER TO hjtecnos;
-
 --
--- TOC entry 205 (class 1259 OID 18744)
--- Name: cd_propietarios_cd_propietarios_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 205 (class 1259 OID 88316)
+-- Name: cd_propietarios_cd_propietarios_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_propietarios_cd_propietarios_pk_seq
@@ -547,20 +542,18 @@ CREATE SEQUENCE cd_propietarios_cd_propietarios_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_propietarios_cd_propietarios_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2516 (class 0 OID 0)
+-- TOC entry 2550 (class 0 OID 0)
 -- Dependencies: 205
--- Name: cd_propietarios_cd_propietarios_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_propietarios_cd_propietarios_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_propietarios_cd_propietarios_pk_seq OWNED BY cd_propietarios.cd_propietarios_pk;
 
 
 --
--- TOC entry 206 (class 1259 OID 18746)
--- Name: cd_proveedores; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 206 (class 1259 OID 88318)
+-- Name: cd_proveedores; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE cd_proveedores (
@@ -570,11 +563,9 @@ CREATE TABLE cd_proveedores (
 );
 
 
-ALTER TABLE cd_proveedores OWNER TO hjtecnos;
-
 --
--- TOC entry 207 (class 1259 OID 18749)
--- Name: cd_proveedores_cd_proveedores_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 207 (class 1259 OID 88321)
+-- Name: cd_proveedores_cd_proveedores_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cd_proveedores_cd_proveedores_pk_seq
@@ -585,20 +576,85 @@ CREATE SEQUENCE cd_proveedores_cd_proveedores_pk_seq
     CACHE 1;
 
 
-ALTER TABLE cd_proveedores_cd_proveedores_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2517 (class 0 OID 0)
+-- TOC entry 2551 (class 0 OID 0)
 -- Dependencies: 207
--- Name: cd_proveedores_cd_proveedores_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: cd_proveedores_cd_proveedores_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cd_proveedores_cd_proveedores_pk_seq OWNED BY cd_proveedores.cd_proveedores_pk;
 
 
 --
--- TOC entry 208 (class 1259 OID 18751)
--- Name: facturas; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 232 (class 1259 OID 88618)
+-- Name: cd_tipos_docs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cd_tipos_docs (
+    cd_tipo_doc_pk smallint NOT NULL,
+    tipo_doc character varying(1) NOT NULL,
+    descrip_doc character varying(25) NOT NULL
+);
+
+
+--
+-- TOC entry 231 (class 1259 OID 88616)
+-- Name: cd_tipos_docs_cd_tipo_doc_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cd_tipos_docs_cd_tipo_doc_pk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2552 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: cd_tipos_docs_cd_tipo_doc_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cd_tipos_docs_cd_tipo_doc_pk_seq OWNED BY cd_tipos_docs.cd_tipo_doc_pk;
+
+
+--
+-- TOC entry 229 (class 1259 OID 88592)
+-- Name: cd_tipos_pagos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cd_tipos_pagos (
+    cd_tipo_pago_pk integer NOT NULL,
+    descrip_pago character varying(255) NOT NULL
+);
+
+
+--
+-- TOC entry 228 (class 1259 OID 88590)
+-- Name: cd_tipos_pagos_cd_tipo_pago_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cd_tipos_pagos_cd_tipo_pago_pk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2553 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: cd_tipos_pagos_cd_tipo_pago_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cd_tipos_pagos_cd_tipo_pago_pk_seq OWNED BY cd_tipos_pagos.cd_tipo_pago_pk;
+
+
+--
+-- TOC entry 208 (class 1259 OID 88323)
+-- Name: facturas; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE facturas (
@@ -609,44 +665,39 @@ CREATE TABLE facturas (
     apellido character varying(100) NOT NULL,
     alicuota numeric NOT NULL,
     nr numeric NOT NULL,
-    fecha character varying(30) NOT NULL,
+    fecha character varying(8) NOT NULL,
     total_gastos_mes numeric NOT NULL,
     sub_total_alicuota numeric NOT NULL,
     total_pagar_mes numeric NOT NULL,
-    deuda_actual numeric NOT NULL,
-    recibos smallint
+    deuda_actual numeric NOT NULL
 );
 
 
-ALTER TABLE facturas OWNER TO hjtecnos;
-
 --
--- TOC entry 209 (class 1259 OID 18757)
--- Name: facturas_cd_factura_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 209 (class 1259 OID 88329)
+-- Name: facturas_cd_factura_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE facturas_cd_factura_pk_seq
     START WITH 1
     INCREMENT BY 1
-    MINVALUE 0
+    NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE facturas_cd_factura_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2518 (class 0 OID 0)
+-- TOC entry 2554 (class 0 OID 0)
 -- Dependencies: 209
--- Name: facturas_cd_factura_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: facturas_cd_factura_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE facturas_cd_factura_pk_seq OWNED BY facturas.cd_factura_pk;
 
 
 --
--- TOC entry 210 (class 1259 OID 18759)
--- Name: facturas_gastos_comunes; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 210 (class 1259 OID 88331)
+-- Name: facturas_gastos_comunes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE facturas_gastos_comunes (
@@ -655,11 +706,9 @@ CREATE TABLE facturas_gastos_comunes (
 );
 
 
-ALTER TABLE facturas_gastos_comunes OWNER TO hjtecnos;
-
 --
--- TOC entry 211 (class 1259 OID 18762)
--- Name: fondos; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 211 (class 1259 OID 88334)
+-- Name: fondos; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE fondos (
@@ -673,35 +722,31 @@ CREATE TABLE fondos (
 );
 
 
-ALTER TABLE fondos OWNER TO hjtecnos;
-
 --
--- TOC entry 212 (class 1259 OID 18772)
--- Name: fondos_cd_fondo_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 212 (class 1259 OID 88344)
+-- Name: fondos_cd_fondo_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE fondos_cd_fondo_pk_seq
     START WITH 1
     INCREMENT BY 1
-    MINVALUE 0
+    NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE fondos_cd_fondo_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2519 (class 0 OID 0)
+-- TOC entry 2555 (class 0 OID 0)
 -- Dependencies: 212
--- Name: fondos_cd_fondo_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: fondos_cd_fondo_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE fondos_cd_fondo_pk_seq OWNED BY fondos.cd_fondo_pk;
 
 
 --
--- TOC entry 213 (class 1259 OID 18774)
--- Name: gastos_comunes; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 213 (class 1259 OID 88346)
+-- Name: gastos_comunes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE gastos_comunes (
@@ -711,35 +756,31 @@ CREATE TABLE gastos_comunes (
 );
 
 
-ALTER TABLE gastos_comunes OWNER TO hjtecnos;
-
 --
--- TOC entry 214 (class 1259 OID 18780)
--- Name: gastos_comunes_cd_gasto_comun_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 214 (class 1259 OID 88352)
+-- Name: gastos_comunes_cd_gasto_comun_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE gastos_comunes_cd_gasto_comun_pk_seq
     START WITH 1
     INCREMENT BY 1
-    MINVALUE 0
+    NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE gastos_comunes_cd_gasto_comun_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2520 (class 0 OID 0)
+-- TOC entry 2556 (class 0 OID 0)
 -- Dependencies: 214
--- Name: gastos_comunes_cd_gasto_comun_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: gastos_comunes_cd_gasto_comun_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE gastos_comunes_cd_gasto_comun_pk_seq OWNED BY gastos_comunes.cd_gasto_comun_pk;
 
 
 --
--- TOC entry 215 (class 1259 OID 18782)
--- Name: gastos_nocomunes; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 215 (class 1259 OID 88354)
+-- Name: gastos_nocomunes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE gastos_nocomunes (
@@ -750,35 +791,31 @@ CREATE TABLE gastos_nocomunes (
 );
 
 
-ALTER TABLE gastos_nocomunes OWNER TO hjtecnos;
-
 --
--- TOC entry 216 (class 1259 OID 18788)
--- Name: gastos_nocomunes_cd_gasto_nocomun_pk_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 216 (class 1259 OID 88360)
+-- Name: gastos_nocomunes_cd_gasto_nocomun_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE gastos_nocomunes_cd_gasto_nocomun_pk_seq
     START WITH 1
     INCREMENT BY 1
-    MINVALUE 0
+    NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
 
-ALTER TABLE gastos_nocomunes_cd_gasto_nocomun_pk_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2521 (class 0 OID 0)
+-- TOC entry 2557 (class 0 OID 0)
 -- Dependencies: 216
--- Name: gastos_nocomunes_cd_gasto_nocomun_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: gastos_nocomunes_cd_gasto_nocomun_pk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE gastos_nocomunes_cd_gasto_nocomun_pk_seq OWNED BY gastos_nocomunes.cd_gasto_nocomun_pk;
 
 
 --
--- TOC entry 217 (class 1259 OID 18790)
--- Name: menu; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 217 (class 1259 OID 88362)
+-- Name: menu; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE menu (
@@ -791,11 +828,9 @@ CREATE TABLE menu (
 );
 
 
-ALTER TABLE menu OWNER TO hjtecnos;
-
 --
--- TOC entry 218 (class 1259 OID 18796)
--- Name: menu_id_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 218 (class 1259 OID 88368)
+-- Name: menu_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE menu_id_seq
@@ -806,20 +841,18 @@ CREATE SEQUENCE menu_id_seq
     CACHE 1;
 
 
-ALTER TABLE menu_id_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2522 (class 0 OID 0)
+-- TOC entry 2558 (class 0 OID 0)
 -- Dependencies: 218
--- Name: menu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: menu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE menu_id_seq OWNED BY menu.id;
 
 
 --
--- TOC entry 219 (class 1259 OID 18798)
--- Name: migration; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 219 (class 1259 OID 88370)
+-- Name: migration; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE migration (
@@ -828,11 +861,9 @@ CREATE TABLE migration (
 );
 
 
-ALTER TABLE migration OWNER TO hjtecnos;
-
 --
--- TOC entry 220 (class 1259 OID 18801)
--- Name: operaciones; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 220 (class 1259 OID 88373)
+-- Name: operaciones; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE operaciones (
@@ -842,11 +873,9 @@ CREATE TABLE operaciones (
 );
 
 
-ALTER TABLE operaciones OWNER TO hjtecnos;
-
 --
--- TOC entry 221 (class 1259 OID 18804)
--- Name: operaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 221 (class 1259 OID 88376)
+-- Name: operaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE operaciones_id_seq
@@ -857,20 +886,18 @@ CREATE SEQUENCE operaciones_id_seq
     CACHE 1;
 
 
-ALTER TABLE operaciones_id_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2523 (class 0 OID 0)
+-- TOC entry 2559 (class 0 OID 0)
 -- Dependencies: 221
--- Name: operaciones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: operaciones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE operaciones_id_seq OWNED BY operaciones.id;
 
 
 --
--- TOC entry 222 (class 1259 OID 18806)
--- Name: roles; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 222 (class 1259 OID 88378)
+-- Name: roles; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE roles (
@@ -879,11 +906,9 @@ CREATE TABLE roles (
 );
 
 
-ALTER TABLE roles OWNER TO hjtecnos;
-
 --
--- TOC entry 223 (class 1259 OID 18809)
--- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 223 (class 1259 OID 88381)
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE roles_id_seq
@@ -894,20 +919,18 @@ CREATE SEQUENCE roles_id_seq
     CACHE 1;
 
 
-ALTER TABLE roles_id_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2524 (class 0 OID 0)
+-- TOC entry 2560 (class 0 OID 0)
 -- Dependencies: 223
--- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 
 
 --
--- TOC entry 224 (class 1259 OID 18811)
--- Name: roles_operaciones; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 224 (class 1259 OID 88383)
+-- Name: roles_operaciones; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE roles_operaciones (
@@ -916,11 +939,9 @@ CREATE TABLE roles_operaciones (
 );
 
 
-ALTER TABLE roles_operaciones OWNER TO hjtecnos;
-
 --
--- TOC entry 225 (class 1259 OID 18814)
--- Name: user; Type: TABLE; Schema: public; Owner: hjtecnos
+-- TOC entry 225 (class 1259 OID 88386)
+-- Name: user; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE "user" (
@@ -937,11 +958,9 @@ CREATE TABLE "user" (
 );
 
 
-ALTER TABLE "user" OWNER TO hjtecnos;
-
 --
--- TOC entry 226 (class 1259 OID 18821)
--- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: hjtecnos
+-- TOC entry 226 (class 1259 OID 88393)
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE user_id_seq
@@ -952,181 +971,203 @@ CREATE SEQUENCE user_id_seq
     CACHE 1;
 
 
-ALTER TABLE user_id_seq OWNER TO hjtecnos;
-
 --
--- TOC entry 2525 (class 0 OID 0)
+-- TOC entry 2561 (class 0 OID 0)
 -- Dependencies: 226
--- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hjtecnos
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE user_id_seq OWNED BY "user".id;
 
 
 --
--- TOC entry 2206 (class 2604 OID 18823)
--- Name: cd_aguas_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2225 (class 2604 OID 88395)
+-- Name: cd_aguas_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_aguas ALTER COLUMN cd_aguas_pk SET DEFAULT nextval('cd_aguas_cd_aguas_pk_seq'::regclass);
 
 
 --
--- TOC entry 2207 (class 2604 OID 18824)
--- Name: cd_chequeras_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2226 (class 2604 OID 88396)
+-- Name: cd_chequeras_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_chequeras ALTER COLUMN cd_chequeras_pk SET DEFAULT nextval('cd_chequeras_cd_chequeras_pk_seq'::regclass);
 
 
 --
--- TOC entry 2208 (class 2604 OID 18825)
--- Name: cd_conceptos_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2227 (class 2604 OID 88397)
+-- Name: cd_conceptos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_conceptos ALTER COLUMN cd_conceptos_pk SET DEFAULT nextval('cd_conceptos_cd_conceptos_pk_seq'::regclass);
 
 
 --
--- TOC entry 2209 (class 2604 OID 18826)
--- Name: cd_conjuntos_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2228 (class 2604 OID 88398)
+-- Name: cd_conjuntos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_conjuntos ALTER COLUMN cd_conjuntos_pk SET DEFAULT nextval('cd_conjuntos_cd_conjuntos_pk_seq'::regclass);
 
 
 --
--- TOC entry 2210 (class 2604 OID 18827)
--- Name: cd_deudas_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2229 (class 2604 OID 88399)
+-- Name: cd_deudas_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_deudas ALTER COLUMN cd_deudas_pk SET DEFAULT nextval('cd_deudas_cd_deudas_pk_seq'::regclass);
 
 
 --
--- TOC entry 2226 (class 2604 OID 18828)
--- Name: cd_edificios_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2245 (class 2604 OID 88400)
+-- Name: cd_edificios_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_edificios ALTER COLUMN cd_edificios_pk SET DEFAULT nextval('cd_edificios_cd_edificios_pk_seq'::regclass);
 
 
 --
--- TOC entry 2227 (class 2604 OID 18829)
--- Name: cd_fondos_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2246 (class 2604 OID 88401)
+-- Name: cd_fondos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_fondos ALTER COLUMN cd_fondos_pk SET DEFAULT nextval('cd_fondos_cd_fondos_pk_seq'::regclass);
 
 
 --
--- TOC entry 2228 (class 2604 OID 18830)
--- Name: cd_historicos_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2247 (class 2604 OID 88402)
+-- Name: cd_historicos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_historicos ALTER COLUMN cd_historicos_pk SET DEFAULT nextval('cd_historicos_cd_historicos_pk_seq'::regclass);
 
 
 --
--- TOC entry 2229 (class 2604 OID 18831)
--- Name: cd_mantenimientos_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2248 (class 2604 OID 88403)
+-- Name: cd_mantenimientos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_mantenimientos ALTER COLUMN cd_mantenimientos_pk SET DEFAULT nextval('cd_mantenimientos_cd_mantenimientos_pk_seq'::regclass);
 
 
 --
--- TOC entry 2233 (class 2604 OID 18832)
--- Name: cd_observaciones_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2252 (class 2604 OID 88404)
+-- Name: cd_observaciones_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_observaciones ALTER COLUMN cd_observaciones_pk SET DEFAULT nextval('cd_observaciones_cd_observaciones_pk_seq'::regclass);
 
 
 --
--- TOC entry 2247 (class 2604 OID 18833)
--- Name: cd_propietarios_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2281 (class 2604 OID 88598)
+-- Name: cd_pago_pk; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cd_pagos ALTER COLUMN cd_pago_pk SET DEFAULT nextval('cd_pagos_cd_pago_pk_seq'::regclass);
+
+
+--
+-- TOC entry 2266 (class 2604 OID 88405)
+-- Name: cd_propietarios_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_propietarios ALTER COLUMN cd_propietarios_pk SET DEFAULT nextval('cd_propietarios_cd_propietarios_pk_seq'::regclass);
 
 
 --
--- TOC entry 2248 (class 2604 OID 18834)
--- Name: cd_proveedores_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2267 (class 2604 OID 88406)
+-- Name: cd_proveedores_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_proveedores ALTER COLUMN cd_proveedores_pk SET DEFAULT nextval('cd_proveedores_cd_proveedores_pk_seq'::regclass);
 
 
 --
--- TOC entry 2249 (class 2604 OID 18835)
--- Name: cd_factura_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2283 (class 2604 OID 88621)
+-- Name: cd_tipo_doc_pk; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cd_tipos_docs ALTER COLUMN cd_tipo_doc_pk SET DEFAULT nextval('cd_tipos_docs_cd_tipo_doc_pk_seq'::regclass);
+
+
+--
+-- TOC entry 2282 (class 2604 OID 88595)
+-- Name: cd_tipo_pago_pk; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cd_tipos_pagos ALTER COLUMN cd_tipo_pago_pk SET DEFAULT nextval('cd_tipos_pagos_cd_tipo_pago_pk_seq'::regclass);
+
+
+--
+-- TOC entry 2268 (class 2604 OID 88407)
+-- Name: cd_factura_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY facturas ALTER COLUMN cd_factura_pk SET DEFAULT nextval('facturas_cd_factura_pk_seq'::regclass);
 
 
 --
--- TOC entry 2254 (class 2604 OID 18836)
--- Name: cd_fondo_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2273 (class 2604 OID 88408)
+-- Name: cd_fondo_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY fondos ALTER COLUMN cd_fondo_pk SET DEFAULT nextval('fondos_cd_fondo_pk_seq'::regclass);
 
 
 --
--- TOC entry 2255 (class 2604 OID 18837)
--- Name: cd_gasto_comun_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2274 (class 2604 OID 88409)
+-- Name: cd_gasto_comun_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY gastos_comunes ALTER COLUMN cd_gasto_comun_pk SET DEFAULT nextval('gastos_comunes_cd_gasto_comun_pk_seq'::regclass);
 
 
 --
--- TOC entry 2256 (class 2604 OID 18838)
--- Name: cd_gasto_nocomun_pk; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2275 (class 2604 OID 88410)
+-- Name: cd_gasto_nocomun_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY gastos_nocomunes ALTER COLUMN cd_gasto_nocomun_pk SET DEFAULT nextval('gastos_nocomunes_cd_gasto_nocomun_pk_seq'::regclass);
 
 
 --
--- TOC entry 2257 (class 2604 OID 18839)
--- Name: id; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2276 (class 2604 OID 88411)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY menu ALTER COLUMN id SET DEFAULT nextval('menu_id_seq'::regclass);
 
 
 --
--- TOC entry 2258 (class 2604 OID 18840)
--- Name: id; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2277 (class 2604 OID 88412)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY operaciones ALTER COLUMN id SET DEFAULT nextval('operaciones_id_seq'::regclass);
 
 
 --
--- TOC entry 2259 (class 2604 OID 18841)
--- Name: id; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2278 (class 2604 OID 88413)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
 
 
 --
--- TOC entry 2261 (class 2604 OID 18842)
--- Name: id; Type: DEFAULT; Schema: public; Owner: hjtecnos
+-- TOC entry 2280 (class 2604 OID 88414)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regclass);
 
 
 --
--- TOC entry 2452 (class 0 OID 18642)
+-- TOC entry 2480 (class 0 OID 88214)
 -- Dependencies: 181
--- Data for Name: cd_aguas; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_aguas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_aguas (cd_aguas_pk, cod_apto, cod_conjunto, cod_edificio, lect_ant, lect_post) FROM stdin;
@@ -1134,18 +1175,18 @@ COPY cd_aguas (cd_aguas_pk, cod_apto, cod_conjunto, cod_edificio, lect_ant, lect
 
 
 --
--- TOC entry 2526 (class 0 OID 0)
+-- TOC entry 2562 (class 0 OID 0)
 -- Dependencies: 182
--- Name: cd_aguas_cd_aguas_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_aguas_cd_aguas_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_aguas_cd_aguas_pk_seq', 1, false);
 
 
 --
--- TOC entry 2454 (class 0 OID 18650)
+-- TOC entry 2482 (class 0 OID 88222)
 -- Dependencies: 183
--- Data for Name: cd_aptos; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_aptos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_aptos (cd_aptos_pk, cod_propietario, cod_edificio) FROM stdin;
@@ -2609,9 +2650,9 @@ L1	1504	44
 
 
 --
--- TOC entry 2455 (class 0 OID 18653)
+-- TOC entry 2483 (class 0 OID 88225)
 -- Dependencies: 184
--- Data for Name: cd_chequeras; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_chequeras; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_chequeras (cd_chequeras_pk, cod_conjunto, cod_edificio, nro_cuenta, monto, saldo) FROM stdin;
@@ -2619,18 +2660,18 @@ COPY cd_chequeras (cd_chequeras_pk, cod_conjunto, cod_edificio, nro_cuenta, mont
 
 
 --
--- TOC entry 2527 (class 0 OID 0)
+-- TOC entry 2563 (class 0 OID 0)
 -- Dependencies: 185
--- Name: cd_chequeras_cd_chequeras_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_chequeras_cd_chequeras_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_chequeras_cd_chequeras_pk_seq', 1, false);
 
 
 --
--- TOC entry 2457 (class 0 OID 18658)
+-- TOC entry 2485 (class 0 OID 88230)
 -- Dependencies: 186
--- Data for Name: cd_conceptos; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_conceptos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_conceptos (cd_conceptos_pk, descrip_concepto, tipo, frecuencia) FROM stdin;
@@ -4049,18 +4090,18 @@ COPY cd_conceptos (cd_conceptos_pk, descrip_concepto, tipo, frecuencia) FROM std
 
 
 --
--- TOC entry 2528 (class 0 OID 0)
+-- TOC entry 2564 (class 0 OID 0)
 -- Dependencies: 187
--- Name: cd_conceptos_cd_conceptos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_conceptos_cd_conceptos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_conceptos_cd_conceptos_pk_seq', 1411, true);
 
 
 --
--- TOC entry 2459 (class 0 OID 18663)
+-- TOC entry 2487 (class 0 OID 88235)
 -- Dependencies: 188
--- Data for Name: cd_conjuntos; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_conjuntos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_conjuntos (cd_conjuntos_pk, nombre, direccion) FROM stdin;
@@ -4098,18 +4139,18 @@ COPY cd_conjuntos (cd_conjuntos_pk, nombre, direccion) FROM stdin;
 
 
 --
--- TOC entry 2529 (class 0 OID 0)
+-- TOC entry 2565 (class 0 OID 0)
 -- Dependencies: 189
--- Name: cd_conjuntos_cd_conjuntos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_conjuntos_cd_conjuntos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_conjuntos_cd_conjuntos_pk_seq', 30, true);
 
 
 --
--- TOC entry 2461 (class 0 OID 18668)
+-- TOC entry 2489 (class 0 OID 88240)
 -- Dependencies: 190
--- Data for Name: cd_deudas; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_deudas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_deudas (cd_deudas_pk, cod_apto, cod_conjunto, cod_edificio, fecha_deuda, fecha_cancelado, monto, interes, nro_doc, nro_cheque) FROM stdin;
@@ -4117,18 +4158,18 @@ COPY cd_deudas (cd_deudas_pk, cod_apto, cod_conjunto, cod_edificio, fecha_deuda,
 
 
 --
--- TOC entry 2530 (class 0 OID 0)
+-- TOC entry 2566 (class 0 OID 0)
 -- Dependencies: 191
--- Name: cd_deudas_cd_deudas_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_deudas_cd_deudas_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_deudas_cd_deudas_pk_seq', 1, false);
 
 
 --
--- TOC entry 2463 (class 0 OID 18673)
+-- TOC entry 2491 (class 0 OID 88245)
 -- Dependencies: 192
--- Data for Name: cd_edificios; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_edificios; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_edificios (cd_edificios_pk, cod_conjunto, nombre_edificio, nombre_concerje, telf_concerje, porcentaje_nro1, email_edificio, porcentaje_nro2, agua, fondo_nro1, fondo_nro2, fondo_nro3, fondo_nro4, fondo_nro5, fondo_nro6, fondo_nro7, fondo_nro8) FROM stdin;
@@ -4154,7 +4195,6 @@ COPY cd_edificios (cd_edificios_pk, cod_conjunto, nombre_edificio, nombre_concer
 31	21	MURALTA ESTACIONAMIENTO	MMMMMM	9999999	15.0000	N/A	0.0000	0.0000	360	0	1335	1342	0	0	0	0
 32	21	MURALTA MALETEROS	MMMMMM	9999999	15.0000	N/A	0.0000	0.0000	360	0	1335	1342	0	0	0	0
 33	22	MILY TORRE  A	XXXXX	2127530000	10.0000	N/A	0.0000	0.0000	360	150	1393	0	0	0	0	0
-1	1	TORRE C	A	0	5.0000	prueba@prueba.com	5.0000	0.0000	360	370	409	150	429	594	407	451
 2	1	TORRE B	A	0	5.0000	N/A	5.0000	0.0000	360	370	409	150	0	594	407	451
 3	1	CENTRO COMERCIAL	A	234	5.0000	N/A	5.0000	0.0000	360	370	448	0	0	0	0	0
 4	1	TORRE C	N/A	0	5.0000	N/A	5.0000	0.0000	360	370	409	150	429	0	0	0
@@ -4175,22 +4215,23 @@ COPY cd_edificios (cd_edificios_pk, cod_conjunto, nombre_edificio, nombre_concer
 42	28	DE ALTO HATILLO	NO HAY	530530530	10.0000	N/A	0.0000	0.0000	360	1596	0	0	0	0	0	0
 43	30	LOS ROBLES A	NO HAY	530530530	10.0000	N/A	0.0000	0.0000	360	150	1679	1680	1681	1682	1683	1684
 44	30	LOS ROBLES B	NO HAY	530530530	10.0000	N/A	0.0000	0.0000	360	150	1679	1680	1681	1682	1683	1684
+1	1	TORRE C	A	0	5.0000	prueba@prueba.com	5.0000	0.0000	360	370	409	150	429	594	407	451
 \.
 
 
 --
--- TOC entry 2531 (class 0 OID 0)
+-- TOC entry 2567 (class 0 OID 0)
 -- Dependencies: 193
--- Name: cd_edificios_cd_edificios_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_edificios_cd_edificios_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_edificios_cd_edificios_pk_seq', 44, true);
 
 
 --
--- TOC entry 2465 (class 0 OID 18696)
+-- TOC entry 2493 (class 0 OID 88268)
 -- Dependencies: 194
--- Data for Name: cd_fondos; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_fondos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_fondos (cd_fondos_pk, cod_conjunto, cod_edificio, cod_concepto, fecha_i, fecha_f, monto_g, nro_cuotas, cuota_m, gastos) FROM stdin;
@@ -4198,18 +4239,18 @@ COPY cd_fondos (cd_fondos_pk, cod_conjunto, cod_edificio, cod_concepto, fecha_i,
 
 
 --
--- TOC entry 2532 (class 0 OID 0)
+-- TOC entry 2568 (class 0 OID 0)
 -- Dependencies: 195
--- Name: cd_fondos_cd_fondos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_fondos_cd_fondos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_fondos_cd_fondos_pk_seq', 1, false);
 
 
 --
--- TOC entry 2467 (class 0 OID 18701)
+-- TOC entry 2495 (class 0 OID 88273)
 -- Dependencies: 196
--- Data for Name: cd_historicos; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_historicos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_historicos (cd_historicos_pk, cod_observacion, cod_deuda, cod_apto, cod_conjunto, cod_edificio, fecha, monto, apagar, recibo) FROM stdin;
@@ -4217,18 +4258,18 @@ COPY cd_historicos (cd_historicos_pk, cod_observacion, cod_deuda, cod_apto, cod_
 
 
 --
--- TOC entry 2533 (class 0 OID 0)
+-- TOC entry 2569 (class 0 OID 0)
 -- Dependencies: 197
--- Name: cd_historicos_cd_historicos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_historicos_cd_historicos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_historicos_cd_historicos_pk_seq', 1, false);
 
 
 --
--- TOC entry 2469 (class 0 OID 18706)
+-- TOC entry 2497 (class 0 OID 88278)
 -- Dependencies: 198
--- Data for Name: cd_mantenimientos; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_mantenimientos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_mantenimientos (cd_mantenimientos_pk, correlativo) FROM stdin;
@@ -4236,18 +4277,18 @@ COPY cd_mantenimientos (cd_mantenimientos_pk, correlativo) FROM stdin;
 
 
 --
--- TOC entry 2534 (class 0 OID 0)
+-- TOC entry 2570 (class 0 OID 0)
 -- Dependencies: 199
--- Name: cd_mantenimientos_cd_mantenimientos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_mantenimientos_cd_mantenimientos_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_mantenimientos_cd_mantenimientos_pk_seq', 1, false);
 
 
 --
--- TOC entry 2471 (class 0 OID 18711)
+-- TOC entry 2499 (class 0 OID 88283)
 -- Dependencies: 200
--- Data for Name: cd_mov_chequeras; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_mov_chequeras; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_mov_chequeras (cd_mov_chequeras_pk, cod_concepto, cod_proveedor, nro_cheque, factura, monto, nro_cuenta, fecha) FROM stdin;
@@ -4255,9 +4296,9 @@ COPY cd_mov_chequeras (cd_mov_chequeras_pk, cod_concepto, cod_proveedor, nro_che
 
 
 --
--- TOC entry 2472 (class 0 OID 18717)
+-- TOC entry 2500 (class 0 OID 88289)
 -- Dependencies: 201
--- Data for Name: cd_mov_mes; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_mov_mes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_mov_mes (cd_mov_mes_pk, cod_concepto, cod_apto, cod_conjunto, cod_edificio, fecha, monto) FROM stdin;
@@ -4265,9 +4306,9 @@ COPY cd_mov_mes (cd_mov_mes_pk, cod_concepto, cod_apto, cod_conjunto, cod_edific
 
 
 --
--- TOC entry 2473 (class 0 OID 18720)
+-- TOC entry 2501 (class 0 OID 88292)
 -- Dependencies: 202
--- Data for Name: cd_observaciones; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_observaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_observaciones (cd_observaciones_pk, descripcion) FROM stdin;
@@ -4275,18 +4316,37 @@ COPY cd_observaciones (cd_observaciones_pk, descripcion) FROM stdin;
 
 
 --
--- TOC entry 2535 (class 0 OID 0)
+-- TOC entry 2571 (class 0 OID 0)
 -- Dependencies: 203
--- Name: cd_observaciones_cd_observaciones_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_observaciones_cd_observaciones_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_observaciones_cd_observaciones_pk_seq', 1, false);
 
 
 --
--- TOC entry 2475 (class 0 OID 18725)
+-- TOC entry 2526 (class 0 OID 88575)
+-- Dependencies: 227
+-- Data for Name: cd_pagos; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY cd_pagos (cd_pago_pk, cod_edificio, cod_apto, cod_tipo_pago, nro_transferencia_referencia, fecha_pago, nota_descrip_pago, nombre, apellido, nro_cedula, cod_tipo_doc, email) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2572 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: cd_pagos_cd_pago_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('cd_pagos_cd_pago_pk_seq', 1, false);
+
+
+--
+-- TOC entry 2503 (class 0 OID 88297)
 -- Dependencies: 204
--- Data for Name: cd_propietarios; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_propietarios; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_propietarios (cd_propietarios_pk, cod_user, nro_piso, nombre, apellido, nro_cedula, telf_local, telf_celular, email, alicuota, quien_vive, direccion, direccion_cobro, update_usr) FROM stdin;
@@ -5745,23 +5805,23 @@ COPY cd_propietarios (cd_propietarios_pk, cod_user, nro_piso, nombre, apellido, 
 1169	\N	5	OMAIRA C	GASPERI	0	N/A	N/A	N/A	0.0089	N/A	N/A	N/A	t
 1213	\N	6	PENELOPE LUCIA	PERALDO PUENTE	0	N/A	N/A	N/A	0.0089	N/A	N/A	N/A	t
 1246	\N	2	RAFAEL OVIEDO	MARIA ROJAS/	0	N/A	N/A	N/A	0.0089	N/A	N/A	N/A	t
-457	6	1	ELISA TERESA	CEDEÑO D MARCO	15800535	242-9919	242-9919	prueba@prueba.com	0.0063	N/A	N/A	N/A	f
+457	4	1	ELISA TERESA	CEDEÑO D MARCO	15800535	242-9919	242-9919	prueba@prueba.com	0.0063	N/A	N/A	N/A	t
 \.
 
 
 --
--- TOC entry 2536 (class 0 OID 0)
+-- TOC entry 2573 (class 0 OID 0)
 -- Dependencies: 205
--- Name: cd_propietarios_cd_propietarios_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_propietarios_cd_propietarios_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_propietarios_cd_propietarios_pk_seq', 1549, true);
 
 
 --
--- TOC entry 2477 (class 0 OID 18746)
+-- TOC entry 2505 (class 0 OID 88318)
 -- Dependencies: 206
--- Data for Name: cd_proveedores; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: cd_proveedores; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cd_proveedores (cd_proveedores_pk, razon_social, beneficiario) FROM stdin;
@@ -5769,37 +5829,81 @@ COPY cd_proveedores (cd_proveedores_pk, razon_social, beneficiario) FROM stdin;
 
 
 --
--- TOC entry 2537 (class 0 OID 0)
+-- TOC entry 2574 (class 0 OID 0)
 -- Dependencies: 207
--- Name: cd_proveedores_cd_proveedores_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: cd_proveedores_cd_proveedores_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cd_proveedores_cd_proveedores_pk_seq', 1, false);
 
 
 --
--- TOC entry 2479 (class 0 OID 18751)
--- Dependencies: 208
--- Data for Name: facturas; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- TOC entry 2531 (class 0 OID 88618)
+-- Dependencies: 232
+-- Data for Name: cd_tipos_docs; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY facturas (cd_factura_pk, cod_apto, edificio, nombre, apellido, alicuota, nr, fecha, total_gastos_mes, sub_total_alicuota, total_pagar_mes, deuda_actual, recibos) FROM stdin;
+COPY cd_tipos_docs (cd_tipo_doc_pk, tipo_doc, descrip_doc) FROM stdin;
+1	V	VENEZOLANO
+2	E	EXTRANJERO
+3	J	JURIDICO
 \.
 
 
 --
--- TOC entry 2538 (class 0 OID 0)
+-- TOC entry 2575 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: cd_tipos_docs_cd_tipo_doc_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('cd_tipos_docs_cd_tipo_doc_pk_seq', 3, true);
+
+
+--
+-- TOC entry 2528 (class 0 OID 88592)
+-- Dependencies: 229
+-- Data for Name: cd_tipos_pagos; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY cd_tipos_pagos (cd_tipo_pago_pk, descrip_pago) FROM stdin;
+1	DEPOSITO
+2	TRANSFERENCIA
+3	CHEQUE
+\.
+
+
+--
+-- TOC entry 2576 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: cd_tipos_pagos_cd_tipo_pago_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('cd_tipos_pagos_cd_tipo_pago_pk_seq', 3, true);
+
+
+--
+-- TOC entry 2507 (class 0 OID 88323)
+-- Dependencies: 208
+-- Data for Name: facturas; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY facturas (cd_factura_pk, cod_apto, edificio, nombre, apellido, alicuota, nr, fecha, total_gastos_mes, sub_total_alicuota, total_pagar_mes, deuda_actual) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2577 (class 0 OID 0)
 -- Dependencies: 209
--- Name: facturas_cd_factura_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: facturas_cd_factura_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('facturas_cd_factura_pk_seq', 0, true);
+SELECT pg_catalog.setval('facturas_cd_factura_pk_seq', 1, false);
 
 
 --
--- TOC entry 2481 (class 0 OID 18759)
+-- TOC entry 2509 (class 0 OID 88331)
 -- Dependencies: 210
--- Data for Name: facturas_gastos_comunes; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: facturas_gastos_comunes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY facturas_gastos_comunes (cod_gasto_comun_fk, cod_factura_fk) FROM stdin;
@@ -5807,9 +5911,9 @@ COPY facturas_gastos_comunes (cod_gasto_comun_fk, cod_factura_fk) FROM stdin;
 
 
 --
--- TOC entry 2482 (class 0 OID 18762)
+-- TOC entry 2510 (class 0 OID 88334)
 -- Dependencies: 211
--- Data for Name: fondos; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: fondos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY fondos (cd_fondo_pk, cod_factura_fk, descripcion, saldo_anterior, cota_mes, cargo, saldo_actual) FROM stdin;
@@ -5817,18 +5921,18 @@ COPY fondos (cd_fondo_pk, cod_factura_fk, descripcion, saldo_anterior, cota_mes,
 
 
 --
--- TOC entry 2539 (class 0 OID 0)
+-- TOC entry 2578 (class 0 OID 0)
 -- Dependencies: 212
--- Name: fondos_cd_fondo_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: fondos_cd_fondo_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('fondos_cd_fondo_pk_seq', 0, true);
+SELECT pg_catalog.setval('fondos_cd_fondo_pk_seq', 1, false);
 
 
 --
--- TOC entry 2484 (class 0 OID 18774)
+-- TOC entry 2512 (class 0 OID 88346)
 -- Dependencies: 213
--- Data for Name: gastos_comunes; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: gastos_comunes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY gastos_comunes (cd_gasto_comun_pk, descripcion, monto) FROM stdin;
@@ -5836,18 +5940,18 @@ COPY gastos_comunes (cd_gasto_comun_pk, descripcion, monto) FROM stdin;
 
 
 --
--- TOC entry 2540 (class 0 OID 0)
+-- TOC entry 2579 (class 0 OID 0)
 -- Dependencies: 214
--- Name: gastos_comunes_cd_gasto_comun_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: gastos_comunes_cd_gasto_comun_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('gastos_comunes_cd_gasto_comun_pk_seq', 0, true);
+SELECT pg_catalog.setval('gastos_comunes_cd_gasto_comun_pk_seq', 1, false);
 
 
 --
--- TOC entry 2486 (class 0 OID 18782)
+-- TOC entry 2514 (class 0 OID 88354)
 -- Dependencies: 215
--- Data for Name: gastos_nocomunes; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: gastos_nocomunes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY gastos_nocomunes (cd_gasto_nocomun_pk, cod_factura_fk, descripcion, monto) FROM stdin;
@@ -5855,18 +5959,18 @@ COPY gastos_nocomunes (cd_gasto_nocomun_pk, cod_factura_fk, descripcion, monto) 
 
 
 --
--- TOC entry 2541 (class 0 OID 0)
+-- TOC entry 2580 (class 0 OID 0)
 -- Dependencies: 216
--- Name: gastos_nocomunes_cd_gasto_nocomun_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: gastos_nocomunes_cd_gasto_nocomun_pk_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('gastos_nocomunes_cd_gasto_nocomun_pk_seq', 0, true);
+SELECT pg_catalog.setval('gastos_nocomunes_cd_gasto_nocomun_pk_seq', 1, false);
 
 
 --
--- TOC entry 2488 (class 0 OID 18790)
+-- TOC entry 2516 (class 0 OID 88362)
 -- Dependencies: 217
--- Data for Name: menu; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: menu; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY menu (id, name, parent, route, "order", data) FROM stdin;
@@ -5874,18 +5978,18 @@ COPY menu (id, name, parent, route, "order", data) FROM stdin;
 
 
 --
--- TOC entry 2542 (class 0 OID 0)
+-- TOC entry 2581 (class 0 OID 0)
 -- Dependencies: 218
--- Name: menu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: menu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('menu_id_seq', 1, false);
 
 
 --
--- TOC entry 2490 (class 0 OID 18798)
+-- TOC entry 2518 (class 0 OID 88370)
 -- Dependencies: 219
--- Data for Name: migration; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: migration; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY migration (version, apply_time) FROM stdin;
@@ -5898,9 +6002,9 @@ m160312_050000_create_user	1464871526
 
 
 --
--- TOC entry 2491 (class 0 OID 18801)
+-- TOC entry 2519 (class 0 OID 88373)
 -- Dependencies: 220
--- Data for Name: operaciones; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: operaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY operaciones (id, nombre, descripcion) FROM stdin;
@@ -5939,18 +6043,18 @@ COPY operaciones (id, nombre, descripcion) FROM stdin;
 
 
 --
--- TOC entry 2543 (class 0 OID 0)
+-- TOC entry 2582 (class 0 OID 0)
 -- Dependencies: 221
--- Name: operaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: operaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('operaciones_id_seq', 31, true);
 
 
 --
--- TOC entry 2493 (class 0 OID 18806)
+-- TOC entry 2521 (class 0 OID 88378)
 -- Dependencies: 222
--- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY roles (id, nombre) FROM stdin;
@@ -5961,18 +6065,18 @@ COPY roles (id, nombre) FROM stdin;
 
 
 --
--- TOC entry 2544 (class 0 OID 0)
+-- TOC entry 2583 (class 0 OID 0)
 -- Dependencies: 223
--- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('roles_id_seq', 7, true);
 
 
 --
--- TOC entry 2495 (class 0 OID 18811)
+-- TOC entry 2523 (class 0 OID 88383)
 -- Dependencies: 224
--- Data for Name: roles_operaciones; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: roles_operaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY roles_operaciones (rol_id, operacion_id) FROM stdin;
@@ -6034,31 +6138,31 @@ COPY roles_operaciones (rol_id, operacion_id) FROM stdin;
 
 
 --
--- TOC entry 2496 (class 0 OID 18814)
+-- TOC entry 2524 (class 0 OID 88386)
 -- Dependencies: 225
--- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: hjtecnos
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY "user" (id, username, auth_key, password_hash, password_reset_token, email, status, created_at, updated_at, rol_id) FROM stdin;
 1	root	moFHYdX57cwdFURVeuNNxTj_W7TY0JmZ	$2y$13$k4iIRdObMxmbtGMejFTLuO.OGkTzlH/YLVhdd541b2yiey5880uUy	\N	info@hjtecnosystems.com.ve	1	1464620742	1468202678	1
 2	admin	YNpx8aveIJnohs2qt4gf-UJwLvcpjPam	$2y$13$Ko0BFwK0uzC1pE4zbuYDpuuTwReaVH//iFiaQRouJcgtU3zSy0JyG	\N	admin@condominio.com.ve	1	1464703400	1468205150	2
-5	user	FPgx9Bb4z08wLnXStJ88uqRQEqiV1fE9	$2y$13$madgqryUUdSNM79TjQKenO8/P41K4a8PHIQ7l24kuI59CYbTIwZlO	\N	user@user.com	1	1468205244	1468205260	3
-6	elisa	4eMVNGCs00-q4dPX9S4C5V3rgWrjL0ex	$2y$13$7A1MwO.4Ja2pIalpjUK.Me6Dl5r/DLXckwcb1BtEc8whlGD13a/9W	\N	prueba@prueba.com	1	1468255964	1468255964	3
+3	user	FPgx9Bb4z08wLnXStJ88uqRQEqiV1fE9	$2y$13$madgqryUUdSNM79TjQKenO8/P41K4a8PHIQ7l24kuI59CYbTIwZlO	\N	user@user.com	1	1468205244	1468205260	3
+4	elisa	J4eM1y0Jxku7v5vdwAiI_H-FT83DYC18	$2y$13$N1XqZro3qsMsy3P.bxwPV.URI1qhm0ITCNzb1.GnEqPdY7BUyL4DW	\N	prueba@prueba.com	1	1469368282	1469368282	3
 \.
 
 
 --
--- TOC entry 2545 (class 0 OID 0)
+-- TOC entry 2584 (class 0 OID 0)
 -- Dependencies: 226
--- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hjtecnos
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('user_id_seq', 38, true);
+SELECT pg_catalog.setval('user_id_seq', 4, true);
 
 
 --
--- TOC entry 2263 (class 2606 OID 18844)
--- Name: cd_aguas_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2285 (class 2606 OID 88416)
+-- Name: cd_aguas_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_aguas
@@ -6066,8 +6170,8 @@ ALTER TABLE ONLY cd_aguas
 
 
 --
--- TOC entry 2265 (class 2606 OID 18846)
--- Name: cd_aptos_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2287 (class 2606 OID 88418)
+-- Name: cd_aptos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_aptos
@@ -6075,8 +6179,8 @@ ALTER TABLE ONLY cd_aptos
 
 
 --
--- TOC entry 2267 (class 2606 OID 18848)
--- Name: cd_chequeras_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2289 (class 2606 OID 88420)
+-- Name: cd_chequeras_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_chequeras
@@ -6084,8 +6188,8 @@ ALTER TABLE ONLY cd_chequeras
 
 
 --
--- TOC entry 2269 (class 2606 OID 18850)
--- Name: cd_conceptos_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2291 (class 2606 OID 88422)
+-- Name: cd_conceptos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_conceptos
@@ -6093,8 +6197,8 @@ ALTER TABLE ONLY cd_conceptos
 
 
 --
--- TOC entry 2271 (class 2606 OID 18852)
--- Name: cd_conjuntos_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2293 (class 2606 OID 88424)
+-- Name: cd_conjuntos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_conjuntos
@@ -6102,8 +6206,8 @@ ALTER TABLE ONLY cd_conjuntos
 
 
 --
--- TOC entry 2273 (class 2606 OID 18854)
--- Name: cd_deudas_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2295 (class 2606 OID 88426)
+-- Name: cd_deudas_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_deudas
@@ -6111,8 +6215,8 @@ ALTER TABLE ONLY cd_deudas
 
 
 --
--- TOC entry 2275 (class 2606 OID 18856)
--- Name: cd_edificios_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2297 (class 2606 OID 88428)
+-- Name: cd_edificios_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_edificios
@@ -6120,8 +6224,8 @@ ALTER TABLE ONLY cd_edificios
 
 
 --
--- TOC entry 2277 (class 2606 OID 18858)
--- Name: cd_fondos_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2299 (class 2606 OID 88430)
+-- Name: cd_fondos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_fondos
@@ -6129,8 +6233,8 @@ ALTER TABLE ONLY cd_fondos
 
 
 --
--- TOC entry 2279 (class 2606 OID 18860)
--- Name: cd_historicos_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2301 (class 2606 OID 88432)
+-- Name: cd_historicos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_historicos
@@ -6138,8 +6242,8 @@ ALTER TABLE ONLY cd_historicos
 
 
 --
--- TOC entry 2281 (class 2606 OID 18862)
--- Name: cd_mantenimientos_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2303 (class 2606 OID 88434)
+-- Name: cd_mantenimientos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_mantenimientos
@@ -6147,8 +6251,8 @@ ALTER TABLE ONLY cd_mantenimientos
 
 
 --
--- TOC entry 2283 (class 2606 OID 18864)
--- Name: cd_mov_chequeras_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2305 (class 2606 OID 88436)
+-- Name: cd_mov_chequeras_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_mov_chequeras
@@ -6156,8 +6260,8 @@ ALTER TABLE ONLY cd_mov_chequeras
 
 
 --
--- TOC entry 2285 (class 2606 OID 18866)
--- Name: cd_mov_mes_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2307 (class 2606 OID 88438)
+-- Name: cd_mov_mes_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_mov_mes
@@ -6165,8 +6269,8 @@ ALTER TABLE ONLY cd_mov_mes
 
 
 --
--- TOC entry 2287 (class 2606 OID 18868)
--- Name: cd_observaciones_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2309 (class 2606 OID 88440)
+-- Name: cd_observaciones_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_observaciones
@@ -6174,8 +6278,17 @@ ALTER TABLE ONLY cd_observaciones
 
 
 --
--- TOC entry 2289 (class 2606 OID 18870)
--- Name: cd_propietarios_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2336 (class 2606 OID 88606)
+-- Name: cd_pago_pk; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cd_pagos
+    ADD CONSTRAINT cd_pago_pk PRIMARY KEY (cd_pago_pk);
+
+
+--
+-- TOC entry 2311 (class 2606 OID 88442)
+-- Name: cd_propietarios_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_propietarios
@@ -6183,8 +6296,8 @@ ALTER TABLE ONLY cd_propietarios
 
 
 --
--- TOC entry 2292 (class 2606 OID 18872)
--- Name: cd_proveedores_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2314 (class 2606 OID 88444)
+-- Name: cd_proveedores_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_proveedores
@@ -6192,8 +6305,26 @@ ALTER TABLE ONLY cd_proveedores
 
 
 --
--- TOC entry 2294 (class 2606 OID 18874)
--- Name: facturas_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2342 (class 2606 OID 88623)
+-- Name: cd_tipo_doc_pk; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cd_tipos_docs
+    ADD CONSTRAINT cd_tipo_doc_pk PRIMARY KEY (cd_tipo_doc_pk);
+
+
+--
+-- TOC entry 2340 (class 2606 OID 88608)
+-- Name: cd_tipo_pago_pk; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cd_tipos_pagos
+    ADD CONSTRAINT cd_tipo_pago_pk PRIMARY KEY (cd_tipo_pago_pk);
+
+
+--
+-- TOC entry 2316 (class 2606 OID 88446)
+-- Name: facturas_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY facturas
@@ -6201,8 +6332,8 @@ ALTER TABLE ONLY facturas
 
 
 --
--- TOC entry 2299 (class 2606 OID 18876)
--- Name: fondos_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2318 (class 2606 OID 88448)
+-- Name: fondos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY fondos
@@ -6210,8 +6341,8 @@ ALTER TABLE ONLY fondos
 
 
 --
--- TOC entry 2301 (class 2606 OID 18878)
--- Name: gastos_comunes_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2320 (class 2606 OID 88450)
+-- Name: gastos_comunes_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY gastos_comunes
@@ -6219,8 +6350,8 @@ ALTER TABLE ONLY gastos_comunes
 
 
 --
--- TOC entry 2304 (class 2606 OID 18880)
--- Name: gastos_nocomunes_pk; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2322 (class 2606 OID 88452)
+-- Name: gastos_nocomunes_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY gastos_nocomunes
@@ -6228,8 +6359,8 @@ ALTER TABLE ONLY gastos_nocomunes
 
 
 --
--- TOC entry 2306 (class 2606 OID 18882)
--- Name: menu_pkey; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2324 (class 2606 OID 88454)
+-- Name: menu_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY menu
@@ -6237,8 +6368,8 @@ ALTER TABLE ONLY menu
 
 
 --
--- TOC entry 2308 (class 2606 OID 18884)
--- Name: migration_pkey; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2326 (class 2606 OID 88456)
+-- Name: migration_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY migration
@@ -6246,8 +6377,8 @@ ALTER TABLE ONLY migration
 
 
 --
--- TOC entry 2310 (class 2606 OID 18886)
--- Name: operaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2328 (class 2606 OID 88458)
+-- Name: operaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY operaciones
@@ -6255,8 +6386,8 @@ ALTER TABLE ONLY operaciones
 
 
 --
--- TOC entry 2314 (class 2606 OID 18888)
--- Name: roles_operaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2332 (class 2606 OID 88460)
+-- Name: roles_operaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY roles_operaciones
@@ -6264,8 +6395,8 @@ ALTER TABLE ONLY roles_operaciones
 
 
 --
--- TOC entry 2312 (class 2606 OID 18890)
--- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2330 (class 2606 OID 88462)
+-- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY roles
@@ -6273,8 +6404,8 @@ ALTER TABLE ONLY roles
 
 
 --
--- TOC entry 2316 (class 2606 OID 18892)
--- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2334 (class 2606 OID 88464)
+-- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY "user"
@@ -6282,48 +6413,32 @@ ALTER TABLE ONLY "user"
 
 
 --
--- TOC entry 2295 (class 1259 OID 19829)
--- Name: fki_facturas_facturas_gastos_comunes_fk; Type: INDEX; Schema: public; Owner: hjtecnos
+-- TOC entry 2337 (class 1259 OID 88629)
+-- Name: fki_cd_tipos_docs_cd_pagos_fk; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX fki_facturas_facturas_gastos_comunes_fk ON facturas_gastos_comunes USING btree (cod_factura_fk);
-
-
---
--- TOC entry 2297 (class 1259 OID 19817)
--- Name: fki_facturas_fondos_fk; Type: INDEX; Schema: public; Owner: hjtecnos
---
-
-CREATE INDEX fki_facturas_fondos_fk ON fondos USING btree (cod_factura_fk);
+CREATE INDEX fki_cd_tipos_docs_cd_pagos_fk ON cd_pagos USING btree (cod_tipo_doc);
 
 
 --
--- TOC entry 2302 (class 1259 OID 19823)
--- Name: fki_facturas_gastos_comunes_fk; Type: INDEX; Schema: public; Owner: hjtecnos
+-- TOC entry 2338 (class 1259 OID 88635)
+-- Name: fki_cd_tipos_pagos_cd_pagos_fk; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX fki_facturas_gastos_comunes_fk ON gastos_nocomunes USING btree (cod_factura_fk);
-
-
---
--- TOC entry 2296 (class 1259 OID 19835)
--- Name: fki_gastos_comunes_facturas_gastos_comunes_fk; Type: INDEX; Schema: public; Owner: hjtecnos
---
-
-CREATE INDEX fki_gastos_comunes_facturas_gastos_comunes_fk ON facturas_gastos_comunes USING btree (cod_gasto_comun_fk);
+CREATE INDEX fki_cd_tipos_pagos_cd_pagos_fk ON cd_pagos USING btree (cod_tipo_pago);
 
 
 --
--- TOC entry 2290 (class 1259 OID 18893)
--- Name: fki_propietario_user; Type: INDEX; Schema: public; Owner: hjtecnos
+-- TOC entry 2312 (class 1259 OID 88465)
+-- Name: fki_propietario_user; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX fki_propietario_user ON cd_propietarios USING btree (cod_user);
 
 
 --
--- TOC entry 2325 (class 2606 OID 18894)
--- Name: cd_conceptos_cd_mov_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2351 (class 2606 OID 88466)
+-- Name: cd_conceptos_cd_mov_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_mov_chequeras
@@ -6331,8 +6446,8 @@ ALTER TABLE ONLY cd_mov_chequeras
 
 
 --
--- TOC entry 2327 (class 2606 OID 18899)
--- Name: cd_conceptos_cd_mov_mes_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2353 (class 2606 OID 88471)
+-- Name: cd_conceptos_cd_mov_mes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_mov_mes
@@ -6340,8 +6455,8 @@ ALTER TABLE ONLY cd_mov_mes
 
 
 --
--- TOC entry 2317 (class 2606 OID 18904)
--- Name: cd_conjuntos_cd_aguas_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2343 (class 2606 OID 88476)
+-- Name: cd_conjuntos_cd_aguas_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_aguas
@@ -6349,8 +6464,8 @@ ALTER TABLE ONLY cd_aguas
 
 
 --
--- TOC entry 2318 (class 2606 OID 18909)
--- Name: cd_conjuntos_cd_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2344 (class 2606 OID 88481)
+-- Name: cd_conjuntos_cd_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_chequeras
@@ -6358,8 +6473,8 @@ ALTER TABLE ONLY cd_chequeras
 
 
 --
--- TOC entry 2319 (class 2606 OID 18914)
--- Name: cd_conjuntos_cd_deudas_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2345 (class 2606 OID 88486)
+-- Name: cd_conjuntos_cd_deudas_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_deudas
@@ -6367,8 +6482,8 @@ ALTER TABLE ONLY cd_deudas
 
 
 --
--- TOC entry 2320 (class 2606 OID 18919)
--- Name: cd_conjuntos_cd_edificios_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2346 (class 2606 OID 88491)
+-- Name: cd_conjuntos_cd_edificios_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_edificios
@@ -6376,8 +6491,8 @@ ALTER TABLE ONLY cd_edificios
 
 
 --
--- TOC entry 2321 (class 2606 OID 18924)
--- Name: cd_conjuntos_cd_fondos_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2347 (class 2606 OID 88496)
+-- Name: cd_conjuntos_cd_fondos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_fondos
@@ -6385,8 +6500,8 @@ ALTER TABLE ONLY cd_fondos
 
 
 --
--- TOC entry 2322 (class 2606 OID 18929)
--- Name: cd_conjuntos_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2348 (class 2606 OID 88501)
+-- Name: cd_conjuntos_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_historicos
@@ -6394,8 +6509,8 @@ ALTER TABLE ONLY cd_historicos
 
 
 --
--- TOC entry 2328 (class 2606 OID 18934)
--- Name: cd_conjuntos_cd_mov_mes_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2354 (class 2606 OID 88506)
+-- Name: cd_conjuntos_cd_mov_mes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_mov_mes
@@ -6403,8 +6518,8 @@ ALTER TABLE ONLY cd_mov_mes
 
 
 --
--- TOC entry 2323 (class 2606 OID 18939)
--- Name: cd_deudas_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2349 (class 2606 OID 88511)
+-- Name: cd_deudas_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_historicos
@@ -6412,8 +6527,8 @@ ALTER TABLE ONLY cd_historicos
 
 
 --
--- TOC entry 2324 (class 2606 OID 18944)
--- Name: cd_observaciones_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2350 (class 2606 OID 88516)
+-- Name: cd_observaciones_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_historicos
@@ -6421,8 +6536,8 @@ ALTER TABLE ONLY cd_historicos
 
 
 --
--- TOC entry 2326 (class 2606 OID 18949)
--- Name: cd_proveedores_cd_mov_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2352 (class 2606 OID 88521)
+-- Name: cd_proveedores_cd_mov_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_mov_chequeras
@@ -6430,44 +6545,62 @@ ALTER TABLE ONLY cd_mov_chequeras
 
 
 --
--- TOC entry 2330 (class 2606 OID 19824)
--- Name: facturas_facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2364 (class 2606 OID 88624)
+-- Name: cd_tipos_docs_cd_pagos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cd_pagos
+    ADD CONSTRAINT cd_tipos_docs_cd_pagos_fk FOREIGN KEY (cod_tipo_doc) REFERENCES cd_tipos_docs(cd_tipo_doc_pk);
+
+
+--
+-- TOC entry 2365 (class 2606 OID 88630)
+-- Name: cd_tipos_pagos_cd_pagos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cd_pagos
+    ADD CONSTRAINT cd_tipos_pagos_cd_pagos_fk FOREIGN KEY (cod_tipo_pago) REFERENCES cd_tipos_pagos(cd_tipo_pago_pk);
+
+
+--
+-- TOC entry 2356 (class 2606 OID 88526)
+-- Name: facturas_facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY facturas_gastos_comunes
-    ADD CONSTRAINT facturas_facturas_gastos_comunes_fk FOREIGN KEY (cod_factura_fk) REFERENCES facturas(cd_factura_pk) ON DELETE CASCADE;
+    ADD CONSTRAINT facturas_facturas_gastos_comunes_fk FOREIGN KEY (cod_factura_fk) REFERENCES facturas(cd_factura_pk);
 
 
 --
--- TOC entry 2332 (class 2606 OID 19812)
--- Name: facturas_fondos_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2358 (class 2606 OID 88531)
+-- Name: facturas_fondos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY fondos
-    ADD CONSTRAINT facturas_fondos_fk FOREIGN KEY (cod_factura_fk) REFERENCES facturas(cd_factura_pk) ON DELETE CASCADE;
+    ADD CONSTRAINT facturas_fondos_fk FOREIGN KEY (cod_factura_fk) REFERENCES facturas(cd_factura_pk);
 
 
 --
--- TOC entry 2333 (class 2606 OID 19818)
--- Name: facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2359 (class 2606 OID 88536)
+-- Name: facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY gastos_nocomunes
-    ADD CONSTRAINT facturas_gastos_comunes_fk FOREIGN KEY (cod_factura_fk) REFERENCES facturas(cd_factura_pk) ON DELETE CASCADE;
+    ADD CONSTRAINT facturas_gastos_comunes_fk FOREIGN KEY (cod_factura_fk) REFERENCES facturas(cd_factura_pk);
 
 
 --
--- TOC entry 2331 (class 2606 OID 19830)
--- Name: gastos_comunes_facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2357 (class 2606 OID 88541)
+-- Name: gastos_comunes_facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY facturas_gastos_comunes
-    ADD CONSTRAINT gastos_comunes_facturas_gastos_comunes_fk FOREIGN KEY (cod_gasto_comun_fk) REFERENCES gastos_comunes(cd_gasto_comun_pk) ON DELETE CASCADE;
+    ADD CONSTRAINT gastos_comunes_facturas_gastos_comunes_fk FOREIGN KEY (cod_gasto_comun_fk) REFERENCES gastos_comunes(cd_gasto_comun_pk);
 
 
 --
--- TOC entry 2334 (class 2606 OID 18974)
--- Name: menu_parent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2360 (class 2606 OID 88546)
+-- Name: menu_parent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY menu
@@ -6475,8 +6608,8 @@ ALTER TABLE ONLY menu
 
 
 --
--- TOC entry 2329 (class 2606 OID 18979)
--- Name: propietario_user; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2355 (class 2606 OID 88551)
+-- Name: propietario_user; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cd_propietarios
@@ -6484,8 +6617,8 @@ ALTER TABLE ONLY cd_propietarios
 
 
 --
--- TOC entry 2335 (class 2606 OID 18984)
--- Name: roles_operaciones_operaciones_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2361 (class 2606 OID 88556)
+-- Name: roles_operaciones_operaciones_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY roles_operaciones
@@ -6493,8 +6626,8 @@ ALTER TABLE ONLY roles_operaciones
 
 
 --
--- TOC entry 2336 (class 2606 OID 18989)
--- Name: roles_operaciones_roles_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2362 (class 2606 OID 88561)
+-- Name: roles_operaciones_roles_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY roles_operaciones
@@ -6502,27 +6635,15 @@ ALTER TABLE ONLY roles_operaciones
 
 
 --
--- TOC entry 2337 (class 2606 OID 18994)
--- Name: roles_user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hjtecnos
+-- TOC entry 2363 (class 2606 OID 88566)
+-- Name: roles_user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY "user"
     ADD CONSTRAINT roles_user_fkey FOREIGN KEY (rol_id) REFERENCES roles(id);
 
 
---
--- TOC entry 2504 (class 0 OID 0)
--- Dependencies: 7
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
--- Completed on 2016-07-24 20:12:50 VET
+-- Completed on 2016-07-24 21:19:06 VET
 
 --
 -- PostgreSQL database dump complete
