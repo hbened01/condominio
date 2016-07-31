@@ -33,8 +33,10 @@ $(document).ready(function(){
 		});
     });
 
-
-    CKEDITOR.replace('editor');
-    //bootstrap WYSIHTML5 - text editor
-    $(".textarea").wysihtml5();
+    var url = window.location.href;
+    if (url.indexOf("/mensajes/create") != -1 || url.indexOf("/mensajes/update") != -1 ) {
+	    CKEDITOR.replace('editor');
+	    // bootstrap WYSIHTML5 - text editor
+	    $(".textarea").wysihtml5();
+    }
 });

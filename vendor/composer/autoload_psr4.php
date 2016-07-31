@@ -14,11 +14,6 @@ return array(
     'yii\\codeception\\' => array($vendorDir . '/yiisoft/yii2-codeception'),
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
-<<<<<<< HEAD
-    'kartik\\plugins\\fileinput\\' => array($vendorDir . '/kartik-v/bootstrap-fileinput'),
-    'kartik\\file\\' => array($vendorDir . '/kartik-v/yii2-widget-fileinput'),
-    'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
-=======
     'kartik\\widgets\\' => array($vendorDir . '/kartik-v/yii2-widgets'),
     'kartik\\typeahead\\' => array($vendorDir . '/kartik-v/yii2-widget-typeahead'),
     'kartik\\touchspin\\' => array($vendorDir . '/kartik-v/yii2-widget-touchspin'),
@@ -41,7 +36,6 @@ return array(
     'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
     'kartik\\alert\\' => array($vendorDir . '/kartik-v/yii2-widget-alert'),
     'kartik\\affix\\' => array($vendorDir . '/kartik-v/yii2-widget-affix'),
->>>>>>> cond_humberto_7
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Fxp\\Composer\\AssetPlugin\\' => array($vendorDir . '/fxp/composer-asset-plugin'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),

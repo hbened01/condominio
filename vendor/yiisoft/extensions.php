@@ -57,15 +57,6 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
-<<<<<<< HEAD
-  'kartik/inputfile' => 
-  array (
-    'name' => 'kartik/inputfile',
-    'version' => '*',
-    'alias' => 
-    array (
-      '@kartik/inputfile' => $vendorDir . '/kartik/inputfile',
-=======
   0 => 
   array (
     'name' => 'yiisoft/yii2-jui',
@@ -73,7 +64,6 @@ return array (
     'alias' => 
     array (
       '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui',
->>>>>>> cond_humberto_7
     ),
   ),
   'kartik-v/yii2-krajee-base' => 
@@ -85,12 +75,6 @@ return array (
       '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base',
     ),
   ),
-<<<<<<< HEAD
-  'kartik-v/yii2-widget-fileinput' => 
-  array (
-    'name' => 'kartik-v/yii2-widget-fileinput',
-    'version' => '9999999-dev',
-=======
   'kartik-v/yii2-widget-typeahead' => 
   array (
     'name' => 'kartik-v/yii2-widget-typeahead',
@@ -185,14 +169,11 @@ return array (
   array (
     'name' => 'kartik-v/yii2-widget-fileinput',
     'version' => '1.0.5.0',
->>>>>>> cond_humberto_7
     'alias' => 
     array (
       '@kartik/file' => $vendorDir . '/kartik-v/yii2-widget-fileinput',
     ),
   ),
-<<<<<<< HEAD
-=======
   'kartik-v/yii2-widget-depdrop' => 
   array (
     'name' => 'kartik-v/yii2-widget-depdrop',
@@ -265,5 +246,4 @@ return array (
       '@kartik/widgets' => $vendorDir . '/kartik-v/yii2-widgets',
     ),
   ),
->>>>>>> cond_humberto_7
 );
