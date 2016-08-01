@@ -33,7 +33,7 @@ return [
     'Cod User' => '',
     'Cota Mes' => '',
     'Created At' => '',
-    'Date' => '',
+    'Date' => 'Fecha',
     'Descripcion' => '',
     'Deuda Actual' => '',
     'Id' => '',

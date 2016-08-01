@@ -2,6 +2,7 @@
 
 use frontend\assets\CorlateAsset;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\jui\DatePicker;
@@ -37,6 +38,7 @@ $this->title = Yii::t('frontend', 'invoice history');
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
 
+                    'nr',
                     'cod_apto',
                     'edificio',
                     'nombre',
@@ -64,7 +66,6 @@ $this->title = Yii::t('frontend', 'invoice history');
                     // 'apellido',
                     // 'cd_factura_pk',
                     // 'alicuota',
-                    // 'nr',
                     // 'total_gastos_mes',
                     // 'sub_total_alicuota',
                     // 'total_pagar_mes',
@@ -75,7 +76,20 @@ $this->title = Yii::t('frontend', 'invoice history');
                     ['class' => 'yii\grid\ActionColumn',
                     'header'=>'Ver',
                     'headerOptions' => ['width' => '20'],
-                    'template' => '{view}'
+                    'template' => '{ver}  {factura-pdf}',
+                    'buttons' => [
+                        'factura-pdf' => function ($url, $model) {
+                                    return Html::a('<span class="fa fa-download"></span>', $url, [
+                                                'title' => Yii::t('app', 'Descargar Factura'),'target' =>'_blan',
+                                    ]);
+                        },
+                    ],
+                    'urlCreator' => function ($action, $model, $key, $index) {
+                            if ($action === 'factura-pdf') {
+                                $url = Url::base().'/'.Yii::$app->controller->id.'/factura-pdf?id='.$model->cd_factura_pk;
+                                return $url;
+                            }
+                    }
                     ],
                 ],
             ]); ?>
