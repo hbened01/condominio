@@ -141,6 +141,9 @@ $operaciones = $session->get('operaciones');
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
+                    <?php if(in_array('facturas-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/facturas"><i class="glyphicons glyphicons-list"></i>&nbsp&nbsp Lista de Facturas</a></li>
+                    <?php endif;?>
                     <?php if(in_array('mensajes-index',$operaciones)): ?>
                       <li><a href="<?= Url::base(); ?>/mensajes"><i class="glyphicons glyphicons-folder-open"></i>&nbsp&nbsp Mensajes</a></li>
                     <?php endif;?>
