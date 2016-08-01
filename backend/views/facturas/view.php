@@ -111,7 +111,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
                 <tr>
                     <td><strong>Total gastos en el mes......</strong></td>
                     <td><strong><?= number_format($model->total_gastos_mes, 0, ',', '.') ?></strong></td>
-                    <td><strong>Sbutotal Gastos Comunes seg&uacute;n al al&iacute;cuota</strong></td>
+                    <td><strong>Subtotal Gastos Comunes seg&uacute;n al al&iacute;cuota</strong></td>
                     <td style="text-align:right;padding-right:4%"><strong><?= number_format($model->sub_total_alicuota, 0, ',', '.') ?></strong></td>
                 </tr>
                 <?php 

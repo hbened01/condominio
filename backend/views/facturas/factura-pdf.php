@@ -24,9 +24,9 @@ $fecha = $porciones = explode(" ", $model->fecha);
           <table class="table table-striped" style="font-size:10px;">
             <thead>
             <tr>
-              <th colspan="4"></th>
-              <th style="text-align: right;">NR</th>
-              <th><?= $model->nr ?></th>
+              <th colspan="4" style="border-top:0">RELACIONES DE GASTOS</th>
+              <th style="text-align: right;border-top:0">NR</th>
+              <th style="border-top:0"><?= $model->nr ?></th>
             </tr>
             <tr>
               <th>Apto.</th>
@@ -84,7 +84,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
                 <tr>
                     <td><strong>Total gastos en el mes......</strong></td>
                     <td><strong><?= number_format($model->total_gastos_mes, 0, ',', '.') ?></strong></td>
-                    <td style="text-align:right;"><strong>Sbutotal Gastos Comunes seg&uacute;n al al&iacute;cuota</strong></td>
+                    <td style="text-align:right;"><strong>Subtotal Gastos Comunes seg&uacute;n al al&iacute;cuota</strong></td>
                     <td style="text-align:right;padding-right:4%"><strong><?= number_format($model->sub_total_alicuota, 0, ',', '.') ?></strong></td>
                 </tr>
                 <?php 
