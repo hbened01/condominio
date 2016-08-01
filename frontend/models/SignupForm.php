@@ -45,7 +45,7 @@ class SignupForm extends Model
 
             // DATOS DE PROPIETARIO 
             ['nro_cedula', 'required'],
-            [['nro_cedula'], 'number', 'min' => 8],
+            [['nro_cedula'], 'number', 'min' => 1, 'max' => 99999999],
 
             ['nro_apto', 'required'],
             [['nro_apto'], 'string', 'min' => 2],

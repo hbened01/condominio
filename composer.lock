@@ -4,13 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "332928d806b0ec0f4c26329450f1c222",
-    "content-hash": "942340aa646beb7946d0b13d09cbe731",
-=======
     "hash": "b852c70bd91d4b4480b50b861a06e137",
     "content-hash": "a7a4f7ea6f8166ffe60d92fba1d3c7c5",
->>>>>>> cond_humberto_7
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -305,8 +300,6 @@
             "time": "2015-08-05 01:03:42"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "fxp/composer-asset-plugin",
             "version": "v1.1.4",
             "source": {
@@ -363,7 +356,6 @@
             "time": "2016-04-22 08:48:58"
         },
         {
->>>>>>> cond_humberto_7
             "name": "kartik-v/bootstrap-fileinput",
             "version": "v4.3.3",
             "source": {
@@ -417,8 +409,6 @@
             "time": "2016-07-09 12:56:05"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "kartik-v/bootstrap-star-rating",
             "version": "v4.0.1",
             "source": {
@@ -505,7 +495,6 @@
             "time": "2015-12-16 18:15:01"
         },
         {
->>>>>>> cond_humberto_7
             "name": "kartik-v/yii2-krajee-base",
             "version": "1.8.5",
             "source": {
@@ -557,23 +546,6 @@
             "time": "2016-05-07 19:45:52"
         },
         {
-<<<<<<< HEAD
-            "name": "kartik-v/yii2-widget-fileinput",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
-                "reference": "6fc8922716bf0b3638c67ff0895a9ff688b6c027"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/6fc8922716bf0b3638c67ff0895a9ff688b6c027",
-                "reference": "6fc8922716bf0b3638c67ff0895a9ff688b6c027",
-                "shasum": ""
-            },
-            "require": {
-                "kartik-v/bootstrap-fileinput": "~4.2",
-=======
             "name": "kartik-v/yii2-widget-activeform",
             "version": "v1.4.8",
             "source": {
@@ -588,26 +560,17 @@
                 "shasum": ""
             },
             "require": {
->>>>>>> cond_humberto_7
                 "kartik-v/yii2-krajee-base": "~1.7"
             },
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
-<<<<<<< HEAD
-                    "dev-master": "1.0.x-dev"
-=======
                     "dev-master": "1.4.x-dev"
->>>>>>> cond_humberto_7
                 }
             },
             "autoload": {
                 "psr-4": {
-<<<<<<< HEAD
-                    "kartik\\file\\": ""
-=======
                     "kartik\\form\\": ""
->>>>>>> cond_humberto_7
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -621,13 +584,6 @@
                     "homepage": "http://www.krajee.com/"
                 }
             ],
-<<<<<<< HEAD
-            "description": "An enhanced FileInput widget for Bootstrap 3.x with file preview, multiple selection, and more features (sub repo split from yii2-widgets)",
-            "homepage": "https://github.com/kartik-v/yii2-widget-fileinput",
-            "keywords": [
-                "extension",
-                "file",
-=======
             "description": "Enhanced Yii2 active-form and active-field with full bootstrap styling support (sub repo split from yii2-widgets).",
             "homepage": "https://github.com/kartik-v/yii2-widget-activeform",
             "keywords": [
@@ -785,18 +741,10 @@
                 "HTML5",
                 "color",
                 "extension",
->>>>>>> cond_humberto_7
                 "form",
                 "input",
                 "jquery",
                 "plugin",
-<<<<<<< HEAD
-                "upload",
-                "widget",
-                "yii2"
-            ],
-            "time": "2016-07-23 15:30:48"
-=======
                 "widget",
                 "yii2"
             ],
@@ -1571,7 +1519,6 @@
                 "yii2"
             ],
             "time": "2014-11-09 19:54:17"
->>>>>>> cond_humberto_7
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2181,9 +2128,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "kartik-v/yii2-widget-fileinput": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

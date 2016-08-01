@@ -18,21 +18,6 @@ use yii\helpers\ArrayHelper;
 class CdPagosController extends Controller
 {
     /**
-     * @inheritdoc
-     */
-    // public function behaviors()
-    // {
-    //     return [
-    //         'verbs' => [
-    //             'class' => VerbFilter::className(),
-    //             'actions' => [
-    //                 'delete' => ['POST'],
-    //             ],
-    //         ],
-    //     ];
-    // }
-
-    /**
      * Lists all CdPagos models.
      * @return mixed
      */
@@ -41,14 +26,6 @@ class CdPagosController extends Controller
         $model = new CdPagos();
         $searchModel = new CdPagosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        // var_dump(Yii::$app->request->queryParams);
-        // $value = Yii::$app->request->queryParams;
-        // var_dump(Yii::$app->user->identity);
-        //echo empty(strlen($value['CdPagosSearch']['cod_edificio'])) ;
-        // if (empty($value) || (empty(strlen($value['CdPagosSearch']['cod_edificio']))) && empty(strlen($value['CdPagosSearch']['cod_edificio']))) {
-        //     echo "string";
-        // }
-        // exit();
         
         return $this->render('index', [
             'searchModel' => $searchModel,

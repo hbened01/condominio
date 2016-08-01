@@ -10,11 +10,9 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\grid\GridView;
- 
+
 $asset = frontend\assets\CorlateAsset::register($this);
 $baseUrl = $asset->baseUrl;
-
-//CorlateAsset::register($this);
 
 ?>
 <?php $this->beginPage() ?>
@@ -75,7 +73,6 @@ $baseUrl = $asset->baseUrl;
                         <li><?= Html::a(Yii::t('frontend', 'About Us'), ['site/about'],['data' => ['method' => 'post']]) ?></li>
                         <li><?= Html::a(Yii::t('frontend', 'Contact'), ['site/contact'],['data' => ['method' => 'post']]) ?></li> 
                         <?php   if (Yii::$app->user->isGuest) {
-                                    //echo '<li>'.Html::a('Signup', ['/site/signup'],['data' => ['method' => 'post']]).'</li>';
                                     echo '<li>'.Html::a(Yii::t('frontend', 'Login'), ['/site/login'],['data' => ['method' => 'post']]).'</li>';
                                 } 
                                 else {
@@ -88,9 +85,9 @@ $baseUrl = $asset->baseUrl;
                                     } else {
                                         Yii::$app->session->remove('user.update_usr');
                                     }
-                                    echo       '<li>'.Html::a(Yii::t('frontend', 'Payment Record'), ['cd-pagos/']).'</li>';     
-                                    echo       '<li><a href="404.html">404</a></li>
-                                            </ul>
+                                    echo       '<li>'.Html::a(Yii::t('frontend', 'Payment Record'), ['cd-pagos/']).'</li>';
+                                    echo       '<li>'.Html::a(Yii::t('frontend', 'My bills'), ['facturas/']).'</li>';
+                                    echo    '</ul>
                                          </li>';
                                     echo '<li>'.Html::a(Yii::t('frontend', 'Logout').'( ' . Yii::$app->user->identity->username . ' )  <i class="fa fa-power-off"></i>', ['/site/logout'], ['data' => ['confirm' => Yii::t('frontend', 'Sure to log off?'), 'method' => 'post',]]).'</li>';
                                 }                  
@@ -180,10 +177,8 @@ $baseUrl = $asset->baseUrl;
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><?= Html::a(Yii::t('frontend', 'Home'), ['site/index'],['data' => ['method' => 'post']]) ?></li>
+                        <li><?= Html::a(Yii::t('frontend', 'Contact'), ['site/contact'],['data' => ['method' => 'post']]) ?></li>
                     </ul>
                 </div>
             </div>

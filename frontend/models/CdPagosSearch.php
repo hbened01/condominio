@@ -45,6 +45,15 @@ class CdPagosSearch extends CdPagos
     {
         $query = CdPagos::find();
 
+
+        $query->select(['e.*'])
+                        ->from('cd_propietarios a')
+                        ->innerJoin('user b','b.id = a.cod_user')
+                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
+                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
+                        ->innerJoin('cd_pagos e','e.cod_factura = d.cd_factura_pk')
+                        ->where (['b.id' => Yii::$app->user->identity->id]);
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

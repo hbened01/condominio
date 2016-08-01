@@ -37,7 +37,6 @@ $this->title = Yii::t('frontend', 'payment history');
                     // 'timeFormat' => 'medium',
                     // 'datetimeFormat' => 'medium',
                     'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado']
-
                 ],
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
@@ -84,9 +83,11 @@ $this->title = Yii::t('frontend', 'payment history');
                     ['class' => 'yii\grid\ActionColumn',
                     'header'=>'Ver',
                     'headerOptions' => ['width' => '20'],
-                    'template' => '{view}'],
+                    'template' => '{view}'
+                    ],
                 ],
             ]); ?>
+
             <div class="row-sm-5">
                 <?= Html::a(Yii::t('frontend', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
                 <?= Html::a(Yii::t('frontend', 'Exit'), ['site/index'], ['class' => 'btn btn-danger']) ?>
