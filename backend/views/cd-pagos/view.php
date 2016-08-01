@@ -2,45 +2,66 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\ArrayHelper;
 
-/* @var $this yii\web\View */
-/* @var $model backend\models\CdPagos */
+$this->title = Html::encode(Yii::t('backend', 'Vista Pago')).' #'.$model->cd_pago_pk;
 
-$this->title = $model->cd_pago_pk;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Cd Pagos'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$session = Yii::$app->session;
+$operaciones = $session->get('operaciones');
+
 ?>
-<div class="cd-pagos-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->cd_pago_pk], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->cd_pago_pk], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'cd_pago_pk',
-            'cod_factura',
-            'cod_tipo_pago',
-            'nro_referencia',
-            'fecha_pago',
-            'nota_pago',
-            'nombre',
-            'apellido',
-            'nro_cedula',
-            'cod_tipo_doc',
-            'email:email',
-            'estatus_pago:boolean',
+<p>
+    <?= Html::a(Yii::t('app', 'Lista de Pagos'), ['index'], ['class' => 'btn btn-info']); ?>
+    <?= (in_array(Yii::$app->controller->id.'-update',$operaciones)) ? Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->cd_pago_pk], ['class' => 'btn btn-primary']) : '' ?>
+    <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones)) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->cd_pago_pk], [
+        'class' => 'btn btn-danger',
+        'data' => [
+            'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+            'method' => 'post',
         ],
-    ]) ?>
+    ]) : '' ?>
+    <?= (in_array(Yii::$app->controller->id.'-pay-approved',$operaciones) && !$model->estatus_pago) ? Html::a(Yii::t('app', 'Aprobar'), ['pay-approved', 'id' => $model->cd_pago_pk], [
+        'class' => 'btn btn-warning',
+        'data' => [
+            'confirm' => Yii::t('app', '¿Seguro que desa aprobar el pago?'),
+            'method' => 'post',
+        ],
+    ]) : '' ?>
+</p>
+<section id="pagos-view">
+    <div class="container">
+        <div class="center">
+            <h2><?= Html::encode(Yii::t('frontend', 'View Registered Payment')) ?></h2>
+        </div> 
+        <br>
+        <div class="row contact-wrap"> 
+    
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    //'cd_pago_pk',
+                    //'cod_factura',
+                    //'estatus_pago:boolean',
+                    'codFactura.nr',
+                    'codFactura.cod_apto',
+                    'codFactura.edificio',
+                    'nombre',
+                    'apellido',
+                    'codTipoPago.descrip_pago',
+                    'nro_referencia',
+                    'fecha_pago',
+                    'nota_pago',
+                    'nro_cedula',
+                    'codTipoDoc.descrip_doc',
+                    'email:email',
+                    'estatus_pago:boolean',
+                ],
+            ]) ?>
 
-</div>
+        </div><!--/.row-->
+        <br>
+        <br>
+        <br>
+    </div><!--/.container-->
+</section><!--/#contact-page-->
