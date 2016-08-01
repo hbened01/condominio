@@ -49,7 +49,7 @@ $operaciones = $session->get('operaciones');
             
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{ver}  {actualizar}  {eliminar}',
+                'template' => '{ver}  {factura-pdf}  {eliminar}',
                 'buttons' => [
                     'ver' => function ($url, $model) {
                         $session = Yii::$app->session;
@@ -61,16 +61,16 @@ $operaciones = $session->get('operaciones');
                             return false;
                         }
                     },
-                    // 'actualizar' => function ($url, $model) {
-                    //     $session = Yii::$app->session;
-                    //     if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones'))) {
-                    //         return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                    //                     'title' => Yii::t('app', 'Actualizar'),
-                    //         ]);
-                    //     }else{
-                    //         return false;
-                    //     }
-                    // },
+                    'factura-pdf' => function ($url, $model) {
+                        $session = Yii::$app->session;
+                        if (in_array(Yii::$app->controller->id.'-factura-pdf',$session->get('operaciones'))) {
+                            return Html::a('<span class="fa fa-download"></span>', $url, [
+                                        'title' => Yii::t('app', 'Descargar Factura'),'target' =>'_blan',
+                            ]);
+                        }else{
+                            return false;
+                        }
+                    },
                     // 'eliminar' => function ($url, $model) {
                     //     $session = Yii::$app->session;
                     //     if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones'))) {
@@ -89,10 +89,10 @@ $operaciones = $session->get('operaciones');
                         $url = Url::base().'/'.Yii::$app->controller->id.'/view?id='.$model->cd_factura_pk;
                         return $url;
                     }
-                    // if ($action === 'actualizar') {
-                    //     $url = Url::base().'/'.Yii::$app->controller->id.'/update?id='.$model->cd_factura_pk;
-                    //     return $url;
-                    // }
+                    if ($action === 'factura-pdf') {
+                        $url = Url::base().'/'.Yii::$app->controller->id.'/factura-pdf?id='.$model->cd_factura_pk;
+                        return $url;
+                    }
                     // if ($action === 'eliminar') {
                     //     $url = Url::base().'/'.Yii::$app->controller->id.'/delete?id='.$model->cd_factura_pk;
                     //     return $url;

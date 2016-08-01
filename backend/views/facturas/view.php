@@ -10,6 +10,9 @@ $this->title = 'Factura N° '.$model->nr;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Facturas'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
+$session = Yii::$app->session;
+$operaciones = $session->get('operaciones');
+
 $fecha = $porciones = explode(" ", $model->fecha);
 ?>
 <div class="facturas-view">
@@ -83,7 +86,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
           <table class="table table-striped">
             <thead>
             <tr>
-              <th style="padding-left:10%">Concepto</th>
+              <th style="padding-left:10%"  colspan="3">Concepto</th>
               <th  style="text-align:right;padding-right:5%">Monto</th>
             </tr>
             </thead>
@@ -194,11 +197,12 @@ $fecha = $porciones = explode(" ", $model->fecha);
       <div class="row no-print">
         <div class="col-xs-12">
           <!-- <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a> -->
-          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
-          </button>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
+          <!-- <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment -->
+          <!-- </button> -->
+          <!-- <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;"> -->
+            <!-- <i class="fa fa-download"></i> Generate PDF -->
+          <!-- </button> -->
+          <?= (in_array(Yii::$app->controller->id.'-factura-pdf',$operaciones)) ? Html::a(Yii::t('backend', '<i class="fa fa-download"></i> Generate PDF'), ['facturas/factura-pdf','id' => $model->cd_factura_pk], ['class' => 'btn btn-primary pull-right','style' => 'margin-right: 5px','target' =>'_blan']) : ''  ?>
         </div>
       </div>
     </section>
