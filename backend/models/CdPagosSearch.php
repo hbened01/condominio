@@ -44,6 +44,7 @@ class CdPagosSearch extends CdPagos
     public function search($params)
     {
         $query = CdPagos::find();
+        $query->joinWith('codFactura');
 
         // add conditions that should always apply here
 
@@ -62,7 +63,7 @@ class CdPagosSearch extends CdPagos
         // grid filtering conditions
         $query->andFilterWhere([
             'cd_pago_pk' => $this->cd_pago_pk,
-            'cod_factura' => $this->cod_factura,
+            'facturas.nr' => $this->cod_factura,
             'cod_tipo_pago' => $this->cod_tipo_pago,
             'nro_referencia' => $this->nro_referencia,
             'fecha_pago' => $this->fecha_pago,

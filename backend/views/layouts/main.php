@@ -9,9 +9,14 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
-$asset = backend\assets\DashboardAsset::register($this);
+$views = array('cd-pagos-index');
+if (in_array(Yii::$app->controller->id.'-'.Yii::$app->controller->action->id,$views)) {
+    $asset = backend\assets\AppAsset::register($this);
+}else{
+    $asset = backend\assets\DashboardAsset::register($this);
+}
+
 $baseUrl = $asset->baseUrl;
-//DashboardAsset::register($this);
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
 
@@ -146,6 +151,9 @@ $operaciones = $session->get('operaciones');
                     <?php endif;?>
                     <?php if(in_array('mensajes-index',$operaciones)): ?>
                       <li><a href="<?= Url::base(); ?>/mensajes"><i class="glyphicons glyphicons-folder-open"></i>&nbsp&nbsp Mensajes</a></li>
+                    <?php endif;?>
+                    <?php if(in_array('cd-pagos-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/cd-pagos"><i class="glyphicons glyphicons-fees-payments"></i>&nbsp&nbsp Lista de Pagos</a></li>
                     <?php endif;?>
                   </ul>
                 </li>

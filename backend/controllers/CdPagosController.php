@@ -8,6 +8,7 @@ use backend\models\CdPagosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Facturas;
 
 /**
  * CdPagosController implements the CRUD actions for CdPagos model.
@@ -65,11 +66,23 @@ class CdPagosController extends Controller
     {
         $model = new CdPagos();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'El pago fue creado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
+            } else {
+                $concat_id_factura = $model->getIdFacturaConcat();
+                Yii::$app->session->setFlash('error', 'El pago no pudo ser creado.');
+                return $this->render('create', [
+                    'model' => $model,
+                    'data' => $concat_id_factura, 
+                ]);
+            }
         } else {
+            $concat_id_factura = $model->getIdFacturaConcat();
             return $this->render('create', [
                 'model' => $model,
+                'data' => $concat_id_factura, 
             ]);
         }
     }
@@ -84,11 +97,23 @@ class CdPagosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'El pago fue actualizado exitosamente.');
+                return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
+            } else {
+                $concat_id_factura = $model->getIdFacturaConcat();
+                Yii::$app->session->setFlash('error', 'El pago no pudo ser actualizado.');
+                return $this->render('create', [
+                    'model' => $model,
+                    'data' => $concat_id_factura, 
+                ]);
+            }
         } else {
+            $concat_id_factura = $model->getIdFacturaConcat(/*$id_user*/);
             return $this->render('update', [
                 'model' => $model,
+                'data' => $concat_id_factura, 
             ]);
         }
     }
@@ -101,8 +126,11 @@ class CdPagosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        if ($this->findModel($id)->delete()) {
+            Yii::$app->session->setFlash('success', 'El pago fue eliminado exitosamente.');
+        } else {
+            Yii::$app->session->setFlash('error', 'El pago no pudo ser eliminado.');
+        }
         return $this->redirect(['index']);
     }
 
@@ -120,5 +148,28 @@ class CdPagosController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+     * Deletes an existing CdPagos model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionPayApproved($id)
+    {
+        $model = $this->findModel($id);
+        $model->estatus_pago = true;
+
+        $model2 = Facturas::find()->where(['cd_factura_pk' => $model->cod_factura])->one();
+        $model2->estatus_factura = true;
+
+        if ($model->save()) {
+            $model2->save();
+            Yii::$app->session->setFlash('success', 'El pago fue aprobado exitosamente.');
+        } else {
+            Yii::$app->session->setFlash('error', 'El pago no pudo ser aprobado.');
+        }
+        return $this->redirect(['index']);
     }
 }

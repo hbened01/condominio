@@ -3,6 +3,8 @@
 namespace backend\models;
 
 use Yii;
+//use backend\models\CdTiposPagos;
+//use backend\models\Facturas;
 
 /**
  * This is the model class for table "cd_pagos".
@@ -61,8 +63,8 @@ class CdPagos extends \yii\db\ActiveRecord
     {
         return [
             'cd_pago_pk' => 'Cd Pago Pk',
-            'cod_factura' => 'Cod Factura',
-            'cod_tipo_pago' => 'Cod Tipo Pago',
+            'cod_factura' => 'Factura',
+            'cod_tipo_pago' => 'Tipo Pago',
             'nro_referencia' => 'Nro Referencia',
             'fecha_pago' => 'Fecha Pago',
             'nota_pago' => 'Nota Pago',
@@ -71,7 +73,7 @@ class CdPagos extends \yii\db\ActiveRecord
             'nro_cedula' => 'Nro Cedula',
             'cod_tipo_doc' => 'Cod Tipo Doc',
             'email' => 'Email',
-            'estatus_pago' => 'Estatus Pago',
+            'estatus_pago' => 'Pago Aprobado',
         ];
     }
 
@@ -91,11 +93,40 @@ class CdPagos extends \yii\db\ActiveRecord
         return $this->hasOne(CdTiposPagos::className(), ['cd_tipo_pago_pk' => 'cod_tipo_pago']);
     }
 
+    public function tipoPago($id)
+    {
+        $model = CdTiposPagos::find()->where(['cd_tipo_pago_pk' => $id])->one();
+        return $model?$model->descrip_pago:'';
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getCodFactura()
     {
         return $this->hasOne(Facturas::className(), ['cd_factura_pk' => 'cod_factura']);
+    }
+
+    public function getIdFacturaConcat()
+    {   
+        $filter = (new \yii\db\Query())
+                        ->select(['d.cd_factura_pk AS id'])
+                        ->from('cd_propietarios a')
+                        ->innerJoin('user b','b.id = a.cod_user')
+                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
+                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
+                        ->innerJoin('cd_pagos e','e.cod_factura = d.cd_factura_pk');
+
+        $result = (new \yii\db\Query())
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto: ', d.cod_apto, ' - Edificio: ', d.edificio, ' - Fecha: ',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
+                        ->from('cd_propietarios a')
+                        ->innerJoin('user b','b.id = a.cod_user')
+                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
+                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
+                        //->where (['and','d.estatus_factura = false', ['not in', 'd.cd_factura_pk', $filter]])
+                        ->where (['d.estatus_factura' => 'false'])
+                        ->all();
+                        
+        return $result;
     }
 }
