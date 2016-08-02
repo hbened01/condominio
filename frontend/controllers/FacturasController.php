@@ -17,6 +17,21 @@ use kartik\mpdf\Pdf;
 class FacturasController extends Controller
 {
     /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
+    /**
      * Lists all Facturas models.
      * @return mixed
      */

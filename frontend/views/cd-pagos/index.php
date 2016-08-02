@@ -3,6 +3,7 @@
 use frontend\assets\CorlateAsset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\jui\DatePicker;
 use frontend\models\CdTiposPagos;
@@ -81,11 +82,51 @@ $this->title = Yii::t('frontend', 'payment history');
                     // 'estatus_pago:boolean',
                     
                     ['class' => 'yii\grid\ActionColumn',
-                    'header'=>'Ver',
+                    'header'=>'Acciones',
                     'headerOptions' => ['width' => '20'],
-                    'template' => '{view}'
+                    'template' => '{ver}  {actualizar}  {eliminar}',
+                    'buttons' => [
+                        'ver' => function ($url, $model) {
+                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                                            'title' => Yii::t('app', 'Ver'),
+                                ]);
+                        },
+                        'actualizar' => function ($url, $model) {
+                            if (!$model->estatus_pago) {
+                                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                                            'title' => Yii::t('app', 'Actualizar'),
+                                ]);
+                            }else{
+                                return false;
+                            }
+                        },
+                        'eliminar' => function ($url, $model) {
+                            if (!$model->estatus_pago) {
+                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                                            'title' => Yii::t('app', 'Eliminar'),
+                                            'data-confirm' => '¿Seguro que desea eliminar el pago"?',
+                                            'data-method' => 'POST'
+                                ]);
+                            }else{
+                                return false;
+                            }
+                        },
                     ],
-                ],
+                    'urlCreator' => function ($action, $model, $key, $index) {
+                        if ($action === 'ver') {
+                            $url = Url::base().'/'.Yii::$app->controller->id.'/view?id='.$model->cd_pago_pk;
+                            return $url;
+                        }
+                        if ($action === 'actualizar') {
+                            $url = Url::base().'/'.Yii::$app->controller->id.'/update?id='.$model->cd_pago_pk;
+                            return $url;
+                        }
+                        if ($action === 'eliminar') {
+                            $url = Url::base().'/'.Yii::$app->controller->id.'/delete?id='.$model->cd_pago_pk;
+                            return $url;
+                        }
+                    }
+                ],],
             ]); ?>
 
             <div class="row-sm-5">

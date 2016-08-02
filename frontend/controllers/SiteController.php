@@ -151,7 +151,7 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionSignup()
-    {
+    {   
         $model = new SignupForm();
         $user = new CdPropietarios();
         if ($model->load(Yii::$app->request->post())) {
