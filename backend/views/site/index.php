@@ -3,10 +3,14 @@
 /* @var $this yii\web\View */
 
 use backend\assets\DashboardAsset;
+use yii\helpers\Url;
 
 $this->title = 'Backend-Index';
 $asset = backend\assets\DashboardAsset::register($this);
 $baseUrl = $asset->baseUrl;
+
+$session = Yii::$app->session;
+$operaciones = $session->get('operaciones');
 
 ?>
 <section class="content">
@@ -20,10 +24,10 @@ $baseUrl = $asset->baseUrl;
               <i class="fa fa-calendar"></i>
               <h3 class="box-title">Calendar</h3>
               <!-- tools box -->
-              <div class="pull-right box-tools">
+              <!-- <div class="pull-right box-tools">
                 <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-              </div>
+              </div -->>
               <!-- /. tools -->
             </div>
             <!-- /.box-header -->
@@ -41,13 +45,15 @@ $baseUrl = $asset->baseUrl;
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
-              <p>New Orders</p>
+              <h3><?= $cant_propietarios ?></h3>
+              <p>Propietarios</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-person"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <?php if(in_array('cd-propietarios-index',$operaciones)): ?>
+              <a href="<?= Url::base(); ?>/cd-propietarios" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <?php endif;?>
           </div>
         </div>
         <!-- ./col -->
@@ -55,13 +61,15 @@ $baseUrl = $asset->baseUrl;
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-              <p>Bounce Rate</p>
+              <h3><?= $cant_users ?></h3>
+              <p>Usuarios Registrados</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <?php if(in_array('user-index',$operaciones)): ?>
+              <a href="<?= Url::base(); ?>/user" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <?php endif;?>
           </div>
         </div>
         <!-- ./col -->
@@ -69,13 +77,15 @@ $baseUrl = $asset->baseUrl;
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
-              <p>User Registrations</p>
+              <h3><?= $cant_facturas ?></h3>
+              <p>Facturas No Pagadas</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion ion-document-text"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <?php if(in_array('facturas-index',$operaciones)): ?>
+              <a href="<?= Url::base(); ?>/facturas" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <?php endif;?>
           </div>
         </div>
         <!-- ./col -->
@@ -83,13 +93,15 @@ $baseUrl = $asset->baseUrl;
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
-              <p>Unique Visitors</p>
+              <h3><?= $cant_pagos ?></h3>
+              <p>Pagos por Confirmar</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion ion-cash"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <?php if(in_array('cd-pagos-index',$operaciones)): ?>
+              <a href="<?= Url::base(); ?>/cd-pagos" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <?php endif;?>
           </div>
         </div>
         <!-- ./col -->

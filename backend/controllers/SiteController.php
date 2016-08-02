@@ -6,6 +6,10 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use backend\models\CdPropietarios;
+use common\models\User;
+use backend\models\Facturas;
+use backend\models\CdPagos;
 
 /**
  * Site controller
@@ -56,7 +60,12 @@ class SiteController extends BaseController
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',[
+                'cant_propietarios' => CdPropietarios::find()->count(),
+                'cant_users' => User::find()->where(['rol_id' => 3])->count(),
+                'cant_facturas' => Facturas::find()->where(['estatus_factura' => false])->count(),
+                'cant_pagos' => CdPagos::find()->where(['estatus_pago' => false])->count(),
+            ]);
     }
 
     public function actionLogin()

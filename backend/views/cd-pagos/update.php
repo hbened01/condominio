@@ -21,7 +21,7 @@ $operaciones = $session->get('operaciones');
     <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones)) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->cd_pago_pk], [
         'class' => 'btn btn-danger',
         'data' => [
-            'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+            'confirm' => Yii::t('app', '¿Está seguro que desar eliminar el pago?'),
             'method' => 'post',
         ],
     ]) : '' ?>

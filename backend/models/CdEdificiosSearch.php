@@ -12,6 +12,7 @@ use backend\models\CdEdificios;
  */
 class CdEdificiosSearch extends CdEdificios
 {
+    public $conjunto;
     /**
      * @inheritdoc
      */
@@ -19,7 +20,7 @@ class CdEdificiosSearch extends CdEdificios
     {
         return [
             [['cd_edificios_pk', 'cod_conjunto'], 'integer'],
-            [['nombre_edificio', 'nombre_concerje', 'email_edificio'], 'safe'],
+            [['nombre_edificio', 'nombre_concerje', 'email_edificio','conjunto'], 'safe'],
             [['telf_concerje', 'porcentaje_nro1', 'porcentaje_nro2', 'agua', 'fondo_nro1', 'fondo_nro2', 'fondo_nro3', 'fondo_nro4', 'fondo_nro5', 'fondo_nro6', 'fondo_nro7', 'fondo_nro8'], 'number'],
         ];
     }
@@ -43,12 +44,18 @@ class CdEdificiosSearch extends CdEdificios
     public function search($params)
     {
         $query = CdEdificios::find();
+        $query->joinWith(['codConjunto']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['conjunto'] = [
+            'asc' => ['cd_conjuntos.nombre' => SORT_ASC],
+            'desc' => ['cd_conjuntos.nombre' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -63,21 +70,11 @@ class CdEdificiosSearch extends CdEdificios
             'cd_edificios_pk' => $this->cd_edificios_pk,
             'cod_conjunto' => $this->cod_conjunto,
             'telf_concerje' => $this->telf_concerje,
-            'porcentaje_nro1' => $this->porcentaje_nro1,
-            'porcentaje_nro2' => $this->porcentaje_nro2,
-            'agua' => $this->agua,
-            'fondo_nro1' => $this->fondo_nro1,
-            'fondo_nro2' => $this->fondo_nro2,
-            'fondo_nro3' => $this->fondo_nro3,
-            'fondo_nro4' => $this->fondo_nro4,
-            'fondo_nro5' => $this->fondo_nro5,
-            'fondo_nro6' => $this->fondo_nro6,
-            'fondo_nro7' => $this->fondo_nro7,
-            'fondo_nro8' => $this->fondo_nro8,
         ]);
 
         $query->andFilterWhere(['like', 'nombre_edificio', $this->nombre_edificio])
             ->andFilterWhere(['like', 'nombre_concerje', $this->nombre_concerje])
+            ->andFilterWhere(['like', 'CONCAT(cd_conjuntos.nombre,\' - \',cd_conjuntos.direccion)', $this->conjunto])
             ->andFilterWhere(['like', 'email_edificio', $this->email_edificio]);
 
         return $dataProvider;

@@ -115,7 +115,7 @@ $(function () {
   });
 
   //The Calender
-  $("#calendar").datepicker();
+  $("#calendar").datepicker('setDate', 'today');
 
   //SLIMSCROLL FOR CHAT WIDGET
   $('#chat-box').slimScroll({

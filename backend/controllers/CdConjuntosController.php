@@ -117,7 +117,6 @@ class CdConjuntosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete()
         if ($this->findModel($id)->delete()) {
             Yii::$app->session->setFlash('success', 'El conjunto fue eliminado exitosamente.');
         } else {

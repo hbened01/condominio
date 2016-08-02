@@ -43,11 +43,10 @@ class CdEdificios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cod_conjunto'], 'required'],
+            [['cod_conjunto','email_edificio','nombre_edificio'], 'required'],
             [['cod_conjunto'], 'integer'],
             [['telf_concerje', 'porcentaje_nro1', 'porcentaje_nro2', 'agua', 'fondo_nro1', 'fondo_nro2', 'fondo_nro3', 'fondo_nro4', 'fondo_nro5', 'fondo_nro6', 'fondo_nro7', 'fondo_nro8'], 'number'],
-            [['nombre_edificio'], 'string', 'max' => 20],
-            [['nombre_concerje'], 'string', 'max' => 30],
+            [['nombre_edificio', 'nombre_concerje'], 'string', 'max' => 100],
             [['email_edificio'], 'string', 'max' => 256],
             [['cod_conjunto'], 'exist', 'skipOnError' => true, 'targetClass' => CdConjuntos::className(), 'targetAttribute' => ['cod_conjunto' => 'cd_conjuntos_pk']],
         ];
@@ -59,23 +58,14 @@ class CdEdificios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_edificios_pk' => Yii::t('app', 'Cd Edificios Pk'),
-            'cod_conjunto' => Yii::t('app', 'Cod Conjunto'),
-            'nombre_edificio' => Yii::t('app', 'Nombre Edificio'),
-            'nombre_concerje' => Yii::t('app', 'Nombre Concerje'),
-            'telf_concerje' => Yii::t('app', 'Telf Concerje'),
-            'porcentaje_nro1' => Yii::t('app', 'Porcentaje Nro1'),
-            'email_edificio' => Yii::t('app', 'Email Edificio'),
-            'porcentaje_nro2' => Yii::t('app', 'Porcentaje Nro2'),
-            'agua' => Yii::t('app', 'Agua'),
-            'fondo_nro1' => Yii::t('app', 'Fondo Nro1'),
-            'fondo_nro2' => Yii::t('app', 'Fondo Nro2'),
-            'fondo_nro3' => Yii::t('app', 'Fondo Nro3'),
-            'fondo_nro4' => Yii::t('app', 'Fondo Nro4'),
-            'fondo_nro5' => Yii::t('app', 'Fondo Nro5'),
-            'fondo_nro6' => Yii::t('app', 'Fondo Nro6'),
-            'fondo_nro7' => Yii::t('app', 'Fondo Nro7'),
-            'fondo_nro8' => Yii::t('app', 'Fondo Nro8'),
+            'cd_edificios_pk' => 'Código Edificio',
+            'cod_conjunto' => 'Cod Conjunto',
+            'nombre_edificio' => 'Nombre Edificio',
+            'nombre_concerje' => 'Nombre Concerje',
+            'telf_concerje' => 'Telf Concerje',
+            'porcentaje_nro1' => 'Porcentaje Nro1',
+            'email_edificio' => 'Email Edificio',
+            'porcentaje_nro2' => 'Porcentaje Nro2',
         ];
     }
 
@@ -85,5 +75,11 @@ class CdEdificios extends \yii\db\ActiveRecord
     public function getCodConjunto()
     {
         return $this->hasOne(CdConjuntos::className(), ['cd_conjuntos_pk' => 'cod_conjunto']);
+    }
+
+    public function conjunto($id)
+    {
+        $model = CdConjuntos::find()->where(['cd_conjuntos_pk' => $id])->one();
+        return $model?$model->nombre.' - '.$model->direccion:'';
     }
 }

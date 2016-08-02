@@ -12,6 +12,10 @@ use yii\widgets\ActiveForm;
 
 $this->title = Yii::t('app', 'Carga y Procesamiento de Facturas');
 $this->params['breadcrumbs'][] = $this->title;
+
+$session = Yii::$app->session;
+$operaciones = $session->get('operaciones');
+
 ?>
 <div class="operaciones-index">
 
@@ -55,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <!-- /.box -->
         </div>
 
-        
+        <?php if (in_array('files-load-invoices',$operaciones)): ?>
         <div class="col-md-6">
           <div class="box box-solid">
             <div class="box-header with-border">
@@ -65,12 +69,16 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-
+                <br><br>
+                  <!-- <button type="button" class="btn btn-block btn-primary btn-lg col-md-4">Procesar Archivo</button> -->
+                  <?= Html::a(Yii::t('app', 'Procesar Archivo'), ['load-invoices'], ['class' => 'btn btn-block btn-primary btn-lg col-md-4']) ?>
+                <br><br><br><br>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>
+        <?php endif; ?>
     </div>
 
 </div>

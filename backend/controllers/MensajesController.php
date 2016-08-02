@@ -66,6 +66,14 @@ class MensajesController extends Controller
         $model = new Mensajes();
 
         if ($model->load(Yii::$app->request->post())) {
+            if ($model->msn_default) {
+                $msn_default = Mensajes::find()->where(['msn_default' => true])->one();
+                if (!empty($msn_default)) {
+                    $msn_default->msn_default = false;
+                    $msn_default->save();
+                }
+            }
+            
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'El mensaje fue creado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->cd_mensajes_pk]);
@@ -93,6 +101,14 @@ class MensajesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
+            if ($model->msn_default) {
+                $msn_default = Mensajes::find()->where(['msn_default' => true])->one();
+                if (!empty($msn_default)) {
+                    $msn_default->msn_default = false;
+                    $msn_default->save();
+                }
+            }
+
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'El mensaje fue actualizado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->cd_mensajes_pk]);

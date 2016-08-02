@@ -111,7 +111,7 @@ $operaciones = $session->get('operaciones');
                         if (in_array(Yii::$app->controller->id.'-pay-approved',$session->get('operaciones'))&& !$model->estatus_pago) {
                             return Html::a('<span class="glyphicons glyphicons-check"></span>', $url, [
                                         'title' => Yii::t('app', 'Aprobar Pago'),
-                                        'data-confirm' => '¿Seguro que desea approbar el pago"?',
+                                        'data-confirm' => '¿Seguro que desea aprobar el pago"?',
                                         'data-method' => 'POST'
                             ]);
                         }else{

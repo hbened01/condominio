@@ -182,14 +182,15 @@ $fecha = $porciones = explode(" ", $model->fecha);
 
     <div class="row">
         <!-- accepted payments column -->
-        <div class="col-xs-12 text-muted well well-sm no-shadow" style="margin-top: 10px;text-align: center;font-size:20px">
-            <?php 
-                if (!$model->estatus_factura) {
-                    echo "<h1>COPIA</h1>";
-                    echo $msn->texto;
-                }
-            ?>
-        </div>
+        <?php 
+            if (!$model->estatus_factura) {
+              echo '<div class="col-xs-12 text-muted well well-sm no-shadow" style="margin-top: 10px;text-align: center;font-size:20px">';
+              echo '<h1>COPIA</h1>';
+              echo $msn->texto;
+              echo '</div>';
+            }
+        ?>
+        
     </div>
       <!-- /.row -->
 

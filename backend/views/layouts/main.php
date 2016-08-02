@@ -111,7 +111,7 @@ $operaciones = $session->get('operaciones');
                       <li><a href="<?= Url::base(); ?>/user"><i class="fa fa-user"></i> Usuarios</a> </li>
                     <?php endif;?>
                     <?php if(in_array('operaciones-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/operaciones"><i class="fa fa-calculator"></i> Operaciones</a></li>
+                      <li><a href="<?= Url::base(); ?>/operaciones"><i class="glyphicons glyphicons-calculator"></i>&nbsp&nbsp Operaciones</a></li>
                     <?php endif;?>
                     <?php if(in_array('roles-index',$operaciones)): ?>
                       <li><a href="<?= Url::base(); ?>/roles"><i class="fa fa-users"></i> Roles</a></li>
@@ -132,7 +132,10 @@ $operaciones = $session->get('operaciones');
                       <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="fa fa-list-ol"></i> Conceptos</a> </li>
                     <?php endif;?>
                     <?php if(in_array('cd-conjuntos-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="fa fa-building-o"></i> Conjuntos</a></li>
+                      <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="glyphicons glyphicons-show-thumbnails"></i>&nbsp&nbsp Conjuntos</a></li>
+                    <?php endif;?>
+                    <?php if(in_array('cd-edificios-index',$operaciones)): ?>
+                      <li><a href="<?= Url::base(); ?>/cd-edificios"><i class="glyphicons glyphicons-building"></i>&nbsp&nbsp Edificios</a></li>
                     <?php endif;?>
                     <?php if(in_array('files-file-load',$operaciones)): ?>
                       <li><a href="<?= Url::base(); ?>/files/file-load"><i class="glyphicons glyphicons-cloud-upload"></i>&nbsp&nbsp Carga de Archivo</a></li>
