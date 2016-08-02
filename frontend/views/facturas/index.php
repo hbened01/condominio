@@ -30,9 +30,6 @@ $this->title = Yii::t('frontend', 'invoice history');
                 'formatter' => [
                     'class' => 'yii\\i18n\\Formatter',
                     'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('frontend', 'THERE IS NO DATA').')</span>',
-                    // 'dateFormat' => 'medium',
-                    // 'timeFormat' => 'medium',
-                    // 'datetimeFormat' => 'medium',
                     'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNo Cancelada', '<span class="glyphicon glyphicon-ok"></span> &nbspCancelada Exitosamente']
                 ],
                 'columns' => [

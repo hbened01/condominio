@@ -12,10 +12,25 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        /*'user' => [
+            'identityClass' => 'common\models\User',
+            'enableAutoLogin' => true,
+        ],*/
+        //SE AGREGA SESION DISTINTA EN EL FRONTEND
+        //INICIO
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
+            'identityCookie' => [
+                'name' => '_frontendUser', // unique for frontend
+                'path'=>'/frontend/web'  // correct path for the frontend app.
+            ]
         ],
+        'session' => [
+            'name' => '_frontendSessionId', // unique for frontend
+            'savePath' => __DIR__ . '/../runtime', // a temporary folder on frontend
+        ],
+        //FIN
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

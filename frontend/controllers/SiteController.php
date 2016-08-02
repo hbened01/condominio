@@ -73,7 +73,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // return $this->render('index');
+         if (is_null(Yii::$app->user->identity)){
+            if(Yii::$app->controller->route != 'site/login'){
+                return $this->redirect(Yii::$app->getUser()->loginUrl);
+            }
+        }else{
+            return $this->redirect('facturas');
+        }
     }
 
     /**
@@ -151,7 +158,7 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionSignup()
-    {
+    {   
         $model = new SignupForm();
         $user = new CdPropietarios();
         if ($model->load(Yii::$app->request->post())) {

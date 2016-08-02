@@ -24,10 +24,25 @@ return [
             // ],
     ],
     'components' => [
+        /*'user' => [
+            'identityClass' => 'common\models\User', //PARAMETROS ORIGINALES DEL FRAMEWORK
+            'enableAutoLogin' => true,
+        ],*/
+        //SE AGREGA SESION DISTINTA EN EL BACKEND
+        //INICIO
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
+            'identityCookie' => [
+                'name' => '_backendUser', // unique for backend
+                'path'=>'/backend/web'  // correct path for the backend app.
+            ]
         ],
+        'session' => [
+            'name' => '_backendSessionId', // unique for backend
+            'savePath' => __DIR__ . '/../runtime', // a temporary folder on backend
+        ],
+        //FIN
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
