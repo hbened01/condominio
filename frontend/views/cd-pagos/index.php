@@ -131,7 +131,7 @@ $this->title = Yii::t('frontend', 'payment history');
 
             <div class="row-sm-5">
                 <?= Html::a(Yii::t('frontend', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
-                <?= Html::a(Yii::t('frontend', 'Exit'), ['site/index'], ['class' => 'btn btn-danger']) ?>
+                <?= Html::a(Yii::t('frontend', 'Exit'), ['facturas/index'], ['class' => 'btn btn-danger']) ?>
             </div>
         </div><!--/.row-->
         <br>

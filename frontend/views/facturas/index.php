@@ -90,9 +90,9 @@ $this->title = Yii::t('frontend', 'invoice history');
                     ],
                 ],
             ]); ?>
-            <div class="row-sm-5">
-                <?= Html::a(Yii::t('frontend', 'Exit'), ['site/index'], ['class' => 'btn btn-danger']) ?>
-            </div>
+           <!--  <div class="row-sm-5">
+                <?//= Html::a(Yii::t('frontend', 'Exit'), ['site/index'], ['class' => 'btn btn-danger']) ?>
+            </div> -->
         </div><!--/.row-->
         <br>
         <br>
