@@ -10,11 +10,11 @@ sed 's/,;/;/g' $path"copiacondc3.txt" > $path"copiacondc4.txt"
 
 #--- Database information ----------------
 hots=127.0.0.1
-#db_name=hjtecnos_condominio
-db_name=condominio_db
+db_name=hjtecnos_condominio
+# db_name=condominio_db
 user=hjtecnos
-#export PGPASSWORD='1ytZq26fH1'
-export PGPASSWORD='<zaq12wsx'
+export PGPASSWORD='1ytZq26fH1'
+# export PGPASSWORD='<zaq12wsx'
 #-----------------------------------------
 
 tempApto=""

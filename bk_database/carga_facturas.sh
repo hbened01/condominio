@@ -1,6 +1,6 @@
 #!/bin/bash
 #path=/home/hbened01/
-path=/home/johander/
+path='../files/'
 file="copiacondc.csv"
 
 iconv -f utf-8 -t utf-8 -c $path$file > $path"copiacondc.txt"
@@ -10,8 +10,10 @@ sed 's/,;/;/g' $path"copiacondc3.txt" > $path"copiacondc4.txt"
 
 #--- Database information ----------------
 hots=127.0.0.1
+# db_name=hjtecnos_condominio
 db_name=condominio_db
 user=hjtecnos
+# export PGPASSWORD='1ytZq26fH1'
 export PGPASSWORD='<zaq12wsx'
 #-----------------------------------------
 
@@ -100,9 +102,9 @@ do
 			then deuda_actual=0 
 		fi
 			
-		# echo "***********************************************************************"
-		# echo $resi - $apto - $propietario - $mes $anio - $nr - $alicuota - $total_gmes - $subtotal_gcom - $total_pagar - $recibos - $deuda_actual
-		# echo "-----------------------------------------------------------------------"
+		echo "***********************************************************************"
+		echo $resi - $apto - $propietario - $mes $anio - $nr - $alicuota - $total_gmes - $subtotal_gcom - $total_pagar - $recibos - $deuda_actual
+		echo "-----------------------------------------------------------------------"
 
 		#-------- Insert in the facturas table and get id ----------------------------
 		query="INSERT INTO facturas(
@@ -114,7 +116,7 @@ do
 			            $deuda_actual, $recibos) RETURNING cd_factura_pk;"
 		id_factura=$(echo $query | psql -h $hots -U $user -d $db_name)
 		fid=$(echo $id_factura | cut -f3 -d' ')
-		# echo $fid
+		echo $fid
 		#-----------------------------------------------------------------------------
 
 		# if [ "$tempApto" = "03A" ]
