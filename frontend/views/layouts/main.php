@@ -34,7 +34,7 @@ $baseUrl = $asset->baseUrl;
                     <div class="col-sm-6 col-xs-4">
                         <div class="top-number"><p><i class="fa fa-phone-square"></i>  +0123 456 70 90</p></div>
                     </div>
-                    <div class="col-sm-6 col-xs-8">
+                    <!-- <div class="col-sm-6 col-xs-8">
                        <div class="social">
                             <ul class="social-share">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -50,10 +50,10 @@ $baseUrl = $asset->baseUrl;
                                 </form>
                            </div>
                        </div>
-                    </div>
+                    </div> -->
                 </div>
-            </div><!--/.container-->
-        </div><!--/.top-bar-->
+            </div>
+        </div>
 
         <nav class="navbar navbar-inverse" role="banner">
             <div class="container">
