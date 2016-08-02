@@ -13,6 +13,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\CdPropietarios;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -98,7 +99,13 @@ class SiteController extends Controller
         $user = new CdPropietarios();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             $defaultUrl = Yii::$app->request->baseUrl;
-            $url = str_replace('frontend','backend',$defaultUrl);
+            $httpsAbsoluteHomeUrl = Url::home('http');
+            if (stripos( $httpsAbsoluteHomeUrl,'condominio.hjtecnosystems')) {
+                     echo $url = str_replace('condominio.hjtecnosystems','admin.hjtecnosystems',$httpsAbsoluteHomeUrl);
+            }else{
+                     $url = str_replace('frontend','backend',$defaultUrl);
+            }
+
             if (Yii::$app->user->identity->rol_id != 3) {
                 Yii::$app->user->logout();
                 return $this->redirect($url);

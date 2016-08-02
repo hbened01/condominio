@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <div class="form-group has-feedback">
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true,'class' => 'form-control','placeholder' => 'Usuario'])->label(false) ?>
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             
             <div class="form-group has-feedback">
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php ActiveForm::end(); ?>
 
-        <a href="#">Olvid&eacute; mi contraseña</a><br>
-        <a href="#" class="text-center">Registrar nuevo usuario</a>
+        <!-- <a href="#">Olvid&eacute; mi contraseña</a><br>
+        <a href="#" class="text-center">Registrar nuevo usuario</a> -->
     </div>
 </div>
