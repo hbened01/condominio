@@ -69,8 +69,8 @@ $baseUrl = $asset->baseUrl;
                 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><?= Html::a(Yii::t('frontend', 'Home'), ['site/index'],['data' => ['method' => 'post']]) ?></li>
-                        <li><?= Html::a(Yii::t('frontend', 'About Us'), ['site/about'],['data' => ['method' => 'post']]) ?></li>
+                        <li><?= Html::a(Yii::t('frontend', 'Home'), (!Yii::$app->user->isGuest) ? ['facturas/index'] : ['/site/login'], ['data' => ['method' => 'post']]) ?></li>
+                        <!-- <li><?//= Html::a(Yii::t('frontend', 'About Us'), ['site/about'],['data' => ['method' => 'post']]) ?></li> -->
                         <li><?= Html::a(Yii::t('frontend', 'Contact'), ['site/contact'],['data' => ['method' => 'post']]) ?></li> 
                         <?php   if (Yii::$app->user->isGuest) {
                                     echo '<li>'.Html::a(Yii::t('frontend', 'Login'), ['/site/login'],['data' => ['method' => 'post']]).'</li>';
@@ -103,7 +103,7 @@ $baseUrl = $asset->baseUrl;
     <?= Alert::widget() ?>
     <?= $content ?>
 
-    <section id="bottom">
+    <!-- <section id="bottom">
         <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
@@ -119,7 +119,7 @@ $baseUrl = $asset->baseUrl;
                             <li><a href="#">Contact us</a></li>
                         </ul>
                     </div>    
-                </div><!--/.col-md-3-->
+                </div>
 
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
@@ -134,7 +134,7 @@ $baseUrl = $asset->baseUrl;
                             <li><a href="#">Billing system</a></li>
                         </ul>
                     </div>    
-                </div><!--/.col-md-3-->
+                </div>
 
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
@@ -149,7 +149,7 @@ $baseUrl = $asset->baseUrl;
                             <li><a href="#">Article Writing</a></li>
                         </ul>
                     </div>    
-                </div><!--/.col-md-3-->
+                </div>
 
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
@@ -164,20 +164,20 @@ $baseUrl = $asset->baseUrl;
                             <li><a href="#">Laboris</a></li>
                         </ul>
                     </div>    
-                </div><!--/.col-md-3-->
+                </div>
             </div>
         </div>
-    </section><!--/#bottom-->
+    </section> -->
 
     <footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                    &copy; <?php echo date('Y') ?> <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">HJ TECNOSYSTEMSs</a>. All Rights Reserved.
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">
-                        <li><?= Html::a(Yii::t('frontend', 'Home'), ['site/index'],['data' => ['method' => 'post']]) ?></li>
+                        <li><?= Html::a(Yii::t('frontend', 'Home'), (!Yii::$app->user->isGuest) ? ['facturas/index'] : ['/site/login'], ['data' => ['method' => 'post']]) ?></li>
                         <li><?= Html::a(Yii::t('frontend', 'Contact'), ['site/contact'],['data' => ['method' => 'post']]) ?></li>
                     </ul>
                 </div>

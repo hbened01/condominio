@@ -73,7 +73,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // return $this->render('index');
+         if (is_null(Yii::$app->user->identity)){
+            if(Yii::$app->controller->route != 'site/login'){
+                return $this->redirect(Yii::$app->getUser()->loginUrl);
+            }
+        }else{
+            return $this->redirect('facturas');
+        }
     }
 
     /**
