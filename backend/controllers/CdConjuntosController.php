@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use backend\models\CdConjuntos;
 use backend\models\CdConjuntosSearch;
-use yii\web\Controller;
+// use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CdConjuntosController implements the CRUD actions for CdConjuntos model.
  */
-class CdConjuntosController extends Controller
+class CdConjuntosController extends BaseController
 {
     /**
      * @inheritdoc

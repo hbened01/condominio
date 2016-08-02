@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\CdPagos;
 use backend\models\CdPagosSearch;
-use yii\web\Controller;
+// use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\Facturas;
@@ -13,7 +13,7 @@ use backend\models\Facturas;
 /**
  * CdPagosController implements the CRUD actions for CdPagos model.
  */
-class CdPagosController extends Controller
+class CdPagosController extends BaseController
 {
     /**
      * @inheritdoc

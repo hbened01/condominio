@@ -76,6 +76,16 @@ class SiteController extends BaseController
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            $defaultUrl = Yii::$app->request->baseUrl;
+            $url = str_replace('backend','frontend',$defaultUrl);;
+            if (Yii::$app->user->identity->rol_id == 3) {
+                Yii::$app->user->logout();
+                $session = Yii::$app->session;
+                $session->remove('operaciones');
+                return $this->redirect($url);
+            }
+            
             $session = Yii::$app->session;
             $session->set('operaciones', $model->permittedOperations());
             return $this->goBack();

@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use backend\models\CdPropietarios;
 use backend\models\CdPropietariosSearch;
-use yii\web\Controller;
+// use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CdPropietariosController implements the CRUD actions for CdPropietarios model.
  */
-class CdPropietariosController extends Controller
+class CdPropietariosController extends BaseController
 {
     /**
      * @inheritdoc

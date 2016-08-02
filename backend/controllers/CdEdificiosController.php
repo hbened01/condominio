@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use backend\models\CdEdificios;
 use backend\models\CdEdificiosSearch;
-use yii\web\Controller;
+// use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CdEdificiosController implements the CRUD actions for CdEdificios model.
  */
-class CdEdificiosController extends Controller
+class CdEdificiosController extends BaseController
 {
     /**
      * @inheritdoc

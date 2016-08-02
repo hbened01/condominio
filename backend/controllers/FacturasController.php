@@ -6,7 +6,7 @@ use Yii;
 use backend\models\Facturas;
 use backend\models\FacturasSearch;
 use backend\models\Mensajes;
-use yii\web\Controller;
+// use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use kartik\mpdf\Pdf;
@@ -14,7 +14,7 @@ use kartik\mpdf\Pdf;
 /**
  * FacturasController implements the CRUD actions for Facturas model.
  */
-class FacturasController extends Controller
+class FacturasController extends BaseController
 {
     /**
      * @inheritdoc

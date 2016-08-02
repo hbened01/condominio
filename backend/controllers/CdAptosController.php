@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use backend\models\CdAptos;
 use backend\models\CdAptosSearch;
-use yii\web\Controller;
+// use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CdAptosController implements the CRUD actions for CdAptos model.
  */
-class CdAptosController extends Controller
+class CdAptosController extends BaseController
 {
     /**
      * @inheritdoc

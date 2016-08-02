@@ -48,7 +48,7 @@ $operaciones = $session->get('operaciones');
                     },
                     'actualizar' => function ($url, $model) {
                         $session = Yii::$app->session;
-                        if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones')) && (Yii::$app->user->identity->rol_id != $model->id || Yii::$app->user->identity->rol_id == 1)) {
+                        if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones')) && (Yii::$app->user->identity->rol_id != $model->id || Yii::$app->user->identity->rol_id == 1) && $model->id != 3) {
                             return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
                                         'title' => Yii::t('app', 'Actualizar'),
                             ]);
@@ -58,7 +58,7 @@ $operaciones = $session->get('operaciones');
                     },
                     'eliminar' => function ($url, $model) {
                         $session = Yii::$app->session;
-                        if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones')) && Yii::$app->user->identity->rol_id != $model->id) {
+                        if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones')) && Yii::$app->user->identity->rol_id != $model->id && $model->id != 3) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                                         'title' => Yii::t('app', 'Eliminar'),
                                         'data-confirm' => '¿Seguro que desea eliminar el rol "'.$model->nombre.'"?',

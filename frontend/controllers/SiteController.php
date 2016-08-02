@@ -97,6 +97,13 @@ class SiteController extends Controller
         $model = new LoginForm();
         $user = new CdPropietarios();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $defaultUrl = Yii::$app->request->baseUrl;
+            $url = str_replace('frontend','backend',$defaultUrl);
+            if (Yii::$app->user->identity->rol_id != 3) {
+                Yii::$app->user->logout();
+                return $this->redirect($url);
+            }
+
             $value = Yii::$app->request->post();  //$_POST['LoginForm']['username']); otra forma de obtener el post!!
             $update_usr = $user->getStatus($value['LoginForm']['username']); 
             Yii::$app->session->set('user.update_usr',$update_usr);
