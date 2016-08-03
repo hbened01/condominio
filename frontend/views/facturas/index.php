@@ -6,7 +6,6 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\jui\DatePicker;
-CorlateAsset::register($this);
 
 CorlateAsset::register($this);
 
