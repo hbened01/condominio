@@ -75,12 +75,14 @@ class Roles extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes){
         Yii::$app->db->createCommand()->delete('roles_operaciones', 'rol_id = '.(int) $this->id)->execute();
  
-        foreach ($this->operaciones as $id) {
-            $ro = new RolesOperaciones();
-            $ro->rol_id = $this->id;
-            $ro->operacion_id = $id;
-            $ro->save();
-        }
+         if (!empty($this->operaciones)) {
+            foreach ($this->operaciones as $id) {
+                $ro = new RolesOperaciones();
+                $ro->rol_id = $this->id;
+                $ro->operacion_id = $id;
+                $ro->save();
+            }
+         }
     }
 
     public function getRolOperaciones(){

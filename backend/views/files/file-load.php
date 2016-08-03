@@ -22,7 +22,7 @@ $operaciones = $session->get('operaciones');
     <h1><?= Html::encode($this->title) ?></h1>
     <br>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="box box-solid">
             <div class="box-header with-border">
               <i class="glyphicons glyphicons-cloud-upload"></i>
@@ -35,7 +35,7 @@ $operaciones = $session->get('operaciones');
                         <label class="control-label">Selecione archivo</label>
                         <?php   
                                 echo $form->field($model, 'file')->widget(FileInput::classname(), [ 
-                                    //'options' => ['accept' => 'image/*','multiple' => true],
+                                      'options' => ['multiple' => true],
                                       'pluginOptions' => [
                                                   'browseIcon' => '<i class="glyphicons glyphicons-file-import"></i> ',
                                                   'showPreview' => true,
@@ -46,8 +46,8 @@ $operaciones = $session->get('operaciones');
                                                   'browseLabel' =>  'Buscar Archivo',
                                                   'uploadUrl' => Url::to(['files/file-process']),
                                                   'allowedFileExtensions'=>['csv'],
-                                                  'language' => 'es'
-                                                  //'maxFileCount' => 10
+                                                  'language' => 'es',
+                                                  'maxFileCount' => 5
                                                   ]
                                       ]
                                 )->label(false);

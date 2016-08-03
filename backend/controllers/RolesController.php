@@ -159,7 +159,6 @@ class RolesController extends BaseController
             return $this->render('/site/deneid');
         }
 
-        $this->findModel($id)->delete();
         if ($this->findModel($id)->delete()) {
             Yii::$app->session->setFlash('success', 'El rol fue eliminado exitosamente.');
         }
