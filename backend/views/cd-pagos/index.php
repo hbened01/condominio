@@ -86,7 +86,7 @@ $operaciones = $session->get('operaciones');
                     },
                     'actualizar' => function ($url, $model) {
                         $session = Yii::$app->session;
-                        if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones'))) {
+                        if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones')) && !$model->estatus_pago) {
                             return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
                                         'title' => Yii::t('app', 'Actualizar'),
                             ]);
@@ -96,7 +96,7 @@ $operaciones = $session->get('operaciones');
                     },
                     'eliminar' => function ($url, $model) {
                         $session = Yii::$app->session;
-                        if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones'))) {
+                        if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones')) && !$model->estatus_pago) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                                         'title' => Yii::t('app', 'Eliminar'),
                                         'data-confirm' => '¿Seguro que desea eliminar el pago"?',
@@ -108,7 +108,7 @@ $operaciones = $session->get('operaciones');
                     },
                     'pay-approved' => function ($url, $model) {
                         $session = Yii::$app->session;
-                        if (in_array(Yii::$app->controller->id.'-pay-approved',$session->get('operaciones'))&& !$model->estatus_pago) {
+                        if (in_array(Yii::$app->controller->id.'-pay-approved',$session->get('operaciones')) && !$model->estatus_pago) {
                             return Html::a('<span class="glyphicons glyphicons-check"></span>', $url, [
                                         'title' => Yii::t('app', 'Aprobar Pago'),
                                         'data-confirm' => '¿Seguro que desea aprobar el pago"?',

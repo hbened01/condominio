@@ -107,24 +107,12 @@ class CdPagos extends \yii\db\ActiveRecord
         return $this->hasOne(Facturas::className(), ['cd_factura_pk' => 'cod_factura']);
     }
 
-    public function getIdFacturaConcat()
+    public function getIdFacturaConcat($id = null)
     {   
-        $filter = (new \yii\db\Query())
-                        ->select(['d.cd_factura_pk AS id'])
-                        ->from('cd_propietarios a')
-                        ->innerJoin('user b','b.id = a.cod_user')
-                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
-                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
-                        ->innerJoin('cd_pagos e','e.cod_factura = d.cd_factura_pk');
-
         $result = (new \yii\db\Query())
                         ->select(['d.cd_factura_pk AS id', "CONCAT('Apto: ', d.cod_apto, ' - Edificio: ', d.edificio, ' - Fecha: ',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
-                        ->from('cd_propietarios a')
-                        ->innerJoin('user b','b.id = a.cod_user')
-                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
-                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
-                        //->where (['and','d.estatus_factura = false', ['not in', 'd.cd_factura_pk', $filter]])
-                        ->where (['d.estatus_factura' => 'false'])
+                        ->from('facturas d')
+                        ->where (['d.estatus_factura' => false])
                         ->all();
                         
         return $result;
