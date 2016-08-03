@@ -6,7 +6,6 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\jui\DatePicker;
-CorlateAsset::register($this);
 
 CorlateAsset::register($this);
 
@@ -90,9 +89,9 @@ $this->title = Yii::t('frontend', 'invoice history');
                     ],
                 ],
             ]); ?>
-            <div class="row-sm-5">
-                <?= Html::a(Yii::t('frontend', 'Exit'), ['site/index'], ['class' => 'btn btn-danger']) ?>
-            </div>
+           <!--  <div class="row-sm-5">
+                <?//= Html::a(Yii::t('frontend', 'Exit'), ['site/index'], ['class' => 'btn btn-danger']) ?>
+            </div> -->
         </div><!--/.row-->
         <br>
         <br>

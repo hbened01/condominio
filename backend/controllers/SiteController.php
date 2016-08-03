@@ -10,6 +10,7 @@ use backend\models\CdPropietarios;
 use common\models\User;
 use backend\models\Facturas;
 use backend\models\CdPagos;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -78,7 +79,13 @@ class SiteController extends BaseController
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
             $defaultUrl = Yii::$app->request->baseUrl;
-            $url = str_replace('backend','frontend',$defaultUrl);;
+            $httpsAbsoluteHomeUrl = Url::home('http');
+            if (stripos( $httpsAbsoluteHomeUrl,'admin.hjtecnosystems')) {
+                     echo $url = str_replace('admin.hjtecnosystems','condominio.hjtecnosystems',$httpsAbsoluteHomeUrl);
+            }else{
+                     $url = str_replace('backend','frontend',$defaultUrl);
+            }
+            
             if (Yii::$app->user->identity->rol_id == 3) {
                 Yii::$app->user->logout();
                 $session = Yii::$app->session;
