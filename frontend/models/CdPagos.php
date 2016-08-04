@@ -127,7 +127,7 @@ class CdPagos extends \yii\db\ActiveRecord
                         ->innerJoin('cd_pagos e','e.cod_factura = d.cd_factura_pk');
 
         $result = (new \yii\db\Query())
-                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr:',d.nr) AS descripcion"])
                         ->from('cd_propietarios a')
                         ->innerJoin('user b','b.id = a.cod_user')
                         ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
@@ -138,25 +138,10 @@ class CdPagos extends \yii\db\ActiveRecord
         return $result;
     }
 
-    public function getEstatusPago($id)
-    {
-        $result = (new \yii\db\Query())
-                        ->select(['e.estatus_pago AS status', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
-                        ->from('cd_propietarios a')
-                        ->innerJoin('user b','b.id = a.cod_user')
-                        ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
-                        ->innerJoin('facturas d','d.cod_apto = c.cd_aptos_pk')
-                        ->innerJoin('cd_pagos e','e.cod_factura = d.cd_factura_pk')
-                        ->where (['e.cd_pago_pk' => $id]) 
-                        ->one();
-                        
-        return $result;
-    }
-
     public function getUpdatePago($id)
     {
         $result = (new \yii\db\Query())
-                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto:', d.cod_apto, ' - Edificio:', d.edificio, ' - Fecha:',d.fecha, ' - Nr:',d.nr) AS descripcion"])
                         ->from('cd_propietarios a')
                         ->innerJoin('user b','b.id = a.cod_user')
                         ->innerJoin('cd_aptos c','c.cod_propietario = a.cd_propietarios_pk')
