@@ -153,5 +153,4 @@ class CdPagos extends \yii\db\ActiveRecord
         return $result;
     }
 
-
 }
