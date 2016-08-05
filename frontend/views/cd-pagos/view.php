@@ -17,7 +17,7 @@ $baseUrl = $asset->baseUrl;
         <div class="center">
             <br><br>
             <h2><span class="glyphicons glyphicons-exclamation-sign"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'View Registered Payment')) ?></h2>
-            <h3><span class="glyphicons glyphicons-notes"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'Bill')) ?>&nbsp:&nbsp<?php print_r(ArrayHelper::getValue($factura, 'descripcion')) ?></h3>
+            <h3><span class="glyphicons glyphicons-notes"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'Bill')) ?>&nbsp:&nbsp<?php print_r(ArrayHelper::getValue($factura, '0.descripcion')); ?></h3>
         </div> 
         <div class="row contact-wrap"> 
     
@@ -52,7 +52,7 @@ $baseUrl = $asset->baseUrl;
             ]) ?>
 
         <div class="row-sm-5">
-            <?php if (empty(ArrayHelper::getValue($factura, 'status'))) { ?>
+            <?php if (!$model->estatus_pago) { ?>
                 <?= Html::a(Yii::t('frontend', 'Update'), ['update', 'id' => $model->cd_pago_pk], ['class' => 'btn btn-warning']); ?>
                 <?= Html::a(Yii::t('frontend', 'Delete'), ['delete', 'id' => $model->cd_pago_pk], [
                             'class' => 'btn btn-danger',

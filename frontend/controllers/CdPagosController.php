@@ -41,7 +41,7 @@ class CdPagosController extends Controller
     public function actionView($id)
     {   
         $model = new CdPagos();
-        $factura =  $model->getEstatusPago($id);
+        $factura =  $model->getUpdatePago($id);
         return $this->render('view', [
             'model' => $this->findModel($id),
             'factura' => $factura,
@@ -80,9 +80,8 @@ class CdPagosController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $factura =  $model->getEstatusPago($id);
 
-        if (!empty(ArrayHelper::getValue($factura, 'status'))) {
+        if ($model->estatus_pago) {
             Yii::$app->session->setFlash('error', 'Pago validado, no se puede realizar actualización de datos.');
             return $this->goHome();
         }
@@ -107,9 +106,10 @@ class CdPagosController extends Controller
     public function actionDelete($id)
     {
         $model = new CdPagos();
-        $factura =  $model->getEstatusPago($id);
 
-        if (!empty(ArrayHelper::getValue($factura, 'status'))) {
+        $status = $this->findModel($id);
+
+        if ($status->estatus_pago) {
             Yii::$app->session->setFlash('error', 'Pago validado, no se puede realizar esta acción.');
             return $this->goHome();
         }
