@@ -1,6 +1,7 @@
 <?php
 namespace frontend\models;
 
+use yii;
 use yii\base\Model;
 use common\models\User;
 use backend\models\Roles;
@@ -104,11 +105,15 @@ class SignupForm extends Model
             $user->rol_id = $rol->getIdRol('Usuario Estandar');
             $save = $user->save();
 
-            $propietario = CdPropietarios::findOne($query_1['cod_propietario']);
-            $propietario->email = $this->email;
-            $propietario->nro_cedula = $this->nro_cedula;
-            $propietario->cod_user = $user->id;
-            $propietario->save();
+            // $propietario = CdPropietarios::findOne($query_1['cod_propietario']);
+            // $propietario->email = $this->email;
+            // $propietario->nro_cedula = $this->nro_cedula;
+            // $propietario->cod_user = $user->id;
+            // $propietario->save();
+
+             Yii::$app->db->createCommand()
+             ->update('cd_propietarios', ['email' => $this->email, 'nro_cedula' => $this->nro_cedula, 'cod_user' => $user->id], 'cd_propietarios_pk  = '.$query_1['cod_propietario'].'')
+             ->execute();
 
             return $save ? $user : null;
         }
