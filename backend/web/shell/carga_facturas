@@ -9,6 +9,8 @@ do
     awk '/"CONJ. RES."/' $path"copia_condc.txt" > $path"copia_condc2.txt"
     sed 's/",*/;/g' $path"copia_condc2.txt" > $path"copia_condc3.txt"
     sed 's/,;/;/g' $path"copia_condc3.txt" > $path"copia_condc4.txt"
+    fecha=$(date)
+    echo "------- $fecha --------------"
     echo $files
 
     #--- Database information ----------------
@@ -47,13 +49,15 @@ do
         #--------- If it already exists ---------------------
         if [ $flag4 = 0 ] 
             then
-            query="SELECT COUNT(*) FROM facturas WHERE cod_apto='$apto' AND fecha='$mes $anio';"
+            query="SELECT COUNT(*) FROM facturas WHERE cod_apto='$apto' AND edificio='$resi' AND fecha='$mes $anio';"
             result=$(echo $query | psql -h $hots -U $user -d $db_name)
             rid=$(echo $result | cut -f3 -d' ')
 
             if [ $rid != 0 ] && [ $flag4 = 0 ]
                 then
-                echo "FACTURAS YA FUERON CARGADAS ANTERIORMENTE"
+                echo "FACTURA ${files} YA FUE CARGADA ANTERIORMENTE"
+                rm -f $files
+                echo "------------------------------------------------------------------------------"
                 break
             else
                 flag4=1
@@ -255,5 +259,8 @@ do
             done
         fi
 
+        echo "FACTURA ${files} CARGADAS CORRECTAMENTE"
+        rm -f $files
+        echo "------------------------------------------------------------------------------"
     done < $path"copia_condc4.txt"
 done
