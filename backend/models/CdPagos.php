@@ -24,7 +24,10 @@ use Yii;
  *
  * @property CdTiposDocs $codTipoDoc
  * @property CdTiposPagos $codTipoPago
+ * @property FacturasPagos[] $facturasPagos
  * @property Facturas $codFactura
+ * @property CdBancos $codBanco
+ * @property Facturas[] $facturas
  */
 class CdPagos extends \yii\db\ActiveRecord
 {
@@ -42,9 +45,9 @@ class CdPagos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cod_factura', 'cod_tipo_pago', 'nro_referencia', 'fecha_pago', 'nombre', 'apellido', 'cod_tipo_doc', 'email'], 'required'],
+            [['cod_factura', 'cod_tipo_pago', 'nro_referencia', 'fecha_pago', 'nombre', 'apellido', 'cod_tipo_doc','monto','cod_banco','nro_cedula'], 'required'],
             [['cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
-            [['nro_referencia', 'nro_cedula'], 'number'],
+            [['nro_referencia', 'nro_cedula','monto'], 'number'],
             [['fecha_pago'], 'safe'],
             [['estatus_pago'], 'boolean'],
             [['nota_pago'], 'string', 'max' => 500],
@@ -52,7 +55,6 @@ class CdPagos extends \yii\db\ActiveRecord
             [['email'], 'string', 'max' => 255],
             [['cod_tipo_doc'], 'exist', 'skipOnError' => true, 'targetClass' => CdTiposDocs::className(), 'targetAttribute' => ['cod_tipo_doc' => 'cd_tipo_doc_pk']],
             [['cod_tipo_pago'], 'exist', 'skipOnError' => true, 'targetClass' => CdTiposPagos::className(), 'targetAttribute' => ['cod_tipo_pago' => 'cd_tipo_pago_pk']],
-            [['cod_factura'], 'exist', 'skipOnError' => true, 'targetClass' => Facturas::className(), 'targetAttribute' => ['cod_factura' => 'cd_factura_pk']],
         ];
     }
 
@@ -67,13 +69,15 @@ class CdPagos extends \yii\db\ActiveRecord
             'cod_tipo_pago' => 'Tipo Pago',
             'nro_referencia' => 'Nro Referencia',
             'fecha_pago' => 'Fecha Pago',
-            'nota_pago' => 'Nota Pago',
+            'nota_pago' => 'Observación sobre el pago',
             'nombre' => 'Nombre',
             'apellido' => 'Apellido',
-            'nro_cedula' => 'Nro Cedula',
-            'cod_tipo_doc' => 'Cod Tipo Doc',
+            'nro_cedula' => 'Nro Documento',
+            'cod_tipo_doc' => 'Tipo Documento',
             'email' => 'Email',
             'estatus_pago' => 'Pago Aprobado',
+            'monto' => 'Monto del Pago',
+            'cod_banco' => 'Banco',
         ];
     }
 
@@ -93,6 +97,23 @@ class CdPagos extends \yii\db\ActiveRecord
         return $this->hasOne(CdTiposPagos::className(), ['cd_tipo_pago_pk' => 'cod_tipo_pago']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFacturasPagos()
+    {
+        return $this->hasMany(FacturasPagos::className(), ['cod_pagos_fk' => 'cd_pago_pk']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFacturas()
+    {
+        return $this->hasMany(Facturas::className(), ['cd_factura_pk' => 'cod_facturas_fk'])
+                    ->viaTable('facturas_pagos', ['cod_pagos_fk' => 'cd_pago_pk']);
+    }
+
     public function tipoPago($id)
     {
         $model = CdTiposPagos::find()->where(['cd_tipo_pago_pk' => $id])->one();
@@ -102,17 +123,17 @@ class CdPagos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCodFactura()
+    public function getCodBancos()
     {
-        return $this->hasOne(Facturas::className(), ['cd_factura_pk' => 'cod_factura']);
+        return $this->hasOne(CdBancos::className(), ['cd_bancos_pk' => 'cod_banco']);
     }
 
     public function getIdFacturaConcat($id = null)
     {   
         $result = (new \yii\db\Query())
-                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto: ', d.cod_apto, ' - Edificio: ', d.edificio, ' - Fecha: ',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_pagar_mes,'999,999,999.99'),',','*'),'.',','),'*','.')) AS descripcion"])
                         ->from('facturas d')
-                        ->where (['d.estatus_factura' => false])
+                        ->where (['and','d.estatus_factura = false','d.total_pagar_mes > 0'])
                         ->all();
                         
         return $result;

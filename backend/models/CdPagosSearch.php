@@ -44,7 +44,7 @@ class CdPagosSearch extends CdPagos
     public function search($params)
     {
         $query = CdPagos::find();
-        $query->joinWith('codFactura');
+        //$query->joinWith('codFactura');
 
         // add conditions that should always apply here
 

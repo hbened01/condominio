@@ -39,4 +39,6 @@ $(document).ready(function(){
 	    // bootstrap WYSIHTML5 - text editor
 	    $(".textarea").wysihtml5();
     }
+
+    $(".select2").select2();
 });
