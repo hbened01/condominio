@@ -9,12 +9,14 @@ use backend\models\CdPagosSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\Facturas;
+use backend\models\FacturasPagos;
 
 /**
  * CdPagosController implements the CRUD actions for CdPagos model.
  */
 class CdPagosController extends BaseController
 {
+
     /**
      * @inheritdoc
      */
@@ -66,23 +68,39 @@ class CdPagosController extends BaseController
     {
         $model = new CdPagos();
 
+        $concat_id_factura = $model->getIdFacturaConcat();
+        $propietarios = $model->getPropietarios();
+
         if ($model->load(Yii::$app->request->post())) {
+            $model->fecha_pago = date('Y-m-d',strtotime($model->fecha_pago));
+
+            // print_r($model);
+            // exit();
+
             if ($model->save()) {
+                $model2 = new FacturasPagos();
+                foreach ($model->cod_factura as $key => $value) {
+                    $model2->cod_facturas_fk = $value;
+                    $model2->cod_pagos_fk = $model->cd_pago_pk;
+                    $model2->save();
+                }
+                // print_r($model2);
+                // exit();
                 Yii::$app->session->setFlash('success', 'El pago fue creado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
             } else {
-                $concat_id_factura = $model->getIdFacturaConcat();
                 Yii::$app->session->setFlash('error', 'El pago no pudo ser creado.');
                 return $this->render('create', [
                     'model' => $model,
                     'data' => $concat_id_factura, 
+                    'propietarios' => $propietarios, 
                 ]);
             }
         } else {
-            $concat_id_factura = $model->getIdFacturaConcat();
             return $this->render('create', [
                 'model' => $model,
                 'data' => $concat_id_factura, 
+                'propietarios' => $propietarios, 
             ]);
         }
     }
@@ -96,24 +114,29 @@ class CdPagosController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->fecha_pago = date('d-m-Y',strtotime($model->fecha_pago));
+
+        $concat_id_factura = $model->getIdFacturaConcat();
+        $propietarios = $model->getPropietarios();
 
         if ($model->load(Yii::$app->request->post())) {
+            $model->fecha_pago = date('Y-m-d',strtotime($model->fecha_pago));
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'El pago fue actualizado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
             } else {
-                $concat_id_factura = $model->getIdFacturaConcat();
                 Yii::$app->session->setFlash('error', 'El pago no pudo ser actualizado.');
                 return $this->render('create', [
                     'model' => $model,
                     'data' => $concat_id_factura, 
+                    'propietarios' => $propietarios, 
                 ]);
             }
         } else {
-            $concat_id_factura = $model->getIdFacturaConcat(/*$id_user*/);
             return $this->render('update', [
                 'model' => $model,
-                'data' => $concat_id_factura, 
+                'data' => $concat_id_factura,  
+                'propietarios' => $propietarios, 
             ]);
         }
     }
@@ -171,5 +194,30 @@ class CdPagosController extends BaseController
             Yii::$app->session->setFlash('error', 'El pago no pudo ser aprobado.');
         }
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Deletes an existing CdPagos model.
+     */
+    public function actionOptionsSelectFacturas()
+    {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->get();
+
+            $opciones = CdPagos::getOptionsFacturas($data['id']);
+            //print_r($opciones);
+
+            $optionsHtml = '';
+            if (!empty($opciones)) {
+                foreach ($opciones as $key => $value) {
+                    $optionsHtml .= '<option value="'.$value['id'].'">'.$value['descripcion'].'</option>';
+                }
+            }
+
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return [
+                'options' => $optionsHtml,
+            ];
+        }
     }
 }

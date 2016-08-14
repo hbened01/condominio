@@ -11,6 +11,10 @@ use backend\models\CdBancos;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CdPagos */
 /* @var $form yii\widgets\ActiveForm */
+
+    if ($model->isNewRecord) {
+        $data = array();
+    }
 ?>
 
 
@@ -24,6 +28,8 @@ use backend\models\CdBancos;
                 <div class="box-body">
 
                     <?php $form = ActiveForm::begin(); ?>
+
+                    <?= $form->field($model, 'id_propietario')->dropdownList(ArrayHelper::map($propietarios, 'id', 'nombre'), ['prompt'=> Yii::t('backend', 'Select...')/*,'multiple'=>'multiple'*/,'class' => 'form-control select2','data-placeholder' => 'Seleccione el propietario para buscar sus facturas']); ?>
 
                     <?= $form->field($model, 'cod_factura')->dropdownList(ArrayHelper::map($data, 'id', 'descripcion'), ['prompt'=> Yii::t('backend', 'Select...'),'multiple'=>'multiple','class' => 'form-control select2','data-placeholder' => 'Seleccione las facturas a pagar']); ?>
 
@@ -47,9 +53,9 @@ use backend\models\CdBancos;
 
                     <?= $form->field($model, 'nro_referencia')->textInput() ?>
 
-                    <?= $form->field($model, 'fecha_pago')->textInput() ?>
+                    <?= $form->field($model, 'fecha_pago')->textInput(['readonly' => true]) ?>
 
-                    <?= $form->field($model, 'monto')->textInput() ?>
+                    <?= $form->field($model, 'monto')->textInput(['maxlength' => 50]) ?>
 
                     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
@@ -74,12 +80,14 @@ use backend\models\CdBancos;
 
                     </div>
 
-                    <?= $form->field($model, 'nota_pago')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'email')->textInput(['maxlength' => true,'type' => 'email']) ?>
 
-                    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-                        <br>
+                    <?= $form->field($model, 'nota_pago')->textArea(['maxlength' => 500]) ?>
+
+                    <br>
+
                     <div class="form-group">
-                        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Crear') : Yii::t('app', 'Actualizar'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>

@@ -18,7 +18,7 @@ class CdPagosSearch extends CdPagos
     public function rules()
     {
         return [
-            [['cd_pago_pk', 'cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
+            [['cd_pago_pk','cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
             [['nro_referencia', 'nro_cedula'], 'number'],
             [['fecha_pago', 'nota_pago', 'nombre', 'apellido', 'email'], 'safe'],
             [['estatus_pago'], 'boolean'],

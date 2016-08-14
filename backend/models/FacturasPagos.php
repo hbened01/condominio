@@ -7,11 +7,11 @@ use Yii;
 /**
  * This is the model class for table "facturas_pagos".
  *
- * @property integer $cod_facturas
- * @property integer $cod_pagos
+ * @property integer $cod_facturas_fk
+ * @property integer $cod_pagos_fk
  *
- * @property CdPagos $codPagos
- * @property Facturas $codFacturas
+ * @property CdPagos $codPagosFk
+ * @property Facturas $codFacturasFk
  */
 class FacturasPagos extends \yii\db\ActiveRecord
 {
@@ -29,9 +29,9 @@ class FacturasPagos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cod_facturas', 'cod_pagos'], 'integer'],
-            [['cod_pagos'], 'exist', 'skipOnError' => true, 'targetClass' => CdPagos::className(), 'targetAttribute' => ['cod_pagos' => 'cd_pago_pk']],
-            [['cod_facturas'], 'exist', 'skipOnError' => true, 'targetClass' => Facturas::className(), 'targetAttribute' => ['cod_facturas' => 'cd_factura_pk']],
+            [['cod_facturas_fk', 'cod_pagos_fk'], 'integer'],
+            [['cod_pagos_fk'], 'exist', 'skipOnError' => true, 'targetClass' => CdPagos::className(), 'targetAttribute' => ['cod_pagos_fk' => 'cd_pago_pk']],
+            [['cod_facturas_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Facturas::className(), 'targetAttribute' => ['cod_facturas_fk' => 'cd_factura_pk']],
         ];
     }
 
@@ -41,24 +41,24 @@ class FacturasPagos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cod_facturas' => 'Cod Facturas',
-            'cod_pagos' => 'Cod Pagos',
+            'cod_facturas_fk' => 'Cod Facturas Fk',
+            'cod_pagos_fk' => 'Cod Pagos Fk',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCodPagos()
+    public function getCodPagosFk()
     {
-        return $this->hasOne(CdPagos::className(), ['cd_pago_pk' => 'cod_pagos']);
+        return $this->hasOne(CdPagos::className(), ['cd_pago_pk' => 'cod_pagos_fk']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCodFacturas()
+    public function getCodFacturasFk()
     {
-        return $this->hasOne(Facturas::className(), ['cd_factura_pk' => 'cod_facturas']);
+        return $this->hasOne(Facturas::className(), ['cd_factura_pk' => 'cod_facturas_fk']);
     }
 }

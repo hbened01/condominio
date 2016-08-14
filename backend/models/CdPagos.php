@@ -10,7 +10,6 @@ use Yii;
  * This is the model class for table "cd_pagos".
  *
  * @property integer $cd_pago_pk
- * @property integer $cod_factura
  * @property integer $cod_tipo_pago
  * @property string $nro_referencia
  * @property string $fecha_pago
@@ -26,11 +25,16 @@ use Yii;
  * @property CdTiposPagos $codTipoPago
  * @property FacturasPagos[] $facturasPagos
  * @property Facturas $codFactura
- * @property CdBancos $codBanco
+ * @property CdBancos $codBancos
  * @property Facturas[] $facturas
+ * @property CdPropietarios[] $cdPropietarios
+ * @property CdAptos[] $cdAptos
  */
 class CdPagos extends \yii\db\ActiveRecord
 {
+    public $id_propietario;
+    public $cod_factura;
+
     /**
      * @inheritdoc
      */
@@ -46,7 +50,7 @@ class CdPagos extends \yii\db\ActiveRecord
     {
         return [
             [['cod_factura', 'cod_tipo_pago', 'nro_referencia', 'fecha_pago', 'nombre', 'apellido', 'cod_tipo_doc','monto','cod_banco','nro_cedula'], 'required'],
-            [['cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
+            [['cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
             [['nro_referencia', 'nro_cedula','monto'], 'number'],
             [['fecha_pago'], 'safe'],
             [['estatus_pago'], 'boolean'],
@@ -78,6 +82,10 @@ class CdPagos extends \yii\db\ActiveRecord
             'estatus_pago' => 'Pago Aprobado',
             'monto' => 'Monto del Pago',
             'cod_banco' => 'Banco',
+            'id_propietario' => 'Seleccione Propietario',
+            'codBancos.nombre' => 'Banco',
+            'codTipoPago.descrip_pago' => 'Tipo de Pago',
+            'codTipoDoc.descrip_doc' => 'Tipo de Documento'
         ];
     }
 
@@ -134,8 +142,35 @@ class CdPagos extends \yii\db\ActiveRecord
                         ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_pagar_mes,'999,999,999.99'),',','*'),'.',','),'*','.')) AS descripcion"])
                         ->from('facturas d')
                         ->where (['and','d.estatus_factura = false','d.total_pagar_mes > 0'])
+                        ->groupBy(['d.cd_factura_pk','d.cod_apto', 'd.edificio'])
+                        ->orderBy(['d.edificio' => SORT_ASC])
                         ->all();
                         
+        return $result;
+    }
+
+    public function getPropietarios($id = null)
+    {   
+        $result = (new \yii\db\Query())
+                        ->select(['d.cd_propietarios_pk AS id', "CONCAT(d.apellido, ' - ',d.nombre) AS nombre"])
+                        ->from('cd_propietarios d')
+                        ->groupBy(['d.cd_propietarios_pk','d.nombre'])
+                        ->orderBy(['d.apellido' => SORT_ASC])
+                        ->all();
+                        
+        return $result;
+    }
+
+    public static function getOptionsFacturas($id)
+    {
+        $result = (new \yii\db\Query())
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_pagar_mes,'999,999,999.99'),',','*'),'.',','),'*','.')) AS descripcion"])
+                        ->from('facturas d')
+                        ->innerJoin('cd_aptos a','a.cd_aptos_pk = d.cod_apto')
+                        ->where(['a.cod_propietario' => $id,'d.estatus_factura' => false])
+                        ->orderBy(['d.fecha_creada' => SORT_ASC])
+                        ->all();
+
         return $result;
     }
 }

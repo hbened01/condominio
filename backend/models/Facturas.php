@@ -79,15 +79,7 @@ class Facturas extends \yii\db\ActiveRecord
             'estatus_factura' => 'Factura Pagada',
         ];
     }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCdPagos()
-    {
-        return $this->hasMany(CdPagos::className(), ['cod_factura' => 'cd_factura_pk']);
-    }
-
+    
     /**
      * @return \yii\db\ActiveQuery
      */

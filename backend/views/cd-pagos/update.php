@@ -33,6 +33,7 @@ $operaciones = $session->get('operaciones');
     <?= $this->render('_form', [
         'model' => $model,
         'data' => $data,
+        'propietarios' => $propietarios, 
     ]) ?>
 
 </div>
