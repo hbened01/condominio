@@ -24,7 +24,6 @@ use Yii;
  * @property CdTiposDocs $codTipoDoc
  * @property CdTiposPagos $codTipoPago
  * @property FacturasPagos[] $facturasPagos
- * @property Facturas $codFactura
  * @property CdBancos $codBancos
  * @property Facturas[] $facturas
  * @property CdPropietarios[] $cdPropietarios
@@ -139,9 +138,9 @@ class CdPagos extends \yii\db\ActiveRecord
     public function getIdFacturaConcat($id = null)
     {   
         $result = (new \yii\db\Query())
-                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_pagar_mes,'999,999,999.99'),',','*'),'.',','),'*','.')) AS descripcion"])
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_deducible,'999,999,999.99'),',','*'),'.',','),'*','.')) AS descripcion"])
                         ->from('facturas d')
-                        ->where (['and','d.estatus_factura = false','d.total_pagar_mes > 0'])
+                        ->where (['and','d.estatus_factura = false','d.total_deducible > 0'])
                         ->groupBy(['d.cd_factura_pk','d.cod_apto', 'd.edificio'])
                         ->orderBy(['d.edificio' => SORT_ASC])
                         ->all();
@@ -164,10 +163,11 @@ class CdPagos extends \yii\db\ActiveRecord
     public static function getOptionsFacturas($id)
     {
         $result = (new \yii\db\Query())
-                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_pagar_mes,'999,999,999.99'),',','*'),'.',','),'*','.')) AS descripcion"])
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_deducible,'999,999,999.99'),',','*'),'.',','),'*','.')) AS descripcion"])
                         ->from('facturas d')
                         ->innerJoin('cd_aptos a','a.cd_aptos_pk = d.cod_apto')
-                        ->where(['a.cod_propietario' => $id,'d.estatus_factura' => false])
+                        ->innerJoin('cd_edificios e','e.cd_edificios_pk = a.cod_edificio AND e.nombre_edificio = d.edificio')
+                        ->where(['and','a.cod_propietario = '.$id,'d.estatus_factura = false','d.total_deducible > 0'])
                         ->orderBy(['d.fecha_creada' => SORT_ASC])
                         ->all();
 

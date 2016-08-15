@@ -68,8 +68,38 @@ $operaciones = $session->get('operaciones');
             ]) ?>
 
         </div><!--/.row-->
+
+        <div class="text-center">
+            <div class="center">
+                <h2><?= Html::encode(Yii::t('backend', 'Facturas Relacionadas con el Pago')) ?></h2>
+            </div> 
+            <table class="table table-bordered">
+                <thead>
+                    
+                </thead>
+                <tbody>
+                    <?php 
+                        if (!empty($model->facturas)) {
+                            foreach ($model->facturas as $key => $value) {
+
+                                $string = "Apto.: ".$value->cod_apto." - Edif.: ".$value->edificio." - Nombre: ".$value->nombre." - Monto: ".number_format($value->total_pagar_mes,2,',','.');
+
+                                echo "<tr><td>";
+                                if (in_array('facturas-view',$operaciones)) {
+                                    echo Html::a($string, ['facturas/view','id' => $value->cd_factura_pk], ['class' => 'btn btn-default']);
+                                }else{
+                                    echo $string;
+                                }
+                                echo "</td></tr>";
+                            }
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
         <br>
         <br>
         <br>
     </div><!--/.container-->
+
 </section><!--/#contact-page-->

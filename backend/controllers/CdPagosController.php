@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\Facturas;
 use backend\models\FacturasPagos;
+use backend\models\CdPropietarios;
 
 /**
  * CdPagosController implements the CRUD actions for CdPagos model.
@@ -73,19 +74,43 @@ class CdPagosController extends BaseController
 
         if ($model->load(Yii::$app->request->post())) {
             $model->fecha_pago = date('Y-m-d',strtotime($model->fecha_pago));
-
-            // print_r($model);
-            // exit();
+            $monto_tmp = $model->monto;
 
             if ($model->save()) {
                 $model2 = new FacturasPagos();
+                $save = false;
+
                 foreach ($model->cod_factura as $key => $value) {
-                    $model2->cod_facturas_fk = $value;
-                    $model2->cod_pagos_fk = $model->cd_pago_pk;
-                    $model2->save();
+                    if ($monto_tmp > 0) {
+                        $model3 = Facturas::findOne($value);
+
+                        $monto_tmp = $monto_tmp - $model3->total_deducible;
+
+                        if ($monto_tmp > 0) {
+                            $model3->total_deducible = 0;
+                            $model3->update(false);
+                            $save = true;
+                        }elseif ($monto_tmp < 0) {
+                            $model3->total_deducible = $model3->total_deducible - $monto_tmp;
+                            $model3->update(false);
+                            $save = true;
+                        }
+
+                        if ($save) {
+                            $model2->cod_facturas_fk = $value;
+                            $model2->cod_pagos_fk = $model->cd_pago_pk;
+                            $model2->save();
+                        }
+                    }
                 }
-                // print_r($model2);
-                // exit();
+
+                if ($monto_tmp > 0) {
+                    $data = Yii::$app->request->post();
+                    $model4 = CdPropietarios::findOne($data['CdPagos']['id_propietario']);
+                    $model4->saldo_afavor = $monto_tmp;
+                    $model4->update(false);
+                }
+                
                 Yii::$app->session->setFlash('success', 'El pago fue creado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
             } else {
@@ -166,7 +191,7 @@ class CdPagosController extends BaseController
      */
     protected function findModel($id)
     {
-        if (($model = CdPagos::findOne($id)) !== null) {
+        if (($model = CdPagos::find()->where(['cd_pago_pk' => $id])->joinWith(['facturas'])->one()) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
