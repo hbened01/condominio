@@ -29,6 +29,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/glyphicons.css',
         'css/fileinput.min.css',
+        'css/select2.min.css',
     ];
     public $js = [
         //'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
@@ -48,7 +49,7 @@ class AppAsset extends AssetBundle
         'js/jquery.dataTables.min.js',
         'js/dataTables.bootstrap.min.js',
         'js/daterangepicker.js',
-        //'js/bootstrap-datepicker.js',
+        'js/bootstrap-datepicker.js',
         'js/bootstrap3-wysihtml5.all.min.js',
         'js/jquery.slimscroll.min.js',
         'js/fastclick.js',
@@ -58,6 +59,7 @@ class AppAsset extends AssetBundle
         'js/fileinput.min.js',
         'js/es.js',
         'https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js',
+        'js/select2.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

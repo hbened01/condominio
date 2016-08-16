@@ -69,6 +69,7 @@ $(document).ready(function(){
 		  	dataType: 'json',
 		  	success: function(data){
 		  		//alert(data.options);
+		  		$("#cdpagos-cod_factura").select2("val", "");
 		  		$("#cdpagos-cod_factura").html(data.options);
 		  	}
 		});

@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
 
+
 ?>
 <p>
     <?= Html::a(Yii::t('app', 'Lista de Pagos'), ['index'], ['class' => 'btn btn-info']); ?>

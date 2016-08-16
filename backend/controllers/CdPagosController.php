@@ -96,6 +96,7 @@ class CdPagosController extends BaseController
                             $save = true;
                         }
 
+                        //Guardo en transaccional
                         if ($save) {
                             $model2->cod_facturas_fk = $value;
                             $model2->cod_pagos_fk = $model->cd_pago_pk;
@@ -104,12 +105,12 @@ class CdPagosController extends BaseController
                     }
                 }
 
-                if ($monto_tmp > 0) {
-                    $data = Yii::$app->request->post();
-                    $model4 = CdPropietarios::findOne($data['CdPagos']['id_propietario']);
-                    $model4->saldo_afavor = $monto_tmp;
-                    $model4->update(false);
-                }
+                // if ($monto_tmp > 0) {
+                //     $data = Yii::$app->request->post();
+                //     $model4 = CdPropietarios::findOne($data['CdPagos']['id_propietario']);
+                //     $model4->saldo_afavor = $monto_tmp;
+                //     $model4->update(false);
+                // }
                 
                 Yii::$app->session->setFlash('success', 'El pago fue creado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
@@ -140,13 +141,65 @@ class CdPagosController extends BaseController
     {
         $model = $this->findModel($id);
         $model->fecha_pago = date('d-m-Y',strtotime($model->fecha_pago));
+        
+        $idprop = $model->getIdPropietario($model->facturas[0]->cd_factura_pk);
 
-        $concat_id_factura = $model->getIdFacturaConcat();
+        $concat_id_factura = $model->getOptionsFacturas($idprop['id']);
         $propietarios = $model->getPropietarios();
+
+        $options = array();
+        foreach ($model->facturas as $key => $value) {
+            $options[$key] = $value->cd_factura_pk;
+        }
+
+        $model->cod_factura = $options;
+        $model->id_propietario = $idprop;
 
         if ($model->load(Yii::$app->request->post())) {
             $model->fecha_pago = date('Y-m-d',strtotime($model->fecha_pago));
+            $monto_tmp = $model->monto;
+
             if ($model->save()) {
+                $model2 = new FacturasPagos();
+                $save = false;
+
+                $reset = $model2->find()->where(['cod_pagos_fk' => $id])->all();
+                // print_r($reset);
+                // exit();
+
+                foreach ($reset as $key => $value) {
+                    $reset2 = Facturas::findOne($value->cod_facturas_fk);
+                    $reset2->total_deducible = $reset2->total_pagar_mes;
+                    $reset2->update(false);
+                }
+
+                FacturasPagos::deleteAll(['cod_pagos_fk' => $id]);
+
+                foreach ($model->cod_factura as $key => $value) {
+                    if ($monto_tmp > 0) {
+                        $model3 = Facturas::findOne($value);
+
+                        $monto_tmp = $monto_tmp - $model3->total_deducible;
+
+                        if ($monto_tmp > 0) {
+                            $model3->total_deducible = 0;
+                            $model3->update(false);
+                            $save = true;
+                        }elseif ($monto_tmp < 0) {
+                            $model3->total_deducible = $model3->total_deducible - $monto_tmp;
+                            $model3->update(false);
+                            $save = true;
+                        }
+
+                        //Guardo en transaccional
+                        if ($save) {
+                            $model2->cod_facturas_fk = $value;
+                            $model2->cod_pagos_fk = $model->cd_pago_pk;
+                            $model2->save();
+                        }
+                    }
+                }
+
                 Yii::$app->session->setFlash('success', 'El pago fue actualizado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
             } else {
@@ -161,7 +214,7 @@ class CdPagosController extends BaseController
             return $this->render('update', [
                 'model' => $model,
                 'data' => $concat_id_factura,  
-                'propietarios' => $propietarios, 
+                'propietarios' => $propietarios,
             ]);
         }
     }
@@ -209,11 +262,32 @@ class CdPagosController extends BaseController
         $model = $this->findModel($id);
         $model->estatus_pago = true;
 
-        $model2 = Facturas::find()->where(['cd_factura_pk' => $model->cod_factura])->one();
-        $model2->estatus_factura = true;
+        $monto_tmp = $model->monto;
+        $idprop = $model->getIdPropietario($model->facturas[0]->cd_factura_pk);
 
-        if ($model->save()) {
-            $model2->save();
+        if ($model->update(false)) {
+            $model2 = new FacturasPagos();
+
+            foreach ($model->facturas as $key => $value) {
+                if ($monto_tmp > 0) {
+                    $model3 = Facturas::findOne($value->cd_factura_pk);
+
+                    $monto_tmp = $monto_tmp - $model3->total_pagar_mes;
+
+                    if ($model3->total_deducible == 0) {
+                        $model3->estatus_factura = true;
+                        $model3->update(false);
+                    }
+                }
+            }
+
+            if ($monto_tmp > 0) {
+                $data = Yii::$app->request->post();
+                $model4 = CdPropietarios::findOne($idprop['id']);
+                $model4->saldo_afavor = $monto_tmp;
+                $model4->update(false);
+            }
+
             Yii::$app->session->setFlash('success', 'El pago fue aprobado exitosamente.');
         } else {
             Yii::$app->session->setFlash('error', 'El pago no pudo ser aprobado.');
@@ -230,7 +304,6 @@ class CdPagosController extends BaseController
             $data = Yii::$app->request->get();
 
             $opciones = CdPagos::getOptionsFacturas($data['id']);
-            //print_r($opciones);
 
             $optionsHtml = '';
             if (!empty($opciones)) {
