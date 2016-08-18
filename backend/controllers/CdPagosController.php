@@ -74,6 +74,9 @@ class CdPagosController extends BaseController
 
         if ($model->load(Yii::$app->request->post())) {
             $model->fecha_pago = date('Y-m-d',strtotime($model->fecha_pago));
+            $model->nombre = strtoupper($model->nombre);
+            $model->apellido = strtoupper($model->apellido);
+            
             $monto_tmp = $model->monto;
 
             if ($model->save()) {
@@ -134,6 +137,8 @@ class CdPagosController extends BaseController
     {
         $model = $this->findModel($id);
         $model->fecha_pago = date('d-m-Y',strtotime($model->fecha_pago));
+        $model->nombre = strtoupper($model->nombre);
+        $model->apellido = strtoupper($model->apellido);
         
         $idprop = $model->getIdPropietario($model->facturas[0]->cd_factura_pk);
 
