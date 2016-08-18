@@ -84,14 +84,14 @@ class CdPagosController extends BaseController
                     if ($monto_tmp > 0) {
                         $model3 = Facturas::findOne($value);
 
-                        $monto_tmp = $monto_tmp - $model3->total_deducible;
-
-                        if ($monto_tmp > 0) {
+                        if ($monto_tmp - $model3->total_deducible > 0) {
                             $model3->total_deducible = 0;
+                            $monto_tmp = $monto_tmp - $model3->total_deducible;
                             $model3->update(false);
                             $save = true;
-                        }elseif ($monto_tmp < 0) {
+                        }elseif ($monto_tmp - $model3->total_deducible <= 0) {
                             $model3->total_deducible = $model3->total_deducible - $monto_tmp;
+                            $monto_tmp = $model3->total_deducible - $monto_tmp;
                             $model3->update(false);
                             $save = true;
                         }
@@ -104,13 +104,6 @@ class CdPagosController extends BaseController
                         }
                     }
                 }
-
-                // if ($monto_tmp > 0) {
-                //     $data = Yii::$app->request->post();
-                //     $model4 = CdPropietarios::findOne($data['CdPagos']['id_propietario']);
-                //     $model4->saldo_afavor = $monto_tmp;
-                //     $model4->update(false);
-                // }
                 
                 Yii::$app->session->setFlash('success', 'El pago fue creado exitosamente.');
                 return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
@@ -158,6 +151,7 @@ class CdPagosController extends BaseController
         if ($model->load(Yii::$app->request->post())) {
             $model->fecha_pago = date('Y-m-d',strtotime($model->fecha_pago));
             $monto_tmp = $model->monto;
+            $monto_tmp2 = $model->monto;
 
             if ($model->save()) {
                 $model2 = new FacturasPagos();
@@ -169,7 +163,15 @@ class CdPagosController extends BaseController
 
                 foreach ($reset as $key => $value) {
                     $reset2 = Facturas::findOne($value->cod_facturas_fk);
-                    $reset2->total_deducible = $reset2->total_pagar_mes;
+
+                    if ($monto_tmp2 > $reset2->total_pagar_mes) {
+                        $reset2->total_deducible = $reset2->total_deducible + $reset2->total_pagar_mes;
+                        $monto_tmp2 = $monto_tmp2 - $reset2->total_pagar_mes;
+                    }elseif ($monto_tmp2 <= $reset2->total_pagar_mes) {
+                        $reset2->total_deducible = $reset2->total_deducible + $monto_tmp2;
+                        $monto_tmp2 = 0;
+                    }
+
                     $reset2->update(false);
                 }
 
@@ -179,14 +181,14 @@ class CdPagosController extends BaseController
                     if ($monto_tmp > 0) {
                         $model3 = Facturas::findOne($value);
 
-                        $monto_tmp = $monto_tmp - $model3->total_deducible;
-
-                        if ($monto_tmp > 0) {
+                        if ($monto_tmp - $model3->total_deducible > 0) {
                             $model3->total_deducible = 0;
+                            $monto_tmp = $monto_tmp - $model3->total_deducible;
                             $model3->update(false);
                             $save = true;
-                        }elseif ($monto_tmp < 0) {
+                        }elseif ($monto_tmp - $model3->total_deducible <= 0) {
                             $model3->total_deducible = $model3->total_deducible - $monto_tmp;
+                            $monto_tmp = $model3->total_deducible - $monto_tmp;
                             $model3->update(false);
                             $save = true;
                         }
@@ -227,7 +229,28 @@ class CdPagosController extends BaseController
      */
     public function actionDelete($id)
     {
-        if ($this->findModel($id)->delete()) {
+        $model = $this->findModel($id);
+
+        $monto_tmp = $model->monto;
+
+        $model2 = new FacturasPagos();
+        $reset = $model2->find()->where(['cod_pagos_fk' => $id])->all();
+
+        foreach ($reset as $key => $value) {
+            $reset2 = Facturas::findOne($value->cod_facturas_fk);
+
+            if ($monto_tmp > $reset2->total_pagar_mes) {
+                $reset2->total_deducible = $reset2->total_deducible + $reset2->total_pagar_mes;
+                $monto_tmp = $monto_tmp - $reset2->total_pagar_mes;
+            }elseif ($monto_tmp <= $reset2->total_pagar_mes) {
+                $reset2->total_deducible = $reset2->total_deducible + $monto_tmp;
+                $monto_tmp = 0;
+            }
+
+            $reset2->update(false);
+        }
+
+        if ($model->delete()) {
             Yii::$app->session->setFlash('success', 'El pago fue eliminado exitosamente.');
         } else {
             Yii::$app->session->setFlash('error', 'El pago no pudo ser eliminado.');
