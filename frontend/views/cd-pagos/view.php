@@ -68,7 +68,7 @@ $baseUrl = $asset->baseUrl;
                     'nro_referencia',
                     'monto',
                     'fecha_pago',
-                    'nota_pago',
+                    'nota_pago:html',
                     'nro_cedula',
                     'codTipoDoc.descrip_doc',
                     'email:email',

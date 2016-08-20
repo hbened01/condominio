@@ -62,9 +62,7 @@ $baseUrl = $asset->baseUrl;
                     ])->label()
                  ?>
 
-                 <?= $form->field($model, 'monto')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter amount to be canceled')])->label(); ?>
-
-                 <?= $form->field($model, 'nota_pago')->textArea(['rows' => 5, 'placeholder' => Yii::t('frontend', 'Note Description Payment')])->label() ?>
+                 <?= $form->field($model, 'monto')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter amount to be canceled')])->label(); ?> 
         
             </div>
 
@@ -91,6 +89,12 @@ $baseUrl = $asset->baseUrl;
                     <?= $form->field($model, 'nro_cedula')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Identity Card')])->label() ?>
 
                 </div>
+
+            </div>
+
+            <div class="col-sm-10 col-sm-offset-2">
+
+            <?= $form->field($model, 'nota_pago')->textArea(['rows' => 5, 'placeholder' => Yii::t('frontend', 'Note Description Payment')])->label() ?>
 
             </div>
 
