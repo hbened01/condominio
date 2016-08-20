@@ -23,6 +23,10 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
+        'n' => 
+        array (
+            'nterms\\pagesize\\' => 16,
+        ),
         'k' => 
         array (
             'kartik\\widgets\\' => 15,
@@ -92,6 +96,10 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'nterms\\pagesize\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nterms/yii2-pagesize-widget',
         ),
         'kartik\\widgets\\' => 
         array (

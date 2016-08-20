@@ -2294,5 +2294,52 @@
             "utf8",
             "yii2"
         ]
+    },
+    {
+        "name": "nterms/yii2-pagesize-widget",
+        "version": "v2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nterms/yii2-pagesize-widget.git",
+            "reference": "ddf3588fe2ede6ff42f3efe42e0399d009f1cd2f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nterms/yii2-pagesize-widget/zipball/ddf3588fe2ede6ff42f3efe42e0399d009f1cd2f",
+            "reference": "ddf3588fe2ede6ff42f3efe42e0399d009f1cd2f",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": "*"
+        },
+        "time": "2014-11-14 04:41:18",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "nterms\\pagesize\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Saranga Abeykoon",
+                "email": "amisaranga@gmail.com",
+                "homepage": "http://nterms.com/"
+            }
+        ],
+        "description": "Widget for enabling dynamic page size selection on GridView",
+        "homepage": "https://github.com/nterms/yii2-pagesize-widget",
+        "keywords": [
+            "extension",
+            "grid-view",
+            "page-size",
+            "widget",
+            "yii2"
+        ]
     }
 ]

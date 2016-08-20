@@ -2,11 +2,13 @@
 
 use frontend\models\CdTiposPagos;
 use frontend\models\CdTiposDocs;
+use frontend\models\CdBancos;
 use frontend\assets\CorlateAsset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap\ActiveForm;
+//use yii\bootstrap\ActiveForm;
+use kartik\form\ActiveForm;
 use yii\jui\DatePicker;
 use yii\widgets\MaskedInput;
 
@@ -26,28 +28,29 @@ $baseUrl = $asset->baseUrl;
             <p class="lead"><i class="glyphicons glyphicons-notes-2"></i><?= '&nbsp'.Html::encode(Yii::t('frontend', 'Note: "Default owner information that has started secion for registration payment be brought if the payment it has made another record this data as name, surname among others"')) ?></p>
         </div> 
         <div class="row contact-wrap"> 
-            
-            <?php $form = ActiveForm::begin(
-                ['fieldConfig' => [
-                        'template' => "<div id='main-contact-form' class='contact-form'><div class='form-group'>{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}</div></div>",
-                        'horizontalCssClasses' => [
-                            'label' => 'col-sm-5',
-                            'offset' => 'col-sm-offset-1',
-                            'wrapper' => 'col-sm-8',
-                            'error' => '',
-                            'hint' => '',
-                        ],
-                    ],
-                ]); 
+
+            <?php  $form = ActiveForm::begin([
+                    'id' => 'factura-list', 
+                    'type' => ActiveForm::TYPE_VERTICAL,
+                    'formConfig' => [/*'labelSpan' => 2,*/ 'deviceSize' => ActiveForm::SIZE_MEDIUM],
+                    'fieldConfig' => [
+                                    'template' => "<div id='main-contact-form' class='contact-form'><div class='form-group'>{label}\n{input}\n{hint}\n{error}\n</div></div>",]
+                   ]);
             ?>
+
+            <div class="col-sm-10 col-sm-offset-2">
+
+                <?= $form->field($model, 'cod_factura')->multiselect(ArrayHelper::map($data, 'id', 'descripcion'))->label(Yii::t('frontend', 'Bill').'(s)'); ?>
+                
+            </div>            
 
             <div class="col-sm-5 col-sm-offset-2">
 
-                <?= $form->field($model, 'cod_factura')->dropdownList(ArrayHelper::map($data, 'id', 'descripcion'), ['prompt'=> Yii::t('frontend', 'Select...')]); ?>
+                <?= $form->field($model, 'cod_tipo_pago')->dropdownList(CdTiposPagos::find()->select(['descrip_pago', 'cd_tipo_pago_pk'])->indexBy('cd_tipo_pago_pk')->column(), ['prompt'=> Yii::t('frontend', 'Select...')])->label(); ?>
 
-                <?= $form->field($model, 'cod_tipo_pago')->dropdownList(CdTiposPagos::find()->select(['descrip_pago', 'cd_tipo_pago_pk'])->indexBy('cd_tipo_pago_pk')->column(), ['prompt'=> Yii::t('frontend', 'Select...')]); ?>
+                <?= $form->field($model, 'cod_banco')->dropdownList(CdBancos::find()->select(['nombre', 'cd_bancos_pk'])->indexBy('cd_bancos_pk')->column(), ['prompt'=> Yii::t('frontend', 'Select...')])->label(Yii::t('frontend', 'Bank')); ?>
             
-                <?= $form->field($model, 'nro_referencia')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter Number of Transfer or Deposit')])->label() ?>
+                <?= $form->field($model, 'nro_referencia')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter Number of Transfer or Deposit')])->label(); ?>
 
                 <?= $form->field($model,'fecha_pago')->widget(DatePicker::className(),[
                     'options' => ['placeholder' => Yii::t('frontend', 'Press to Access the Calendar ...'),
@@ -58,6 +61,8 @@ $baseUrl = $asset->baseUrl;
                         'dateFormat' => 'yy-mm-dd']
                     ])->label()
                  ?>
+
+                 <?= $form->field($model, 'monto')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter amount to be canceled')])->label(); ?>
 
                  <?= $form->field($model, 'nota_pago')->textArea(['rows' => 5, 'placeholder' => Yii::t('frontend', 'Note Description Payment')])->label() ?>
         
@@ -77,7 +82,7 @@ $baseUrl = $asset->baseUrl;
 
                 <div class="col-sm-1"> 
 
-                    <?= $form->field($model, 'cod_tipo_doc')->dropdownList(CdTiposDocs::find()->select(['tipo_doc' , 'cd_tipo_doc_pk'])->indexBy('cd_tipo_doc_pk')->column())->label(Yii::t('frontend', 'Doc.')); ?>
+                    <?= $form->field($model, 'cod_tipo_doc')->dropdownList(CdTiposDocs::find()->select(['tipo_doc' , 'cd_tipo_doc_pk'])->indexBy('cd_tipo_doc_pk')->column())->label(Yii::t('frontend', 'Doc.')) ?>
 
                 </div>
                 

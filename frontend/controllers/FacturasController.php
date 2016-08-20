@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\Facturas;
 use frontend\models\FacturasSearch;
+use frontend\models\CdPropietarios;
 use backend\models\Mensajes;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -37,6 +38,12 @@ class FacturasController extends Controller
      */
     public function actionIndex()
     {
+        $user = new CdPropietarios();
+        $update_usr = $user->getStatus(Yii::$app->user->identity->username);
+        if ($update_usr) {
+            Yii::$app->session->setFlash('warning', 'Antes de ejecutar cualquier otra opción por favor registre sus datos en el formulario.');
+            return $this->redirect('cd-propietarios/update');
+        }
         $searchModel = new FacturasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

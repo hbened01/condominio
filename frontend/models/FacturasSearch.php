@@ -20,7 +20,7 @@ class FacturasSearch extends Facturas
         return [
             [['cd_factura_pk', 'recibos'], 'integer'],
             [['cod_apto', 'edificio', 'nombre', 'apellido', 'fecha'], 'safe'],
-            [['alicuota', 'nr', 'total_gastos_mes', 'sub_total_alicuota', 'total_pagar_mes', 'deuda_actual'], 'number'],
+            [['alicuota', 'nr', 'total_gastos_mes', 'sub_total_alicuota', 'total_pagar_mes', 'deuda_actual', 'total_deducible'], 'number'],
             [['estatus_factura'], 'boolean'],
         ];
     }
@@ -77,6 +77,7 @@ class FacturasSearch extends Facturas
             'deuda_actual' => $this->deuda_actual,
             'recibos' => $this->recibos,
             'estatus_factura' => $this->estatus_factura,
+            'total_deducible' => $this->total_deducible,
         ]);
 
         $query->andFilterWhere(['like', 'LOWER(cod_apto)', strtolower($this->cod_apto)])

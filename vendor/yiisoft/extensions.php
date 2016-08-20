@@ -255,4 +255,13 @@ return array (
       '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
     ),
   ),
+  'nterms/yii2-pagesize-widget' => 
+  array (
+    'name' => 'nterms/yii2-pagesize-widget',
+    'version' => '2.0.1.0',
+    'alias' => 
+    array (
+      '@nterms/pagesize' => $vendorDir . '/nterms/yii2-pagesize-widget',
+    ),
+  ),
 );

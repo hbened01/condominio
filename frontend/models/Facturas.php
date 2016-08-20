@@ -21,12 +21,13 @@ use Yii;
  * @property string $deuda_actual
  * @property integer $recibos
  * @property boolean $estatus_factura
+ * @property string $total_deducible
+ * @property string $fecha_creada
  *
- * @property CdPagos[] $cdPagos
  * @property FacturasGastosComunes[] $facturasGastosComunes
+ * @property FacturasPagos[] $facturasPagos
  * @property Fondos[] $fondos
  * @property GastosNocomunes[] $gastosNocomunes
- * @property GastosComunes[] $gastosComunes
  */
 class Facturas extends \yii\db\ActiveRecord
 {
@@ -45,9 +46,10 @@ class Facturas extends \yii\db\ActiveRecord
     {
         return [
             [['cod_apto', 'edificio', 'nombre', 'apellido', 'alicuota', 'nr', 'fecha', 'total_gastos_mes', 'sub_total_alicuota', 'total_pagar_mes', 'deuda_actual'], 'required'],
-            [['alicuota', 'nr', 'total_gastos_mes', 'sub_total_alicuota', 'total_pagar_mes', 'deuda_actual'], 'number'],
+            [['alicuota', 'nr', 'total_gastos_mes', 'sub_total_alicuota', 'total_pagar_mes', 'deuda_actual', 'total_deducible'], 'number'],
             [['recibos'], 'integer'],
             [['estatus_factura'], 'boolean'],
+            [['fecha_creada'], 'safe'], 
             [['cod_apto'], 'string', 'max' => 3],
             [['edificio'], 'string', 'max' => 250],
             [['nombre', 'apellido'], 'string', 'max' => 100],
@@ -75,15 +77,9 @@ class Facturas extends \yii\db\ActiveRecord
             'deuda_actual' => Yii::t('frontend', 'Deuda Actual'),
             'recibos' => Yii::t('frontend', 'Recibos'),
             'estatus_factura' => Yii::t('frontend', 'Invoice Status'),
+            'total_deducible' => Yii::t('frontend', 'Total Deducible'),
+            'fecha_creada' => Yii::t('frontend', 'Fecha Creada'), 
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCdPagos()
-    {
-        return $this->hasMany(CdPagos::className(), ['cod_factura' => 'cd_factura_pk']);
     }
 
     /**
@@ -92,6 +88,14 @@ class Facturas extends \yii\db\ActiveRecord
     public function getFacturasGastosComunes()
     {
         return $this->hasMany(FacturasGastosComunes::className(), ['cod_factura_fk' => 'cd_factura_pk']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFacturasPagos()
+    {
+        return $this->hasMany(FacturasPagos::className(), ['cod_factura_fk' => 'cd_facturas_pk']);
     }
 
     /**

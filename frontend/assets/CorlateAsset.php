@@ -21,6 +21,7 @@ class CorlateAsset extends AssetBundle
         'css/main.css',
         'css/responsive.css',
         'css/glyphicons.css',
+        'css/dataTables.bootstrap.css',
     ];
     public $js = [
         'js/jquery.js',
@@ -29,6 +30,8 @@ class CorlateAsset extends AssetBundle
         'js/jquery.isotope.min.js',
         'js/main.js',
         'js/wow.min.js',
+        'js/funciones.js',
+        'js/jquery.dataTables.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
