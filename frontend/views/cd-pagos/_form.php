@@ -7,7 +7,6 @@ use frontend\assets\CorlateAsset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-//use yii\bootstrap\ActiveForm;
 use kartik\form\ActiveForm;
 use yii\jui\DatePicker;
 use yii\widgets\MaskedInput;
@@ -48,7 +47,7 @@ $baseUrl = $asset->baseUrl;
 
                 <?= $form->field($model, 'cod_factura')->multiselect(ArrayHelper::map($data, 'id', 'descripcion'))->label(Yii::t('frontend', 'Bill').'(s)'); ?>
                 
-            </div>            
+            </div>
 
             <div class="col-sm-5 col-sm-offset-2">
 
