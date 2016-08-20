@@ -18,7 +18,7 @@ $('#descrip_factura').DataTable({
             "html": false, // Button which allows you to edit the generated HTML.
             "link": false, // Button to insert a link.
             "image": false, // Button to insert an image.
-            "color": true, // Button to change color of font
+            "color": false, // Button to change color of font
             "blockquote": true, // Blockquote
         },
         locale: 'es-ES',

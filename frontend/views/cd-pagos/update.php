@@ -12,6 +12,7 @@ $this->title = Yii::t('frontend', 'payment update');
     <?= $this->render('_form', [
         'model' => $model,
         'data' => $data,
+        'id_page' => 1,
     ]) ?>
 
 </div>

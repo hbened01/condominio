@@ -24,8 +24,14 @@ $baseUrl = $asset->baseUrl;
     <div class="container">
         <div class="center">
             <br><br><br> 
-            <h2><?= Html::encode(Yii::t('frontend', 'Register your payment according to data requested')) ?></h2>
-            <p class="lead"><i class="glyphicons glyphicons-notes-2"></i><?= '&nbsp'.Html::encode(Yii::t('frontend', 'Note: "Default owner information that has started secion for registration payment be brought if the payment it has made another record this data as name, surname among others"')) ?></p>
+            <?php  if ($id_page == 0) {
+                echo '<h2>'. Html::encode(Yii::t('frontend', 'Register your payment according to data requested')).'</h2>';
+                echo '<p class="lead"><i class="glyphicons glyphicons-notes-2"></i>&nbsp'.Html::encode(Yii::t('frontend', 'Note: "You must select invoice(s) and fill out the form with the requested data"')).'</p>';
+            }else{
+                 echo '<h2>'. Html::encode(Yii::t('frontend', 'Update your payment according to data requested')).'</h2>';
+                 echo '<p class="lead"><i class="glyphicons glyphicons-notes-2"></i>&nbsp'.Html::encode(Yii::t('frontend', 'Note: "If you want to discard any invoice payment recorded blank the corresponding checkbox"')).'</p>';
+            } ?>
+            
         </div> 
         <div class="row contact-wrap"> 
 
