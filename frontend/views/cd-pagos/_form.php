@@ -64,12 +64,10 @@ $baseUrl = $asset->baseUrl;
                     'clientOptions' => [
                         'defaultDate' => 'now', 
                         'dateFormat' => 'yy-mm-dd']
-                    ])->label()
+                    ])
                  ?>
-
-                 <!-- <?//= $form->field($model, 'monto')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter amount to be canceled')])->label(); ?>  -->
-
-                 <?= $form->field($model, 'monto')->widget(MaskedInput::className(), ['clientOptions' => ['alias' =>  'decimal', 'radixPoint' =>',', 'groupSeparator' => '.', 'digits' => 2, 'digitsOptional' => false, 'autoGroup' => true, 'prefix' => 'Bs ', 'rightAlign' => false]]) ?>
+                 
+                 <?= $form->field($model, 'monto')->widget(MaskedInput::className(), ['clientOptions' => ['alias' =>  'decimal', 'radixPoint' =>',', 'groupSeparator' => '.', 'digits' => 2, 'digitsOptional' => false, 'autoGroup' => true, 'prefix' => 'Bs ', 'rightAlign' => false, 'placeholder' => '0,00']])->label(); ?>
         
             </div>
 

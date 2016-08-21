@@ -59,7 +59,6 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         ),
         'F' => 
         array (
-            'Fxp\\Composer\\AssetPlugin\\' => 25,
             'Faker\\' => 6,
         ),
     );
@@ -196,10 +195,6 @@ class ComposerStaticInit97f60f486aee3c9bc14072d1bbd961d8
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
-        ),
-        'Fxp\\Composer\\AssetPlugin\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fxp/composer-asset-plugin',
         ),
         'Faker\\' => 
         array (
