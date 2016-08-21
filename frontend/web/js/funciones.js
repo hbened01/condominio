@@ -19,7 +19,7 @@ $('#descrip_factura').DataTable({
             "link": false, // Button to insert a link.
             "image": false, // Button to insert an image.
             "color": false, // Button to change color of font
-            "blockquote": true, // Blockquote
+            "blockquote": false, // Blockquote
         },
         locale: 'es-ES',
     });
