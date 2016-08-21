@@ -32,18 +32,22 @@ $this->title = Yii::t('frontend', 'payment history');
                 'showFooter'=>true,
                 'showHeader' => true,
                 'formatter' => [
-                    'class' => 'yii\\i18n\\Formatter',
-                    'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('frontend', 'THERE IS NO DATA').')</span>',
                     // 'dateFormat' => 'medium',
                     // 'timeFormat' => 'medium',
                     // 'datetimeFormat' => 'medium',
-                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado']
+                    //'dateFormat' => 'dd.MM.yyyy',
+                    'class' => 'yii\\i18n\\Formatter',
+                    'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('frontend', 'THERE IS NO DATA').')</span>',
+                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado'],
+                    'decimalSeparator' => ',',
+                    'thousandSeparator' => '.',
+                    'currencyCode' => 'Bs ',
                 ],
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
                     
-                    'nombre',
-                    'apellido',
+                    //'nombre',
+                    //'apellido',
                     [
                        'label' => Yii::t('frontend', 'Payment Type'),
                        'attribute' => 'cod_tipo_pago',
@@ -64,6 +68,10 @@ $this->title = Yii::t('frontend', 'payment history');
                             'defaultDate' => 'now', 
                             'dateFormat' => 'yy-mm-dd']
                         ]),
+                    ],
+                    [
+                        'attribute' => 'monto',
+                        'format' => 'currency'
                     ],
                     [
                        'label' => Yii::t('frontend', 'Payment Status'),

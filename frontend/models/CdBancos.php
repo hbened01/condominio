@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace app\models;
+=======
+namespace frontend\models;
+>>>>>>> cond_humberto_12_pagos_mejoras
 
 use Yii;
 
@@ -38,8 +42,13 @@ class CdBancos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+<<<<<<< HEAD
             'cd_bancos_pk' => 'Cd Bancos Pk',
             'nombre' => 'Nombre',
+=======
+            'cd_bancos_pk' => Yii::t('frontend', 'Cd Bancos Pk'),
+            'nombre' => Yii::t('frontend', 'Banco'),
+>>>>>>> cond_humberto_12_pagos_mejoras
         ];
     }
 
