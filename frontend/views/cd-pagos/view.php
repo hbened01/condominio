@@ -49,7 +49,10 @@ $baseUrl = $asset->baseUrl;
                 'formatter' => [
                     'class' => 'yii\\i18n\\Formatter',
                     'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('frontend', 'THERE IS NO DATA').')</span>',
-                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado']
+                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado'],
+                    'decimalSeparator' => ',',
+                    'thousandSeparator' => '.',
+                    'currencyCode' => 'Bs ',
                 ],
                 'attributes' => [
                     'nombre',
@@ -57,7 +60,7 @@ $baseUrl = $asset->baseUrl;
                     'codTipoPago.descrip_pago',
                     'codBanco.nombre',
                     'nro_referencia',
-                    'monto',
+                    'monto:currency',
                     'fecha_pago',
                     'nota_pago:html',
                     'nro_cedula',

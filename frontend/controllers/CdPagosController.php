@@ -72,6 +72,7 @@ class CdPagosController extends Controller
             // GUARDADO TABLA CD_PAGOS
             $model->load(Yii::$app->request->post());
             $model->save();
+            $post['CdPagos']['monto'] = str_replace(['.', ',00', 'Bs ', ','], '' , $post['CdPagos']['monto']);
             foreach ($post['CdPagos']['cod_factura'] as $key => $factura):
                 $search = $model_facturas->find()->where(['cd_factura_pk' => $factura])->one();
                 $total_deducible = $search['total_deducible'];
@@ -148,17 +149,26 @@ class CdPagosController extends Controller
             $delete = $model->getUpdatePago($id, $post['CdPagos']['cod_factura']);
             foreach ($delete as $key => $fact):
                 $fact =$fact['id'];
-                //SE ELIMINAN PAGOS NO SELECCIONADOS
+                // SE ELIMINAN PAGOS NO SELECCIONADOS
                 Yii::$app->db->createCommand()
                 ->delete('facturas_pagos', ['cod_facturas_fk' => $fact, 'cod_pagos_fk' => $id])
                 ->execute();
-                //SE ACTUALIZAN TOTALES DEDUCIBLES
+                // SE ACTUALIZAN TOTALES DEDUCIBLES
                 $search = $model_facturas->find()->where(['cd_factura_pk' => $fact])->one();
                 $search->total_deducible = $search->total_pagar_mes;
                 $search->update();
             endforeach;
+            // GUARDADO TABLA CD_PAGOS
+            $model->load(Yii::$app->request->post());
+            $model->update();
+            $post['CdPagos']['monto'] = str_replace(['.', ',00', 'Bs ', ','], '' , $post['CdPagos']['monto']);
+            // AJUSTE DE FACTURAS
             foreach ($post['CdPagos']['cod_factura'] as $key => $factura):
+                // SE ACTUALIZAN TOTALES DEDUCIBLES
                 $search = $model_facturas->find()->where(['cd_factura_pk' => $factura])->one();
+                $search->total_deducible = $search->total_pagar_mes;
+                $search->update();
+                // SE CALCULA NUEVAMENTE
                 $total_deducible = $search['total_deducible'];
                 if ($total_deducible !== 0) {
                     $calculo = $post['CdPagos']['monto'] - $total_deducible;

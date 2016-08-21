@@ -67,7 +67,9 @@ $baseUrl = $asset->baseUrl;
                     ])->label()
                  ?>
 
-                 <?= $form->field($model, 'monto')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter amount to be canceled')])->label(); ?> 
+                 <!-- <?//= $form->field($model, 'monto')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Enter amount to be canceled')])->label(); ?>  -->
+
+                 <?= $form->field($model, 'monto')->widget(MaskedInput::className(), ['clientOptions' => ['alias' =>  'decimal', 'radixPoint' =>',', 'groupSeparator' => '.', 'digits' => 2, 'digitsOptional' => false, 'autoGroup' => true, 'prefix' => 'Bs ']]) ?>
         
             </div>
 
