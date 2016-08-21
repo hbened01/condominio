@@ -64,7 +64,6 @@ class CdPagos extends \yii\db\ActiveRecord
             [['email'], 'string', 'max' => 255],
 
             [['nota_pago'], 'string', 'max' => 500],
-            [['nota_pago'], 'filter', 'filter' => 'strtoupper'],
 
             [['nombre', 'apellido'], 'string', 'max' => 30],
             [['nombre', 'apellido'], 'filter', 'filter' => 'strtoupper'],

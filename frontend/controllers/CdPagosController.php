@@ -195,6 +195,15 @@ class CdPagosController extends Controller
                     }
                 }
             endforeach;
+            // DESVINCULA FACTURA SI EL PAGO NO ALTERA SU TOTAL DEDUCIBLE
+            foreach ($post['CdPagos']['cod_factura'] as $key => $factura):
+                $search = $model_facturas->find()->where(['cd_factura_pk' => $factura])->one();
+                if ($search->total_deducible == $search->total_pagar_mes) {
+                Yii::$app->db->createCommand()
+                ->delete('facturas_pagos', ['cod_facturas_fk' => $factura, 'cod_pagos_fk' => $id])
+                ->execute();
+                }
+            endforeach;
             Yii::$app->session->setFlash('success', 'El pago fue actualizado exitosamente.');
             return $this->redirect(['view', 'id' => $model->cd_pago_pk]);
         }
