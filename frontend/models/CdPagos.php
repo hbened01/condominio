@@ -55,9 +55,8 @@ class CdPagos extends \yii\db\ActiveRecord
 
             [['nro_cedula', 'nro_referencia'], 'number'],
 
-            
             //removes commas and periods and currency
-            ['monto', 'filter', 'filter' => function($value) {  return str_replace(['.', ',00', 'Bs ', ','], '' , $value); }],
+            ['monto', 'filter', 'filter' => function($value) {return str_replace(',', '.', str_replace(['.', ',00', 'Bs '], '' , $value));}],
             [['monto'], 'number', 'min' => 100 ],
 
             ['email', 'email'],

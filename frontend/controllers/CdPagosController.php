@@ -72,7 +72,7 @@ class CdPagosController extends Controller
             // GUARDADO TABLA CD_PAGOS
             $model->load(Yii::$app->request->post());
             $model->save();
-            $post['CdPagos']['monto'] = str_replace(['.', ',00', 'Bs ', ','], '' , $post['CdPagos']['monto']);
+            $post['CdPagos']['monto'] = str_replace(',', '.', str_replace(['.', ',00', 'Bs '], '' , $post['CdPagos']['monto']));
             foreach ($post['CdPagos']['cod_factura'] as $key => $factura):
                 $search = $model_facturas->find()->where(['cd_factura_pk' => $factura])->one();
                 $total_deducible = $search['total_deducible'];
@@ -161,7 +161,7 @@ class CdPagosController extends Controller
             // GUARDADO TABLA CD_PAGOS
             $model->load(Yii::$app->request->post());
             $model->update();
-            $post['CdPagos']['monto'] = str_replace(['.', ',00', 'Bs ', ','], '' , $post['CdPagos']['monto']);
+            $post['CdPagos']['monto'] = str_replace(',', '.', str_replace(['.', ',00', 'Bs '], '' , $post['CdPagos']['monto']));
             // AJUSTE DE FACTURAS
             foreach ($post['CdPagos']['cod_factura'] as $key => $factura):
                 // SE ACTUALIZAN TOTALES DEDUCIBLES
