@@ -11,15 +11,15 @@ do
     sed 's/,;/;/g' $path"copia_condc3.txt" > $path"copia_condc4.txt"
     fecha=$(date)
     echo "------- $fecha --------------"
-    echo $files
+    echo "cargando archivo $files ..."
 
     #--- Database information ----------------
     hots=127.0.0.1
     db_name=hjtecnos_condominio
-    # db_name=condominio_db
+    #db_name=condominio_db
     user=hjtecnos
     export PGPASSWORD='1ytZq26fH1'
-    # export PGPASSWORD='<zaq12wsx'
+    #export PGPASSWORD='<zaq12wsx'
     #-----------------------------------------
 
     tempApto=""
@@ -30,7 +30,7 @@ do
     flag2=0
     flag3=0
     flag4=0
-
+    fecha_creada=$(date +"%Y-%m-%d")
     #------------------------------------------------------------#------------------------------------------------------------
 
     while read line
@@ -93,8 +93,11 @@ do
             fi
                 
             total_pagar=$(echo $(echo  "$line" | cut -f53 -d';') | sed 's/\.//g')
+            total_deducible=$total_pagar
             if [ "$total_pagar" = "" ] 
-                then total_pagar=0 
+                then 
+                total_pagar=0 
+                total_deducible=0
             fi
                 
             rd=$(echo  "$line" | cut -f55 -d';')
@@ -109,21 +112,21 @@ do
                 then deuda_actual=0 
             fi
                 
-            echo "***********************************************************************"
-            echo $resi - $apto - $propietario - $mes $anio - $nr - $alicuota - $total_gmes - $subtotal_gcom - $total_pagar - $recibos - $deuda_actual
-            echo "-----------------------------------------------------------------------"
+            #echo "***********************************************************************"
+            #echo $resi - $apto - $propietario - $mes $anio - $nr - $alicuota - $total_gmes - $subtotal_gcom - $total_pagar - $recibos - $deuda_actual
+            #echo "-----------------------------------------------------------------------"
 
             #-------- Insert in the facturas table and get id ----------------------------
             query="INSERT INTO facturas(
                             cod_apto, edificio, nombre, apellido, alicuota, 
                             nr, fecha, total_gastos_mes, sub_total_alicuota, total_pagar_mes, 
-                            deuda_actual, recibos)
+                            deuda_actual, recibos,total_deducible,fecha_creada)
                     VALUES ('$apto', '$resi', '$propietario', '', $alicuota, 
                             $nr, '$mes $anio', $total_gmes, $subtotal_gcom, $total_pagar, 
-                            $deuda_actual, $recibos) RETURNING cd_factura_pk;"
+                            $deuda_actual, $recibos,$total_deducible,'$fecha_creada') RETURNING cd_factura_pk;"
             id_factura=$(echo $query | psql -h $hots -U $user -d $db_name)
             fid=$(echo $id_factura | cut -f3 -d' ')
-            echo $fid
+            #echo $fid
             #-----------------------------------------------------------------------------
 
             # if [ "$tempApto" = "03A" ]
@@ -258,9 +261,13 @@ do
                 #-----------------------------------------------------------------------------
             done
         fi
+    done < $path"copia_condc4.txt"
 
+    if [ $flag4 = 1 ]
+        then
         echo "FACTURA ${files} CARGADAS CORRECTAMENTE"
         rm -f $files
         echo "------------------------------------------------------------------------------"
-    done < $path"copia_condc4.txt"
+    fi
 done
+rm -f $path"copia_"*

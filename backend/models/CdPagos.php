@@ -10,7 +10,6 @@ use Yii;
  * This is the model class for table "cd_pagos".
  *
  * @property integer $cd_pago_pk
- * @property integer $cod_factura
  * @property integer $cod_tipo_pago
  * @property string $nro_referencia
  * @property string $fecha_pago
@@ -24,10 +23,17 @@ use Yii;
  *
  * @property CdTiposDocs $codTipoDoc
  * @property CdTiposPagos $codTipoPago
- * @property Facturas $codFactura
+ * @property FacturasPagos[] $facturasPagos
+ * @property CdBancos $codBancos
+ * @property Facturas[] $facturas
+ * @property CdPropietarios[] $cdPropietarios
+ * @property CdAptos[] $cdAptos
  */
 class CdPagos extends \yii\db\ActiveRecord
 {
+    public $id_propietario;
+    public $cod_factura;
+
     /**
      * @inheritdoc
      */
@@ -42,9 +48,9 @@ class CdPagos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cod_factura', 'cod_tipo_pago', 'nro_referencia', 'fecha_pago', 'nombre', 'apellido', 'cod_tipo_doc', 'email'], 'required'],
-            [['cod_factura', 'cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
-            [['nro_referencia', 'nro_cedula'], 'number'],
+            [['cod_factura', 'cod_tipo_pago', 'nro_referencia', 'fecha_pago', 'nombre', 'apellido', 'cod_tipo_doc','monto','cod_banco','nro_cedula'], 'required'],
+            [['cod_tipo_pago', 'cod_tipo_doc'], 'integer'],
+            [['nro_referencia', 'nro_cedula','monto'], 'number'],
             [['fecha_pago'], 'safe'],
             [['estatus_pago'], 'boolean'],
             [['nota_pago'], 'string', 'max' => 500],
@@ -52,7 +58,6 @@ class CdPagos extends \yii\db\ActiveRecord
             [['email'], 'string', 'max' => 255],
             [['cod_tipo_doc'], 'exist', 'skipOnError' => true, 'targetClass' => CdTiposDocs::className(), 'targetAttribute' => ['cod_tipo_doc' => 'cd_tipo_doc_pk']],
             [['cod_tipo_pago'], 'exist', 'skipOnError' => true, 'targetClass' => CdTiposPagos::className(), 'targetAttribute' => ['cod_tipo_pago' => 'cd_tipo_pago_pk']],
-            [['cod_factura'], 'exist', 'skipOnError' => true, 'targetClass' => Facturas::className(), 'targetAttribute' => ['cod_factura' => 'cd_factura_pk']],
         ];
     }
 
@@ -63,17 +68,23 @@ class CdPagos extends \yii\db\ActiveRecord
     {
         return [
             'cd_pago_pk' => 'Cd Pago Pk',
-            'cod_factura' => 'Factura',
+            'cod_factura' => 'Facturas',
             'cod_tipo_pago' => 'Tipo Pago',
             'nro_referencia' => 'Nro Referencia',
             'fecha_pago' => 'Fecha Pago',
-            'nota_pago' => 'Nota Pago',
+            'nota_pago' => 'Observación sobre el pago',
             'nombre' => 'Nombre',
             'apellido' => 'Apellido',
-            'nro_cedula' => 'Nro Cedula',
-            'cod_tipo_doc' => 'Cod Tipo Doc',
+            'nro_cedula' => 'Nro Documento',
+            'cod_tipo_doc' => 'Tipo Documento',
             'email' => 'Email',
             'estatus_pago' => 'Pago Aprobado',
+            'monto' => 'Monto del Pago',
+            'cod_banco' => 'Banco',
+            'id_propietario' => 'Seleccione Propietario',
+            'codBancos.nombre' => 'Banco',
+            'codTipoPago.descrip_pago' => 'Tipo de Pago',
+            'codTipoDoc.descrip_doc' => 'Tipo de Documento'
         ];
     }
 
@@ -93,6 +104,23 @@ class CdPagos extends \yii\db\ActiveRecord
         return $this->hasOne(CdTiposPagos::className(), ['cd_tipo_pago_pk' => 'cod_tipo_pago']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFacturasPagos()
+    {
+        return $this->hasMany(FacturasPagos::className(), ['cod_pagos_fk' => 'cd_pago_pk']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFacturas()
+    {
+        return $this->hasMany(Facturas::className(), ['cd_factura_pk' => 'cod_facturas_fk'])
+                    ->viaTable('facturas_pagos', ['cod_pagos_fk' => 'cd_pago_pk']);
+    }
+
     public function tipoPago($id)
     {
         $model = CdTiposPagos::find()->where(['cd_tipo_pago_pk' => $id])->one();
@@ -102,19 +130,63 @@ class CdPagos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCodFactura()
+    public function getCodBancos()
     {
-        return $this->hasOne(Facturas::className(), ['cd_factura_pk' => 'cod_factura']);
+        return $this->hasOne(CdBancos::className(), ['cd_bancos_pk' => 'cod_banco']);
     }
 
     public function getIdFacturaConcat($id = null)
     {   
+
         $result = (new \yii\db\Query())
-                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto: ', d.cod_apto, ' - Edificio: ', d.edificio, ' - Fecha: ',d.fecha, ' - Nr: ',d.nr) AS descripcion"])
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_deducible,'999,999,999.99'),',','*'),'.',','),'*','.')) AS descripcion"])
                         ->from('facturas d')
-                        ->where (['d.estatus_factura' => false])
+                        ->where (['and','d.estatus_factura = false','d.total_deducible > 0'])
+                        ->groupBy(['d.cd_factura_pk','d.cod_apto', 'd.edificio'])
+                        ->orderBy(['d.edificio' => SORT_ASC])
                         ->all();
                         
+        return $result;
+    }
+
+    public function getIdPropietario($id)
+    {   
+        
+        $result = (new \yii\db\Query())
+                        ->select(['a.cod_propietario AS id'])
+                        ->from('cd_aptos a')
+                        ->innerJoin('cd_edificios e','e.cd_edificios_pk = a.cod_edificio')
+                        ->innerJoin('facturas f','f.cod_apto = a.cd_aptos_pk AND f.edificio = e.nombre_edificio')
+                        ->where (['and','f.estatus_factura = false','f.cd_factura_pk = '.$id])
+                        ->one();
+                        
+        return $result;
+    }
+
+    public function getPropietarios($id = null)
+    {   
+        $result = (new \yii\db\Query())
+                        ->select(['d.cd_propietarios_pk AS id', "CONCAT(d.apellido, ' - ',d.nombre) AS nombre"])
+                        ->from('cd_propietarios d')
+                        ->groupBy(['d.cd_propietarios_pk','d.nombre'])
+                        ->orderBy(['d.apellido' => SORT_ASC])
+                        ->all();
+                        
+        return $result;
+    }
+
+    public static function getOptionsFacturas($id)
+    {
+
+        $result = (new \yii\db\Query())
+                        ->select(['d.cd_factura_pk AS id', "CONCAT('Apto.: ', d.cod_apto, ' - Edif.: ', d.edificio, ' - ',d.fecha, ' - Monto: ',replace(replace(replace(to_char(d.total_deducible,'999,999,999'),',','*'),'.',','),'*','.')) AS descripcion"])
+                        ->from('facturas d')
+                        ->innerJoin('cd_aptos a','a.cd_aptos_pk = d.cod_apto')
+                        ->innerJoin('cd_edificios e','e.cd_edificios_pk = a.cod_edificio AND e.nombre_edificio = d.edificio')
+                        ->where(['and','a.cod_propietario = '.$id,'d.estatus_factura = false'])
+                        ->orderBy(['d.fecha_creada' => SORT_ASC])
+                        ->all();
+
         return $result;
     }
 }

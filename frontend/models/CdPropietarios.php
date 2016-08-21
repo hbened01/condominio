@@ -41,9 +41,12 @@ class CdPropietarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['nombre', 'apellido', 'nro_cedula', 'telf_local', 'telf_celular', 'email'], 'required'],
+
             [['cod_user'], 'integer'],
 
-            [['nro_cedula', 'alicuota'], 'number'],
+            [['alicuota'], 'number'],
+            [['nro_cedula'], 'number', 'min' => 1000000, 'max' => 99999999],
 
             [['update_usr'], 'boolean'],
 

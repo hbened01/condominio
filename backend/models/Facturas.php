@@ -24,9 +24,11 @@ use Yii;
  *
  * @property CdPagos[] $cdPagos
  * @property FacturasGastosComunes[] $facturasGastosComunes
+ * @property FacturasPagos[] $facturasPagos
  * @property Fondos[] $fondos
  * @property GastosNocomunes[] $gastosNocomunes
  * @property GastosComunes[] $gastosComunes
+ * @property CdPagos[] $cdPagos
  */
 class Facturas extends \yii\db\ActiveRecord
 {
@@ -77,21 +79,30 @@ class Facturas extends \yii\db\ActiveRecord
             'estatus_factura' => 'Factura Pagada',
         ];
     }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCdPagos()
-    {
-        return $this->hasMany(CdPagos::className(), ['cod_factura' => 'cd_factura_pk']);
-    }
-
+    
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getFacturasGastosComunes()
     {
         return $this->hasMany(FacturasGastosComunes::className(), ['cod_factura_fk' => 'cd_factura_pk']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFacturasPagos()
+    {
+        return $this->hasMany(FacturasPagos::className(), ['cod_facturas_fk' => 'cd_factura_pk']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCdPagos()
+    {
+        return $this->hasMany(CdPagos::className(), ['cd_pago_pk' => 'cod_pagos_fk'])
+                    ->viaTable('facturas_pagos', ['cod_facturas_fk' => 'cd_factura_pk']);
     }
 
     /**

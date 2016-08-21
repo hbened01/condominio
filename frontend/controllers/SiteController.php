@@ -80,7 +80,12 @@ class SiteController extends Controller
                 return $this->redirect(Yii::$app->getUser()->loginUrl);
             }
         }else{
-            return $this->redirect('facturas');
+            $user = new CdPropietarios();
+            $update_usr = $user->getStatus(Yii::$app->user->identity->username);
+            if ($update_usr) {
+                return $this->redirect('cd-propietarios/update');
+            }
+                return $this->redirect('facturas');
         }
     }
 

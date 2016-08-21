@@ -34,19 +34,19 @@ $operaciones = $session->get('operaciones');
 
             'cd_pago_pk',
            // 'codFactura.nr',
-             [
-                       'label' => Yii::t('frontend', 'Invoice'),
-                       'attribute' => 'cod_factura',
-                       'value' => 'codFactura.nr', //esta es la data de la tabla
-                      // 'filter' => ,
-            ],
+            //  [
+            //            'label' => Yii::t('frontend', 'Invoice'),
+            //            'attribute' => 'cod_factura',
+            //            'value' => 'codFactura.nr', //esta es la data de la tabla
+            //           // 'filter' => ,
+            // ],
             //'cod_tipo_pago',
-             [
-                       'label' => Yii::t('frontend', 'Payment Type'),
-                       'attribute' => 'cod_tipo_pago',
-                       'value' => 'codTipoPago.descrip_pago', //esta es la data de la tabla
-                       'filter' => Html::activeDropDownList($searchModel, 'cod_tipo_pago', ArrayHelper::map(CdTiposPagos::find()->asArray()->all(), 'cd_tipo_pago_pk', 'descrip_pago'), ['class'=>'form-control', 'prompt' => Yii::t('frontend', 'Select...')]),
-            ],
+            //  [
+            //            'label' => Yii::t('frontend', 'Payment Type'),
+            //            'attribute' => 'cod_tipo_pago',
+            //            'value' => 'codTipoPago.descrip_pago', //esta es la data de la tabla
+            //            'filter' => Html::activeDropDownList($searchModel, 'cod_tipo_pago', ArrayHelper::map(CdTiposPagos::find()->asArray()->all(), 'cd_tipo_pago_pk', 'descrip_pago'), ['class'=>'form-control', 'prompt' => Yii::t('frontend', 'Select...')]),
+            // ],
             'nro_referencia',
             [
                'label' => Yii::t('frontend', 'Payment Date'),

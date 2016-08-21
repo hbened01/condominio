@@ -73,14 +73,14 @@ $baseUrl = $asset->baseUrl;
                         <!-- <li><?//= Html::a(Yii::t('frontend', 'About Us'), ['site/about'],['data' => ['method' => 'post']]) ?></li> -->
                         <li><?= Html::a(Yii::t('frontend', 'Contact'), ['site/contact'],['data' => ['method' => 'post']]) ?></li> 
                         <?php   if (Yii::$app->user->isGuest) {
-                                    // echo '<li>'.Html::a(Yii::t('frontend', 'Login'), ['/site/login'],['data' => ['method' => 'post']]).'</li>';
+                                    //echo '<li>'.Html::a(Yii::t('frontend', 'Login'), ['/site/login'],['data' => ['method' => 'post']]).'</li>';
                                 } 
                                 else {
                                     echo '<li class="dropdown">
                                             <a href="" class="dropdown-toggle" data-toggle="dropdown">'.Yii::t('frontend', 'Activities').'&nbsp'.'<i class="fa fa-angle-double-down"></i></a>
                                             <ul class="dropdown-menu">';
                                     if (Yii::$app->session->get('user.update_usr')) {   
-                                        echo   '<li>'.Html::a(Yii::t('frontend', 'Update data'), ['cd-propietarios/update', 'id_user' => Yii::$app->user->id]).'</li>';
+                                        echo   '<li>'.Html::a(Yii::t('frontend', 'Update data'), ['cd-propietarios/update'/*, 'id_user' => Yii::$app->user->id*/]).'</li>';
 
                                     } else {
                                         Yii::$app->session->remove('user.update_usr');

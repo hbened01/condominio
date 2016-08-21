@@ -16,34 +16,53 @@ $baseUrl = $asset->baseUrl;
     <div class="container">
         <div class="center">
             <br><br>
-            <h2><span class="glyphicons glyphicons-exclamation-sign"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'View Registered Payment')) ?></h2>
-            <h3><span class="glyphicons glyphicons-notes"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'Bill')) ?>&nbsp:&nbsp<?php print_r(ArrayHelper::getValue($factura, '0.descripcion')); ?></h3>
+            <h2><span class="glyphicons glyphicons-exclamation-sign"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'View Registered Payment')) ?></h2>     
         </div> 
         <div class="row contact-wrap"> 
-    
+
+            <section>
+                <h3><span class="glyphicons glyphicons-notes"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'Bill')) ?>(s):</h3>
+                <table id="descrip_factura" class="table table-bordered table-striped" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th><center>Número de Factura (S) </center></th>
+                            <th><center>Apartamento </center></th>
+                            <th><center>Edificio </center></th>
+                            <th><center>Fecha Emisión de Factura </center></th>              
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($table as $key => $value): ?>
+                            <tr>
+                                <td><center><?php print_r($value['nr']); ?></center></td>
+                                <td><center><?php print_r($value['cod_apto']); ?></center></td>
+                                <td><center><?php print_r($value['edificio']); ?></center></td>
+                                <td><center><?php print_r($value['fecha']); ?></center></td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </section>  
+            <h3><span class="glyphicons glyphicons-small-payments"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'Details of the payment made')) ?>:</h3>
             <?= DetailView::widget([
                 'model' => $model,
                 'formatter' => [
                     'class' => 'yii\\i18n\\Formatter',
                     'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('frontend', 'THERE IS NO DATA').')</span>',
-                    // 'dateFormat' => 'medium',
-                    // 'timeFormat' => 'medium',
-                    // 'datetimeFormat' => 'medium',
-                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado']
+                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado por Administracíón', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado'],
+                    'decimalSeparator' => ',',
+                    'thousandSeparator' => '.',
+                    'currencyCode' => 'Bs ',
                 ],
                 'attributes' => [
-                    //'cd_pago_pk',
-                    //'cod_factura',
-                    //'estatus_pago:boolean',
-                    'codFactura.nr',
-                    'codFactura.cod_apto',
-                    'codFactura.edificio',
                     'nombre',
                     'apellido',
                     'codTipoPago.descrip_pago',
+                    'codBanco.nombre',
                     'nro_referencia',
+                    'monto:currency',
                     'fecha_pago',
-                    'nota_pago',
+                    'nota_pago:html',
                     'nro_cedula',
                     'codTipoDoc.descrip_doc',
                     'email:email',

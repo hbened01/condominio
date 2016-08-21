@@ -20,9 +20,10 @@ class CdPropietariosController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id_user)
+    public function actionUpdate()
     {
         $model = new CdPropietarios();
+        $id_user = Yii::$app->user->identity->id;
         $id = $model->getIdPropietario($id_user);
         if (empty($id)) {
             Yii::$app->session->setFlash('error', 'Usuario no encontrado, no se puede realizar actualización de datos.');

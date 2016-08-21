@@ -39,4 +39,39 @@ $(document).ready(function(){
 	    // bootstrap WYSIHTML5 - text editor
 	    $(".textarea").wysihtml5();
     }
+
+    $(".select2").select2();
+
+    $.fn.datepicker.dates['es'] = {
+	    days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
+	    daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"],
+	    daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
+	    months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+	    monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+	    today: "Hoy"
+	};
+
+    $("#cdpagos-fecha_pago").datepicker({
+    	format:'dd-mm-yyyy',
+    	clearBtn:true,
+    	language:'es'
+    });
+
+    $("#cdpagos-id_propietario").change(function(){
+    	//alert($("#cdpagos-id_propietario").val());
+	    var datos = "id=" + $("#cdpagos-id_propietario").val();
+	    var url = 'options-select-facturas';
+
+	    $.ajax({
+		  	type: "GET",
+		  	url: url,
+		  	data: datos,
+		  	dataType: 'json',
+		  	success: function(data){
+		  		//alert(data.options);
+		  		$("#cdpagos-cod_factura").select2("val", "");
+		  		$("#cdpagos-cod_factura").html(data.options);
+		  	}
+		});
+    });
 });
