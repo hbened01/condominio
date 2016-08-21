@@ -64,7 +64,7 @@ $baseUrl = $asset->baseUrl;
                     'clientOptions' => [
                         'defaultDate' => 'now', 
                         'dateFormat' => 'yy-mm-dd']
-                    ])
+                    ])->label();
                  ?>
                  
                  <?= $form->field($model, 'monto')->widget(MaskedInput::className(), ['clientOptions' => ['alias' =>  'decimal', 'radixPoint' =>',', 'groupSeparator' => '.', 'digits' => 2, 'digitsOptional' => false, 'autoGroup' => true, 'prefix' => 'Bs ', 'rightAlign' => false, 'placeholder' => '0,00']])->label(); ?>
@@ -73,11 +73,11 @@ $baseUrl = $asset->baseUrl;
 
             <div class="col-sm-5">    
 
-                <?= $form->field($model, 'nombre')->textInput(['maxlength' => true, 'placeholder' => Yii::t('frontend', 'Name')])->label() ?>
+                <?= $form->field($model, 'nombre')->textInput(['maxlength' => true, 'placeholder' => Yii::t('frontend', 'Name')])->label(); ?>
 
-                <?= $form->field($model, 'apellido')->textInput(['maxlength' => true, 'placeholder' => Yii::t('frontend', 'Last Name')])->label() ?>
+                <?= $form->field($model, 'apellido')->textInput(['maxlength' => true, 'placeholder' => Yii::t('frontend', 'Last Name')])->label(); ?>
 
-                <?= $form->field($model, 'email')->widget(MaskedInput::className(), ['clientOptions' => ['alias' =>  'email']])->label() ?>
+                <?= $form->field($model, 'email')->widget(MaskedInput::className(), ['clientOptions' => ['alias' =>  'email']])->label(); ?>
 
             </div>
 
@@ -85,13 +85,13 @@ $baseUrl = $asset->baseUrl;
 
                 <div class="col-sm-1"> 
 
-                    <?= $form->field($model, 'cod_tipo_doc')->dropdownList(CdTiposDocs::find()->select(['tipo_doc' , 'cd_tipo_doc_pk'])->indexBy('cd_tipo_doc_pk')->column())->label(Yii::t('frontend', 'Doc.')) ?>
+                    <?= $form->field($model, 'cod_tipo_doc')->dropdownList(CdTiposDocs::find()->select(['tipo_doc' , 'cd_tipo_doc_pk'])->indexBy('cd_tipo_doc_pk')->column())->label(Yii::t('frontend', 'Doc.')); ?>
 
                 </div>
                 
                 <div class="col-sm-4"> 
             
-                    <?= $form->field($model, 'nro_cedula')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Identity Card')])->label() ?>
+                    <?= $form->field($model, 'nro_cedula')->textInput(['autofocus' => true, 'class' => 'form-control', 'placeholder' => Yii::t('frontend', 'Identity Card')])->label(); ?>
 
                 </div>
 
@@ -99,7 +99,7 @@ $baseUrl = $asset->baseUrl;
 
             <div class="col-sm-10 col-sm-offset-2">
 
-            <?= $form->field($model, 'nota_pago')->textArea(['rows' => 5, 'placeholder' => Yii::t('frontend', 'Note Description Payment')])->label() ?>
+            <?= $form->field($model, 'nota_pago')->textArea(['rows' => 5, 'placeholder' => Yii::t('frontend', 'Note Description Payment')])->label(); ?>
 
             </div>
 
