@@ -45,7 +45,8 @@ class CdPropietarios extends \yii\db\ActiveRecord
 
             [['cod_user'], 'integer'],
 
-            [['nro_cedula', 'alicuota'], 'number'],
+            [['alicuota'], 'number'],
+            [['nro_cedula'], 'number', 'min' => 1000000, 'max' => 99999999],
 
             [['update_usr'], 'boolean'],
 
