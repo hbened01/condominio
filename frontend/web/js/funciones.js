@@ -24,4 +24,14 @@ $('#descrip_factura').DataTable({
         locale: 'es-ES',
     });
 
+    $("#cdpropietarios-quien_vive").click(function(){
+      if ($("input[name='CdPropietarios[quien_vive]']:checked").val() == 0) {
+        // $('label[for="cdpropietarios-direccion"]').css('display', 'block'); //oculta label
+        document.getElementById('address').style.display='block';
+      }else{
+        // $('label[for="cdpropietarios-direccion"]').css('display', 'none');
+        document.getElementById('address').style.display='none';
+      }
+    });
+
 });

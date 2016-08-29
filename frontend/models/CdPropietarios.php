@@ -48,7 +48,7 @@ class CdPropietarios extends \yii\db\ActiveRecord
             [['alicuota'], 'number'],
             [['nro_cedula'], 'number', 'min' => 1000000, 'max' => 99999999],
 
-            [['update_usr'], 'boolean'],
+            [['update_usr', 'quien_vive'], 'boolean'],
 
             [['nro_piso'], 'string', 'max' => 5],
 
@@ -61,9 +61,6 @@ class CdPropietarios extends \yii\db\ActiveRecord
             [['email'], 'string', 'max' => 256],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'email'],
-
-            [['quien_vive'], 'string', 'max' => 25],
-            ['quien_vive', 'filter', 'filter' => 'strtoupper'],
 
             [['direccion', 'direccion_cobro'], 'string', 'max' => 150],
             [['direccion', 'direccion_cobro'], 'filter', 'filter' => 'strtoupper'],
@@ -88,7 +85,7 @@ class CdPropietarios extends \yii\db\ActiveRecord
             'telf_celular' => Yii::t('frontend', 'Cell phone'),
             'email' => Yii::t('frontend', 'Personal Mail'),
             'alicuota' => Yii::t('frontend', 'Aliquot'),
-            'quien_vive' => Yii::t('frontend', 'Who Lives?'),
+            'quien_vive' => Yii::t('frontend', 'You Reside?'),
             'direccion' => Yii::t('frontend', 'Residence Address'),
             'direccion_cobro' => Yii::t('frontend', 'Billing Address'),
             'update_usr' => Yii::t('frontend', 'Update Usr'),
