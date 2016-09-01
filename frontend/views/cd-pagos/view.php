@@ -49,7 +49,7 @@ $baseUrl = $asset->baseUrl;
                 'formatter' => [
                     'class' => 'yii\\i18n\\Formatter',
                     'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('frontend', 'THERE IS NO DATA').')</span>',
-                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado por Administracíón', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado'],
+                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNoVerificado-PorAdministración', '<span class="glyphicon glyphicon-ok"></span> &nbspVerificado-PorAdministración'],
                     'decimalSeparator' => ',',
                     'thousandSeparator' => '.',
                     'currencyCode' => 'Bs ',

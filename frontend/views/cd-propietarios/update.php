@@ -55,13 +55,17 @@ $baseUrl = $asset->baseUrl;
 
                 <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-                <?= $form->field($model, 'nro_piso')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'nro_piso')->textInput([/*'style'=>"display:none",*/ 'maxlength' => true]) ?>
+               
+                <?= $form->field($model, 'quien_vive')->radioList(array(true => '<span class="glyphicon glyphicon-ok"></span>&nbsp'.Yii::t('frontend', 'YES, I AM LIVING IN THIS PROPERTY').'.', false => '<span class="glyphicon glyphicon-remove"></span>&nbsp'.Yii::t('frontend', 'NO, CURRENTLY I LIVE IN ANOTHER PROPERTY').'.'))->label(Yii::t('frontend', 'You Reside?')); ?>
 
-                <?= $form->field($model, 'quien_vive')->textInput(['maxlength' => true]) ?>
+                <div id="address" style="display:none">
 
-                <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'direccion')->textArea(['rows' => 3]) ?>
 
-                <?= $form->field($model, 'direccion_cobro')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'direccion_cobro')->textArea(['rows' => 3]) ?>
+                
+                </div>
 
             </div>
 
