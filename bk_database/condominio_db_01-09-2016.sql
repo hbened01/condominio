@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.4
--- Dumped by pg_dump version 9.5.4
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
 
--- Started on 2016-09-01 14:36:10 VET
+-- Started on 2016-09-01 15:23:58 VET
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -39,7 +39,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 181 (class 1259 OID 101585)
+-- TOC entry 181 (class 1259 OID 22648)
 -- Name: cd_aguas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -54,7 +54,7 @@ CREATE TABLE cd_aguas (
 
 
 --
--- TOC entry 182 (class 1259 OID 101591)
+-- TOC entry 182 (class 1259 OID 22654)
 -- Name: cd_aguas_cd_aguas_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -76,7 +76,7 @@ ALTER SEQUENCE cd_aguas_cd_aguas_pk_seq OWNED BY cd_aguas.cd_aguas_pk;
 
 
 --
--- TOC entry 183 (class 1259 OID 101593)
+-- TOC entry 183 (class 1259 OID 22656)
 -- Name: cd_aptos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -88,7 +88,7 @@ CREATE TABLE cd_aptos (
 
 
 --
--- TOC entry 184 (class 1259 OID 101596)
+-- TOC entry 184 (class 1259 OID 22659)
 -- Name: cd_bancos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -99,7 +99,7 @@ CREATE TABLE cd_bancos (
 
 
 --
--- TOC entry 185 (class 1259 OID 101599)
+-- TOC entry 185 (class 1259 OID 22662)
 -- Name: cd_bancos_cd_bancos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -121,7 +121,7 @@ ALTER SEQUENCE cd_bancos_cd_bancos_pk_seq OWNED BY cd_bancos.cd_bancos_pk;
 
 
 --
--- TOC entry 186 (class 1259 OID 101601)
+-- TOC entry 186 (class 1259 OID 22664)
 -- Name: cd_chequeras; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -136,7 +136,7 @@ CREATE TABLE cd_chequeras (
 
 
 --
--- TOC entry 187 (class 1259 OID 101604)
+-- TOC entry 187 (class 1259 OID 22667)
 -- Name: cd_chequeras_cd_chequeras_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -158,7 +158,7 @@ ALTER SEQUENCE cd_chequeras_cd_chequeras_pk_seq OWNED BY cd_chequeras.cd_chequer
 
 
 --
--- TOC entry 188 (class 1259 OID 101606)
+-- TOC entry 188 (class 1259 OID 22669)
 -- Name: cd_conceptos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -171,7 +171,7 @@ CREATE TABLE cd_conceptos (
 
 
 --
--- TOC entry 189 (class 1259 OID 101609)
+-- TOC entry 189 (class 1259 OID 22672)
 -- Name: cd_conceptos_cd_conceptos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -193,7 +193,7 @@ ALTER SEQUENCE cd_conceptos_cd_conceptos_pk_seq OWNED BY cd_conceptos.cd_concept
 
 
 --
--- TOC entry 190 (class 1259 OID 101611)
+-- TOC entry 190 (class 1259 OID 22674)
 -- Name: cd_conjuntos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -205,7 +205,7 @@ CREATE TABLE cd_conjuntos (
 
 
 --
--- TOC entry 191 (class 1259 OID 101614)
+-- TOC entry 191 (class 1259 OID 22677)
 -- Name: cd_conjuntos_cd_conjuntos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -227,7 +227,7 @@ ALTER SEQUENCE cd_conjuntos_cd_conjuntos_pk_seq OWNED BY cd_conjuntos.cd_conjunt
 
 
 --
--- TOC entry 192 (class 1259 OID 101616)
+-- TOC entry 192 (class 1259 OID 22679)
 -- Name: cd_deudas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -246,7 +246,7 @@ CREATE TABLE cd_deudas (
 
 
 --
--- TOC entry 193 (class 1259 OID 101619)
+-- TOC entry 193 (class 1259 OID 22682)
 -- Name: cd_deudas_cd_deudas_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -268,7 +268,7 @@ ALTER SEQUENCE cd_deudas_cd_deudas_pk_seq OWNED BY cd_deudas.cd_deudas_pk;
 
 
 --
--- TOC entry 194 (class 1259 OID 101621)
+-- TOC entry 194 (class 1259 OID 22684)
 -- Name: cd_edificios; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -294,7 +294,7 @@ CREATE TABLE cd_edificios (
 
 
 --
--- TOC entry 195 (class 1259 OID 101642)
+-- TOC entry 195 (class 1259 OID 22705)
 -- Name: cd_edificios_cd_edificios_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -316,7 +316,7 @@ ALTER SEQUENCE cd_edificios_cd_edificios_pk_seq OWNED BY cd_edificios.cd_edifici
 
 
 --
--- TOC entry 196 (class 1259 OID 101644)
+-- TOC entry 196 (class 1259 OID 22707)
 -- Name: cd_fondos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -335,7 +335,7 @@ CREATE TABLE cd_fondos (
 
 
 --
--- TOC entry 197 (class 1259 OID 101647)
+-- TOC entry 197 (class 1259 OID 22710)
 -- Name: cd_fondos_cd_fondos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -357,7 +357,7 @@ ALTER SEQUENCE cd_fondos_cd_fondos_pk_seq OWNED BY cd_fondos.cd_fondos_pk;
 
 
 --
--- TOC entry 198 (class 1259 OID 101649)
+-- TOC entry 198 (class 1259 OID 22712)
 -- Name: cd_historicos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -376,7 +376,7 @@ CREATE TABLE cd_historicos (
 
 
 --
--- TOC entry 199 (class 1259 OID 101652)
+-- TOC entry 199 (class 1259 OID 22715)
 -- Name: cd_historicos_cd_historicos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -398,7 +398,7 @@ ALTER SEQUENCE cd_historicos_cd_historicos_pk_seq OWNED BY cd_historicos.cd_hist
 
 
 --
--- TOC entry 200 (class 1259 OID 101654)
+-- TOC entry 200 (class 1259 OID 22717)
 -- Name: cd_mantenimientos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -409,7 +409,7 @@ CREATE TABLE cd_mantenimientos (
 
 
 --
--- TOC entry 201 (class 1259 OID 101657)
+-- TOC entry 201 (class 1259 OID 22720)
 -- Name: cd_mantenimientos_cd_mantenimientos_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -431,7 +431,7 @@ ALTER SEQUENCE cd_mantenimientos_cd_mantenimientos_pk_seq OWNED BY cd_mantenimie
 
 
 --
--- TOC entry 202 (class 1259 OID 101659)
+-- TOC entry 202 (class 1259 OID 22722)
 -- Name: cd_mov_chequeras; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -448,7 +448,7 @@ CREATE TABLE cd_mov_chequeras (
 
 
 --
--- TOC entry 203 (class 1259 OID 101665)
+-- TOC entry 203 (class 1259 OID 22728)
 -- Name: cd_mov_mes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -464,7 +464,7 @@ CREATE TABLE cd_mov_mes (
 
 
 --
--- TOC entry 204 (class 1259 OID 101668)
+-- TOC entry 204 (class 1259 OID 22731)
 -- Name: cd_observaciones; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -475,7 +475,7 @@ CREATE TABLE cd_observaciones (
 
 
 --
--- TOC entry 205 (class 1259 OID 101671)
+-- TOC entry 205 (class 1259 OID 22734)
 -- Name: cd_observaciones_cd_observaciones_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -497,7 +497,7 @@ ALTER SEQUENCE cd_observaciones_cd_observaciones_pk_seq OWNED BY cd_observacione
 
 
 --
--- TOC entry 206 (class 1259 OID 101673)
+-- TOC entry 206 (class 1259 OID 22736)
 -- Name: cd_pagos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -519,7 +519,7 @@ CREATE TABLE cd_pagos (
 
 
 --
--- TOC entry 207 (class 1259 OID 101681)
+-- TOC entry 207 (class 1259 OID 22744)
 -- Name: cd_pagos_cd_pago_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -541,7 +541,7 @@ ALTER SEQUENCE cd_pagos_cd_pago_pk_seq OWNED BY cd_pagos.cd_pago_pk;
 
 
 --
--- TOC entry 208 (class 1259 OID 101683)
+-- TOC entry 208 (class 1259 OID 22746)
 -- Name: cd_propietarios; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -565,7 +565,7 @@ CREATE TABLE cd_propietarios (
 
 
 --
--- TOC entry 209 (class 1259 OID 101703)
+-- TOC entry 209 (class 1259 OID 22765)
 -- Name: cd_propietarios_cd_propietarios_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -587,7 +587,7 @@ ALTER SEQUENCE cd_propietarios_cd_propietarios_pk_seq OWNED BY cd_propietarios.c
 
 
 --
--- TOC entry 210 (class 1259 OID 101705)
+-- TOC entry 210 (class 1259 OID 22767)
 -- Name: cd_proveedores; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -599,7 +599,7 @@ CREATE TABLE cd_proveedores (
 
 
 --
--- TOC entry 211 (class 1259 OID 101708)
+-- TOC entry 211 (class 1259 OID 22770)
 -- Name: cd_proveedores_cd_proveedores_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -621,7 +621,7 @@ ALTER SEQUENCE cd_proveedores_cd_proveedores_pk_seq OWNED BY cd_proveedores.cd_p
 
 
 --
--- TOC entry 212 (class 1259 OID 101710)
+-- TOC entry 212 (class 1259 OID 22772)
 -- Name: cd_tipos_docs; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -633,7 +633,7 @@ CREATE TABLE cd_tipos_docs (
 
 
 --
--- TOC entry 213 (class 1259 OID 101713)
+-- TOC entry 213 (class 1259 OID 22775)
 -- Name: cd_tipos_docs_cd_tipo_doc_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -655,7 +655,7 @@ ALTER SEQUENCE cd_tipos_docs_cd_tipo_doc_pk_seq OWNED BY cd_tipos_docs.cd_tipo_d
 
 
 --
--- TOC entry 214 (class 1259 OID 101715)
+-- TOC entry 214 (class 1259 OID 22777)
 -- Name: cd_tipos_pagos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -666,7 +666,7 @@ CREATE TABLE cd_tipos_pagos (
 
 
 --
--- TOC entry 215 (class 1259 OID 101718)
+-- TOC entry 215 (class 1259 OID 22780)
 -- Name: cd_tipos_pagos_cd_tipo_pago_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -688,7 +688,7 @@ ALTER SEQUENCE cd_tipos_pagos_cd_tipo_pago_pk_seq OWNED BY cd_tipos_pagos.cd_tip
 
 
 --
--- TOC entry 216 (class 1259 OID 101720)
+-- TOC entry 216 (class 1259 OID 22782)
 -- Name: facturas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -713,7 +713,7 @@ CREATE TABLE facturas (
 
 
 --
--- TOC entry 217 (class 1259 OID 101727)
+-- TOC entry 217 (class 1259 OID 22789)
 -- Name: facturas_cd_factura_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -735,7 +735,7 @@ ALTER SEQUENCE facturas_cd_factura_pk_seq OWNED BY facturas.cd_factura_pk;
 
 
 --
--- TOC entry 218 (class 1259 OID 101729)
+-- TOC entry 218 (class 1259 OID 22791)
 -- Name: facturas_gastos_comunes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -746,7 +746,7 @@ CREATE TABLE facturas_gastos_comunes (
 
 
 --
--- TOC entry 219 (class 1259 OID 101732)
+-- TOC entry 219 (class 1259 OID 22794)
 -- Name: facturas_pagos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -757,7 +757,7 @@ CREATE TABLE facturas_pagos (
 
 
 --
--- TOC entry 220 (class 1259 OID 101735)
+-- TOC entry 220 (class 1259 OID 22797)
 -- Name: fondos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -773,7 +773,7 @@ CREATE TABLE fondos (
 
 
 --
--- TOC entry 221 (class 1259 OID 101745)
+-- TOC entry 221 (class 1259 OID 22807)
 -- Name: fondos_cd_fondo_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -795,7 +795,7 @@ ALTER SEQUENCE fondos_cd_fondo_pk_seq OWNED BY fondos.cd_fondo_pk;
 
 
 --
--- TOC entry 222 (class 1259 OID 101747)
+-- TOC entry 222 (class 1259 OID 22809)
 -- Name: gastos_comunes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -807,7 +807,7 @@ CREATE TABLE gastos_comunes (
 
 
 --
--- TOC entry 223 (class 1259 OID 101753)
+-- TOC entry 223 (class 1259 OID 22815)
 -- Name: gastos_comunes_cd_gasto_comun_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -829,7 +829,7 @@ ALTER SEQUENCE gastos_comunes_cd_gasto_comun_pk_seq OWNED BY gastos_comunes.cd_g
 
 
 --
--- TOC entry 224 (class 1259 OID 101755)
+-- TOC entry 224 (class 1259 OID 22817)
 -- Name: gastos_nocomunes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -842,7 +842,7 @@ CREATE TABLE gastos_nocomunes (
 
 
 --
--- TOC entry 225 (class 1259 OID 101761)
+-- TOC entry 225 (class 1259 OID 22823)
 -- Name: gastos_nocomunes_cd_gasto_nocomun_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -864,7 +864,7 @@ ALTER SEQUENCE gastos_nocomunes_cd_gasto_nocomun_pk_seq OWNED BY gastos_nocomune
 
 
 --
--- TOC entry 226 (class 1259 OID 101763)
+-- TOC entry 226 (class 1259 OID 22825)
 -- Name: mensajes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -876,7 +876,7 @@ CREATE TABLE mensajes (
 
 
 --
--- TOC entry 227 (class 1259 OID 101770)
+-- TOC entry 227 (class 1259 OID 22832)
 -- Name: mensajes_cd_mensajes_pk_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -898,7 +898,7 @@ ALTER SEQUENCE mensajes_cd_mensajes_pk_seq OWNED BY mensajes.cd_mensajes_pk;
 
 
 --
--- TOC entry 228 (class 1259 OID 101772)
+-- TOC entry 228 (class 1259 OID 22834)
 -- Name: menu; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -913,7 +913,7 @@ CREATE TABLE menu (
 
 
 --
--- TOC entry 229 (class 1259 OID 101778)
+-- TOC entry 229 (class 1259 OID 22840)
 -- Name: menu_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -935,7 +935,7 @@ ALTER SEQUENCE menu_id_seq OWNED BY menu.id;
 
 
 --
--- TOC entry 230 (class 1259 OID 101780)
+-- TOC entry 230 (class 1259 OID 22842)
 -- Name: migration; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -946,7 +946,7 @@ CREATE TABLE migration (
 
 
 --
--- TOC entry 231 (class 1259 OID 101783)
+-- TOC entry 231 (class 1259 OID 22845)
 -- Name: operaciones; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -958,7 +958,7 @@ CREATE TABLE operaciones (
 
 
 --
--- TOC entry 232 (class 1259 OID 101786)
+-- TOC entry 232 (class 1259 OID 22848)
 -- Name: operaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -980,7 +980,7 @@ ALTER SEQUENCE operaciones_id_seq OWNED BY operaciones.id;
 
 
 --
--- TOC entry 233 (class 1259 OID 101788)
+-- TOC entry 233 (class 1259 OID 22850)
 -- Name: roles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -991,7 +991,7 @@ CREATE TABLE roles (
 
 
 --
--- TOC entry 234 (class 1259 OID 101791)
+-- TOC entry 234 (class 1259 OID 22853)
 -- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1013,7 +1013,7 @@ ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 
 
 --
--- TOC entry 235 (class 1259 OID 101793)
+-- TOC entry 235 (class 1259 OID 22855)
 -- Name: roles_operaciones; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1024,7 +1024,7 @@ CREATE TABLE roles_operaciones (
 
 
 --
--- TOC entry 236 (class 1259 OID 101796)
+-- TOC entry 236 (class 1259 OID 22858)
 -- Name: user; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1043,7 +1043,7 @@ CREATE TABLE "user" (
 
 
 --
--- TOC entry 237 (class 1259 OID 101803)
+-- TOC entry 237 (class 1259 OID 22865)
 -- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1065,7 +1065,7 @@ ALTER SEQUENCE user_id_seq OWNED BY "user".id;
 
 
 --
--- TOC entry 2242 (class 2604 OID 101805)
+-- TOC entry 2242 (class 2604 OID 22867)
 -- Name: cd_aguas_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1073,7 +1073,7 @@ ALTER TABLE ONLY cd_aguas ALTER COLUMN cd_aguas_pk SET DEFAULT nextval('cd_aguas
 
 
 --
--- TOC entry 2243 (class 2604 OID 101806)
+-- TOC entry 2243 (class 2604 OID 22868)
 -- Name: cd_bancos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1081,7 +1081,7 @@ ALTER TABLE ONLY cd_bancos ALTER COLUMN cd_bancos_pk SET DEFAULT nextval('cd_ban
 
 
 --
--- TOC entry 2244 (class 2604 OID 101807)
+-- TOC entry 2244 (class 2604 OID 22869)
 -- Name: cd_chequeras_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1089,7 +1089,7 @@ ALTER TABLE ONLY cd_chequeras ALTER COLUMN cd_chequeras_pk SET DEFAULT nextval('
 
 
 --
--- TOC entry 2245 (class 2604 OID 101808)
+-- TOC entry 2245 (class 2604 OID 22870)
 -- Name: cd_conceptos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1097,7 +1097,7 @@ ALTER TABLE ONLY cd_conceptos ALTER COLUMN cd_conceptos_pk SET DEFAULT nextval('
 
 
 --
--- TOC entry 2246 (class 2604 OID 101809)
+-- TOC entry 2246 (class 2604 OID 22871)
 -- Name: cd_conjuntos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1105,7 +1105,7 @@ ALTER TABLE ONLY cd_conjuntos ALTER COLUMN cd_conjuntos_pk SET DEFAULT nextval('
 
 
 --
--- TOC entry 2247 (class 2604 OID 101810)
+-- TOC entry 2247 (class 2604 OID 22872)
 -- Name: cd_deudas_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1113,7 +1113,7 @@ ALTER TABLE ONLY cd_deudas ALTER COLUMN cd_deudas_pk SET DEFAULT nextval('cd_deu
 
 
 --
--- TOC entry 2263 (class 2604 OID 101811)
+-- TOC entry 2263 (class 2604 OID 22873)
 -- Name: cd_edificios_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1121,7 +1121,7 @@ ALTER TABLE ONLY cd_edificios ALTER COLUMN cd_edificios_pk SET DEFAULT nextval('
 
 
 --
--- TOC entry 2264 (class 2604 OID 101812)
+-- TOC entry 2264 (class 2604 OID 22874)
 -- Name: cd_fondos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1129,7 +1129,7 @@ ALTER TABLE ONLY cd_fondos ALTER COLUMN cd_fondos_pk SET DEFAULT nextval('cd_fon
 
 
 --
--- TOC entry 2265 (class 2604 OID 101813)
+-- TOC entry 2265 (class 2604 OID 22875)
 -- Name: cd_historicos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1137,7 +1137,7 @@ ALTER TABLE ONLY cd_historicos ALTER COLUMN cd_historicos_pk SET DEFAULT nextval
 
 
 --
--- TOC entry 2266 (class 2604 OID 101814)
+-- TOC entry 2266 (class 2604 OID 22876)
 -- Name: cd_mantenimientos_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1145,7 +1145,7 @@ ALTER TABLE ONLY cd_mantenimientos ALTER COLUMN cd_mantenimientos_pk SET DEFAULT
 
 
 --
--- TOC entry 2270 (class 2604 OID 101815)
+-- TOC entry 2270 (class 2604 OID 22877)
 -- Name: cd_observaciones_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1153,7 +1153,7 @@ ALTER TABLE ONLY cd_observaciones ALTER COLUMN cd_observaciones_pk SET DEFAULT n
 
 
 --
--- TOC entry 2273 (class 2604 OID 101816)
+-- TOC entry 2273 (class 2604 OID 22878)
 -- Name: cd_pago_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1161,7 +1161,7 @@ ALTER TABLE ONLY cd_pagos ALTER COLUMN cd_pago_pk SET DEFAULT nextval('cd_pagos_
 
 
 --
--- TOC entry 2287 (class 2604 OID 101817)
+-- TOC entry 2287 (class 2604 OID 22879)
 -- Name: cd_propietarios_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1169,7 +1169,7 @@ ALTER TABLE ONLY cd_propietarios ALTER COLUMN cd_propietarios_pk SET DEFAULT nex
 
 
 --
--- TOC entry 2288 (class 2604 OID 101818)
+-- TOC entry 2288 (class 2604 OID 22880)
 -- Name: cd_proveedores_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1177,7 +1177,7 @@ ALTER TABLE ONLY cd_proveedores ALTER COLUMN cd_proveedores_pk SET DEFAULT nextv
 
 
 --
--- TOC entry 2289 (class 2604 OID 101819)
+-- TOC entry 2289 (class 2604 OID 22881)
 -- Name: cd_tipo_doc_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1185,7 +1185,7 @@ ALTER TABLE ONLY cd_tipos_docs ALTER COLUMN cd_tipo_doc_pk SET DEFAULT nextval('
 
 
 --
--- TOC entry 2290 (class 2604 OID 101820)
+-- TOC entry 2290 (class 2604 OID 22882)
 -- Name: cd_tipo_pago_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1193,7 +1193,7 @@ ALTER TABLE ONLY cd_tipos_pagos ALTER COLUMN cd_tipo_pago_pk SET DEFAULT nextval
 
 
 --
--- TOC entry 2292 (class 2604 OID 101821)
+-- TOC entry 2292 (class 2604 OID 22883)
 -- Name: cd_factura_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1201,7 +1201,7 @@ ALTER TABLE ONLY facturas ALTER COLUMN cd_factura_pk SET DEFAULT nextval('factur
 
 
 --
--- TOC entry 2297 (class 2604 OID 101822)
+-- TOC entry 2297 (class 2604 OID 22884)
 -- Name: cd_fondo_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1209,7 +1209,7 @@ ALTER TABLE ONLY fondos ALTER COLUMN cd_fondo_pk SET DEFAULT nextval('fondos_cd_
 
 
 --
--- TOC entry 2298 (class 2604 OID 101823)
+-- TOC entry 2298 (class 2604 OID 22885)
 -- Name: cd_gasto_comun_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1217,7 +1217,7 @@ ALTER TABLE ONLY gastos_comunes ALTER COLUMN cd_gasto_comun_pk SET DEFAULT nextv
 
 
 --
--- TOC entry 2299 (class 2604 OID 101824)
+-- TOC entry 2299 (class 2604 OID 22886)
 -- Name: cd_gasto_nocomun_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1225,7 +1225,7 @@ ALTER TABLE ONLY gastos_nocomunes ALTER COLUMN cd_gasto_nocomun_pk SET DEFAULT n
 
 
 --
--- TOC entry 2301 (class 2604 OID 101825)
+-- TOC entry 2301 (class 2604 OID 22887)
 -- Name: cd_mensajes_pk; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1233,7 +1233,7 @@ ALTER TABLE ONLY mensajes ALTER COLUMN cd_mensajes_pk SET DEFAULT nextval('mensa
 
 
 --
--- TOC entry 2302 (class 2604 OID 101826)
+-- TOC entry 2302 (class 2604 OID 22888)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1241,7 +1241,7 @@ ALTER TABLE ONLY menu ALTER COLUMN id SET DEFAULT nextval('menu_id_seq'::regclas
 
 
 --
--- TOC entry 2303 (class 2604 OID 101827)
+-- TOC entry 2303 (class 2604 OID 22889)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1249,7 +1249,7 @@ ALTER TABLE ONLY operaciones ALTER COLUMN id SET DEFAULT nextval('operaciones_id
 
 
 --
--- TOC entry 2304 (class 2604 OID 101828)
+-- TOC entry 2304 (class 2604 OID 22890)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1257,7 +1257,7 @@ ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regcl
 
 
 --
--- TOC entry 2305 (class 2604 OID 101829)
+-- TOC entry 2306 (class 2604 OID 22891)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1265,7 +1265,7 @@ ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regcl
 
 
 --
--- TOC entry 2517 (class 0 OID 101585)
+-- TOC entry 2517 (class 0 OID 22648)
 -- Dependencies: 181
 -- Data for Name: cd_aguas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -1284,7 +1284,7 @@ SELECT pg_catalog.setval('cd_aguas_cd_aguas_pk_seq', 1, false);
 
 
 --
--- TOC entry 2519 (class 0 OID 101593)
+-- TOC entry 2519 (class 0 OID 22656)
 -- Dependencies: 183
 -- Data for Name: cd_aptos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2750,7 +2750,7 @@ L1	1504	44
 
 
 --
--- TOC entry 2520 (class 0 OID 101596)
+-- TOC entry 2520 (class 0 OID 22659)
 -- Dependencies: 184
 -- Data for Name: cd_bancos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2777,7 +2777,7 @@ SELECT pg_catalog.setval('cd_bancos_cd_bancos_pk_seq', 8, true);
 
 
 --
--- TOC entry 2522 (class 0 OID 101601)
+-- TOC entry 2522 (class 0 OID 22664)
 -- Dependencies: 186
 -- Data for Name: cd_chequeras; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2796,7 +2796,7 @@ SELECT pg_catalog.setval('cd_chequeras_cd_chequeras_pk_seq', 1, false);
 
 
 --
--- TOC entry 2524 (class 0 OID 101606)
+-- TOC entry 2524 (class 0 OID 22669)
 -- Dependencies: 188
 -- Data for Name: cd_conceptos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4226,7 +4226,7 @@ SELECT pg_catalog.setval('cd_conceptos_cd_conceptos_pk_seq', 1411, true);
 
 
 --
--- TOC entry 2526 (class 0 OID 101611)
+-- TOC entry 2526 (class 0 OID 22674)
 -- Dependencies: 190
 -- Data for Name: cd_conjuntos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4275,7 +4275,7 @@ SELECT pg_catalog.setval('cd_conjuntos_cd_conjuntos_pk_seq', 30, true);
 
 
 --
--- TOC entry 2528 (class 0 OID 101616)
+-- TOC entry 2528 (class 0 OID 22679)
 -- Dependencies: 192
 -- Data for Name: cd_deudas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4294,7 +4294,7 @@ SELECT pg_catalog.setval('cd_deudas_cd_deudas_pk_seq', 1, false);
 
 
 --
--- TOC entry 2530 (class 0 OID 101621)
+-- TOC entry 2530 (class 0 OID 22684)
 -- Dependencies: 194
 -- Data for Name: cd_edificios; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4356,7 +4356,7 @@ SELECT pg_catalog.setval('cd_edificios_cd_edificios_pk_seq', 44, true);
 
 
 --
--- TOC entry 2532 (class 0 OID 101644)
+-- TOC entry 2532 (class 0 OID 22707)
 -- Dependencies: 196
 -- Data for Name: cd_fondos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4375,7 +4375,7 @@ SELECT pg_catalog.setval('cd_fondos_cd_fondos_pk_seq', 1, false);
 
 
 --
--- TOC entry 2534 (class 0 OID 101649)
+-- TOC entry 2534 (class 0 OID 22712)
 -- Dependencies: 198
 -- Data for Name: cd_historicos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4394,7 +4394,7 @@ SELECT pg_catalog.setval('cd_historicos_cd_historicos_pk_seq', 1, false);
 
 
 --
--- TOC entry 2536 (class 0 OID 101654)
+-- TOC entry 2536 (class 0 OID 22717)
 -- Dependencies: 200
 -- Data for Name: cd_mantenimientos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4413,7 +4413,7 @@ SELECT pg_catalog.setval('cd_mantenimientos_cd_mantenimientos_pk_seq', 1, false)
 
 
 --
--- TOC entry 2538 (class 0 OID 101659)
+-- TOC entry 2538 (class 0 OID 22722)
 -- Dependencies: 202
 -- Data for Name: cd_mov_chequeras; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4423,7 +4423,7 @@ COPY cd_mov_chequeras (cd_mov_chequeras_pk, cod_concepto, cod_proveedor, nro_che
 
 
 --
--- TOC entry 2539 (class 0 OID 101665)
+-- TOC entry 2539 (class 0 OID 22728)
 -- Dependencies: 203
 -- Data for Name: cd_mov_mes; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4433,7 +4433,7 @@ COPY cd_mov_mes (cd_mov_mes_pk, cod_concepto, cod_apto, cod_conjunto, cod_edific
 
 
 --
--- TOC entry 2540 (class 0 OID 101668)
+-- TOC entry 2540 (class 0 OID 22731)
 -- Dependencies: 204
 -- Data for Name: cd_observaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4452,7 +4452,7 @@ SELECT pg_catalog.setval('cd_observaciones_cd_observaciones_pk_seq', 1, false);
 
 
 --
--- TOC entry 2542 (class 0 OID 101673)
+-- TOC entry 2542 (class 0 OID 22736)
 -- Dependencies: 206
 -- Data for Name: cd_pagos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -4471,7 +4471,7 @@ SELECT pg_catalog.setval('cd_pagos_cd_pago_pk_seq', 1, true);
 
 
 --
--- TOC entry 2544 (class 0 OID 101683)
+-- TOC entry 2544 (class 0 OID 22746)
 -- Dependencies: 208
 -- Data for Name: cd_propietarios; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -5946,7 +5946,7 @@ SELECT pg_catalog.setval('cd_propietarios_cd_propietarios_pk_seq', 1549, true);
 
 
 --
--- TOC entry 2546 (class 0 OID 101705)
+-- TOC entry 2546 (class 0 OID 22767)
 -- Dependencies: 210
 -- Data for Name: cd_proveedores; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -5965,7 +5965,7 @@ SELECT pg_catalog.setval('cd_proveedores_cd_proveedores_pk_seq', 1, false);
 
 
 --
--- TOC entry 2548 (class 0 OID 101710)
+-- TOC entry 2548 (class 0 OID 22772)
 -- Dependencies: 212
 -- Data for Name: cd_tipos_docs; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -5987,7 +5987,7 @@ SELECT pg_catalog.setval('cd_tipos_docs_cd_tipo_doc_pk_seq', 3, true);
 
 
 --
--- TOC entry 2550 (class 0 OID 101715)
+-- TOC entry 2550 (class 0 OID 22777)
 -- Dependencies: 214
 -- Data for Name: cd_tipos_pagos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -6009,14 +6009,14 @@ SELECT pg_catalog.setval('cd_tipos_pagos_cd_tipo_pago_pk_seq', 3, true);
 
 
 --
--- TOC entry 2552 (class 0 OID 101720)
+-- TOC entry 2552 (class 0 OID 22782)
 -- Dependencies: 216
 -- Data for Name: facturas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY facturas (cd_factura_pk, cod_apto, edificio, nombre, apellido, alicuota, nr, fecha, total_gastos_mes, sub_total_alicuota, total_pagar_mes, deuda_actual, recibos, estatus_factura, total_deducible, fecha_creada) FROM stdin;
-1	03A	LOMA LINDA TOWN HOUSES	DE RON, SABRINA MUSSO		0.0082978	132071	ABRIL 2016	0	0	2555	2555	4	f	0	2016-08-14
-4	102	LOMA LINDA TOWN HOUSES	BERTOU, CLAUDIA		0.0092609	132074	ABRIL 2016	0	0	7526	13495	2	f	0	2016-08-14
+1	03A	LOMA LINDA TOWN HOUSES	DE RON, SABRINA MUSSO		0.0082978	132071	ABRIL 2016	0	0	2555	2555	4	f	2555	2016-08-14
+4	102	LOMA LINDA TOWN HOUSES	BERTOU, CLAUDIA		0.0092609	132074	ABRIL 2016	0	0	7526	13495	2	f	7526	2016-08-14
 13	111	LOMA LINDA TOWN HOUSES	ANGELA M. DAZA V., ERIC J. PINT M./		0.0081575	132083	ABRIL 2016	0	0	6522	6522	1	f	6522	2016-08-14
 85	421	LOMA LINDA TOWN HOUSES	MAIONE, CLAUDIA		0.0085083	132155	ABRIL 2016	0	0	7667	7667	1	f	7667	2016-08-14
 86	422	LOMA LINDA TOWN HOUSES	MAIONE, CLAUDIA		0.0082804	132156	ABRIL 2016	0	0	6810	6810	1	f	6810	2016-08-14
@@ -6089,14 +6089,14 @@ COPY facturas (cd_factura_pk, cod_apto, edificio, nombre, apellido, alicuota, nr
 24	206	LOMA LINDA TOWN HOUSES	JORDAN, HERBERT		0.0085047	132094	ABRIL 2016	0	0	6598	3522	1	f	6598	2016-08-14
 25	207	LOMA LINDA TOWN HOUSES	RODRIGUEZ, RAFAEL Y ZULEIDA		0.0085587	132095	ABRIL 2016	0	0	6807	6807	3	f	6807	2016-08-14
 26	208	LOMA LINDA TOWN HOUSES	BORREGALES, JULIO		0.0084699	132096	ABRIL 2016	0	0	6955	17784	1	f	6955	2016-08-14
-6	104	LOMA LINDA TOWN HOUSES	VILORIA, OSMAN		0.0081689	132076	ABRIL 2016	0	0	6552	6552	2	f	0	2016-08-14
-5	103	LOMA LINDA TOWN HOUSES	RODRIGUEZ, ANA MARIA		0.0081851	132075	ABRIL 2016	0	0	6889	12761	1	f	0	2016-08-14
-7	105	LOMA LINDA TOWN HOUSES	GONZALEZ J., ESPERANZA		0.0081832	132077	ABRIL 2016	0	0	6590	11767	2	f	0	2016-08-14
-9	107	LOMA LINDA TOWN HOUSES	TRONCOSO, RODRIGO		0.0083476	132079	ABRIL 2016	0	0	6593	11773	4	f	0	2016-08-14
-8	106	LOMA LINDA TOWN HOUSES	ALVAREZ, VICTOR		0.0081731	132078	ABRIL 2016	0	0	6602	11871	2	f	0	2016-08-14
-10	108	LOMA LINDA TOWN HOUSES	BAPTISTA R, CAROLL E.		0.0082144	132080	ABRIL 2016	0	0	6816	20512	2	f	0	2016-08-14
-11	109	LOMA LINDA TOWN HOUSES	PEREZ, DELIA		0.0081191	132081	ABRIL 2016	0	0	6628	11834	4	f	0	2016-08-14
-12	110	LOMA LINDA TOWN HOUSES	NEGRON, MILAGROS		0.0081467	132082	ABRIL 2016	0	0	6632	19956	1	f	0	2016-08-14
+6	104	LOMA LINDA TOWN HOUSES	VILORIA, OSMAN		0.0081689	132076	ABRIL 2016	0	0	6552	6552	2	f	6552	2016-08-14
+5	103	LOMA LINDA TOWN HOUSES	RODRIGUEZ, ANA MARIA		0.0081851	132075	ABRIL 2016	0	0	6889	12761	1	f	6889	2016-08-14
+7	105	LOMA LINDA TOWN HOUSES	GONZALEZ J., ESPERANZA		0.0081832	132077	ABRIL 2016	0	0	6590	11767	2	f	6590	2016-08-14
+9	107	LOMA LINDA TOWN HOUSES	TRONCOSO, RODRIGO		0.0083476	132079	ABRIL 2016	0	0	6593	11773	4	f	6593	2016-08-14
+8	106	LOMA LINDA TOWN HOUSES	ALVAREZ, VICTOR		0.0081731	132078	ABRIL 2016	0	0	6602	11871	2	f	6602	2016-08-14
+10	108	LOMA LINDA TOWN HOUSES	BAPTISTA R, CAROLL E.		0.0082144	132080	ABRIL 2016	0	0	6816	20512	2	f	6816	2016-08-14
+11	109	LOMA LINDA TOWN HOUSES	PEREZ, DELIA		0.0081191	132081	ABRIL 2016	0	0	6628	11834	4	f	6628	2016-08-14
+12	110	LOMA LINDA TOWN HOUSES	NEGRON, MILAGROS		0.0081467	132082	ABRIL 2016	0	0	6632	19956	1	f	6632	2016-08-14
 72	408	LOMA LINDA TOWN HOUSES	LOMA LINDA, TOWN HOUSE, C.A.		0.0167815	132142	ABRIL 2016	744867	12499	12499	12499	1	f	12499	2016-08-14
 27	209	LOMA LINDA TOWN HOUSES	NOVIKOW, TAMARA		0.0085130	132097	ABRIL 2016	0	0	6779	6779	1	f	6779	2016-08-14
 63	325	LOMA LINDA TOWN HOUSES	SIERRA, ALEJANDRO		0.0094000	132133	ABRIL 2016	0	0	6730	12017	1	f	6730	2016-08-14
@@ -6106,8 +6106,8 @@ COPY facturas (cd_factura_pk, cod_apto, edificio, nombre, apellido, alicuota, nr
 61	323	LOMA LINDA TOWN HOUSES	PEREZ, TAYLOR Y NANCY		0.0082768	132131	ABRIL 2016	0	0	6635	6635	4	f	6635	2016-08-14
 62	324	LOMA LINDA TOWN HOUSES	DE VILLORIA, SOLGEMY ARENCIBIA		0.0083434	132132	ABRIL 2016	0	0	6728	17118	2	f	6728	2016-08-14
 43	305	LOMA LINDA TOWN HOUSES	SIMON, JEAN JACK		0.0084128	132113	ABRIL 2016	0	0	6805	17192	1	f	6805	2016-08-14
-2	04A	LOMA LINDA TOWN HOUSES	DE BLANES, ALONSO GARCIA		0.0082768	132072	ABRIL 2016	0	0	6777	20393	1	f	0	2016-08-14
-3	101	LOMA LINDA TOWN HOUSES	DE RIOS, LEYDA ROJAS		0.0093340	132073	ABRIL 2016	0	0	6626	6626	2	f	0	2016-08-14
+2	04A	LOMA LINDA TOWN HOUSES	DE BLANES, ALONSO GARCIA		0.0082768	132072	ABRIL 2016	0	0	6777	20393	1	f	6777	2016-08-14
+3	101	LOMA LINDA TOWN HOUSES	DE RIOS, LEYDA ROJAS		0.0093340	132073	ABRIL 2016	0	0	6626	6626	2	f	6626	2016-08-14
 44	306	LOMA LINDA TOWN HOUSES	BOTERO, LUZ		0.0082978	132114	ABRIL 2016	0	0	6734	6734	4	f	6734	2016-08-14
 45	307	LOMA LINDA TOWN HOUSES	JIMENEZ, LEOPOLDO		0.0082768	132115	ABRIL 2016	0	0	6766	19533	3	f	6766	2016-08-14
 46	308	LOMA LINDA TOWN HOUSES	ANDUEZA MENDOZA, WILMER O.		0.0083728	132116	ABRIL 2016	0	0	6728	16998	3	f	6728	2016-08-14
@@ -6132,7 +6132,7 @@ SELECT pg_catalog.setval('facturas_cd_factura_pk_seq', 104, true);
 
 
 --
--- TOC entry 2554 (class 0 OID 101729)
+-- TOC entry 2554 (class 0 OID 22791)
 -- Dependencies: 218
 -- Data for Name: facturas_gastos_comunes; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7182,7 +7182,7 @@ COPY facturas_gastos_comunes (cod_gasto_comun_fk, cod_factura_fk) FROM stdin;
 
 
 --
--- TOC entry 2555 (class 0 OID 101732)
+-- TOC entry 2555 (class 0 OID 22794)
 -- Dependencies: 219
 -- Data for Name: facturas_pagos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7192,7 +7192,7 @@ COPY facturas_pagos (cod_facturas_fk, cod_pagos_fk) FROM stdin;
 
 
 --
--- TOC entry 2556 (class 0 OID 101735)
+-- TOC entry 2556 (class 0 OID 22797)
 -- Dependencies: 220
 -- Data for Name: fondos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7523,7 +7523,7 @@ SELECT pg_catalog.setval('fondos_cd_fondo_pk_seq', 312, true);
 
 
 --
--- TOC entry 2558 (class 0 OID 101747)
+-- TOC entry 2558 (class 0 OID 22809)
 -- Dependencies: 222
 -- Data for Name: gastos_comunes; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7552,7 +7552,7 @@ SELECT pg_catalog.setval('gastos_comunes_cd_gasto_comun_pk_seq', 10, true);
 
 
 --
--- TOC entry 2560 (class 0 OID 101755)
+-- TOC entry 2560 (class 0 OID 22817)
 -- Dependencies: 224
 -- Data for Name: gastos_nocomunes; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7722,7 +7722,7 @@ SELECT pg_catalog.setval('gastos_nocomunes_cd_gasto_nocomun_pk_seq', 151, true);
 
 
 --
--- TOC entry 2562 (class 0 OID 101763)
+-- TOC entry 2562 (class 0 OID 22825)
 -- Dependencies: 226
 -- Data for Name: mensajes; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7742,7 +7742,7 @@ SELECT pg_catalog.setval('mensajes_cd_mensajes_pk_seq', 2, true);
 
 
 --
--- TOC entry 2564 (class 0 OID 101772)
+-- TOC entry 2564 (class 0 OID 22834)
 -- Dependencies: 228
 -- Data for Name: menu; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7761,7 +7761,7 @@ SELECT pg_catalog.setval('menu_id_seq', 1, false);
 
 
 --
--- TOC entry 2566 (class 0 OID 101780)
+-- TOC entry 2566 (class 0 OID 22842)
 -- Dependencies: 230
 -- Data for Name: migration; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7776,7 +7776,7 @@ m160312_050000_create_user	1464871526
 
 
 --
--- TOC entry 2567 (class 0 OID 101783)
+-- TOC entry 2567 (class 0 OID 22845)
 -- Dependencies: 231
 -- Data for Name: operaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7843,7 +7843,7 @@ SELECT pg_catalog.setval('operaciones_id_seq', 49, true);
 
 
 --
--- TOC entry 2569 (class 0 OID 101788)
+-- TOC entry 2569 (class 0 OID 22850)
 -- Dependencies: 233
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7865,7 +7865,7 @@ SELECT pg_catalog.setval('roles_id_seq', 8, true);
 
 
 --
--- TOC entry 2571 (class 0 OID 101793)
+-- TOC entry 2571 (class 0 OID 22855)
 -- Dependencies: 235
 -- Data for Name: roles_operaciones; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7969,7 +7969,7 @@ COPY roles_operaciones (rol_id, operacion_id) FROM stdin;
 
 
 --
--- TOC entry 2572 (class 0 OID 101796)
+-- TOC entry 2572 (class 0 OID 22858)
 -- Dependencies: 236
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -7979,6 +7979,7 @@ COPY "user" (id, username, auth_key, password_hash, password_reset_token, email,
 3	user	FPgx9Bb4z08wLnXStJ88uqRQEqiV1fE9	$2y$13$madgqryUUdSNM79TjQKenO8/P41K4a8PHIQ7l24kuI59CYbTIwZlO	\N	user@user.com	1	1468205244	1468205260	3
 4	elisa	8y7IoWVnFJy8ZnKvefyWZVCy1N7hX1ke	$2y$13$a.6QQphyInntBoTG7wDLveVxwaYsK7Dk/HfVMgzDOrR3oIh4KW1NK	\N	elisa@gmail.com	1	1470060927	1470060927	3
 2	admin	YNpx8aveIJnohs2qt4gf-UJwLvcpjPam	$2y$13$Wcl.rSMD/rggf7M6syuCoeReGaN1c1urTQPwY2f6IJbLnkkSTWh4O	\N	admin@condominio.com.ve	1	1464703400	1470154124	2
+14	delia	m5aq8FKWA-SBGeLc04QOuSRdjJLgPXW4	$2y$13$caX1V1ghqzqU.Q5tsutlp.m3/jMe8NjR8elfhrR3sZgPDNIiUrLVq	\N	delia@gmail.comp	1	1470673286	1470673286	3
 \.
 
 
@@ -7988,11 +7989,11 @@ COPY "user" (id, username, auth_key, password_hash, password_reset_token, email,
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('user_id_seq', 4, true);
+SELECT pg_catalog.setval('user_id_seq', 14, true);
 
 
 --
--- TOC entry 2308 (class 2606 OID 101831)
+-- TOC entry 2308 (class 2606 OID 22893)
 -- Name: cd_aguas_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8001,7 +8002,7 @@ ALTER TABLE ONLY cd_aguas
 
 
 --
--- TOC entry 2310 (class 2606 OID 101833)
+-- TOC entry 2310 (class 2606 OID 22895)
 -- Name: cd_aptos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8010,7 +8011,7 @@ ALTER TABLE ONLY cd_aptos
 
 
 --
--- TOC entry 2312 (class 2606 OID 101835)
+-- TOC entry 2312 (class 2606 OID 22897)
 -- Name: cd_bancos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8019,7 +8020,7 @@ ALTER TABLE ONLY cd_bancos
 
 
 --
--- TOC entry 2314 (class 2606 OID 101837)
+-- TOC entry 2314 (class 2606 OID 22899)
 -- Name: cd_chequeras_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8028,7 +8029,7 @@ ALTER TABLE ONLY cd_chequeras
 
 
 --
--- TOC entry 2316 (class 2606 OID 101839)
+-- TOC entry 2316 (class 2606 OID 22901)
 -- Name: cd_conceptos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8037,7 +8038,7 @@ ALTER TABLE ONLY cd_conceptos
 
 
 --
--- TOC entry 2318 (class 2606 OID 101841)
+-- TOC entry 2318 (class 2606 OID 22903)
 -- Name: cd_conjuntos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8046,7 +8047,7 @@ ALTER TABLE ONLY cd_conjuntos
 
 
 --
--- TOC entry 2320 (class 2606 OID 101843)
+-- TOC entry 2320 (class 2606 OID 22905)
 -- Name: cd_deudas_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8055,7 +8056,7 @@ ALTER TABLE ONLY cd_deudas
 
 
 --
--- TOC entry 2322 (class 2606 OID 101845)
+-- TOC entry 2322 (class 2606 OID 22907)
 -- Name: cd_edificios_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8064,7 +8065,7 @@ ALTER TABLE ONLY cd_edificios
 
 
 --
--- TOC entry 2324 (class 2606 OID 101847)
+-- TOC entry 2324 (class 2606 OID 22909)
 -- Name: cd_fondos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8073,7 +8074,7 @@ ALTER TABLE ONLY cd_fondos
 
 
 --
--- TOC entry 2326 (class 2606 OID 101849)
+-- TOC entry 2326 (class 2606 OID 22911)
 -- Name: cd_historicos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8082,7 +8083,7 @@ ALTER TABLE ONLY cd_historicos
 
 
 --
--- TOC entry 2328 (class 2606 OID 101851)
+-- TOC entry 2328 (class 2606 OID 22913)
 -- Name: cd_mantenimientos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8091,7 +8092,7 @@ ALTER TABLE ONLY cd_mantenimientos
 
 
 --
--- TOC entry 2330 (class 2606 OID 101853)
+-- TOC entry 2330 (class 2606 OID 22915)
 -- Name: cd_mov_chequeras_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8100,7 +8101,7 @@ ALTER TABLE ONLY cd_mov_chequeras
 
 
 --
--- TOC entry 2332 (class 2606 OID 101855)
+-- TOC entry 2332 (class 2606 OID 22917)
 -- Name: cd_mov_mes_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8109,7 +8110,7 @@ ALTER TABLE ONLY cd_mov_mes
 
 
 --
--- TOC entry 2334 (class 2606 OID 101857)
+-- TOC entry 2334 (class 2606 OID 22919)
 -- Name: cd_observaciones_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8118,7 +8119,7 @@ ALTER TABLE ONLY cd_observaciones
 
 
 --
--- TOC entry 2336 (class 2606 OID 101859)
+-- TOC entry 2336 (class 2606 OID 22921)
 -- Name: cd_pago_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8127,7 +8128,7 @@ ALTER TABLE ONLY cd_pagos
 
 
 --
--- TOC entry 2341 (class 2606 OID 101861)
+-- TOC entry 2341 (class 2606 OID 22923)
 -- Name: cd_propietarios_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8136,7 +8137,7 @@ ALTER TABLE ONLY cd_propietarios
 
 
 --
--- TOC entry 2344 (class 2606 OID 101863)
+-- TOC entry 2344 (class 2606 OID 22925)
 -- Name: cd_proveedores_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8145,7 +8146,7 @@ ALTER TABLE ONLY cd_proveedores
 
 
 --
--- TOC entry 2346 (class 2606 OID 101865)
+-- TOC entry 2346 (class 2606 OID 22927)
 -- Name: cd_tipo_doc_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8154,7 +8155,7 @@ ALTER TABLE ONLY cd_tipos_docs
 
 
 --
--- TOC entry 2348 (class 2606 OID 101867)
+-- TOC entry 2348 (class 2606 OID 22929)
 -- Name: cd_tipo_pago_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8163,7 +8164,7 @@ ALTER TABLE ONLY cd_tipos_pagos
 
 
 --
--- TOC entry 2350 (class 2606 OID 101869)
+-- TOC entry 2350 (class 2606 OID 22931)
 -- Name: facturas_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8172,7 +8173,7 @@ ALTER TABLE ONLY facturas
 
 
 --
--- TOC entry 2357 (class 2606 OID 101871)
+-- TOC entry 2357 (class 2606 OID 22933)
 -- Name: fondos_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8181,7 +8182,7 @@ ALTER TABLE ONLY fondos
 
 
 --
--- TOC entry 2359 (class 2606 OID 101873)
+-- TOC entry 2359 (class 2606 OID 22935)
 -- Name: gastos_comunes_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8190,7 +8191,7 @@ ALTER TABLE ONLY gastos_comunes
 
 
 --
--- TOC entry 2362 (class 2606 OID 101875)
+-- TOC entry 2362 (class 2606 OID 22937)
 -- Name: gastos_nocomunes_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8199,7 +8200,7 @@ ALTER TABLE ONLY gastos_nocomunes
 
 
 --
--- TOC entry 2364 (class 2606 OID 101877)
+-- TOC entry 2364 (class 2606 OID 22939)
 -- Name: mensajes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8208,7 +8209,7 @@ ALTER TABLE ONLY mensajes
 
 
 --
--- TOC entry 2366 (class 2606 OID 101879)
+-- TOC entry 2366 (class 2606 OID 22941)
 -- Name: menu_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8217,7 +8218,7 @@ ALTER TABLE ONLY menu
 
 
 --
--- TOC entry 2368 (class 2606 OID 101881)
+-- TOC entry 2368 (class 2606 OID 22943)
 -- Name: migration_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8226,7 +8227,7 @@ ALTER TABLE ONLY migration
 
 
 --
--- TOC entry 2370 (class 2606 OID 101883)
+-- TOC entry 2370 (class 2606 OID 22945)
 -- Name: operaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8235,7 +8236,7 @@ ALTER TABLE ONLY operaciones
 
 
 --
--- TOC entry 2374 (class 2606 OID 101885)
+-- TOC entry 2374 (class 2606 OID 22947)
 -- Name: roles_operaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8244,7 +8245,7 @@ ALTER TABLE ONLY roles_operaciones
 
 
 --
--- TOC entry 2372 (class 2606 OID 101887)
+-- TOC entry 2372 (class 2606 OID 22949)
 -- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8253,7 +8254,7 @@ ALTER TABLE ONLY roles
 
 
 --
--- TOC entry 2376 (class 2606 OID 101889)
+-- TOC entry 2376 (class 2606 OID 22951)
 -- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8262,7 +8263,7 @@ ALTER TABLE ONLY "user"
 
 
 --
--- TOC entry 2337 (class 1259 OID 101890)
+-- TOC entry 2337 (class 1259 OID 22952)
 -- Name: fki_cd_bancos_cd_pagos_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8270,7 +8271,7 @@ CREATE INDEX fki_cd_bancos_cd_pagos_fk ON cd_pagos USING btree (cod_banco);
 
 
 --
--- TOC entry 2338 (class 1259 OID 101891)
+-- TOC entry 2338 (class 1259 OID 22953)
 -- Name: fki_cd_tipos_docs_cd_pagos_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8278,7 +8279,7 @@ CREATE INDEX fki_cd_tipos_docs_cd_pagos_fk ON cd_pagos USING btree (cod_tipo_doc
 
 
 --
--- TOC entry 2339 (class 1259 OID 101892)
+-- TOC entry 2339 (class 1259 OID 22954)
 -- Name: fki_cd_tipos_pagos_cd_pagos_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8286,7 +8287,7 @@ CREATE INDEX fki_cd_tipos_pagos_cd_pagos_fk ON cd_pagos USING btree (cod_tipo_pa
 
 
 --
--- TOC entry 2351 (class 1259 OID 101893)
+-- TOC entry 2351 (class 1259 OID 22955)
 -- Name: fki_facturas_facturas_gastos_comunes_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8294,7 +8295,7 @@ CREATE INDEX fki_facturas_facturas_gastos_comunes_fk ON facturas_gastos_comunes 
 
 
 --
--- TOC entry 2355 (class 1259 OID 101894)
+-- TOC entry 2355 (class 1259 OID 22956)
 -- Name: fki_facturas_fondos_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8302,7 +8303,7 @@ CREATE INDEX fki_facturas_fondos_fk ON fondos USING btree (cod_factura_fk);
 
 
 --
--- TOC entry 2360 (class 1259 OID 101895)
+-- TOC entry 2360 (class 1259 OID 22957)
 -- Name: fki_facturas_gastos_comunes_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8310,7 +8311,7 @@ CREATE INDEX fki_facturas_gastos_comunes_fk ON gastos_nocomunes USING btree (cod
 
 
 --
--- TOC entry 2353 (class 1259 OID 101896)
+-- TOC entry 2353 (class 1259 OID 22958)
 -- Name: fki_facturas_pagos_facturas_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8318,7 +8319,7 @@ CREATE INDEX fki_facturas_pagos_facturas_fk ON facturas_pagos USING btree (cod_f
 
 
 --
--- TOC entry 2354 (class 1259 OID 101897)
+-- TOC entry 2354 (class 1259 OID 22959)
 -- Name: fki_facturas_pagos_pagos_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8326,7 +8327,7 @@ CREATE INDEX fki_facturas_pagos_pagos_fk ON facturas_pagos USING btree (cod_pago
 
 
 --
--- TOC entry 2352 (class 1259 OID 101898)
+-- TOC entry 2352 (class 1259 OID 22960)
 -- Name: fki_gastos_comunes_facturas_gastos_comunes_fk; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8334,7 +8335,7 @@ CREATE INDEX fki_gastos_comunes_facturas_gastos_comunes_fk ON facturas_gastos_co
 
 
 --
--- TOC entry 2342 (class 1259 OID 101899)
+-- TOC entry 2342 (class 1259 OID 22961)
 -- Name: fki_propietario_user; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8342,7 +8343,7 @@ CREATE INDEX fki_propietario_user ON cd_propietarios USING btree (cod_user);
 
 
 --
--- TOC entry 2389 (class 2606 OID 101900)
+-- TOC entry 2389 (class 2606 OID 22962)
 -- Name: cd_bancos_cd_pagos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8351,7 +8352,7 @@ ALTER TABLE ONLY cd_pagos
 
 
 --
--- TOC entry 2385 (class 2606 OID 101905)
+-- TOC entry 2385 (class 2606 OID 22967)
 -- Name: cd_conceptos_cd_mov_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8360,7 +8361,7 @@ ALTER TABLE ONLY cd_mov_chequeras
 
 
 --
--- TOC entry 2387 (class 2606 OID 101910)
+-- TOC entry 2387 (class 2606 OID 22972)
 -- Name: cd_conceptos_cd_mov_mes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8369,7 +8370,7 @@ ALTER TABLE ONLY cd_mov_mes
 
 
 --
--- TOC entry 2377 (class 2606 OID 101915)
+-- TOC entry 2377 (class 2606 OID 22977)
 -- Name: cd_conjuntos_cd_aguas_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8378,7 +8379,7 @@ ALTER TABLE ONLY cd_aguas
 
 
 --
--- TOC entry 2378 (class 2606 OID 101920)
+-- TOC entry 2378 (class 2606 OID 22982)
 -- Name: cd_conjuntos_cd_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8387,7 +8388,7 @@ ALTER TABLE ONLY cd_chequeras
 
 
 --
--- TOC entry 2379 (class 2606 OID 101925)
+-- TOC entry 2379 (class 2606 OID 22987)
 -- Name: cd_conjuntos_cd_deudas_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8396,7 +8397,7 @@ ALTER TABLE ONLY cd_deudas
 
 
 --
--- TOC entry 2380 (class 2606 OID 101930)
+-- TOC entry 2380 (class 2606 OID 22992)
 -- Name: cd_conjuntos_cd_edificios_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8405,7 +8406,7 @@ ALTER TABLE ONLY cd_edificios
 
 
 --
--- TOC entry 2381 (class 2606 OID 101935)
+-- TOC entry 2381 (class 2606 OID 22997)
 -- Name: cd_conjuntos_cd_fondos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8414,7 +8415,7 @@ ALTER TABLE ONLY cd_fondos
 
 
 --
--- TOC entry 2382 (class 2606 OID 101940)
+-- TOC entry 2382 (class 2606 OID 23002)
 -- Name: cd_conjuntos_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8423,7 +8424,7 @@ ALTER TABLE ONLY cd_historicos
 
 
 --
--- TOC entry 2388 (class 2606 OID 101945)
+-- TOC entry 2388 (class 2606 OID 23007)
 -- Name: cd_conjuntos_cd_mov_mes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8432,7 +8433,7 @@ ALTER TABLE ONLY cd_mov_mes
 
 
 --
--- TOC entry 2383 (class 2606 OID 101950)
+-- TOC entry 2383 (class 2606 OID 23012)
 -- Name: cd_deudas_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8441,7 +8442,7 @@ ALTER TABLE ONLY cd_historicos
 
 
 --
--- TOC entry 2384 (class 2606 OID 101955)
+-- TOC entry 2384 (class 2606 OID 23017)
 -- Name: cd_observaciones_cd_historicos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8450,7 +8451,7 @@ ALTER TABLE ONLY cd_historicos
 
 
 --
--- TOC entry 2392 (class 2606 OID 101960)
+-- TOC entry 2392 (class 2606 OID 23022)
 -- Name: cd_propietarios_user_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8459,7 +8460,7 @@ ALTER TABLE ONLY cd_propietarios
 
 
 --
--- TOC entry 2386 (class 2606 OID 101965)
+-- TOC entry 2386 (class 2606 OID 23027)
 -- Name: cd_proveedores_cd_mov_chequeras_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8468,7 +8469,7 @@ ALTER TABLE ONLY cd_mov_chequeras
 
 
 --
--- TOC entry 2390 (class 2606 OID 101970)
+-- TOC entry 2390 (class 2606 OID 23032)
 -- Name: cd_tipos_docs_cd_pagos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8477,7 +8478,7 @@ ALTER TABLE ONLY cd_pagos
 
 
 --
--- TOC entry 2391 (class 2606 OID 101975)
+-- TOC entry 2391 (class 2606 OID 23037)
 -- Name: cd_tipos_pagos_cd_pagos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8486,7 +8487,7 @@ ALTER TABLE ONLY cd_pagos
 
 
 --
--- TOC entry 2393 (class 2606 OID 101980)
+-- TOC entry 2393 (class 2606 OID 23042)
 -- Name: facturas_facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8495,7 +8496,7 @@ ALTER TABLE ONLY facturas_gastos_comunes
 
 
 --
--- TOC entry 2397 (class 2606 OID 101985)
+-- TOC entry 2397 (class 2606 OID 23047)
 -- Name: facturas_fondos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8504,7 +8505,7 @@ ALTER TABLE ONLY fondos
 
 
 --
--- TOC entry 2398 (class 2606 OID 101990)
+-- TOC entry 2398 (class 2606 OID 23052)
 -- Name: facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8513,7 +8514,7 @@ ALTER TABLE ONLY gastos_nocomunes
 
 
 --
--- TOC entry 2395 (class 2606 OID 101995)
+-- TOC entry 2395 (class 2606 OID 23057)
 -- Name: facturas_pagos_facturas_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8522,7 +8523,7 @@ ALTER TABLE ONLY facturas_pagos
 
 
 --
--- TOC entry 2396 (class 2606 OID 102000)
+-- TOC entry 2396 (class 2606 OID 23062)
 -- Name: facturas_pagos_pagos_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8531,7 +8532,7 @@ ALTER TABLE ONLY facturas_pagos
 
 
 --
--- TOC entry 2394 (class 2606 OID 102005)
+-- TOC entry 2394 (class 2606 OID 23067)
 -- Name: gastos_comunes_facturas_gastos_comunes_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8540,7 +8541,7 @@ ALTER TABLE ONLY facturas_gastos_comunes
 
 
 --
--- TOC entry 2399 (class 2606 OID 102010)
+-- TOC entry 2399 (class 2606 OID 23072)
 -- Name: menu_parent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8549,7 +8550,7 @@ ALTER TABLE ONLY menu
 
 
 --
--- TOC entry 2400 (class 2606 OID 102015)
+-- TOC entry 2400 (class 2606 OID 23077)
 -- Name: roles_operaciones_operaciones_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8558,7 +8559,7 @@ ALTER TABLE ONLY roles_operaciones
 
 
 --
--- TOC entry 2401 (class 2606 OID 102020)
+-- TOC entry 2401 (class 2606 OID 23082)
 -- Name: roles_operaciones_roles_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8567,7 +8568,7 @@ ALTER TABLE ONLY roles_operaciones
 
 
 --
--- TOC entry 2402 (class 2606 OID 102025)
+-- TOC entry 2402 (class 2606 OID 23087)
 -- Name: roles_user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8575,7 +8576,7 @@ ALTER TABLE ONLY "user"
     ADD CONSTRAINT roles_user_fkey FOREIGN KEY (rol_id) REFERENCES roles(id);
 
 
--- Completed on 2016-09-01 14:36:10 VET
+-- Completed on 2016-09-01 15:23:59 VET
 
 --
 -- PostgreSQL database dump complete
