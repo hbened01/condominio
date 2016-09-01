@@ -100,7 +100,7 @@ class FacturasController extends Controller
            // any css to be embedded if required
            'cssInline' => '.kv-heading-1{font-size:10px}', 
             // set mPDF properties on the fly
-           'options' => ['title' => 'Factura de Condominio'],
+           'options' => ['title' => 'Factura de Condominio', 'subject' => 'Administración y Gestión'],
             // call mPDF methods on the fly
            'methods' => [ 
                'SetHeader'=>['Factura de Condominio'], 
