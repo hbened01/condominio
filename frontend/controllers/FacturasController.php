@@ -120,7 +120,15 @@ class FacturasController extends Controller
                'SetFooter'=>['{PAGENO}'],
            ]
        ]);
-       
+
+       $model = $this->findModel($id);
+       if (($model->estatus_factura && $model->total_deducible != 0) || (!$model->estatus_factura)) {
+          $mpdf = $pdf->api; 
+          $mpdf->SetWatermarkText('COPIA DE FACTURA');
+          $mpdf->showWatermarkText = true;
+          $mpdf->watermarkTextAlpha = 0.1;
+       }
+
        // return the pdf output as per the destination setting
        return $pdf->render(); 
        
