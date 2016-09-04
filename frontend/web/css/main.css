@@ -2525,6 +2525,26 @@ shortcodes page css
   margin-left: 15px;
 }
 
+#watermark
+{
+  display:block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: 1;
+  left: 500px;
+  top: 300px;
+  position: absolute;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  color:lightgrey;
+  font-size: 60pt;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  background:transparent;
+  background-size: 100%;
+  background-position: center center;
+}
 
 
 
