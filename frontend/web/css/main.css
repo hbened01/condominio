@@ -2539,6 +2539,7 @@ shortcodes page css
   -moz-transform: rotate(-45deg);
   color:lightgrey;
   font-size: 60pt;
+  -moz-opacity:0.5;
   opacity: 0.5;
   filter: alpha(opacity=50);
   background:transparent;
