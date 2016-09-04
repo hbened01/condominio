@@ -106,7 +106,7 @@ class SiteController extends Controller
             $defaultUrl = Yii::$app->request->baseUrl;
             $httpsAbsoluteHomeUrl = Url::home('http');
             if (stripos( $httpsAbsoluteHomeUrl,'condominio.hjtecnosystems')) {
-                     echo $url = str_replace('condominio.hjtecnosystems','admin.hjtecnosystems',$httpsAbsoluteHomeUrl);
+                     $url = str_replace('condominio.hjtecnosystems','admin.hjtecnosystems',$httpsAbsoluteHomeUrl);
             }else{
                      $url = str_replace('frontend','backend',$defaultUrl);
             }
