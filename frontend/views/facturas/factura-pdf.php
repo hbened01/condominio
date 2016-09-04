@@ -153,7 +153,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
         <!-- accepted payments column -->
         <div style="margin-top: 5px;text-align: center;font-size:10px">
             <?php 
-                if (!$model->estatus_factura) {
+                if (($model->estatus_factura && $model->total_deducible != 0) || (!$model->estatus_factura)) {
                     echo "<h1 style='font-size:15px;'>COPIA</h1>";
                     echo $msn->texto;
                 }

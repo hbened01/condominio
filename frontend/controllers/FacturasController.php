@@ -54,6 +54,19 @@ class FacturasController extends Controller
     }
 
     /**
+     * Displays a single Facturas model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+            'msn' => Mensajes::find()->where(['msn_default' => true])->one()
+        ]);
+    }
+
+    /**
      * Finds the Facturas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

@@ -28,8 +28,7 @@ $this->title = Yii::t('frontend', 'invoice history');
                 'showHeader' => true,
                 'formatter' => [
                     'class' => 'yii\\i18n\\Formatter',
-                    'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('frontend', 'THERE IS NO DATA').')</span>',
-                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbspNo Cancelada', '<span class="glyphicon glyphicon-ok"></span> &nbspCancelada Exitosamente']
+                    'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('frontend', 'THERE IS NO DATA').')</span>'
                 ],
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
@@ -53,11 +52,25 @@ $this->title = Yii::t('frontend', 'invoice history');
                         ]),
                     ],
                     [
-                       'label' => Yii::t('frontend', 'Invoice Status'),
-                       'attribute' => 'estatus_factura',
-                       'value' => 'estatus_factura',
-                       'format' => 'boolean',
-                       'filter'=> Html::activeDropDownList($searchModel, 'estatus_factura', array('0' => Yii::t('frontend', 'Uncancelled'), '1' => Yii::t('frontend', 'Successfully Canceled')), ['class'=>'form-control', 'prompt' => Yii::t('frontend', 'Select...')]),
+                        'attribute'=>'status_bill',
+                        'header'=> Yii::t('frontend', 'Invoice Status'),
+                        'filter'=> Html::activeDropDownList($searchModel, 'status_bill', array('1' => Yii::t('frontend', 'Successfully Canceled'), '2' => Yii::t('frontend', 'Partially Canceled'), '0' => Yii::t('frontend', 'Uncancelled')), ['class'=>'form-control', 'prompt' => Yii::t('frontend', 'Select...')]),
+                        'format'=>'raw',   
+                        'value' => function($model, $key, $index)
+                        {   
+                            if($model->estatus_factura == true && $model->total_deducible == 0)
+                            {
+                                return '<span class="glyphicon glyphicon-ok"></span>&nbspTotalmente Cancelada';
+                            }
+                            else if($model->estatus_factura == true && $model->total_deducible !== 0)
+                            {   
+                                return '<span class="glyphicons glyphicons-ok-circle"></span>&nbspParcialmente Cancelada';
+                            }
+                            else if($model->estatus_factura == false)
+                            {
+                                return '<span class="glyphicon glyphicon-remove"></span>&nbspNo Cancelada';
+                            }
+                        },
                     ],
                     // 'apellido',
                     // 'cd_factura_pk',
@@ -66,23 +79,32 @@ $this->title = Yii::t('frontend', 'invoice history');
                     // 'sub_total_alicuota',
                     // 'total_pagar_mes',
                     // 'deuda_actual',
+                    // 'estatus_factura',
                     // 'recibos',
                     
-
                     ['class' => 'yii\grid\ActionColumn',
-                    'header'=>'Ver',
+                    'header'=>'Acciones',
                     'headerOptions' => ['width' => '20'],
                     'template' => '{ver}  {factura-pdf}',
                     'buttons' => [
+                        'ver' => function ($url, $model) {
+                                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                                                'title' => Yii::t('app', 'Ver Factura'),
+                                    ]);
+                        },
                         'factura-pdf' => function ($url, $model) {
                                     return Html::a('<span class="fa fa-download"></span>', $url, [
                                                 'title' => Yii::t('app', 'Descargar Factura'),'target' =>'_blan',
                                     ]);
-                        },
+                        }
                     ],
                     'urlCreator' => function ($action, $model, $key, $index) {
                             if ($action === 'factura-pdf') {
                                 $url = Url::base().'/'.Yii::$app->controller->id.'/factura-pdf?id='.$model->cd_factura_pk;
+                                return $url;
+                            }
+                            if ($action === 'ver') {
+                                $url = Url::base().'/'.Yii::$app->controller->id.'/view?id='.$model->cd_factura_pk;
                                 return $url;
                             }
                     }
