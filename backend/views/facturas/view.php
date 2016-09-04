@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Facturas */
@@ -183,7 +182,8 @@ $fecha = $porciones = explode(" ", $model->fecha);
     <div class="row">
         <!-- accepted payments column -->
         <?php 
-            if (!$model->estatus_factura) {
+            if (($model->estatus_factura && $model->total_deducible != 0) || (!$model->estatus_factura)) {
+              echo '<p id="watermark">COPIA DE FACTURA</p>';
               echo '<div class="col-xs-12 text-muted well well-sm no-shadow" style="margin-top: 10px;text-align: center;font-size:20px">';
               echo '<h1>COPIA</h1>';
               echo $msn->texto;
