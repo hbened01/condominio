@@ -124,9 +124,10 @@ class FacturasController extends Controller
        $model = $this->findModel($id);
        if (($model->estatus_factura && $model->total_deducible != 0) || (!$model->estatus_factura)) {
           $mpdf = $pdf->api; 
+          $mpdf->SetAuthor("HJ TECNOSYSTEMS");
           $mpdf->SetWatermarkText('COPIA DE FACTURA');
           $mpdf->showWatermarkText = true;
-          $mpdf->watermarkTextAlpha = 0.1;
+          $mpdf->watermarkTextAlpha = 0.2;
        }
 
        // return the pdf output as per the destination setting
