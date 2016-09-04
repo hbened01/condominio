@@ -31,6 +31,11 @@ use Yii;
  */
 class Facturas extends \yii\db\ActiveRecord
 {
+    public $status_bill;
+    const STATUS_0 = 0;
+    const STATUS_1 = 1;
+    const STATUS_2 = 2;
+    const STATUS_3 = 3;
     /**
      * @inheritdoc
      */
@@ -54,6 +59,7 @@ class Facturas extends \yii\db\ActiveRecord
             [['edificio'], 'string', 'max' => 250],
             [['nombre', 'apellido'], 'string', 'max' => 100],
             [['fecha'], 'string', 'max' => 30],
+            ['status_bill', 'in', 'range' => [self::STATUS_0, self::STATUS_1, self::STATUS_2, self::STATUS_3]],
         ];
     }
 

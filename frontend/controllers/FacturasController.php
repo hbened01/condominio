@@ -54,6 +54,19 @@ class FacturasController extends Controller
     }
 
     /**
+     * Displays a single Facturas model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+            'msn' => Mensajes::find()->where(['msn_default' => true])->one()
+        ]);
+    }
+
+    /**
      * Finds the Facturas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
@@ -107,7 +120,16 @@ class FacturasController extends Controller
                'SetFooter'=>['{PAGENO}'],
            ]
        ]);
-       
+
+       $model = $this->findModel($id);
+       if (($model->estatus_factura && $model->total_deducible != 0) || (!$model->estatus_factura)) {
+          $mpdf = $pdf->api; 
+          $mpdf->SetAuthor("HJ TECNOSYSTEMS");
+          $mpdf->SetWatermarkText('COPIA DE FACTURA');
+          $mpdf->showWatermarkText = true;
+          $mpdf->watermarkTextAlpha = 0.2;
+       }
+
        // return the pdf output as per the destination setting
        return $pdf->render(); 
        

@@ -96,6 +96,7 @@ return [
     'Users' => '',
     'Usuarios' => '',
     'Ver' => '',
+    'Ver Factura' => '',
     'Vista Edificio' => '',
     '¿Esta seguro de que quiere eliminar la Operación?' => '',
     '¿Está seguro que desar eliminar el edificio?' => '',
