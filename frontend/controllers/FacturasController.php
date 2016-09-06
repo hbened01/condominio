@@ -75,7 +75,7 @@ class FacturasController extends Controller
      */
     public function findModel($id)
     {
-       if (($model = Facturas::find()->where(['cd_factura_pk' => $id])->joinWith(['fondos','gastosNocomunes','gastosComunes'])->one()) !== null) {
+       if (($model = Facturas::find()->where(['cd_factura_pk' => $id])->joinWith(['fondos','gastosNocomunes','gastosComunes','cdPagos.codTipoPago','cdPagos.codBancos'])->one()) !== null) {
            return $model;
        } else {
            throw new NotFoundHttpException('The requested page does not exist.');

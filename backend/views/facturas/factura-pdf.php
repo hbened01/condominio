@@ -156,6 +156,17 @@ $fecha = $porciones = explode(" ", $model->fecha);
                 if (!$model->estatus_factura) {
                     echo "<h1 style='font-size:15px;'>COPIA</h1>";
                     echo $msn->texto;
+                }else{
+                  echo '<br>';
+                  echo "<h1 style='font-size:15px;'>ORIGINAL</h1>";
+                  echo 'RECIBIMOS DEL PROPIETARIO CUYO NOMBRE APARECE MAS ARRIBA, LA CUOTA DE LOS GASTOS DE CONDOMINIO DE SU APARTAMENTO CORRESPONDIENTE AL MES POR MEDIO DE LOS SIGUIENTES PAGOS:';
+                  echo '<br><br>';
+
+                  foreach ($model->cdPagos as $key => $value) {
+                    echo '<strong>Pago '.($key+1).'</strong>: '.$value->codTipoPago->descrip_pago.' - BANCO '.$value->codBancos->nombre.' - MONTO Bs. '.number_format($value->monto,2,',','.').'<br>';
+                  }
+                  echo '<br>';
+                  echo 'Cheques devueltos tendrán un recargo del 10% del monto con un mínimo de 5000 Bs.';
                 }
             ?>
         </div>

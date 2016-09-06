@@ -179,6 +179,17 @@ CorlateAsset::register($this);
                     echo '<h1><font color="black">COPIA</font></h1>';
                     echo $msn->texto;
                     echo '</div>';
+                  }else{
+                    echo '<div class="col-xs-12 text-muted well well-sm no-shadow" style="margin-top: 10px;text-align: center;font-size:20px">';
+                    echo '<h1 style="color:#4e4e4e;">ORIGINAL</h1>';
+                    echo 'RECIBIMOS DEL PROPIETARIO CUYO NOMBRE APARECE MAS ARRIBA, LA CUOTA DE LOS GASTOS DE CONDOMINIO DE SU APARTAMENTO CORRESPONDIENTE AL MES POR MEDIO DE LOS SIGUIENTES PAGOS:';
+                    echo '<br><br>';
+
+                    foreach ($model->cdPagos as $key => $value) {
+                      echo '<strong>Pago '.($key+1).'</strong>: '.$value->codTipoPago->descrip_pago.' - BANCO '.$value->codBancos->nombre.' - MONTO Bs. '.number_format($value->monto,2,',','.').'<br>';
+                    }
+
+                    echo '</div>';
                   }
               ?>
               
