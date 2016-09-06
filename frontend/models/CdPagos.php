@@ -21,7 +21,7 @@ use Yii;
  * @property string $monto
  * @property integer $cod_banco
  *
- * @property CdBancos $codBanco
+ * @property CdBancos $codBancos
  * @property CdTiposDocs $codTipoDoc
  * @property CdTiposPagos $codTipoPago
  * @property FacturasPagos[] $facturasPagos
@@ -132,6 +132,14 @@ class CdPagos extends \yii\db\ActiveRecord
     public function getFacturasPagos()
     {
         return $this->hasMany(FacturasPagos::className(), ['cod_pagos_fk' => 'cd_pago_pk']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCodBancos()
+    {
+        return $this->hasOne(CdBancos::className(), ['cd_bancos_pk' => 'cod_banco']);
     }
 
 

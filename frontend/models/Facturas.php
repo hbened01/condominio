@@ -28,6 +28,7 @@ use Yii;
  * @property FacturasPagos[] $facturasPagos
  * @property Fondos[] $fondos
  * @property GastosNocomunes[] $gastosNocomunes
+ * @property CdPagos[] $cdPagos
  */
 class Facturas extends \yii\db\ActiveRecord
 {
@@ -128,4 +129,13 @@ class Facturas extends \yii\db\ActiveRecord
        return $this->hasMany(GastosComunes::className(), ['cd_gasto_comun_pk' => 'cod_gasto_comun_fk'])
                    ->viaTable('facturas_gastos_comunes', ['cod_factura_fk' => 'cd_factura_pk']);
    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCdPagos()
+    {
+        return $this->hasMany(CdPagos::className(), ['cd_pago_pk' => 'cod_pagos_fk'])
+                    ->viaTable('facturas_pagos', ['cod_facturas_fk' => 'cd_factura_pk']);
+    }
 }
