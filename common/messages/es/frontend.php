@@ -17,8 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'See' => 'Ver',
-    'Sure you want to delete the payment?' => '¿Seguro que desea eliminar el pago?',
+    'Fully Cancelled' => 'Totalmente Cancelada',
+    'Not Cancelled' => 'No Cancelada',
+    'Partially Cancelled' => 'Parcialmente Cancelada',
     '404, Page not found' => '404, Pagina no encontrada',
     'Activities' => 'Actividades',
     'Address' => 'Dirección',
@@ -68,6 +69,7 @@ return [
     'Details of the payment made' => 'Detalle del pago realizado',
     'Doc.' => 'Doc.',
     'Document Type' => 'Tipo de Documento',
+    'Download Invoice' => 'Descargar Factura',
     'EXPENSE RELATIONS' => 'RELACIONES DE GASTOS',
     'Email' => 'Correo',
     'Email *' => 'Correo *',
@@ -152,6 +154,8 @@ return [
     'Return' => 'Volver',
     'Rol' => 'Rol',
     'Rol Id' => 'Identificador Rol',
+    'See' => 'Ver',
+    'See Invoice' => 'Ver Factura',
     'Select...' => 'Seleccione...',
     'Send' => 'Enviar',
     'Start' => 'Iniciar',
@@ -161,6 +165,7 @@ return [
     'Submit Message' => 'Enviar Mensaje',
     'Successfully Canceled' => 'Cancelada Totalmente',
     'Sure to log off?' => 'Esta seguro de cerrar la sesión?',
+    'Sure you want to delete the payment?' => '¿Seguro que desea eliminar el pago?',
     'THERE IS NO DATA' => 'NO HAY DATOS',
     'Text' => 'Texto',
     'The Page you are looking for doesn\'t exist or an other error occurred.' => 'La página que esta consultando no existe o ha ocurrido otro error al ser consultada.',

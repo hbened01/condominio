@@ -44,15 +44,15 @@ $operaciones = $session->get('operaciones');
                     {   
                         if($model->estatus_factura == true && $model->total_deducible == 0)
                         {
-                            return '<span class="glyphicon glyphicon-ok"></span>&nbspTotalmente Cancelada';
+                            return '<span class="glyphicon glyphicon-ok"></span>&nbsp'.Yii::t('frontend', 'Fully Cancelled').'';
                         }
                         else if($model->estatus_factura == true && $model->total_deducible !== 0)
                         {   
-                            return '<span class="glyphicons glyphicons-ok-circle"></span>&nbspParcialmente Cancelada';
+                            return '<span class="glyphicons glyphicons-ok-circle"></span>&nbsp'.Yii::t('frontend', 'Partially Cancelled').'';
                         }
                         else if($model->estatus_factura == false)
                         {
-                            return '<span class="glyphicon glyphicon-remove"></span>&nbspNo Cancelada';
+                            return '<span class="glyphicon glyphicon-remove"></span>&nbsp'.Yii::t('frontend', 'Not Cancelled').'';
                         }
                     },
              ],

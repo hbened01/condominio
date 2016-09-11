@@ -60,15 +60,15 @@ $this->title = Yii::t('frontend', 'invoice history');
                         {   
                             if($model->estatus_factura == true && $model->total_deducible == 0)
                             {
-                                return '<span class="glyphicon glyphicon-ok"></span>&nbspTotalmente Cancelada';
+                                return '<span class="glyphicon glyphicon-ok"></span>&nbsp'.Yii::t('frontend', 'Fully Cancelled').'';
                             }
                             else if($model->estatus_factura == true && $model->total_deducible !== 0)
                             {   
-                                return '<span class="glyphicons glyphicons-ok-circle"></span>&nbspParcialmente Cancelada';
+                                return '<span class="glyphicons glyphicons-ok-circle"></span>&nbsp'.Yii::t('frontend', 'Partially Cancelled').'';
                             }
                             else if($model->estatus_factura == false)
                             {
-                                return '<span class="glyphicon glyphicon-remove"></span>&nbspNo Cancelada';
+                                return '<span class="glyphicon glyphicon-remove"></span>&nbsp'.Yii::t('frontend', 'Not Cancelled').'';
                             }
                         },
                     ],
@@ -89,12 +89,12 @@ $this->title = Yii::t('frontend', 'invoice history');
                     'buttons' => [
                         'ver' => function ($url, $model) {
                                     return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                                                'title' => Yii::t('app', 'Ver Factura'),
+                                                'title' => Yii::t('frontend', 'See Invoice'),
                                     ]);
                         },
                         'factura-pdf' => function ($url, $model) {
                                     return Html::a('<span class="fa fa-download"></span>', $url, [
-                                                'title' => Yii::t('app', 'Descargar Factura'),'target' =>'_blan',
+                                                'title' => Yii::t('frontend', 'Download Invoice'),'target' =>'_blan',
                                     ]);
                         }
                     ],

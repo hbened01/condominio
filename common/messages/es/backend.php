@@ -17,6 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Fully Cancelled' => 'Totalmente Cancelada',
+    'Not Cancelled' => 'No Cancelada',
+    'Partially Cancelled' => 'Parcialmente Cancelada',
     'Calendar' => 'Calendario',
     '404, Page not found' => '404, Pagina no encontrada',
     'Active' => 'Activo',
