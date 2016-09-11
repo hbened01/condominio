@@ -44,10 +44,10 @@ class GastosNocomunes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_gasto_nocomun_pk' => Yii::t('frontend', 'Cd Gasto Nocomun Pk'),
-            'cod_factura_fk' => Yii::t('frontend', 'Cod Factura Fk'),
-            'descripcion' => Yii::t('frontend', 'Descripcion'),
-            'monto' => Yii::t('frontend', 'Monto'),
+            'cd_gasto_nocomun_pk' => Yii::t('frontend', 'Id'),
+            'cod_factura_fk' => Yii::t('frontend', 'Code Invoice'),
+            'descripcion' => Yii::t('frontend', 'Description'),
+            'monto' => Yii::t('frontend', 'Amount'),
         ];
     }
 

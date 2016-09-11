@@ -42,8 +42,8 @@ class FacturasGastosComunes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cod_gasto_comun_fk' => Yii::t('frontend', 'Cod Gasto Comun Fk'),
-            'cod_factura_fk' => Yii::t('frontend', 'Cod Factura Fk'),
+            'cod_gasto_comun_fk' => Yii::t('frontend', 'Id'),
+            'cod_factura_fk' => Yii::t('frontend', 'Id'),
         ];
     }
 

@@ -41,8 +41,8 @@ class CdTiposDocs extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_tipo_doc_pk' => Yii::t('frontend', 'Cd Tipo Doc Pk'),
-            'tipo_doc' => Yii::t('frontend', 'Tipo Doc'),
+            'cd_tipo_doc_pk' => Yii::t('frontend', 'Id'),
+            'tipo_doc' => Yii::t('frontend', 'Type Doc.'),
             'descrip_doc' => Yii::t('frontend', 'Document Type'),
         ];
     }

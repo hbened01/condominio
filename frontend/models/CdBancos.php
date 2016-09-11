@@ -38,8 +38,8 @@ class CdBancos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_bancos_pk' => Yii::t('frontend', 'Cd Bancos Pk'),
-            'nombre' => Yii::t('frontend', 'Banco'),
+            'cd_bancos_pk' => Yii::t('frontend', 'Id'),
+            'nombre' => Yii::t('frontend', 'Bank'),
         ];
     }
 
