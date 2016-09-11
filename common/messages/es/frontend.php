@@ -17,6 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'See' => 'Ver',
+    'Sure you want to delete the payment?' => '¿Seguro que desea eliminar el pago?',
     '404, Page not found' => '404, Pagina no encontrada',
     'Activities' => 'Actividades',
     'Address' => 'Dirección',

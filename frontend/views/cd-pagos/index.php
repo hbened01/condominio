@@ -96,13 +96,13 @@ $this->title = Yii::t('frontend', 'payment history');
                     'buttons' => [
                         'ver' => function ($url, $model) {
                                 return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                                            'title' => Yii::t('app', 'Ver'),
+                                            'title' => Yii::t('frontend', 'See'),
                                 ]);
                         },
                         'actualizar' => function ($url, $model) {
                             if (!$model->estatus_pago) {
                                 return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                                            'title' => Yii::t('app', 'Actualizar'),
+                                            'title' => Yii::t('frontend', 'Update'),
                                 ]);
                             }else{
                                 return false;
@@ -111,8 +111,8 @@ $this->title = Yii::t('frontend', 'payment history');
                         'eliminar' => function ($url, $model) {
                             if (!$model->estatus_pago) {
                                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                                            'title' => Yii::t('app', 'Eliminar'),
-                                            'data-confirm' => '¿Seguro que desea eliminar el pago"?',
+                                            'title' => Yii::t('frontend', 'Delete'),
+                                            'data-confirm' => Yii::t('frontend', 'Sure you want to delete the payment?'),
                                             'data-method' => 'POST'
                                 ]);
                             }else{
