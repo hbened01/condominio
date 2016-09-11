@@ -6,12 +6,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Operaciones */
 
-$this->title = Yii::t('app', 'Create Operaciones');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Operaciones'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Create Operation');
+
 ?>
 <p>
-    <?= Html::a(Yii::t('app', 'Lista de Operaciones'), ['index'], ['class' => 'btn btn-info']); ?>
+    <?= Html::a(Yii::t('backend', 'List of Operations'), ['index'], ['class' => 'btn btn-info']); ?>
 </p>
 <div class="operaciones-create">
 

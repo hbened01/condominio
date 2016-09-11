@@ -46,8 +46,8 @@ class Roles extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'nombre' => Yii::t('app', 'Nombre'),
+            'id' => Yii::t('backend', 'Id'),
+            'nombre' => Yii::t('backend', 'Name'),
         ];
     }
 

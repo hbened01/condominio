@@ -6,13 +6,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CdConjuntos */
 
-$this->title = Yii::t('app', 'Crear Conjunto');
-$this->params['breadcrumbs'][] = ['label' => 'Cd Conjuntos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Create Set');
+
 ?>
 
 <p>
-    <?= Html::a(Yii::t('app', 'Lista de Conjuntos'), ['index'], ['class' => 'btn btn-info']) ?>
+    <?= Html::a(Yii::t('backend', 'List of Sets'), ['index'], ['class' => 'btn btn-info']) ?>
 </p>
 
 <div class="cd-conjuntos-create">

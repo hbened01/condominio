@@ -5,12 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CdPagos */
 
-$this->title = Yii::t('app', 'Actualizar {modelClass}: ', [
-    'modelClass' => 'Pago ',
+$this->title = Yii::t('backend', 'Update {modelClass}: ', [
+    'modelClass' => Yii::t('backend', 'Payment'),
 ]) . $model->cd_pago_pk;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Pagos'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->cd_pago_pk, 'url' => ['view', 'id' => $model->cd_pago_pk]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -18,11 +15,11 @@ $operaciones = $session->get('operaciones');
 
 ?>
 <p>
-    <?= Html::a(Yii::t('app', 'Lista de Pagos'), ['index'], ['class' => 'btn btn-info']); ?>
-    <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones)) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->cd_pago_pk], [
+    <?= Html::a(Yii::t('backend', 'List of Payments'), ['index'], ['class' => 'btn btn-info']); ?>
+    <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones)) ? Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->cd_pago_pk], [
         'class' => 'btn btn-danger',
         'data' => [
-            'confirm' => Yii::t('app', '¿Está seguro que desar eliminar el pago?'),
+            'confirm' => Yii::t('backend', 'Sure you want to delete the payment?'),
             'method' => 'post',
         ],
     ]) : '' ?>

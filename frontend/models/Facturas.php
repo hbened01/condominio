@@ -70,22 +70,22 @@ class Facturas extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_factura_pk' => Yii::t('frontend', 'Cd Factura Pk'),
+            'cd_factura_pk' => Yii::t('frontend', 'Id'),
             'cod_apto' => Yii::t('frontend', 'Apartment'),
             'edificio' => Yii::t('frontend', 'Building'),
             'nombre' => Yii::t('frontend', 'Name'),
             'apellido' => Yii::t('frontend', 'Last Name'),
             'alicuota' => Yii::t('frontend', 'Aliquot'),
-            'nr' => Yii::t('frontend', 'Nr'),
+            'nr' => Yii::t('frontend', 'Invoice Number'),
             'fecha' => Yii::t('frontend', 'Date'),
-            'total_gastos_mes' => Yii::t('frontend', 'Total Gastos Mes'),
-            'sub_total_alicuota' => Yii::t('frontend', 'Sub Total Alicuota'),
-            'total_pagar_mes' => Yii::t('frontend', 'Total Pagar Mes'),
-            'deuda_actual' => Yii::t('frontend', 'Deuda Actual'),
-            'recibos' => Yii::t('frontend', 'Recibos'),
+            'total_gastos_mes' => Yii::t('frontend', 'Total Monthly Expenses'),
+            'sub_total_alicuota' => Yii::t('frontend', 'Sub Total Aliquot'),
+            'total_pagar_mes' => Yii::t('frontend', 'Total Pay Month'),
+            'deuda_actual' => Yii::t('frontend', 'Current Debt'),
+            'recibos' => Yii::t('frontend', 'Receipts'),
             'estatus_factura' => Yii::t('frontend', 'Invoice Status'),
-            'total_deducible' => Yii::t('frontend', 'Total Deducible'),
-            'fecha_creada' => Yii::t('frontend', 'Fecha Creada'), 
+            'total_deducible' => Yii::t('frontend', 'Total Deductible'),
+            'fecha_creada' => Yii::t('frontend', 'Date Created'), 
         ];
     }
 

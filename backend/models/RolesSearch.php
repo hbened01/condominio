@@ -66,8 +66,7 @@ class RolesSearch extends Roles
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre]);
-
+        $query->andFilterWhere(['like', 'LOWER(nombre)', strtolower($this->nombre)]);
         return $dataProvider;
     }
 }

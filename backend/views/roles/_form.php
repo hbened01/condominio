@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
         <div class="col-md-6">
             <div class="box">
                 <div class="box-header with-border">
-                    <h2 class="box-title"><strong>Operaciones</strong></h2>
+                    <h2 class="box-title"><strong><?= Yii::t('backend', 'Operations') ?></strong></h2>
                 </div>
                 <div class="box-body">
                         <?php
@@ -28,9 +28,9 @@ use yii\widgets\ActiveForm;
                                                          'template' =>'<table class="table table-bordered">
                                                                                 <thead>
                                                                                     <tr>
-                                                                                        <th style="width: 10%">Id</th>
-                                                                                        <th>Nombre</th>
-                                                                                        <th style="width: 100px">Seleccione</th>
+                                                                                        <th style="width: 10%">'.Yii::t('backend', 'Id').'</th>
+                                                                                        <th>'.Yii::t('backend', 'Name').'</th>
+                                                                                        <th style="width: 100px">'.Yii::t('backend', 'Select').'</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
@@ -38,9 +38,9 @@ use yii\widgets\ActiveForm;
                                                                                 </tbody>
                                                                                 <tfoot>
                                                                                     <tr>
-                                                                                        <th>Id</th>
-                                                                                        <th>Nombre</th>
-                                                                                        <th style="width: 100px">Seleccione</th>
+                                                                                        <th>'.Yii::t('backend', 'Id').'</th>
+                                                                                        <th>'.Yii::t('backend', 'Name').'</th>
+                                                                                        <th style="width: 100px">'.Yii::t('backend', 'Select').'</th>
                                                                                     </tr>
                                                                                 </tfoot>
                                                                             </table>'
@@ -63,7 +63,7 @@ use yii\widgets\ActiveForm;
 </section>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

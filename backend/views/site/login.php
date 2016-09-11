@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
+$this->title = Yii::t('backend', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="login-box">
@@ -16,15 +16,15 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="login-box-body">
-        <p class="login-box-msg">Introduce tus datos para entrar al sistema</p>
+        <p class="login-box-msg"><?= Yii::t('backend', 'Enter your details to login') ?></p>
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true,'class' => 'form-control','placeholder' => 'Usuario'])->label(false) ?>
+                <?= $form->field($model, 'username')->textInput(['autofocus' => true,'class' => 'form-control','placeholder' => Yii::t('backend', 'User')])->label(false) ?>
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             
             <div class="form-group has-feedback">
-                <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control','placeholder' => 'Password'])->label(false) ?>
+                <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control','placeholder' => Yii::t('backend', 'Password')])->label(false) ?>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block btn-flat']) ?>
+                    <?= Html::submitButton(Yii::t('backend', 'Start'), ['class' => 'btn btn-primary btn-block btn-flat']) ?>
                 </div>
                 <!-- /.col -->
             </div>

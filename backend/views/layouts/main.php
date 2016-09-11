@@ -36,11 +36,11 @@ $operaciones = $session->get('operaciones');
         <div class="wrapper">
                 <header class="main-header">
                     <!-- Logo -->
-                    <a href="index2.html" class="logo">
+                    <a href="" class="logo">
                           <!-- mini logo for sidebar mini 50x50 pixels -->
-                          <span class="logo-mini"><b>Cond.</b></span>
+                          <span class="logo-mini"><b><?= Yii::t('backend', 'Cond.') ?></b></span>
                           <!-- logo for regular state and mobile devices -->
-                          <span class="logo-lg"><b>Condominio</b> Admin.</span>
+                          <span class="logo-lg"><b><?= Yii::t('backend', 'Condominium') ?></b> <?= Yii::t('backend', 'Admin.') ?></span>
                     </a>
                     <!-- Header Navbar: style can be found in header.less -->
                     <nav class="navbar navbar-static-top">
@@ -55,20 +55,16 @@ $operaciones = $session->get('operaciones');
                           <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                               <img src="<?=$baseUrl?>/dist/img/user.png" class="user-image" alt="User Image">
-                              <span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
+                              <span class="hidden-xs"><?= Yii::$app->user->identity->username ?>&nbsp&nbsp<i class="fa fa-sign-out" aria-hidden="true"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                               <!-- Menu Footer-->
                               <li class="user-footer">
                                 <div class="pull-left">
+                                  <?=Html::a(Yii::t('backend', 'Logout').'( ' . Yii::$app->user->identity->username . ' )  <i class="fa fa-power-off"></i>', ['/site/logout'], ['data' => ['confirm' => Yii::t('backend', 'Sure to log off?'), 'method' => 'post'],'class' => 'btn btn-default btn-flat']);
+                                  ?>
                                 </div>
                                 <div class="pull-right">
-                                    <?=  
-                                          // Html::beginForm(['/site/logout'], 'post').
-                                          // Html::submitButton('Logout. ( ' . Yii::$app->user->identity->username . ' ) <i class="fa fa-power-off"></i> ',['class' => 'btn btn-default btn-flat']).
-                                          // Html::endForm();
-                                    Html::a(Yii::t('frontend', 'Logout').'( ' . Yii::$app->user->identity->username . ' )  <i class="fa fa-power-off"></i>', ['/site/logout'], ['data' => ['confirm' => Yii::t('frontend', 'Sure to log off?'), 'method' => 'post'],'class' => 'btn btn-default btn-flat']);
-                                     ?>
                                 </div>
                               </li>
                             </ul>
@@ -89,15 +85,15 @@ $operaciones = $session->get('operaciones');
                 </div>
                 <div class="pull-left info">
                   <p><?= Yii::$app->user->identity->username ?></p>
-                  <i class="fa fa-circle text-success"></i> Online
+                  <i class="fa fa-circle text-success"></i> <?= Yii::t('backend', 'Online') ?>
                 </div>
               </div>
               <!-- sidebar menu: : style can be found in sidebar.less -->
               <ul class="sidebar-menu">
-                <li class="header">MENU PRINCIPAL</li>
+                <li class="header"><?= Yii::t('backend', 'MAIN MENU') ?></li>
                 <li class="treeview">
                   <a href="<?= Url::base(); ?>/site/index">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
+                    <i class="fa fa-dashboard"></i> <span><?= Yii::t('backend', 'Dashboard') ?></span></i>
                   </a>
                 </li>
                 <li class="treeview">
@@ -108,13 +104,13 @@ $operaciones = $session->get('operaciones');
                   </a>
                   <ul class="treeview-menu">
                     <?php if(in_array('user-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/user"><i class="fa fa-user"></i> Usuarios</a> </li>
+                      <li><a href="<?= Url::base(); ?>/user"><i class="fa fa-user"></i> <?= Yii::t('backend', 'Users') ?></a> </li>
                     <?php endif;?>
                     <?php if(in_array('operaciones-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/operaciones"><i class="glyphicons glyphicons-calculator"></i>&nbsp&nbsp Operaciones</a></li>
+                      <li><a href="<?= Url::base(); ?>/operaciones"><i class="glyphicons glyphicons-calculator"></i>&nbsp&nbsp <?= Yii::t('backend', 'Operations') ?></a></li>
                     <?php endif;?>
                     <?php if(in_array('roles-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/roles"><i class="fa fa-users"></i> Roles</a></li>
+                      <li><a href="<?= Url::base(); ?>/roles"><i class="fa fa-users"></i> <?= Yii::t('backend', 'Roles') ?></a></li>
                     <?php endif;?>
                   </ul>
                 </li>
@@ -126,19 +122,19 @@ $operaciones = $session->get('operaciones');
                   </a>
                   <ul class="treeview-menu">
                     <?php if(in_array('cd-propietarios-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/cd-propietarios"><i class="glyphicons glyphicons-user"></i>&nbsp&nbsp Propietarios</a></li>
+                      <li><a href="<?= Url::base(); ?>/cd-propietarios"><i class="glyphicons glyphicons-user"></i>&nbsp&nbsp <?= Yii::t('backend', 'Owners') ?></a></li>
                     <?php endif;?>
                     <?php if(in_array('cd-conceptos-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="fa fa-list-ol"></i> Conceptos</a> </li>
+                      <li><a href="<?= Url::base(); ?>/cd-conceptos"><i class="fa fa-list-ol"></i> <?= Yii::t('backend', 'Concepts') ?></a> </li>
                     <?php endif;?>
                     <?php if(in_array('cd-conjuntos-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="glyphicons glyphicons-show-thumbnails"></i>&nbsp&nbsp Conjuntos</a></li>
+                      <li><a href="<?= Url::base(); ?>/cd-conjuntos"><i class="glyphicons glyphicons-show-thumbnails"></i>&nbsp&nbsp <?= Yii::t('backend', 'Sets') ?></a></li>
                     <?php endif;?>
                     <?php if(in_array('cd-edificios-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/cd-edificios"><i class="glyphicons glyphicons-building"></i>&nbsp&nbsp Edificios</a></li>
+                      <li><a href="<?= Url::base(); ?>/cd-edificios"><i class="glyphicons glyphicons-building"></i>&nbsp&nbsp <?= Yii::t('backend', 'Buildings') ?></a></li>
                     <?php endif;?>
                     <?php if(in_array('files-file-load',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/files/file-load"><i class="glyphicons glyphicons-cloud-upload"></i>&nbsp&nbsp Carga de Archivo</a></li>
+                      <li><a href="<?= Url::base(); ?>/files/file-load"><i class="glyphicons glyphicons-cloud-upload"></i>&nbsp&nbsp <?= Yii::t('backend', 'File Upload') ?></a></li>
                     <?php endif;?>
                   </ul>
                 </li>
@@ -150,13 +146,13 @@ $operaciones = $session->get('operaciones');
                   </a>
                   <ul class="treeview-menu">
                     <?php if(in_array('facturas-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/facturas"><i class="glyphicons glyphicons-list"></i>&nbsp&nbsp Lista de Facturas</a></li>
+                      <li><a href="<?= Url::base(); ?>/facturas"><i class="glyphicons glyphicons-list"></i>&nbsp&nbsp <?= Yii::t('backend', 'List of Invoices') ?></a></li>
                     <?php endif;?>
                     <?php if(in_array('mensajes-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/mensajes"><i class="glyphicons glyphicons-folder-open"></i>&nbsp&nbsp Mensajes</a></li>
+                      <li><a href="<?= Url::base(); ?>/mensajes"><i class="glyphicons glyphicons-folder-open"></i>&nbsp&nbsp <?= Yii::t('backend', 'Messages') ?></a></li>
                     <?php endif;?>
                     <?php if(in_array('cd-pagos-index',$operaciones)): ?>
-                      <li><a href="<?= Url::base(); ?>/cd-pagos"><i class="glyphicons glyphicons-fees-payments"></i>&nbsp&nbsp Lista de Pagos</a></li>
+                      <li><a href="<?= Url::base(); ?>/cd-pagos"><i class="glyphicons glyphicons-fees-payments"></i>&nbsp&nbsp <?= Yii::t('backend', 'List of Payments') ?></a></li>
                     <?php endif;?>
                   </ul>
                 </li>
@@ -169,12 +165,12 @@ $operaciones = $session->get('operaciones');
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                   <h1>
-                    Dashboard
-                    <small>Control panel</small>
+                    <?= Yii::t('backend', 'Dashboard') ?>
+                    <small><?= Yii::t('backend', 'Control panel') ?></small>
                   </h1>
                   <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">Dashboard</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> <?= Yii::t('backend', 'Start') ?></a></li>
+                    <li class="active"><?= Yii::t('backend', 'Dashboard') ?></li>
                   </ol>
                 </section>
 

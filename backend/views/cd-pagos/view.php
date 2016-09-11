@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\ArrayHelper;
 
-$this->title = Html::encode(Yii::t('backend', 'Vista Pago')).' #'.$model->cd_pago_pk;
+$this->title = Html::encode(Yii::t('backend', 'View Payment')).' #'.$model->cd_pago_pk;
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -12,19 +12,19 @@ $operaciones = $session->get('operaciones');
 ?>
 
 <p>
-    <?= Html::a(Yii::t('app', 'Lista de Pagos'), ['index'], ['class' => 'btn btn-info']); ?>
-    <?= (in_array(Yii::$app->controller->id.'-update',$operaciones) && !$model->estatus_pago) ? Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->cd_pago_pk], ['class' => 'btn btn-primary']) : '' ?>
-    <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones) && !$model->estatus_pago) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->cd_pago_pk], [
+    <?= Html::a(Yii::t('backend', 'List of Payments'), ['index'], ['class' => 'btn btn-info']); ?>
+    <?= (in_array(Yii::$app->controller->id.'-update',$operaciones) && !$model->estatus_pago) ? Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->cd_pago_pk], ['class' => 'btn btn-primary']) : '' ?>
+    <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones) && !$model->estatus_pago) ? Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->cd_pago_pk], [
         'class' => 'btn btn-danger',
         'data' => [
-            'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+            'confirm' => Yii::t('backend', 'Sure you want to delete the payment?'),
             'method' => 'post',
         ],
     ]) : '' ?>
-    <?= (in_array(Yii::$app->controller->id.'-pay-approved',$operaciones) && !$model->estatus_pago) ? Html::a(Yii::t('app', 'Aprobar'), ['pay-approved', 'id' => $model->cd_pago_pk], [
+    <?= (in_array(Yii::$app->controller->id.'-pay-approved',$operaciones) && !$model->estatus_pago) ? Html::a(Yii::t('backend', 'Approve'), ['pay-approved', 'id' => $model->cd_pago_pk], [
         'class' => 'btn btn-warning',
         'data' => [
-            'confirm' => Yii::t('app', '¿Seguro que desa aprobar el pago?'),
+            'confirm' => Yii::t('backend', 'Sure you want to approve payment?'),
             'method' => 'post',
         ],
     ]) : '' ?>
@@ -32,13 +32,18 @@ $operaciones = $session->get('operaciones');
 <section id="pagos-view">
     <div class="container">
         <div class="center">
-            <h2><?= Html::encode(Yii::t('frontend', 'View Registered Payment')) ?></h2>
+            <h2><?= Html::encode(Yii::t('backend', 'View Registered Payment')) ?></h2>
         </div> 
         <br>
         <div class="row contact-wrap"> 
     
             <?= DetailView::widget([
                 'model' => $model,
+                'formatter' => [
+                    'class' => 'yii\\i18n\\Formatter',
+                    'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('backend', 'THERE IS NO DATA').')</span>',
+                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbsp'.Yii::t('backend', 'No-Approved').'', '<span class="glyphicon glyphicon-ok"></span> &nbsp'.Yii::t('backend', 'No-Approved').''],
+                ],
                 'attributes' => [
                     //'cd_pago_pk',
                     //'cod_factura',
@@ -62,7 +67,7 @@ $operaciones = $session->get('operaciones');
                     'codTipoDoc.descrip_doc',
                     'nro_cedula',
                     'email:email',
-                    'nota_pago',
+                    'nota_pago:html',
                     'estatus_pago:boolean',
                 ],
             ]) ?>
@@ -71,7 +76,7 @@ $operaciones = $session->get('operaciones');
 
         <div class="text-center">
             <div class="center">
-                <h2><?= Html::encode(Yii::t('backend', 'Facturas Relacionadas con el Pago')) ?></h2>
+                <h2><?= Html::encode(Yii::t('backend', 'Related bills Payment')) ?></h2>
             </div> 
             <table class="table table-bordered">
                 <thead>

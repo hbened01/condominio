@@ -11,8 +11,7 @@ use yii\helpers\Url;
 /* @var $searchModel backend\models\CdPagosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Lista de Pagos');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'List of Payments');
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -24,44 +23,41 @@ $operaciones = $session->get('operaciones');
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Crear Pago'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('backend', 'Create Payment'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'formatter' => [
+                    'class' => 'yii\\i18n\\Formatter',
+                    'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('backend', 'THERE IS NO DATA').')</span>',
+                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbsp'.Yii::t('backend', 'No-Approved').'', '<span class="glyphicon glyphicon-ok"></span> &nbsp'.Yii::t('backend', 'No-Approved').''],
+                    'dateFormat' => 'dd-MM-Y',
+                ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'cd_pago_pk',
-           // 'codFactura.nr',
-            //  [
-            //            'label' => Yii::t('frontend', 'Invoice'),
-            //            'attribute' => 'cod_factura',
-            //            'value' => 'codFactura.nr', //esta es la data de la tabla
-            //           // 'filter' => ,
-            // ],
-            //'cod_tipo_pago',
-            //  [
-            //            'label' => Yii::t('frontend', 'Payment Type'),
-            //            'attribute' => 'cod_tipo_pago',
-            //            'value' => 'codTipoPago.descrip_pago', //esta es la data de la tabla
-            //            'filter' => Html::activeDropDownList($searchModel, 'cod_tipo_pago', ArrayHelper::map(CdTiposPagos::find()->asArray()->all(), 'cd_tipo_pago_pk', 'descrip_pago'), ['class'=>'form-control', 'prompt' => Yii::t('frontend', 'Select...')]),
-            // ],
             'nro_referencia',
+
             [
-               'label' => Yii::t('frontend', 'Payment Date'),
-               'value' => 'fecha_pago', //esta es la data de la tabla
-               'filter' => DatePicker::widget([
-                'model'=>$searchModel,
-                'attribute'=>'fecha_pago',
-                'options' => ['placeholder' => Yii::t('frontend', 'Press...'),
-                'class' => 'form-control'],
-                'language' => 'es', 
-                'clientOptions' => [
-                    'defaultDate' => 'now', 
-                    'dateFormat' => 'yy-mm-dd']
-                ]),
+               'label' => Yii::t('backend', 'Payment Date'),
+               'attribute'=>'fecha_pago',
+               'value' => 'fecha_pago',
+               'format' => 'date',
+               'filterInputOptions' => [
+                'class'       => 'form-control',
+                'placeholder' => Yii::t('backend', 'Press...'),
+                ]
             ],
+            [
+               'label' => Yii::t('backend', 'Payment Status'),
+               'attribute' => 'estatus_pago',
+               'value' => 'estatus_pago',
+               'format' => 'boolean',
+               'filter'=> Html::activeDropDownList($searchModel, 'estatus_pago', array('0' => Yii::t('backend', 'No-Approved'), '1' => Yii::t('backend', 'Approved')), ['class'=>'form-control', 'prompt' => Yii::t('backend', 'Select...')]),
+            ],
+            //'estatus_pago:boolean',
             // 'nota_pago',
             // 'nombre',
             // 'apellido',
@@ -78,7 +74,7 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-view',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                                        'title' => Yii::t('app', 'Ver'),
+                                        'title' => Yii::t('backend', 'See'),
                             ]);
                         }else{
                             return false;
@@ -88,7 +84,7 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones')) && !$model->estatus_pago) {
                             return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                                        'title' => Yii::t('app', 'Actualizar'),
+                                        'title' => Yii::t('backend', 'Update'),
                             ]);
                         }else{
                             return false;
@@ -98,8 +94,8 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones')) && !$model->estatus_pago) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                                        'title' => Yii::t('app', 'Eliminar'),
-                                        'data-confirm' => '¿Seguro que desea eliminar el pago"?',
+                                        'title' => Yii::t('backend', 'Delete'),
+                                        'data-confirm' => Yii::t('backend', 'Sure you want to delete the payment?'),
                                         'data-method' => 'POST'
                             ]);
                         }else{
@@ -110,8 +106,8 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-pay-approved',$session->get('operaciones')) && !$model->estatus_pago) {
                             return Html::a('<span class="glyphicons glyphicons-check"></span>', $url, [
-                                        'title' => Yii::t('app', 'Aprobar Pago'),
-                                        'data-confirm' => '¿Seguro que desea aprobar el pago"?',
+                                        'title' => Yii::t('backend', 'Approve Payment'),
+                                        'data-confirm' => Yii::t('backend', 'Sure you want to approve payment?'),
                                         'data-method' => 'POST'
                             ]);
                         }else{

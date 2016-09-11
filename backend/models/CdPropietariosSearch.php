@@ -72,19 +72,13 @@ class CdPropietariosSearch extends CdPropietarios
         $query->andFilterWhere([
             'cd_propietarios.cd_propietarios_pk' => $this->cd_propietarios_pk,
             'cd_propietarios.nro_cedula' => $this->nro_cedula,
-            'cd_propietarios.alicuota' => $this->alicuota,
         ]);
 
-        $query->andFilterWhere(['like', 'cd_propietarios.nro_piso', $this->nro_piso])
-            ->andFilterWhere(['like', 'cd_propietarios.nombre', $this->nombre])
-            ->andFilterWhere(['like', 'cd_propietarios.apellido', $this->apellido])
-            // ->andFilterWhere(['like', 'telf_local', $this->telf_local])
-            // ->andFilterWhere(['like', 'telf_celular', $this->telf_celular])
-            ->andFilterWhere(['like', 'cd_propietarios.email', $this->email])
-            // ->andFilterWhere(['like', 'quien_vive', $this->quien_vive])
-            // ->andFilterWhere(['like', 'direccion', $this->direccion])
-            // ->andFilterWhere(['like', 'direccion_cobro', $this->direccion_cobro])
-            ->andFilterWhere(['like', 'user.username', $this->usuario]);
+        $query->andFilterWhere(['like', 'LOWER(nro_piso)', strtolower($this->nro_piso)])
+            ->andFilterWhere(['like', 'LOWER(nombre)', strtolower($this->nombre)])
+            ->andFilterWhere(['like', 'LOWER(apellido)', strtolower($this->apellido)])
+            ->andFilterWhere(['like', 'LOWER(user.username)', strtolower($this->usuario)])
+            ->andFilterWhere(['like', 'LOWER(email)', strtolower($this->email)]);
 
         return $dataProvider;
     }

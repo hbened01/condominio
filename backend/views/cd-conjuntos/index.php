@@ -8,8 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel backend\models\CdConjuntosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Conjuntos';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Sets');
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -21,7 +20,7 @@ $operaciones = $session->get('operaciones');
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a('Crear Conjuntos', ['create'], ['class' => 'btn btn-success']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('backend', 'Create Set'), ['create'], ['class' => 'btn btn-success']) : '' ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -41,7 +40,7 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-view',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                                        'title' => Yii::t('app', 'Ver'),
+                                        'title' => Yii::t('backend', 'See'),
                             ]);
                         }else{
                             return false;
@@ -51,7 +50,7 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                                        'title' => Yii::t('app', 'Actualizar'),
+                                        'title' => Yii::t('backend', 'Update'),
                             ]);
                         }else{
                             return false;
@@ -61,8 +60,8 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                                        'title' => Yii::t('app', 'Eliminar'),
-                                        'data-confirm' => '¿Seguro que desea eliminar "'.$model->nombre.' '.$model->direccion.'"?',
+                                        'title' => Yii::t('backend', 'Delete'),
+                                        'data-confirm' => Yii::t('backend', 'Are you sure you want to delete').' "'.$model->nombre.' '.$model->direccion.'" ?',
                                         'data-method' => 'POST'
                             ]);
                         }else{

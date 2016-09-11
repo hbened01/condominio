@@ -24,15 +24,15 @@ use backend\models\CdBancos;
         <div class="col-md-6">
             <div class="box">
                 <div class="box-header with-border">
-                    <h2 class="box-title"><strong>Operaciones</strong></h2>
+                    <h2 class="box-title"><strong><?= Yii::t('backend', 'Form') ?></strong></h2>
                 </div>
                 <div class="box-body">
 
                     <?php $form = ActiveForm::begin(); ?>
 
-                    <?= $form->field($model, 'id_propietario')->dropdownList(ArrayHelper::map($propietarios, 'id', 'nombre'), ['prompt'=> Yii::t('backend', 'Select...')/*,'multiple'=>'multiple'*/,'class' => 'form-control select2','data-placeholder' => 'Seleccione el propietario para buscar sus facturas']); ?>
+                    <?= $form->field($model, 'id_propietario')->dropdownList(ArrayHelper::map($propietarios, 'id', 'nombre'), ['prompt'=> Yii::t('backend', 'Select...')/*,'multiple'=>'multiple'*/,'class' => 'form-control select2','data-placeholder' => Yii::t('backend', 'Select the owner to search your bills')]); ?>
 
-                    <?= $form->field($model, 'cod_factura')->dropdownList(ArrayHelper::map($data, 'id', 'descripcion'), ['prompt'=> Yii::t('backend', 'Select...'),'multiple'=>'multiple','class' => 'form-control select2','data-placeholder' => 'Seleccione las facturas a pagar']); ?>
+                    <?= $form->field($model, 'cod_factura')->dropdownList(ArrayHelper::map($data, 'id', 'descripcion'), ['prompt'=> Yii::t('backend', 'Select...'),'multiple'=>'multiple','class' => 'form-control select2','data-placeholder' => Yii::t('backend', 'Select the invoices to be paid')]); ?>
 
                     <?=
                         $form->field($model, 'cod_tipo_pago')
@@ -40,7 +40,7 @@ use backend\models\CdBancos;
                                     ArrayHelper::map(CdTiposPagos::find()->all(), 'cd_tipo_pago_pk', 'descrip_pago'),
                                     ['prompt'=>'...']
                                 )
-                             ->label('Tipos de Pagos')
+                             ->label()
                     ?>
 
                     <?=
@@ -49,7 +49,7 @@ use backend\models\CdBancos;
                                     ArrayHelper::map(CdBancos::find()->all(), 'cd_bancos_pk', 'nombre'),
                                     ['prompt'=>'...']
                                 )
-                             ->label('Banco')
+                             ->label()
                     ?>
 
                     <?= $form->field($model, 'nro_referencia')->textInput() ?>
@@ -71,7 +71,7 @@ use backend\models\CdBancos;
                                             ArrayHelper::map(CdTiposDocs::find()->all(), 'cd_tipo_doc_pk', 'descrip_doc'),
                                             ['prompt'=>'...']
                                         )
-                                     ->label('Tipo Documento')
+                                     ->label()
                             ?>
                         </div>
                         
@@ -88,7 +88,7 @@ use backend\models\CdBancos;
                     <br>
 
                     <div class="form-group">
-                        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Crear') : Yii::t('app', 'Actualizar'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                        <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>

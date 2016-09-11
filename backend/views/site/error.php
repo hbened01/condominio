@@ -9,19 +9,12 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="site-error">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
-    </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
-</div>
+<br><br><br><br><br><br><br>
+<section id="error" class="container text-center">
+        <i class="fa fa-exclamation-triangle fa-5x"></i>
+        <h1><?= Html::encode(Yii::t('backend', '404, Page not found')) ?></h1>
+        <p><?= Html::encode(Yii::t('backend', "The Page you are looking for doesn't exist or an other error occurred.")) ?></p>
+        <a class="btn btn-primary" <?= Html::a(Yii::t('backend', 'GO BACK TO THE HOMEPAGE'), ['site/index'],['data' => [ 'method' => 'post',]]) ?></a>
+</section><!--/#error-->
+<br><br><br><br><br><br><br>

@@ -17,7 +17,7 @@ use common\models\User;
             <div class="box-header with-border">
               <i class="glyphicons glyphicons-edit"></i>
 
-              <h3 class="box-title">Formulario</h3>
+              <h3 class="box-title"><?= Yii::t('backend', 'Form') ?></h3>
             </div>
 
             <div class="box-body">
@@ -58,7 +58,7 @@ use common\models\User;
                 <?= $form->field($model, 'update_usr')->checkbox() ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                    <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>

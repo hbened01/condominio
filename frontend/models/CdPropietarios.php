@@ -75,12 +75,12 @@ class CdPropietarios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_propietarios_pk' => Yii::t('frontend', 'Cd Propietarios Pk'),
-            'cod_user' => Yii::t('frontend', 'Cod User'),
+            'cd_propietarios_pk' => Yii::t('frontend', 'Code Owner'),
+            'cod_user' => Yii::t('frontend', 'Code User'),
             'nro_piso' => Yii::t('frontend', 'Floor number'),
             'nombre' => Yii::t('frontend', 'Name'),
             'apellido' => Yii::t('frontend', 'Last Name'),
-            'nro_cedula' => Yii::t('frontend', 'Nro. Cedula'),
+            'nro_cedula' => Yii::t('frontend', 'Nro. identity card'),
             'telf_local' => Yii::t('frontend', 'Local Phone'),
             'telf_celular' => Yii::t('frontend', 'Cell phone'),
             'email' => Yii::t('frontend', 'Personal Mail'),

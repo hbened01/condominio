@@ -67,24 +67,23 @@ class CdPagos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_pago_pk' => 'Cd Pago Pk',
-            'cod_factura' => 'Facturas',
-            'cod_tipo_pago' => 'Tipo Pago',
-            'nro_referencia' => 'Nro Referencia',
-            'fecha_pago' => 'Fecha Pago',
-            'nota_pago' => 'Observación sobre el pago',
-            'nombre' => 'Nombre',
-            'apellido' => 'Apellido',
-            'nro_cedula' => 'Nro Documento',
-            'cod_tipo_doc' => 'Tipo Documento',
-            'email' => 'Email',
-            'estatus_pago' => 'Pago Aprobado',
-            'monto' => 'Monto del Pago',
-            'cod_banco' => 'Banco',
-            'id_propietario' => 'Seleccione Propietario',
-            'codBancos.nombre' => 'Banco',
-            'codTipoPago.descrip_pago' => 'Tipo de Pago',
-            'codTipoDoc.descrip_doc' => 'Tipo de Documento'
+            'cd_pago_pk' => Yii::t('backend', 'Id'),
+            'cod_tipo_pago' => Yii::t('backend', 'Payment Type'),
+            'nro_referencia' => Yii::t('backend', 'Transfer or Reference Number'),
+            'fecha_pago' => Yii::t('backend', 'Payment Date'),
+            'nota_pago' => Yii::t('backend', 'Note Description Payment'),
+            'nombre' => Yii::t('backend', 'Name'),
+            'apellido' => Yii::t('backend', 'Last Name'),
+            'nro_cedula' => Yii::t('backend', 'Identity Card'),
+            'cod_tipo_doc' => Yii::t('backend', 'Document Type'),
+            'email' => Yii::t('backend', 'Email'),
+            'estatus_pago' => Yii::t('backend', 'Payment Status'),
+            'monto' => Yii::t('backend', 'Cancelled amount'),
+            'cod_factura' => Yii::t('backend', 'Invoice'),
+            'id_propietario' => Yii::t('backend', 'Select Owner'),
+            'codBancos.nombre' => Yii::t('backend', 'Bank'),
+            'codTipoPago.descrip_pago' => Yii::t('backend', 'Payment type'),
+            'codTipoDoc.descrip_doc' => Yii::t('backend', 'Document type'),
         ];
     }
 

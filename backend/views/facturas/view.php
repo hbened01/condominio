@@ -5,9 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Facturas */
 
-$this->title = 'Factura N° '.$model->nr;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Facturas'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Invoice').' N° '.$model->nr;
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -17,7 +15,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
 <div class="facturas-view">
 
     <p>
-        <?= Html::a(Yii::t('app', 'Lista de Facturas'), ['index'], ['class' => 'btn btn-info']) ?>
+        <?= Html::a(Yii::t('backend', 'List of Invoices'), ['index'], ['class' => 'btn btn-info']) ?>
     </p>
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -28,7 +26,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-globe"></i> Condominio
+            <i class="fa fa-globe"></i> <?= Yii::t('backend', 'Condominium') ?>
             <small class="pull-right"></small>
           </h2>
         </div>
@@ -38,7 +36,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
       <div class="row">
         <div class="col-xs-12">
           <h3>
-            RELACIONES DE GASTOS
+            <?= Yii::t('backend', 'EXPENSE RELATIONS') ?>
           </h3>
         </div>
         <!-- /.col -->
@@ -51,16 +49,16 @@ $fecha = $porciones = explode(" ", $model->fecha);
             <thead>
             <tr>
               <th colspan="4"></th>
-              <th style="text-align: right;">NR</th>
+              <th style="text-align: right;"><?= Yii::t('backend', 'NR') ?></th>
               <th><?= $model->nr ?></th>
             </tr>
             <tr>
-              <th>Apto.</th>
-              <th>Inmueble</th>
-              <th>Propietario</th>
-              <th>Al&iacute;cuota</th>
-              <th>Mes</th>
-              <th>Año</th>
+              <th><?= Yii::t('backend', 'Apt.') ?></th>
+              <th><?= Yii::t('backend', 'Property') ?></th>
+              <th><?= Yii::t('backend', 'Owner') ?></th>
+              <th><?= Yii::t('backend', 'Aliquot') ?></th>
+              <th><?= Yii::t('backend', 'Month') ?></th>
+              <th><?= Yii::t('backend', 'Year') ?></th>
             </tr>
             </thead>
             <tbody>
@@ -85,8 +83,8 @@ $fecha = $porciones = explode(" ", $model->fecha);
           <table class="table table-striped">
             <thead>
             <tr>
-              <th style="padding-left:10%"  colspan="3">Concepto</th>
-              <th  style="text-align:right;padding-right:5%">Monto</th>
+              <th style="padding-left:10%"  colspan="3"><?= Yii::t('backend', 'Concept') ?></th>
+              <th  style="text-align:right;padding-right:5%"><?= Yii::t('backend', 'Amount') ?></th>
             </tr>
             </thead>
             <tbody>
@@ -95,7 +93,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
                         foreach ($model->gastosComunes as $key => $value) {
                             if ($key == 0) {
                                echo '<tr>
-                                        <td colspan="3"><small><strong>Gastos Comunes</strong></small></td>
+                                        <td colspan="3"><small><strong>'.Yii::t('backend', 'Common Expenses').'</strong></small></td>
                                         <td></td>
                                     </tr>';
                             }
@@ -108,9 +106,9 @@ $fecha = $porciones = explode(" ", $model->fecha);
                     }
                 ?>
                 <tr>
-                    <td><strong>Total gastos en el mes......</strong></td>
+                    <td><strong><?= Yii::t('backend', 'Total Expenditure Month') ?>:</strong></td>
                     <td><strong><?= number_format($model->total_gastos_mes, 0, ',', '.') ?></strong></td>
-                    <td><strong>Subtotal Gastos Comunes seg&uacute;n al al&iacute;cuota</strong></td>
+                    <td style="text-align:right;"><strong><?= Yii::t('backend', 'Common Expenses Subtotal According to Aliquot') ?>:</strong></td>
                     <td style="text-align:right;padding-right:4%"><strong><?= number_format($model->sub_total_alicuota, 0, ',', '.') ?></strong></td>
                 </tr>
                 <?php 
@@ -118,7 +116,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
                         foreach ($model->gastosNocomunes as $key => $value) {
                             if ($key == 0) {
                                echo '<tr>
-                                        <td colspan="3"><small><strong>Gastos no Comunes</strong></small></td>
+                                        <td colspan="3"><small><strong>'.Yii::t('backend', 'No Common Expenses').'</strong></small></td>
                                         <td></td>
                                     </tr>';
                             }
@@ -131,11 +129,11 @@ $fecha = $porciones = explode(" ", $model->fecha);
                     }
                 ?>
                 <tr>
-                    <td colspan="3" style="text-align:right;"><strong>Total a pagar mes <?= $fecha[0] ?></strong></td>
+                    <td colspan="3" style="text-align:right;"><strong><?= Yii::t('backend', 'Total Price Month') ?> <?= $fecha[0] ?>:</strong></td>
                     <td style="text-align:right;padding-right:4%"><strong><?= number_format($model->total_pagar_mes, 0, ',', '.') ?></strong></td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="text-align:right;"><strong>SE DEUDA ACTUAL ES DE <?= $model->recibos ?> RECIBOS POR Bs</strong></td>
+                    <td colspan="3" style="text-align:right;"><strong><?= Yii::t('backend', 'CURRENT DEBT IS SE') ?> <?= $model->recibos ?> <?= Yii::t('backend', 'RECEIPTS FOR Bs') ?> :</strong></td>
                     <td style="text-align:right;padding-right:4%"><strong><?= number_format($model->total_pagar_mes, 0, ',', '.') ?></strong></td>
                 </tr>
             </tbody>
@@ -151,11 +149,11 @@ $fecha = $porciones = explode(" ", $model->fecha);
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>Fondos</th>
-              <th style="text-align:center;">Saldo anterio</th>
-              <th style="text-align:center;">Cuota del mes</th>
-              <th style="text-align:center;">Cargo</th>
-              <th style="text-align:center;">Saldo actual</th>
+              <th><?= Yii::t('backend', 'Funds') ?></th>
+              <th style="text-align:center;"><?= Yii::t('backend', 'Previous Balance') ?></th>
+              <th style="text-align:center;"><?= Yii::t('backend', 'Quota Month') ?></th>
+              <th style="text-align:center;"><?= Yii::t('backend', 'Carry') ?></th>
+              <th style="text-align:center;"><?= Yii::t('backend', 'Current Balance') ?></th>
             </tr>
             </thead>
             <tbody>
@@ -184,12 +182,12 @@ $fecha = $porciones = explode(" ", $model->fecha);
         <?php 
             if (($model->estatus_factura && $model->total_deducible != 0) || (!$model->estatus_factura)) {
               echo '<div class="col-xs-12 text-muted well well-sm no-shadow" style="margin-top: 10px;text-align: center;font-size:20px">';
-              echo '<h1>COPIA</h1>';
+              echo '<h1>'.Yii::t('backend', 'COPY').'</h1>';
               echo $msn->texto;
               echo '</div>';
             }else{
               echo '<div class="col-xs-12 text-muted well well-sm no-shadow" style="margin-top: 10px;text-align: center;font-size:20px">';
-              echo '<h1>ORIGINAL</h1>';
+              echo '<h1>'.Yii::t('backend', 'ORIGINAL').'</h1>';
               echo 'RECIBIMOS DEL PROPIETARIO CUYO NOMBRE APARECE MAS ARRIBA, LA CUOTA DE LOS GASTOS DE CONDOMINIO DE SU APARTAMENTO CORRESPONDIENTE AL MES POR MEDIO DE LOS SIGUIENTES PAGOS:';
               echo '<br><br>';
 
@@ -213,7 +211,7 @@ $fecha = $porciones = explode(" ", $model->fecha);
           <!-- <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;"> -->
             <!-- <i class="fa fa-download"></i> Generate PDF -->
           <!-- </button> -->
-          <?= (in_array(Yii::$app->controller->id.'-factura-pdf',$operaciones)) ? Html::a(Yii::t('backend', '<i class="fa fa-download"></i> Generate PDF'), ['facturas/factura-pdf','id' => $model->cd_factura_pk], ['class' => 'btn btn-primary pull-right','style' => 'margin-right: 5px','target' =>'_blan']) : ''  ?>
+          <?= (in_array(Yii::$app->controller->id.'-factura-pdf',$operaciones)) ? Html::a('<span class="fa fa-download"></span>&nbsp&nbsp'.Yii::t('backend', 'Generate PDF'), ['facturas/factura-pdf','id' => $model->cd_factura_pk], ['class' => 'btn btn-primary pull-right','style' => 'margin-right: 5px','target' =>'_blan']) : ''  ?>
         </div>
       </div>
     </section>

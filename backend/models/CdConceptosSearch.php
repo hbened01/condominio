@@ -63,8 +63,8 @@ class CdConceptosSearch extends CdConceptos
             'frecuencia' => $this->frecuencia,
         ]);
 
-        $query->andFilterWhere(['like', 'descrip_concepto', $this->descrip_concepto])
-            ->andFilterWhere(['like', 'tipo', $this->tipo]);
+        $query->andFilterWhere(['like', 'LOWER(descrip_concepto)', strtolower($this->descrip_concepto)])
+            ->andFilterWhere(['like', 'LOWER(tipo)', strtolower($this->tipo)]);
 
         return $dataProvider;
     }

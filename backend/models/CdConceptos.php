@@ -44,10 +44,10 @@ class CdConceptos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_conceptos_pk' => Yii::t('app', 'Cd Conceptos Pk'),
-            'descrip_concepto' => Yii::t('app', 'Descrip Concepto'),
-            'tipo' => Yii::t('app', 'Tipo'),
-            'frecuencia' => Yii::t('app', 'Frecuencia'),
+            'cd_conceptos_pk' => Yii::t('backend', 'Code Concept'),
+            'descrip_concepto' => Yii::t('backend', 'Description Concept'),
+            'tipo' => Yii::t('backend', 'Type'),
+            'frecuencia' => Yii::t('backend', 'Frequency'),
         ];
     }
 
