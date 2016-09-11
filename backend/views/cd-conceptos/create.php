@@ -6,13 +6,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\CdConceptos */
 
-$this->title = Yii::t('app', 'Crear Conceptos');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Conceptos'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Create Concept');
+
 ?>
 
 <p>
-    <?= Html::a(Yii::t('app', 'Lista de Conceptos'), ['index'], ['class' => 'btn btn-info']) ?>
+    <?= Html::a(Yii::t('backend', 'List of Concepts'), ['index'], ['class' => 'btn btn-info']) ?>
 </p>
 
 <div class="cd-conceptos-create">

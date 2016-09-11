@@ -62,8 +62,8 @@ class OperacionesSearch extends Operaciones
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
-              ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
+        $query->andFilterWhere(['like', 'LOWER(nombre)', strtolower($this->nombre)])
+              ->andFilterWhere(['like', 'LOWER(descripcion)', strtolower($this->descripcion)]);
 
         return $dataProvider;
     }

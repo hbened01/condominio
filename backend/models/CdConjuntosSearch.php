@@ -62,8 +62,8 @@ class CdConjuntosSearch extends CdConjuntos
             'cd_conjuntos_pk' => $this->cd_conjuntos_pk,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'direccion', $this->direccion]);
+        $query->andFilterWhere(['like', 'LOWER(nombre)', strtolower($this->nombre)])
+            ->andFilterWhere(['like', 'LOWER(direccion)', strtolower($this->direccion)]);
 
         return $dataProvider;
     }

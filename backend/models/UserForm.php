@@ -39,6 +39,22 @@ class UserForm extends User
     }
 
     /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'email' => Yii::t('backend', 'Email'),
+            'username' => Yii::t('backend', 'Username'),
+            'created_at' => Yii::t('backend', 'Created'),
+            'updated_at' => Yii::t('backend', 'Updated'),
+            'status' => Yii::t('backend', 'Status'),
+            'id' => Yii::t('backend', 'Id'),
+            'rol_id'=> Yii::t('backend', 'Rol'),
+        ];
+    }
+
+    /**
      * Create new user.
      *
      * @return User|null the saved model or null if saving fails

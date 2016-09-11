@@ -6,13 +6,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Mensajes */
 
-$this->title = Yii::t('app', 'Crear Mensajes');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mensajes'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Create Message');
+
 ?>
 
 <p>
-    <?= Html::a(Yii::t('app', 'Lista de Mensajes'), ['index'], ['class' => 'btn btn-info']) ?>
+    <?= Html::a(Yii::t('backend', 'List of Messages'), ['index'], ['class' => 'btn btn-info']) ?>
 </p>
 
 <div class="mensajes-create">

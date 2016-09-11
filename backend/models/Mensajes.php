@@ -39,9 +39,9 @@ class Mensajes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_mensajes_pk' => 'Código Mensaje',
-            'texto' => 'Texto',
-            'msn_default' => 'Mensaje por Defecto',
+            'cd_mensajes_pk' => Yii::t('backend', 'Code Message'),
+            'texto' => Yii::t('backend', 'Text'),
+            'msn_default' => Yii::t('backend', 'Default Message'),
         ];
     }
 }

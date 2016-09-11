@@ -6,13 +6,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
-$this->title = Yii::t('app', 'Crear Usuario');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Create User');
 ?>
 
 <p>
-    <?= Html::a(Yii::t('app', 'Lista de Usuarios'), ['index'], ['class' => 'btn btn-info']) ?>
+    <?= Html::a(Yii::t('backend', 'User Lists'), ['index'], ['class' => 'btn btn-info']) ?>
 </p>
 
 <div class="user-create">

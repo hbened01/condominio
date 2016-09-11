@@ -41,8 +41,8 @@ class FacturasPagos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cod_facturas_fk' => Yii::t('frontend', 'Cod Facturas Fk'),
-            'cod_pagos_fk' => Yii::t('frontend', 'Cod Pagos Fk'),
+            'cod_facturas_fk' => Yii::t('frontend', 'Code Invoice'),
+            'cod_pagos_fk' => Yii::t('frontend', 'Code Payment'),
         ];
     }
 

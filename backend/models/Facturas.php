@@ -32,6 +32,11 @@ use Yii;
  */
 class Facturas extends \yii\db\ActiveRecord
 {
+    public $status_bill;
+    const STATUS_0 = 0;
+    const STATUS_1 = 1;
+    const STATUS_2 = 2;
+    const STATUS_3 = 3;
     /**
      * @inheritdoc
      */
@@ -54,6 +59,7 @@ class Facturas extends \yii\db\ActiveRecord
             [['edificio'], 'string', 'max' => 250],
             [['nombre', 'apellido'], 'string', 'max' => 100],
             [['fecha'], 'string', 'max' => 30],
+            ['status_bill', 'in', 'range' => [self::STATUS_0, self::STATUS_1, self::STATUS_2, self::STATUS_3]],
         ];
     }
 
@@ -63,20 +69,22 @@ class Facturas extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_factura_pk' => 'Cd Factura Pk',
-            'cod_apto' => 'Apartamento',
-            'edificio' => 'Edificio',
-            'nombre' => 'Nombre',
-            'apellido' => 'Apellido',
-            'alicuota' => 'Alicuota',
-            'nr' => 'Número de Factura',
-            'fecha' => 'Fecha',
-            'total_gastos_mes' => 'Total Gastos Mes',
-            'sub_total_alicuota' => 'Sub Total Alicuota',
-            'total_pagar_mes' => 'Total Pagar Mes',
-            'deuda_actual' => 'Deuda Actual',
-            'recibos' => 'Recibos',
-            'estatus_factura' => 'Factura Pagada',
+            'cd_factura_pk' => Yii::t('backend', 'Id'),
+            'cod_apto' => Yii::t('backend', 'Apartment'),
+            'edificio' => Yii::t('backend', 'Building'),
+            'nombre' => Yii::t('backend', 'Name'),
+            'apellido' => Yii::t('backend', 'Last Name'),
+            'alicuota' => Yii::t('backend', 'Aliquot'),
+            'nr' => Yii::t('backend', 'Invoice Number'),
+            'fecha' => Yii::t('backend', 'Date'),
+            'total_gastos_mes' => Yii::t('backend', 'Total Monthly Expenses'),
+            'sub_total_alicuota' => Yii::t('backend', 'Sub Total Aliquot'),
+            'total_pagar_mes' => Yii::t('backend', 'Total Pay Month'),
+            'deuda_actual' => Yii::t('backend', 'Current Debt'),
+            'recibos' => Yii::t('backend', 'Receipts'),
+            'estatus_factura' => Yii::t('backend', 'Invoice Status'),
+            'total_deducible' => Yii::t('backend', 'Total Deductible'),
+            'fecha_creada' => Yii::t('backend', 'Date Created'), 
         ];
     }
     

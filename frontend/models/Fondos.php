@@ -47,13 +47,13 @@ class Fondos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_fondo_pk' => Yii::t('frontend', 'Cd Fondo Pk'),
-            'cod_factura_fk' => Yii::t('frontend', 'Cod Factura Fk'),
-            'descripcion' => Yii::t('frontend', 'Descripcion'),
-            'saldo_anterior' => Yii::t('frontend', 'Saldo Anterior'),
-            'cota_mes' => Yii::t('frontend', 'Cota Mes'),
-            'cargo' => Yii::t('frontend', 'Cargo'),
-            'saldo_actual' => Yii::t('frontend', 'Saldo Actual'),
+            'cd_fondo_pk' => Yii::t('frontend', 'Id'),
+            'cod_factura_fk' => Yii::t('frontend', 'Code Invoice'),
+            'descripcion' => Yii::t('frontend', 'Description'),
+            'saldo_anterior' => Yii::t('frontend', 'Previous Balance'),
+            'cota_mes' => Yii::t('frontend', 'Cota Month'),
+            'cargo' => Yii::t('frontend', 'Carry'),
+            'saldo_actual' => Yii::t('frontend', 'Current Balance'),
         ];
     }
 

@@ -8,8 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel backend\models\CdPropietariosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Propietarios');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Owner');
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -21,11 +20,18 @@ $operaciones = $session->get('operaciones');
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('app', 'Crear Propietario'), ['create'], ['class' => 'btn btn-success']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('backend', 'Create Owner'), ['create'], ['class' => 'btn btn-success']) : '' ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'formatter' => [
+                    'class' => 'yii\\i18n\\Formatter',
+                    'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('backend', 'THERE IS NO DATA').')</span>',
+                    'dateFormat' => 'dd-MM-Y',
+                    'datetimeFormat' => 'dd-MM-Y H:i:s',
+                    'timeFormat' => 'H:i:s',
+                ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'cd_propietarios_pk',
@@ -37,7 +43,7 @@ $operaciones = $session->get('operaciones');
             // 'telf_celular',
             [
                 'attribute' => 'usuario',
-                'label' => 'Usuario',
+                'label' => Yii::t('backend', 'User'),
                 'value' => function($data){
                     return $data->usuario($data->cod_user); 
                 },
@@ -57,7 +63,7 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-view',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                                        'title' => Yii::t('app', 'Ver'),
+                                        'title' => Yii::t('backend', 'See'),
                             ]);
                         }else{
                             return false;
@@ -67,7 +73,7 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                                        'title' => Yii::t('app', 'Actualizar'),
+                                        'title' => Yii::t('backend', 'Update'),
                             ]);
                         }else{
                             return false;
@@ -77,8 +83,8 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                                        'title' => Yii::t('app', 'Eliminar'),
-                                        'data-confirm' => '¿Seguro que desea eliminar "'.$model->nombre.' '.$model->apellido.'"?',
+                                        'title' => Yii::t('backend', 'Delete'),
+                                        'data-confirm' => Yii::t('backend', 'Are you sure you want to delete the user').' "'.$model->nombre.' '.$model->apellido.'"?',
                                         'data-method' => 'POST'
                             ]);
                         }else{

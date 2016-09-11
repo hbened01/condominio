@@ -57,6 +57,16 @@ $(document).ready(function(){
     	language:'es'
     });
 
+    $("[name='CdPagosSearch[fecha_pago]']").datepicker({
+        format:'dd-mm-yyyy',
+        clearBtn:true,
+        language:'es',
+        autoclose: true,
+        defaultDate: new Date()
+    });
+
+    //$("[name='CdPagosSearch[fecha_pago]']").attr("placeholder", "type date");
+
     $("#cdpagos-id_propietario").change(function(){
     	//alert($("#cdpagos-id_propietario").val());
 	    var datos = "id=" + $("#cdpagos-id_propietario").val();
@@ -74,4 +84,5 @@ $(document).ready(function(){
 		  	}
 		});
     });
+
 });

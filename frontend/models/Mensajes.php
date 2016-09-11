@@ -39,9 +39,9 @@ class Mensajes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_mensajes_pk' => Yii::t('frontend', 'Cd Mensajes Pk'),
-            'texto' => Yii::t('frontend', 'Texto'),
-            'msn_default' => Yii::t('frontend', 'Msn Default'),
+            'cd_mensajes_pk' => Yii::t('frontend', 'Id'),
+            'texto' => Yii::t('frontend', 'Text'),
+            'msn_default' => Yii::t('frontend', 'Default Message'),
         ];
     }
 }

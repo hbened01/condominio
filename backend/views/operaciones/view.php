@@ -7,17 +7,16 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\Operaciones */
 
 $this->title = $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Operaciones'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
 <p>
-    <?= Html::a(Yii::t('app', 'Lista de Operaciones'), ['index'], ['class' => 'btn btn-info']); ?>
-    <?= Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->id], [
+    <?= Html::a(Yii::t('backend', 'List of Operations'), ['index'], ['class' => 'btn btn-info']); ?>
+    <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
         'data' => [
-            'confirm' => Yii::t('app', '¿Esta seguro de que quiere eliminar la Operación?'),
+            'confirm' => Yii::t('backend', 'Are you sure you want to delete this operation?'),
             'method' => 'post',
         ],
     ]) ?>

@@ -9,8 +9,6 @@ use yii\widgets\ActiveForm;
 $asset = backend\assets\DashboardAsset::register($this);
 $baseUrl = $asset->baseUrl;
 $this->title = $model->username;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -19,9 +17,9 @@ $operaciones = $session->get('operaciones');
 <div class="user-view">
 
     <p>
-        <?= Html::a(Yii::t('app', 'Lista de Usuarios'), ['index'], ['class' => 'btn btn-info']) ?>
-        <?= (in_array(Yii::$app->controller->id.'-update',$operaciones)) ? Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
-        <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones) && Yii::$app->user->identity->rol_id != $model->id) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('backend', 'User Lists'), ['index'], ['class' => 'btn btn-info']) ?>
+        <?= (in_array(Yii::$app->controller->id.'-update',$operaciones)) ? Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones) && Yii::$app->user->identity->rol_id != $model->id) ? Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
@@ -34,6 +32,14 @@ $operaciones = $session->get('operaciones');
     <br>
     <?= DetailView::widget([
         'model' => $model,
+        'formatter' => [
+                    'class' => 'yii\\i18n\\Formatter',
+                    'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('backend', 'THERE IS NO DATA').')</span>',
+                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbsp'.Yii::t('backend', 'Not Active User').'', '<span class="glyphicon glyphicon-ok"></span> &nbsp'.Yii::t('backend', 'Active User').''],
+                    'dateFormat' => 'dd-MM-Y',
+                    'datetimeFormat' => 'dd-MM-Y H:i:s',
+                    'timeFormat' => 'H:i:s',
+                ],
         'attributes' => [
             'id',
             'username',
@@ -41,9 +47,9 @@ $operaciones = $session->get('operaciones');
             // 'password_hash',
             // 'password_reset_token',
             'email:email',
-            'status',
-            'created_at',
-            'updated_at',
+            'status:boolean',
+            'created_at:date',
+            'updated_at:date',
             [
                 'label' => 'Rol',
                 'value'=> $model->rol($model->rol_id),

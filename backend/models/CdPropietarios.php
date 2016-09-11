@@ -62,20 +62,20 @@ class CdPropietarios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_propietarios_pk' => Yii::t('app', 'Código Propietario'),
-            'cod_user' => Yii::t('app', 'Cod User'),
-            'nro_piso' => Yii::t('app', 'Nro Piso'),
-            'nombre' => Yii::t('app', 'Nombre'),
-            'apellido' => Yii::t('app', 'Apellido'),
-            'nro_cedula' => Yii::t('app', 'Nro Cedula'),
-            'telf_local' => Yii::t('app', 'Telf Local'),
-            'telf_celular' => Yii::t('app', 'Telf Celular'),
-            'email' => Yii::t('app', 'Email'),
-            'alicuota' => Yii::t('app', 'Alicuota'),
-            'quien_vive' => Yii::t('app', 'Quien Vive'),
-            'direccion' => Yii::t('app', 'Direccion'),
-            'direccion_cobro' => Yii::t('app', 'Direccion Cobro'),
-            'update_usr' => Yii::t('app', 'Propietario Actualizado'),
+            'cd_propietarios_pk' => Yii::t('backend', 'Code Owner'),
+            'cod_user' => Yii::t('backend', 'Code User'),
+            'nro_piso' => Yii::t('backend', 'Floor number'),
+            'nombre' => Yii::t('backend', 'Name'),
+            'apellido' => Yii::t('backend', 'Last Name'),
+            'nro_cedula' => Yii::t('backend', 'Nro. identity card'),
+            'telf_local' => Yii::t('backend', 'Local Phone'),
+            'telf_celular' => Yii::t('backend', 'Cell phone'),
+            'email' => Yii::t('backend', 'Personal Mail'),
+            'alicuota' => Yii::t('backend', 'Aliquot'),
+            'quien_vive' => Yii::t('backend', 'You Reside?'),
+            'direccion' => Yii::t('backend', 'Residence Address'),
+            'direccion_cobro' => Yii::t('backend', 'Billing Address'),
+            'update_usr' => Yii::t('backend', 'Update User'),
         ];
     }
 

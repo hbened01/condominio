@@ -7,8 +7,6 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\CdConceptos */
 
 $this->title = $model->descrip_concepto;
-$this->params['breadcrumbs'][] = ['label' => 'Cd Conceptos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -17,12 +15,12 @@ $operaciones = $session->get('operaciones');
 <div class="cd-conceptos-view">
 
     <p>
-        <?= Html::a(Yii::t('app', 'Lista de Conceptos'), ['index'], ['class' => 'btn btn-info']) ?>
-        <?= (in_array(Yii::$app->controller->id.'-update',$operaciones)) ? Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->cd_conceptos_pk], ['class' => 'btn btn-primary']) : '' ?>
-        <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones)) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->cd_conceptos_pk], [
+        <?= Html::a(Yii::t('backend', 'List of Concepts'), ['index'], ['class' => 'btn btn-info']) ?>
+        <?= (in_array(Yii::$app->controller->id.'-update',$operaciones)) ? Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->cd_conceptos_pk], ['class' => 'btn btn-primary']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones)) ? Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->cd_conceptos_pk], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) : '' ?>

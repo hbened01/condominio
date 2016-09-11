@@ -76,16 +76,19 @@ class UserSearch extends User
             'user.id' => $this->id,
             //'status' => $this->status,
             //'created_at' => $this->created_at,
-           // 'updated_at' => $this->updated_at,
-           // 'rol_id' => $this->rol_id,
+            // 'updated_at' => $this->updated_at,
+            // 'rol_id' => $this->rol_id,
         ]);
 
-        $query->andFilterWhere(['like', 'user.username', $this->username])
+        $query->andFilterWhere(['like', 'LOWER(username)', strtolower($this->username)])
+            ->andFilterWhere(['like', 'LOWER(email)', strtolower($this->email)])
+            ->andFilterWhere(['like', 'LOWER(roles.nombre)', strtolower($this->rol)]);
+            // ->andFilterWhere(['like', 'user.username', $this->username])
             //->andFilterWhere(['like', 'auth_key', $this->auth_key])
-           // ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-           // ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
-            ->andFilterWhere(['like', 'user.email', $this->email])
-            ->andFilterWhere(['like', 'roles.nombre', $this->rol]);
+            // ->andFilterWhere(['like', 'password_hash', $this->password_hash])
+            // ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
+            // ->andFilterWhere(['like', 'user.email', $this->email])
+            // ->andFilterWhere(['like', 'roles.nombre', $this->rol]);
 
         return $dataProvider;
     }

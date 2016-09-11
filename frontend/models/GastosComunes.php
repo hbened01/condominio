@@ -41,9 +41,9 @@ class GastosComunes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_gasto_comun_pk' => Yii::t('frontend', 'Cd Gasto Comun Pk'),
-            'descripcion' => Yii::t('frontend', 'Descripcion'),
-            'monto' => Yii::t('frontend', 'Monto'),
+            'cd_gasto_comun_pk' => Yii::t('frontend', 'Id'),
+            'descripcion' => Yii::t('frontend', 'Description'),
+            'monto' => Yii::t('frontend', 'Amount'),
         ];
     }
 

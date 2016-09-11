@@ -10,8 +10,7 @@ use yii\widgets\ActiveForm;
 /* @var $searchModel backend\models\OperacionesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Carga y Procesamiento de Facturas');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Loading and Invoice Processing');
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -27,12 +26,12 @@ $operaciones = $session->get('operaciones');
             <div class="box-header with-border">
               <i class="glyphicons glyphicons-cloud-upload"></i>
 
-              <h3 class="box-title">Carga del Archivo de Facturas</h3>
+              <h3 class="box-title"><?= Yii::t('backend', 'Bill Load File') ?></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <?php $form = ActiveForm::begin(['id' => 'FileLoadForm','options' => ['enctype' => 'multipart/form-data']]); ?>
-                        <label class="control-label">Selecione archivo</label>
+                        <label class="control-label"><?= Yii::t('backend', 'Select file') ?></label>
                         <?php   
                                 echo $form->field($model, 'file')->widget(FileInput::classname(), [ 
                                       'options' => ['multiple' => true],
@@ -43,7 +42,7 @@ $operaciones = $session->get('operaciones');
                                                   'showRemove' => true,
                                                   'showUpload' => true,
                                                   'filename'=>'copiacondc',
-                                                  'browseLabel' =>  'Buscar Archivo',
+                                                  'browseLabel' => Yii::t('backend', 'Find File'),
                                                   'uploadUrl' => Url::to(['files/file-process']),
                                                   'allowedFileExtensions'=>['csv'],
                                                   'language' => 'es',
@@ -71,7 +70,7 @@ $operaciones = $session->get('operaciones');
             <div class="box-body">
                 <br><br>
                   <!-- <button type="button" class="btn btn-block btn-primary btn-lg col-md-4">Procesar Archivo</button> -->
-                  <?= Html::a(Yii::t('app', 'Procesar Archivo'), ['load-invoices'], ['class' => 'btn btn-block btn-primary btn-lg col-md-4']) ?>
+                  <?= Html::a(Yii::t('backend', 'File processing'), ['load-invoices'], ['class' => 'btn btn-block btn-primary btn-lg col-md-4']) ?>
                 <br><br><br><br>
             </div>
             <!-- /.box-body -->

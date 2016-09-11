@@ -58,7 +58,6 @@ class CdPagos extends \yii\db\ActiveRecord
 
             //removes commas and periods and currency
             ['monto', 'filter', 'filter' => function($value) {return str_replace(',', '.', str_replace(['.', ',00', 'Bs '], '' , $value));}],
-            [['monto'], 'number', 'min' => 100 ],
 
             ['email', 'email'],
             ['email', 'filter', 'filter' => 'trim'],
@@ -85,7 +84,7 @@ class CdPagos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_pago_pk' => Yii::t('frontend', 'Cd Pago Pk'),
+            'cd_pago_pk' => Yii::t('frontend', 'Id'),
             'cod_tipo_pago' => Yii::t('frontend', 'Payment Type'),
             'nro_referencia' => Yii::t('frontend', 'Transfer or Reference Number'),
             'fecha_pago' => Yii::t('frontend', 'Payment Date'),
@@ -96,9 +95,9 @@ class CdPagos extends \yii\db\ActiveRecord
             'cod_tipo_doc' => Yii::t('frontend', 'Document Type'),
             'email' => Yii::t('frontend', 'Email'),
             'estatus_pago' => Yii::t('frontend', 'Payment Status'),
-            'monto' => Yii::t('frontend', 'Monto Cancelado'),
-            'cod_banco' => Yii::t('frontend', 'Banco'),
-            'cod_factura' => Yii::t('frontend', 'Factura'),
+            'monto' => Yii::t('frontend', 'Cancelled amount'),
+            'cod_factura' => Yii::t('frontend', 'Invoice'),
+            'cod_banco' => Yii::t('frontend', 'BanK'),
         ];
     }
 

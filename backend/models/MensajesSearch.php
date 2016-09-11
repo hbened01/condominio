@@ -64,7 +64,7 @@ class MensajesSearch extends Mensajes
             'msn_default' => $this->msn_default,
         ]);
 
-        $query->andFilterWhere(['like', 'texto', $this->texto]);
+        $query->andFilterWhere(['like', 'LOWER(texto)', strtolower($this->texto)]);
 
         return $dataProvider;
     }

@@ -102,7 +102,7 @@ class FacturasController extends BaseController
        if (($model->estatus_factura && $model->total_deducible != 0) || (!$model->estatus_factura)) {
           $mpdf = $pdf->api; 
           $mpdf->SetAuthor("HJ TECNOSYSTEMS");
-          $mpdf->SetWatermarkText('COPIA DE FACTURA');
+          $mpdf->SetWatermarkText(Yii::t('backend', 'COPY OF INVOICE'));
           $mpdf->showWatermarkText = true;
           $mpdf->watermarkTextAlpha = 0.2;
        }

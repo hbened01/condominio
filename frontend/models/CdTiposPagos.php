@@ -39,7 +39,7 @@ class CdTiposPagos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cd_tipo_pago_pk' => Yii::t('frontend', 'Cd Tipo Pago Pk'),
+            'cd_tipo_pago_pk' => Yii::t('frontend', 'Id'),
             'descrip_pago' => Yii::t('frontend', 'Payment Type'),
         ];
     }

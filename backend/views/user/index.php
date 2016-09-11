@@ -8,8 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel backend\controllers\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Usuarios');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Users');
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -21,24 +20,16 @@ $operaciones = $session->get('operaciones');
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('app', 'Crear Usuario'), ['create'], ['class' => 'btn btn-success']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('backend', 'Create User'), ['create'], ['class' => 'btn btn-success']) : '' ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'username',
-            //'auth_key',
-            //'password_hash',
-            //'password_reset_token',
+  
+            'username', 
             'email:email',
-            // 'status',
-            // 'created_at',
-            // 'updated_at',
-            //'rol_id',
             [
                 'attribute' => 'rol',
                 'label' => 'Rol',
@@ -46,6 +37,14 @@ $operaciones = $session->get('operaciones');
                     return $data->rol($data->rol_id); 
                 },
             ],
+            //'id',
+            //'auth_key',
+            //'password_hash',
+            //'password_reset_token',
+            // 'status',
+            // 'created_at',
+            // 'updated_at',
+            //'rol_id',
             //'Roles.name',
 
             [
@@ -56,7 +55,7 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-view',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
-                                        'title' => Yii::t('app', 'Ver'),
+                                        'title' => Yii::t('backend', 'See'),
                             ]);
                         }else{
                             return false;
@@ -66,7 +65,7 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-update',$session->get('operaciones'))) {
                             return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
-                                        'title' => Yii::t('app', 'Actualizar'),
+                                        'title' => Yii::t('backend', 'Update'),
                             ]);
                         }else{
                             return false;
@@ -76,8 +75,8 @@ $operaciones = $session->get('operaciones');
                         $session = Yii::$app->session;
                         if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones')) && Yii::$app->user->identity->rol_id != $model->id) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                                        'title' => Yii::t('app', 'Eliminar'),
-                                        'data-confirm' => '¿Seguro que desea eliminar el rol "'.$model->username.'"?',
+                                        'title' => Yii::t('backend', 'Delete'),
+                                        'data-confirm' => Yii::t('backend', 'Are you sure you want to delete the user').'"'.$model->username.'"?',
                                         'data-method' => 'POST'
                             ]);
                         }else{

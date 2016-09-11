@@ -23,26 +23,26 @@ if (Yii::$app->user->identity->rol_id == 1) {
             <div class="box-header with-border">
               <i class="glyphicons glyphicons-edit"></i>
 
-              <h3 class="box-title">Formulario</h3>
+              <h3 class="box-title"><?= Yii::t('backend', 'Form') ?></h3>
             </div>
 
             <div class="box-body">
 
 			    <?php $form = ActiveForm::begin(); ?>
 
-			    <?= $form->field($model, 'username')->textInput()->label('Nombre de Usuario') ?>
-			    <?= $form->field($model, 'email')->textInput()->label('Correo Electrónico') ?>
+			    <?= $form->field($model, 'username')->textInput()->label() ?>
+			    <?= $form->field($model, 'email')->textInput()->label() ?>
 			    <?=
 					$form->field($model, 'rol_id')
 					     ->dropDownList(
 					            ArrayHelper::map(Roles::find()->where($where)->all(), 'id', 'nombre'),
-					            ['prompt'=>'...']
+					            ['prompt'=> Yii::t('backend', 'Select...')]
 				            )
-					     ->label('Rol')
+					     ->label()
 				?>
 				<br>
 			    <div class="form-group">
-			        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Crear') : Yii::t('app', 'Actualizar'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+			        <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 			    </div>
 
 			    <?php ActiveForm::end(); ?>

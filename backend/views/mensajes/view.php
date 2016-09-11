@@ -6,9 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Mensajes */
 
-$this->title = 'Mensaje N° '.$model->cd_mensajes_pk;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mensajes'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('backend', 'Message').' N° '.$model->cd_mensajes_pk;
 
 $session = Yii::$app->session;
 $operaciones = $session->get('operaciones');
@@ -17,12 +15,12 @@ $operaciones = $session->get('operaciones');
 <div class="mensajes-view">
 
     <p>
-        <?= Html::a(Yii::t('app', 'Lista de Mensajes'), ['index'], ['class' => 'btn btn-info']) ?>
-        <?= (in_array(Yii::$app->controller->id.'-update',$operaciones)) ? Html::a(Yii::t('app', 'Actualizar'), ['update', 'id' => $model->cd_mensajes_pk], ['class' => 'btn btn-primary']) : '' ?>
-        <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones)) ? Html::a(Yii::t('app', 'Eliminar'), ['delete', 'id' => $model->cd_mensajes_pk], [
+        <?= Html::a(Yii::t('backend', 'List of Messages'), ['index'], ['class' => 'btn btn-info']) ?>
+        <?= (in_array(Yii::$app->controller->id.'-update',$operaciones)) ? Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->cd_mensajes_pk], ['class' => 'btn btn-primary']) : '' ?>
+        <?= (in_array(Yii::$app->controller->id.'-delete',$operaciones)) ? Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->cd_mensajes_pk], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', '¿Está seguro(a) de elimanar este mensaje?'),
+                'confirm' => Yii::t('backend', 'Are you sure you want to delete this message?'),
                 'method' => 'post',
             ],
         ]) : '' ?>
@@ -34,7 +32,7 @@ $operaciones = $session->get('operaciones');
         'model' => $model,
         'attributes' => [
             'cd_mensajes_pk',
-            'texto:ntext',
+            'texto:html',
             'msn_default:boolean',
         ],
     ]) ?>
