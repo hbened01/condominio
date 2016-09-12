@@ -37,22 +37,22 @@ $operaciones = $session->get('operaciones');
             ],
             [
                 'attribute'=>'status_bill',
-                'header'=> Yii::t('frontend', 'Invoice Status'),
-                'filter'=> Html::activeDropDownList($searchModel, 'status_bill', array('1' => Yii::t('frontend', 'Successfully Canceled'), '2' => Yii::t('frontend', 'Partially Canceled'), '0' => Yii::t('frontend', 'Uncancelled')), ['class'=>'form-control', 'prompt' => Yii::t('frontend', 'Select...')]),
+                'header'=> Yii::t('backend', 'Invoice Status'),
+                'filter'=> Html::activeDropDownList($searchModel, 'status_bill', array('1' => Yii::t('backend', 'Successfully Canceled'), '2' => Yii::t('backend', 'Partially Canceled'), '0' => Yii::t('backend', 'Uncancelled')), ['class'=>'form-control', 'prompt' => Yii::t('backend', 'Select...')]),
                 'format'=>'raw',   
                 'value' => function($model, $key, $index)
                     {   
                         if($model->estatus_factura == true && $model->total_deducible == 0)
                         {
-                            return '<span class="glyphicon glyphicon-ok"></span>&nbsp'.Yii::t('frontend', 'Fully Cancelled').'';
+                            return '<span class="glyphicon glyphicon-ok"></span>&nbsp'.Yii::t('backend', 'Fully Cancelled').'';
                         }
                         else if($model->estatus_factura == true && $model->total_deducible !== 0)
                         {   
-                            return '<span class="glyphicons glyphicons-ok-circle"></span>&nbsp'.Yii::t('frontend', 'Partially Cancelled').'';
+                            return '<span class="glyphicons glyphicons-ok-circle"></span>&nbsp'.Yii::t('backend', 'Partially Cancelled').'';
                         }
                         else if($model->estatus_factura == false)
                         {
-                            return '<span class="glyphicon glyphicon-remove"></span>&nbsp'.Yii::t('frontend', 'Not Cancelled').'';
+                            return '<span class="glyphicon glyphicon-remove"></span>&nbsp'.Yii::t('backend', 'Not Cancelled').'';
                         }
                     },
              ],
