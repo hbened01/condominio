@@ -62,8 +62,8 @@ $this->title = Yii::t('frontend', 'invoice history');
                             {
                                 return '<span class="glyphicon glyphicon-ok"></span>&nbsp'.Yii::t('frontend', 'Fully Cancelled').'';
                             }
-                            else if($model->estatus_factura == true && $model->total_deducible !== 0)
-                            {   
+                            else if($model->estatus_factura == false && $model->total_deducible !== 0 && $model->total_deducible < $model->total_pagar_mes)
+                            { 
                                 return '<span class="glyphicons glyphicons-ok-circle"></span>&nbsp'.Yii::t('frontend', 'Partially Cancelled').'';
                             }
                             else if($model->estatus_factura == false)
