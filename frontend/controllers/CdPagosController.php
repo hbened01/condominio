@@ -84,7 +84,7 @@ class CdPagosController extends Controller
                         // GUARDADO DE CONTROL TABLA FACTURAS
                         $search->total_deducible = 0;
                         $model_facturas = $search;
-                        $model_facturas->save();
+                        $model_facturas->update(false);
                         // GUARDADO DE CONTROL TABLA FACTURAS_PAGOS
                         $model_facturas_pagos = new FacturasPagos();
                         $model_facturas_pagos->cod_facturas_fk = $factura;
@@ -97,7 +97,7 @@ class CdPagosController extends Controller
                             // GUARDADO DE CONTROL TABLA FACTURAS
                             $search->total_deducible = ($calculo *-1);
                             $model_facturas = $search;
-                            $model_facturas->save();
+                            $model_facturas->update(false);
                             // GUARDADO DE CONTROL TABLA FACTURAS_PAGOS
                             $model_facturas_pagos = new FacturasPagos();
                             $model_facturas_pagos->cod_facturas_fk = $factura;
@@ -156,18 +156,18 @@ class CdPagosController extends Controller
                 // SE ACTUALIZAN TOTALES DEDUCIBLES
                 $search = $model_facturas->find()->where(['cd_factura_pk' => $fact])->one();
                 $search->total_deducible = $search->total_pagar_mes;
-                $search->update();
+                $search->update(false);
             endforeach;
             // GUARDADO TABLA CD_PAGOS
             $model->load(Yii::$app->request->post());
-            $model->update();
+            $model->update(false);
             $post['CdPagos']['monto'] = str_replace(',', '.', str_replace(['.', ',00', 'Bs '], '' , $post['CdPagos']['monto']));
             // AJUSTE DE FACTURAS
             foreach ($post['CdPagos']['cod_factura'] as $key => $factura):
                 // SE ACTUALIZAN TOTALES DEDUCIBLES
                 $search = $model_facturas->find()->where(['cd_factura_pk' => $factura])->one();
                 $search->total_deducible = $search->total_pagar_mes;
-                $search->update();
+                $search->update(false);
                 // SE CALCULA NUEVAMENTE
                 $total_deducible = $search['total_deducible'];
                 if ($total_deducible !== 0) {
@@ -178,7 +178,7 @@ class CdPagosController extends Controller
                         // GUARDADO DE CONTROL TABLA FACTURAS
                         $search->total_deducible = 0;
                         $model_facturas = $search;
-                        $model_facturas->update();
+                        $model_facturas->update(false);
                     }else{
                         if (($total_deducible *= -1) < $calculo) {
                             // SE GUARDA EL MONTO AJUSTADO
@@ -186,7 +186,7 @@ class CdPagosController extends Controller
                             // GUARDADO DE CONTROL TABLA FACTURAS
                             $search->total_deducible = ($calculo *-1);
                             $model_facturas = $search;
-                            $model_facturas->update();
+                            $model_facturas->update(false);
                         }
                         else{
                             // SE TERMINA LAZO
@@ -240,7 +240,7 @@ class CdPagosController extends Controller
                 $model_facturas = new Facturas();
                 $search = $model_facturas->find()->where(['cd_factura_pk' => $fact])->one();
                 $search->total_deducible = $search->total_pagar_mes;
-                $search->update();
+                $search->update(false);
             endforeach;
 
         $this->findModel($id)->delete();
