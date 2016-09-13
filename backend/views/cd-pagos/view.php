@@ -42,7 +42,7 @@ $operaciones = $session->get('operaciones');
                 'formatter' => [
                     'class' => 'yii\\i18n\\Formatter',
                     'nullDisplay' => '<span class="not-set"><i class="glyphicons glyphicons-cleaning"></i>&nbsp&nbsp('.Yii::t('backend', 'THERE IS NO DATA').')</span>',
-                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbsp'.Yii::t('backend', 'No-Approved').'', '<span class="glyphicon glyphicon-ok"></span> &nbsp'.Yii::t('backend', 'No-Approved').''],
+                    'booleanFormat' => ['<span class="glyphicon glyphicon-remove"></span> &nbsp'.Yii::t('backend', 'No-Approved').'', '<span class="glyphicon glyphicon-ok"></span> &nbsp'.Yii::t('backend', 'Approved').''],
                 ],
                 'attributes' => [
                     //'cd_pago_pk',
