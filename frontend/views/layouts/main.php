@@ -173,7 +173,7 @@ $baseUrl = $asset->baseUrl;
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; <?php echo date('Y') ?> <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">HJ TECNOSYSTEMS</a>. All Rights Reserved.
+                    <?php echo date('Y') ?>&nbsp<a target="_blank" href="" title="">HJ TECNOSYSTEMS</a>&nbsp&copy;.&nbsp<?= Yii::t('frontend', 'All Rights Reserved') ?>.
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">

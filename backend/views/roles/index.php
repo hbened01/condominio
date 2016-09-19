@@ -22,9 +22,11 @@ $operaciones = $session->get('operaciones');
     <p>
         <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a(Yii::t('backend', 'Create Rol'), ['create'], ['class' => 'btn btn-success']): '' ?>
     </p>
+        
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'filterSelector' => 'select[name="per-page"]',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -60,7 +62,7 @@ $operaciones = $session->get('operaciones');
                         if (in_array(Yii::$app->controller->id.'-delete',$session->get('operaciones')) && Yii::$app->user->identity->rol_id != $model->id && $model->id != 3) {
                             return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
                                         'title' => Yii::t('backend', 'Delete'),
-                                        'data-confirm' => Yii::t('backend', 'Are you sure you want to delete the user').'"'.$model->username.'"?',
+                                        'data-confirm' => Yii::t('backend', 'Are you sure you want to delete the user').'"'.$model->nombre.'"?',
                                         'data-method' => 'POST'
                             ]);
                         }else{
@@ -85,4 +87,14 @@ $operaciones = $session->get('operaciones');
             ],
         ],
     ]); ?>
+    <div class="row-sm-5" align="left">
+        <b> <?= Yii::t('backend', Html::encode('Quantity per page')) ?>:&nbsp<?php echo \nterms\pagesize\PageSize::widget(
+                [
+                    'defaultPageSize' => 10,
+                    'sizes' => [5 => 5, 10 => 10, 15 => 15, 20 => 20, 25 => 25, 50 => 50],
+                    'label' => Yii::t('backend', Html::encode('Records')),
+                ]
+            ); ?>
+        </b>        
+    </div>
 </div>
