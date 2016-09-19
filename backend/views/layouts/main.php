@@ -190,10 +190,9 @@ $operaciones = $session->get('operaciones');
 
             <footer class="main-footer">
               <div class="pull-right hidden-xs">
-                Desarrollado por <a href="http://hjtecnosystems.com.ve"  target="_blank">HJ TECNOSYSTEMS</a>
+                <?= Yii::t('backend', 'Developed by') ?> <a href="http://hjtecnosystems.com.ve"  target="_blank">HJ TECNOSYSTEMS</a>
               </div>
-              <strong>Copyright &copy; <?php echo date('Y') ?></strong> All rights
-              reserved.
+              <strong><?= Yii::t('backend', 'Copyright') ?> &copy; <?php echo date('Y') ?></strong> <?= Yii::t('backend', 'All rights reserved') ?>.
             </footer>
         </div>
 

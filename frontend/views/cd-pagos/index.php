@@ -25,10 +25,20 @@ $this->title = Yii::t('frontend', 'payment history');
             <h2><span class="glyphicons glyphicons-history"></span>&nbsp<?= Html::encode(Yii::t('frontend', 'Payment History Registered')) ?></h2>
         </div> 
         <div class="row contact-wrap"> 
-
+            <div class="row-sm-5" align="right">
+                <b> <?= Yii::t('frontend', Html::encode('Quantity per page')) ?>:&nbsp<?php echo \nterms\pagesize\PageSize::widget(
+                        [
+                            'sizes' => [5 => 5, 10 => 10, 15 => 15, 20 => 20, 25 => 25, 50 => 50],
+                            'label' => Yii::t('frontend', Html::encode('Records')),
+                            'defaultPageSize' => 10
+                        ]
+                    ); ?>
+                </b>        
+            </div>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
+                'filterSelector' => 'select[name="per-page"]',
                 'showFooter'=>true,
                 'showHeader' => true,
                 'formatter' => [

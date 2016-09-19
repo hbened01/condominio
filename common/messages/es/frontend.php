@@ -17,6 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'All Rights Reserved' => 'Todos los derechos reservados',
+    'Records' => 'Registros',
+    'Quantity per page' => 'Cantidad por página',
     'Fully Cancelled' => 'Totalmente Cancelada',
     'Not Cancelled' => 'No Cancelada',
     'Partially Cancelled' => 'Parcialmente Cancelada',

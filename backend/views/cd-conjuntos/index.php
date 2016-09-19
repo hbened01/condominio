@@ -25,6 +25,7 @@ $operaciones = $session->get('operaciones');
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'filterSelector' => 'select[name="per-page"]',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -86,4 +87,14 @@ $operaciones = $session->get('operaciones');
             ],
         ],
     ]); ?>
+    <div class="row-sm-5" align="left">
+        <b> <?= Yii::t('backend', Html::encode('Quantity per page')) ?>:&nbsp<?php echo \nterms\pagesize\PageSize::widget(
+                [   
+                    'defaultPageSize' => 10,
+                    'sizes' => [5 => 5, 10 => 10, 15 => 15, 20 => 20, 25 => 25, 50 => 50],
+                    'label' => Yii::t('backend', Html::encode('Records')),
+                ]
+            ); ?>
+        </b>        
+    </div>
 </div>
