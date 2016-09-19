@@ -22,6 +22,16 @@ $operaciones = $session->get('operaciones');
     <p>
         <?= (in_array(Yii::$app->controller->id.'-create',$operaciones)) ? Html::a( Yii::t('backend', 'Create Concept'), ['create'], ['class' => 'btn btn-success']) : '' ?>
     </p>
+    <div class="row-sm-5" align="right">
+        <b> <?= Yii::t('backend', Html::encode('Quantity per page')) ?>:&nbsp<?php echo \nterms\pagesize\PageSize::widget(
+                [   
+                    'defaultPageSize' => 10,
+                    'sizes' => [5 => 5, 10 => 10, 15 => 15, 20 => 20, 25 => 25, 50 => 50],
+                    'label' => Yii::t('backend', Html::encode('Records')),
+                ]
+            ); ?>
+        </b>        
+    </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -88,14 +98,4 @@ $operaciones = $session->get('operaciones');
             ],
         ],
     ]); ?>
-    <div class="row-sm-5" align="left">
-        <b> <?= Yii::t('backend', Html::encode('Quantity per page')) ?>:&nbsp<?php echo \nterms\pagesize\PageSize::widget(
-                [   
-                    'defaultPageSize' => 10,
-                    'sizes' => [5 => 5, 10 => 10, 15 => 15, 20 => 20, 25 => 25, 50 => 50],
-                    'label' => Yii::t('backend', Html::encode('Records')),
-                ]
-            ); ?>
-        </b>        
-    </div>
 </div>
